@@ -25,7 +25,8 @@ This chapter covers:
 - stakeholder groups,
 - personas and perspectives,
 - recurring use case classes,
-- requirement themes derived from those perspectives and scenarios.
+- workflow definitions derived from those scenarios,
+- requirement themes derived from those perspectives, workflows, and scenarios.
 
 It does not define normative requirements. It explains why those requirements exist and provides context for later normative chapters.
 
@@ -49,6 +50,12 @@ Defines recurring operational patterns: 24/7 operations, frequent and infrequent
 
 Summarises the recurring requirement patterns that emerge from the stakeholder and use case analysis: automation, portability, transparency, security, observability, self-service, usage-based metering, and continuity under failure.
 
+### 05. Workflow Definitions
+
+Defines canonical workflow patterns derived from the challenge and use-case analysis.
+
+This section should capture workflow inputs, actors, steps, decisions, outputs, and failure paths, and should provide the traceability bridge from challenges and use cases to derived system requirements.
+
 ## Relationship to Other Chapters
 
 This chapter informs:
@@ -65,7 +72,7 @@ In particular, this chapter should be read as the justification layer for later 
 - lifecycle operations for issue, renew, reissue, revoke, and inspect,
 - entitlement and lease handling,
 - observability and audit expectations,
-- commercial model flexibility and profile differentiation.
+- license modality flexibility and profile differentiation.
 
 ## Editorial Guidance
 
@@ -91,6 +98,7 @@ If needed, this chapter may later include:
 Additional future expansion may include:
 - cross-references to specific lifecycle operations and canonical model elements,
 - a chapter-internal traceability structure linking Sections 01 to 04 more explicitly,
+- workflow-to-requirement derivation tables linked to Section 05,
 - a concise summary view for readers seeking a non-detailed overview.
 
 ## Drafting Note
@@ -105,6 +113,7 @@ This chapter is descriptive and analytical in nature. Later chapters may derive 
 
 The following items should be considered in later drafting iterations:
 - verify that all four subchapters remain aligned in scope and terminology,
+- add and maintain Section 05 workflow definitions based on the original draft and the current micro exercise,
 - review whether cross-references to later chapters should be made more explicit,
 - confirm whether any content currently in this chapter should later move into annex material,
 - assess whether a short summary or overview table should be added at chapter level.

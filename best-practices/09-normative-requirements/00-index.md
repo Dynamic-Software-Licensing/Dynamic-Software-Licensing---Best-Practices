@@ -27,7 +27,7 @@ The current DSL material already points to recurring requirement domains such as
 - lease and policy behavior,
 - API interactions,
 - usage metering,
-- commercial logic,
+- license modalities and modality-driven behavior,
 - security expectations,
 - operational continuity,
 - integration with automation and deployment workflows. :contentReference[oaicite:15]{index=15} :contentReference[oaicite:16]{index=16} :contentReference[oaicite:17]{index=17}
@@ -69,10 +69,10 @@ Defines requirements related to usage tracking, dimensions, and metering behavio
 
 This section should clarify the structure and expectations for usage-based accounting inputs.
 
-### 06. Commercial Model Requirements
-Defines requirements related to commercial logic and supported licensing modalities.
+### 06. License Modality Requirements
+Defines requirements related to supported license modalities and modality-driven system behavior.
 
-This section should describe how time-, process-, and outcome-oriented logic may be reflected in the best practices structure. :contentReference[oaicite:18]{index=18} :contentReference[oaicite:19]{index=19}
+This section should describe how time-, process-, and outcome-oriented licensing modalities may influence metering, dimensions, and lifecycle handling in the best practices structure. It should avoid pricing, commercial terms, or market coordination topics. :contentReference[oaicite:18]{index=18} :contentReference[oaicite:19]{index=19}
 
 ### 07. Security Requirements
 Defines requirements related to security, trust, auditability, and protection of licensing assets.

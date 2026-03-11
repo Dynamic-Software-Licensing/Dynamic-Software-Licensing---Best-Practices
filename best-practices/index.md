@@ -54,6 +54,8 @@ Folder: `05-stakeholders-use-cases-and-requirements/`
 
 Captures the main stakeholder groups, relevant personas, core use case classes, and the requirement themes derived from them.
 
+This chapter also includes workflow definitions used to derive system requirements.
+
 ### 06. Design Principles
 Folder: `06-design-principles/`
 
@@ -72,7 +74,7 @@ Defines conformance targets, implementation profiles, and staged adoption models
 ### 09. Normative Requirements
 Folder: `09-normative-requirements/`
 
-Contains the main implementation-oriented requirements of the best practices, including identity, policy, API, metering, security, operational, and integration requirements.
+Contains the main implementation-oriented requirements of the best practices, including identity, policy, API, metering, license modality, security, operational, and integration requirements.
 
 ### 10. Canonical API Model
 Folder: `10-canonical-api-model/`
