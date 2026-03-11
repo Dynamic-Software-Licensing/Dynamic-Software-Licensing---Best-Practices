@@ -1,0 +1,36 @@
+name: Check Branch Name
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  check-branch-name:
+    name: Validate branch naming convention
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check branch name
+        run: |
+          BRANCH="${{ github.head_ref }}"
+          echo "Branch: $BRANCH"
+
+          if echo "$BRANCH" | grep -qE '^(chapter-[0-9]+-|annex-|fix-|hotfix-|governance-|schema-|workflow-|terminology-)'; then
+            echo "✅ Branch name '$BRANCH' follows the naming convention."
+          else
+            echo ""
+            echo "❌ Branch name '$BRANCH' does not follow the naming convention."
+            echo ""
+            echo "Required prefixes:"
+            echo "  chapter-XX-   e.g. chapter-09-identity-binding"
+            echo "  annex-        e.g. annex-b-api-update"
+            echo "  fix-          e.g. fix-typo-chapter-07"
+            echo "  hotfix-       e.g. hotfix-terminology-error"
+            echo "  governance-   e.g. governance-role-update"
+            echo "  schema-       e.g. schema-lease-update"
+            echo "  workflow-     e.g. workflow-ci-update"
+            echo "  terminology-  e.g. terminology-entitlement"
+            echo ""
+            echo "Rename your branch before opening a PR."
+            exit 1
+          fi

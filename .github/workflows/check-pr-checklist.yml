@@ -1,0 +1,73 @@
+name: Check PR Description
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+jobs:
+  check-pr-description:
+    name: Validate PR description
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check PR body length
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          if [ -z "$PR_BODY" ]; then
+            echo "❌ PR description is empty. Fill in the PR template."
+            exit 1
+          fi
+
+          LENGTH=${#PR_BODY}
+          if [ "$LENGTH" -lt 80 ]; then
+            echo "❌ PR description is too short ($LENGTH characters). Use the PR template."
+            exit 1
+          fi
+
+          echo "✅ PR description is present ($LENGTH characters)."
+
+      - name: Check issue link
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          if echo "$PR_BODY" | grep -qiE '(closes|fixes|resolves|related to) #[0-9]+'; then
+            echo "✅ PR links to an issue."
+          else
+            echo "⚠️  No issue link found."
+            echo "   Use 'Closes #<issue>' or 'Related to #<issue>' in the PR description."
+            echo "   If this is a standalone fix, you may ignore this warning."
+          fi
+
+      - name: Validate workflow state selection
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          COUNT=$(printf "%s" "$PR_BODY" | grep -cE '^\- \[[xX]\] .*(Starting work|Ready for review|Review done)' || true)
+          if [ "$COUNT" -ne 1 ]; then
+            echo "❌ Select exactly one option under 'Where am I?' in the PR template."
+            exit 1
+          fi
+          echo "✅ Workflow state selection is valid."
+
+      - name: Validate change type selection
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          COUNT=$(printf "%s" "$PR_BODY" | grep -cE '^\- \[[xX]\] (Editorial|Terminology|Informative|Normative|Structural)' || true)
+          if [ "$COUNT" -lt 1 ]; then
+            echo "❌ Select at least one option under 'Change type' in the PR template."
+            exit 1
+          fi
+          echo "✅ Change type selection is valid."
+
+      - name: Validate status change selection
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          COUNT=$(printf "%s" "$PR_BODY" | grep -cE '^\- \[[xX]\] (No status change|Status changed)' || true)
+          if [ "$COUNT" -ne 1 ]; then
+            echo "❌ Select exactly one option under 'Chapter status change' in the PR template."
+            exit 1
+          fi
+          echo "✅ Status change selection is valid."

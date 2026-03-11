@@ -1,0 +1,69 @@
+name: Auto-Create Draft PR
+
+on:
+  push:
+    branches:
+      - 'chapter-**'
+      - 'annex-**'
+      - 'fix-**'
+      - 'hotfix-**'
+      - 'governance-**'
+      - 'schema-**'
+      - 'workflow-**'
+      - 'terminology-**'
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  create-draft-pr:
+    name: Create Draft PR if none exists
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check for existing PR and create Draft PR if missing
+        env:
+          GH_TOKEN: ${{ secrets.PR_BOT_TOKEN != '' && secrets.PR_BOT_TOKEN || secrets.GITHUB_TOKEN }}
+          BRANCH: ${{ github.ref_name }}
+          REPO: ${{ github.repository }}
+        run: |
+          EXISTING=$(gh pr list \
+            --repo "$REPO" \
+            --head "$BRANCH" \
+            --state open \
+            --json number \
+            --jq '.[0].number')
+
+          if [ -n "$EXISTING" ]; then
+            echo "✅ PR #$EXISTING already exists for branch '$BRANCH' — skipping."
+            exit 0
+          fi
+
+          TITLE=$(echo "$BRANCH" \
+            | sed 's/-/ /g' \
+            | sed 's/\b\(.\)/\u\1/g')
+
+          CREATE_OUTPUT=$(gh pr create \
+            --repo "$REPO" \
+            --head "$BRANCH" \
+            --base main \
+            --draft \
+            --title "Draft: $TITLE" \
+            --body-file .github/pull_request_template.md 2>&1) || CREATE_EXIT=$?
+
+          if [ -n "$CREATE_EXIT" ]; then
+            echo "$CREATE_OUTPUT"
+            if echo "$CREATE_OUTPUT" | grep -q "not permitted to create or approve pull requests"; then
+              echo "⚠️  Auto-PR skipped: GitHub Actions PR creation is disabled."
+              echo "Fix: Settings → Actions → General → Allow GitHub Actions to create and approve pull requests."
+              echo "Or: add PR_BOT_TOKEN secret (PAT with 'repo' scope)."
+              exit 0
+            fi
+            exit "$CREATE_EXIT"
+          fi
+
+          echo "$CREATE_OUTPUT"
+          echo "✅ Draft PR created for branch '$BRANCH'."

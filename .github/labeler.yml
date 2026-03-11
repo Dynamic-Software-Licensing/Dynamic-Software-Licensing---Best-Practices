@@ -1,0 +1,32 @@
+chapter:
+  - changed-files:
+    - any-glob-to-any-file: 'recommendation/**'
+
+annex:
+  - changed-files:
+    - any-glob-to-any-file: 'annexes/**'
+
+schema:
+  - changed-files:
+    - any-glob-to-any-file: 'schemas/**'
+
+diagram:
+  - changed-files:
+    - any-glob-to-any-file: 'diagrams/**'
+
+governance:
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'GOVERNANCE.md'
+      - 'CONTRIBUTING.md'
+      - 'WORKFLOW.md'
+
+workflow:
+  - changed-files:
+    - any-glob-to-any-file: '.github/workflows/**'
+
+terminology:
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'recommendation/04-terminology-and-abbreviations/**'
+      - 'annexes/normative/annex-e-terminology-reference.md'
