@@ -39,9 +39,9 @@ assignees: []
 
 ## Acceptance criteria
 
-- [ ] 
-- [ ] 
-- [ ] 
+- [ ]
+- [ ]
+- [ ]
 
 ## Delivery
 

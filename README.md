@@ -58,4 +58,3 @@ All chapters are in working draft state. See [recommendation/index.md](recommend
 
 | Chapter | Status | Editorial maturity | Normative readiness |
 |---|---|---|---|
-

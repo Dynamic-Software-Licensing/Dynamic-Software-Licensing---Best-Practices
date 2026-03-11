@@ -144,7 +144,7 @@ Default fallback: choose the lower maturity value when unsure.
 
 ### Chapter Status Block Template
 
-```
+```markdown
 ## Chapter Status
 
 - Status: Working Draft
