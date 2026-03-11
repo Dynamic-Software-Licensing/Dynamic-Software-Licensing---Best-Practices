@@ -36,7 +36,7 @@ A reviewer provides structured feedback on content under review.
 Responsibilities:
 - assess clarity, consistency, completeness, and applicability,
 - flag terminology, interpretation, or structural concerns,
-- provide a review recommendation (approve / request changes).
+- provide a review best practices (approve / request changes).
 
 Decision scope:
 - reviewers advise; they do not merge unless also acting as editor.
@@ -92,8 +92,8 @@ Status is used at two levels: repository maturity and chapter-level drafting sta
 |---|---|
 | Working Draft | Structure and content are still evolving. |
 | Reviewed Draft | Structure is broadly stable; key sections have been reviewed. |
-| Candidate Recommendation | Technically and editorially mature enough for final validation. |
-| Published Recommendation | Approved as published industry recommendation. |
+| Candidate Best Practices | Technically and editorially mature enough for final validation. |
+| Published Best Practices | Approved as published industry best practices. |
 
 ### Chapter Status Fields
 
@@ -105,7 +105,7 @@ Each chapter `00-index.md` must contain a `## Chapter Status` section with the f
 |---|---|
 | Working Draft | Chapter structure or content is still actively changing. |
 | Reviewed Draft | Chapter has been reviewed and is broadly stable. |
-| Candidate Recommendation Text | Chapter content is considered ready for final recommendation. |
+| Candidate Best Practices Text | Chapter content is considered ready for final best practices. |
 | Stable for Cross-Reference | Chapter is stable enough to be referenced by other chapters. |
 
 **Editorial maturity**
@@ -178,7 +178,7 @@ Contributors indicate status intent in the pull request. Editors confirm reposit
 Terminology is treated as controlled vocabulary.
 
 Any terminology change must be reflected in:
-- `recommendation/04-terminology-and-abbreviations.md`,
+- `best-practices/04-terminology-and-abbreviations.md`,
 - `annexes/normative/annex-e-terminology-reference.md`,
 - all affected chapters and annexes using the term.
 
@@ -196,7 +196,7 @@ The pull request is marked Ready for review. Editors and reviewers assess qualit
 
 ### Final
 
-The reviewed pull request is merged to `main`. This represents the accepted baseline for the current stage. It does not mean the overall recommendation is fully published.
+The reviewed pull request is merged to `main`. This represents the accepted baseline for the current stage. It does not mean the overall best-practices document is fully published.
 
 ## Editor Checklist
 
@@ -231,7 +231,7 @@ The following checks run automatically via GitHub Actions:
 | PR checklist validation | PR opened / edited | Validates template checkbox selections |
 | Chapter status field validation | PR touches `00-index.md` | Validates allowed status values |
 | Markdown lint | PR + push to `main` | Checks `.md` formatting |
-| Status table auto-update | Push to `main` touching `00-index.md` | Regenerates `recommendation/index.md` table |
+| Status table auto-update | Push to `main` touching `00-index.md` | Regenerates `best-practices/index.md` table |
 | Auto Draft PR creation | First push to chapter/annex/fix branch | Creates Draft PR automatically |
 | Auto-close linked issues | PR merged to `main` | Closes issues linked with `Closes #` |
 

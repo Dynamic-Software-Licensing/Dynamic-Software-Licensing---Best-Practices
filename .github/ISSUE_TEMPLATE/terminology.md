@@ -29,7 +29,7 @@ assignees: []
 
 ## Affected areas
 
-- [ ] Recommendation chapters
+- [ ] Best practices chapters
 - [ ] Normative annexes
 - [ ] Informative annexes
 - [ ] Schemas / APIs / token claims

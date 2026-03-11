@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Reads all recommendation/**/00-index.md files, extracts the Chapter Status
-block, and regenerates the status table in recommendation/index.md.
+Reads all best-practices/**/00-index.md files, extracts the Chapter Status
+block, and regenerates the status table in best-practices/index.md.
 
 Safe to run locally and in CI. Only writes if content actually changed.
 """
@@ -42,7 +42,7 @@ def extract_status_fields(content: str) -> dict[str, str] | None:
 
 
 def build_new_table() -> str:
-    root = Path("recommendation")
+    root = Path("best-practices")
     rows: list[str] = []
 
     for chapter_dir in sorted(root.iterdir()):
@@ -68,7 +68,7 @@ def build_new_table() -> str:
 
 
 def update_index() -> None:
-    index_path = Path("recommendation/index.md")
+    index_path = Path("best-practices/index.md")
     if not index_path.exists():
         print(f"❌ {index_path} not found.", file=sys.stderr)
         sys.exit(1)
@@ -87,7 +87,7 @@ def update_index() -> None:
         print("ℹ️  Status table is already up to date.")
     else:
         index_path.write_text(updated, encoding="utf-8")
-        print("✅ Status table updated in recommendation/index.md")
+        print("✅ Status table updated in best-practices/index.md")
 
 
 if __name__ == "__main__":

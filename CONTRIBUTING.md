@@ -80,7 +80,7 @@ These fields are validated automatically.
 
 - Formal, neutral, implementation-oriented.
 - Short paragraphs with explicit section headings.
-- Controlled vocabulary (check `recommendation/04-terminology-and-abbreviations.md`).
+- Controlled vocabulary (check `best-practices/04-terminology-and-abbreviations.md`).
 - No marketing language or vague claims.
 - Main document must remain platform-agnostic.
 
@@ -92,7 +92,7 @@ Do not use normative keywords in introductory or explanatory sections.
 ## Terminology Discipline
 
 Before introducing a new term:
-1. Check `recommendation/04-terminology-and-abbreviations.md`.
+1. Check `best-practices/04-terminology-and-abbreviations.md`.
 2. Check `annexes/normative/annex-e-terminology-reference.md`.
 3. Use the existing term if one exists.
 4. Raise a Terminology issue if a change is needed.
@@ -129,7 +129,7 @@ git pull origin main
 git checkout -b chapter-09-identity-binding
 
 # Stage and commit
-git add recommendation/09-normative-requirements/
+git add best-practices/09-normative-requirements/
 git commit -m "Draft chapter 09 identity binding structure"
 git push -u origin chapter-09-identity-binding
 

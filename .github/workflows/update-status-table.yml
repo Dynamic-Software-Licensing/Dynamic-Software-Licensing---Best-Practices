@@ -5,14 +5,14 @@ on:
     branches:
       - main
     paths:
-      - 'recommendation/**/00-index.md'
+      - 'best-practices/**/00-index.md'
 
 permissions:
   contents: write
 
 jobs:
   update-status-table:
-    name: Regenerate status overview in recommendation/index.md
+    name: Regenerate status overview in best-practices/index.md
     runs-on: ubuntu-latest
 
     steps:
@@ -27,7 +27,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add recommendation/index.md
+          git add best-practices/index.md
           if git diff --cached --quiet; then
             echo "ℹ️  No changes to status table — skipping commit."
           else

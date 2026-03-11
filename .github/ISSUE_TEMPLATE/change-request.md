@@ -16,7 +16,7 @@ assignees: []
 
 ## Affected areas
 
-- [ ] recommendation/
+- [ ] best-practices/
 - [ ] annexes/normative/
 - [ ] annexes/informative/
 - [ ] schemas/

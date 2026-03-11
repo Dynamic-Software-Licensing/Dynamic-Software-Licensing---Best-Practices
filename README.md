@@ -1,26 +1,26 @@
-# Dynamic Software Licensing Recommendation
+# Dynamic Software Licensing Best Practices
 
 ## Purpose
 
-This repository contains the working draft of an IABM industry recommendation for cloud-native, dynamic software licensing in broadcast and media workflows.
+This repository contains the working draft of an IABM industry best practices document for software-based, dynamic software licensing in broadcast and media workflows.
 
-The recommendation is not a formal standard. It is deliberately structured in a standard-like way to support alignment across manufacturers, operators, system integrators, and industry stakeholders.
+The best-practices document is not a formal standard. It is deliberately structured in a standard-like way to support alignment across manufacturers, operators, system integrators, and industry stakeholders.
 
 ## Scope of This Repository
 
 This repository is used to:
-- define and evolve the structure of the recommendation,
+- define and evolve the structure of the best-practices document,
 - capture terminology and architectural concepts,
 - document normative and informative content separately,
 - support collaborative drafting and review in a transparent, versioned way.
 
-This repository does **not** yet represent a final published recommendation.
+This repository does **not** yet represent a final published best-practices document.
 
 ## Document Structure
 
 | Area | Purpose |
 |---|---|
-| `recommendation/` | Core recommendation chapters |
+| `best-practices/` | Core best practices chapters |
 | `annexes/normative/` | Normative annexes required for consistent interpretation |
 | `annexes/informative/` | Examples, mappings, FAQs, reference architectures |
 | `schemas/` | Machine-readable data schemas |
@@ -28,9 +28,9 @@ This repository does **not** yet represent a final published recommendation.
 
 ## How to Navigate
 
-- [recommendation/index.md](recommendation/index.md) — chapter list and status overview
-- [recommendation/04-terminology-and-abbreviations/](recommendation/04-terminology-and-abbreviations/) — controlled vocabulary
-- [recommendation/09-normative-requirements/](recommendation/09-normative-requirements/) — normative requirements structure
+- [best-practices/index.md](best-practices/index.md) — chapter list and status overview
+- [best-practices/04-terminology-and-abbreviations/](best-practices/04-terminology-and-abbreviations/) — controlled vocabulary
+- [best-practices/09-normative-requirements/](best-practices/09-normative-requirements/) — normative requirements structure
 
 ## Working Principles
 
@@ -50,4 +50,4 @@ This repository does **not** yet represent a final published recommendation.
 
 Repository status: **Working Draft**
 
-All chapters are in working draft state. See [recommendation/index.md](recommendation/index.md) for chapter-level status.
+All chapters are in working draft state. See [best-practices/index.md](best-practices/index.md) for chapter-level status.

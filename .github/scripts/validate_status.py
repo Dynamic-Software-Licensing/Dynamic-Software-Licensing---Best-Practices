@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Validates chapter status fields in recommendation/**/00-index.md files.
+Validates chapter status fields in best-practices/**/00-index.md files.
 
 Usage:
   python3 validate_status.py                   # validates all 00-index.md files
@@ -19,7 +19,7 @@ ALLOWED_VALUES: dict[str, set[str]] = {
     "Status": {
         "Working Draft",
         "Reviewed Draft",
-        "Candidate Recommendation Text",
+        "Candidate Best Practices Text",
         "Stable for Cross-Reference",
     },
     "Editorial maturity": {
@@ -78,7 +78,7 @@ def main() -> None:
     if len(sys.argv) > 1:
         files = [Path(arg) for arg in sys.argv[1:]]
     else:
-        root = Path("recommendation")
+        root = Path("best-practices")
         files = sorted(root.glob("**/00-index.md"))
 
     if not files:

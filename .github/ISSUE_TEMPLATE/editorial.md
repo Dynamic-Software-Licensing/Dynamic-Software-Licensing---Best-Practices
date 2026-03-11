@@ -8,7 +8,7 @@ assignees: []
 
 ## Chapter / Section
 
-<!-- e.g. recommendation/09-normative-requirements -->
+<!-- e.g. best-practices/09-normative-requirements -->
 
 ## Problem
 

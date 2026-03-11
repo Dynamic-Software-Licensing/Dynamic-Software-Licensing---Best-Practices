@@ -4,7 +4,7 @@ on:
   pull_request:
     types: [opened, edited, synchronize, reopened]
     paths:
-      - 'recommendation/**/00-index.md'
+      - 'best-practices/**/00-index.md'
 
 jobs:
   validate-status:
@@ -22,7 +22,7 @@ jobs:
           BASE_REF: ${{ github.base_ref }}
         run: |
           git fetch --no-tags origin "$BASE_REF":"refs/remotes/origin/$BASE_REF"
-          CHANGED=$(git diff --name-only "origin/$BASE_REF...HEAD" -- 'recommendation/**/00-index.md' | xargs)
+          CHANGED=$(git diff --name-only "origin/$BASE_REF...HEAD" -- 'best-practices/**/00-index.md' | xargs)
           echo "files=$CHANGED" >> "$GITHUB_OUTPUT"
 
           if [ -z "$CHANGED" ]; then
