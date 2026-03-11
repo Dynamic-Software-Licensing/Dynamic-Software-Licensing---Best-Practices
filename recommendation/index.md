@@ -115,7 +115,7 @@ Current chapter drafting status (as defined in `GOVERNANCE.md`):
 | 02. Scope | Working Draft | outline | not started |
 | 03. Conventions and Normative Language | Working Draft | outline | not started |
 | 04. Terminology and Abbreviations | Working Draft | outline | not started |
-| 05. Stakeholders, Use Cases and Requirements | Working Draft | outline | not started |
+| 05. Stakeholders, Use Cases and Requirements | Working Draft | developed draft | informative only |
 | 06. Design Principles | Working Draft | outline | not started |
 | 07. Reference Model | Working Draft | outline | not started |
 | 08. Conformance and Profiles | Working Draft | outline | not started |
