@@ -1,45 +1,47 @@
 ---
 name: Terminology Proposal
-about: New term, term change, or cross-chapter harmonisation
+about: Cross-chapter term decision (new term, rename, definition alignment)
 title: "[term] "
 labels: ["terminology"]
 assignees: []
 ---
 
+> Use this only when a term decision affects multiple chapters/annexes.
+> For small chapter-local wording fixes, use the Chapter Task template.
+
 ## Term
 
 <!-- Existing or proposed new term -->
 
-## Type of change
+## Change type
 
 - [ ] New term
 - [ ] Rename
 - [ ] Definition refinement
-- [ ] Remove synonym
-- [ ] Cross-chapter harmonisation
+- [ ] Remove synonym / variant
 
-## Current state
+## Current usage
 
-- Primary occurrences:
-- Inconsistent variants:
+- Main occurrences:
+- Competing variants (if any):
 
 ## Proposal
 
-<!-- Definition, permitted short form, boundaries with adjacent terms -->
+<!-- New definition and boundaries to similar terms -->
 
-## Affected areas
+## Affected scope
 
 - [ ] Best practices chapters
 - [ ] Normative annexes
 - [ ] Informative annexes
 - [ ] Schemas / APIs / token claims
 
-## Acceptance criteria
+## Done when
 
-- [ ] Unambiguous and non-overlapping with existing terms
-- [ ] Consistent with DSL terminology baseline
-- [ ] No hidden normativity in informative sections
+- [ ] Definition is unambiguous
+- [ ] No conflicting synonym remains
+- [ ] Chapter 04 / Annex E are aligned
 
-## Editor decision required
+## Notes / editor decision (optional)
 
 <!-- Yes / No + short reason -->

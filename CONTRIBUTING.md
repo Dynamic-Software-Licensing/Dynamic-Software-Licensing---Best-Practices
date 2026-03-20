@@ -7,6 +7,17 @@ This document describes the practical daily workflow for contributors.
 For roles and governance decisions, see [GOVERNANCE.md](GOVERNANCE.md).
 For the full operating model, see [WORKFLOW.md](WORKFLOW.md).
 
+## Issue template choice
+
+- For "work on a chapter", use **Chapter Work Item**.
+- Use **Chapter Work Item** for almost all other work as well.
+- Use **Terminology Proposal** only for term changes.
+
+Practical rule:
+- Small term edits inside one chapter: keep them in the chapter task.
+- Use a separate terminology issue only for cross-chapter term decisions
+	(new term, rename, definition change, or synonym cleanup across files).
+
 ## How to work on a chapter
 
 Everything in GitHub UI — no terminal needed.
