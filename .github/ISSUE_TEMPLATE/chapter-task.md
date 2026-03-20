@@ -7,8 +7,6 @@ assignees: []
 ---
 
 ## Task type
-_ℹ️ Most issues use "Work on a chapter". Change only if needed._
-
 - [x] Work on a chapter (default)
 - [ ] Work on annex content
 - [ ] Work on schema/diagram
@@ -36,8 +34,6 @@ _ℹ️ Most issues use "Work on a chapter". Change only if needed._
 - [ ] governance/process
 
 ## Normative or Informative?
-_ℹ️ This issue will automatically receive labels `work` and `task` (Task type is tracked via label `task`)._
-
 - [x] Normative (binding definition/requirement)
 - [ ] Informative (explanatory/background only)
 
