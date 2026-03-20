@@ -16,7 +16,7 @@ For the full operating model, see [WORKFLOW.md](WORKFLOW.md).
 Practical rule:
 - Small term edits inside one chapter: keep them in the chapter task.
 - Use a separate terminology issue only for cross-chapter term decisions
-	(new term, rename, definition change, or synonym cleanup across files).
+  (new term, rename, definition change, or synonym cleanup across files).
 
 ## How to work on a chapter
 
@@ -113,7 +113,7 @@ Use this as the default review process for chapter work.
 4. Author addresses feedback in the same branch.
 5. Author resolves conversations after fixes and re-requests review if needed.
 6. Merge when all were invited, required approvals are present, and no open
-	request-changes remains.
+  request-changes remains.
 7. Confirm linked issue is closed (automatic via `Closes #...` or manual).
 
 Recommended approval minimum:
