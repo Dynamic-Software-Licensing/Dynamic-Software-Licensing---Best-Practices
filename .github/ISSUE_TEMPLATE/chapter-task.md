@@ -2,7 +2,7 @@
 name: Chapter Task
 about: Standard template for chapter, annex, schema, and process work
 title: "[chapter] "
-labels: ["work"]
+labels: ["work", "task"]
 assignees: []
 ---
 
