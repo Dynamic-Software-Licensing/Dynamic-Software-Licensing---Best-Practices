@@ -34,13 +34,10 @@ assignees: []
 - [ ] diagrams/
 - [ ] governance/process
 
-## Type
+## Normative or Informative?
 
-- [ ] Editorial
-- [ ] Informative
-- [ ] Normative
-- [ ] Structural
-- [ ] Other
+- [x] Normative (binding definition/requirement)
+- [ ] Informative (explanatory/background only)
 
 ## Done when
 
