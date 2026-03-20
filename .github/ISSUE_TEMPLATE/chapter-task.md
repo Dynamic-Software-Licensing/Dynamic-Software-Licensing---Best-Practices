@@ -42,14 +42,6 @@ assignees: []
 - [ ]
 - [ ]
 
-## Ownership
-
-- Owner:
-- Reviewer:
-- Editor:
-- Target chapter/files:
-- Branch (optional):
-
 ## Notes / risks (optional)
 
 <!-- Open questions, dependencies, or editor decision points -->
