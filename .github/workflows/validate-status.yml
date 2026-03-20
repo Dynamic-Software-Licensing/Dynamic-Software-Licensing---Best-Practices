@@ -1,10 +1,7 @@
 name: Validate Chapter Status Fields
 
 on:
-  pull_request:
-    types: [opened, edited, synchronize, reopened]
-    paths:
-      - 'best-practices/**/00-index.md'
+  workflow_dispatch:
 
 jobs:
   validate-status:
@@ -33,4 +30,8 @@ jobs:
 
       - name: Run status field validation
         if: steps.changed.outputs.files != ''
-        run: python3 .github/scripts/validate_status.py ${{ steps.changed.outputs.files }}
+        run: |
+          python3 .github/scripts/validate_status.py ${{ steps.changed.outputs.files }} || {
+            echo "⚠️  Status validation found issues."
+            echo "    This check is currently non-blocking in the simplified team workflow."
+          }

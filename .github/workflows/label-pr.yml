@@ -1,8 +1,7 @@
-name: Auto-Label PR
+name: Auto-Label PR (Manual)
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
+  workflow_dispatch:
 
 permissions:
   contents: read

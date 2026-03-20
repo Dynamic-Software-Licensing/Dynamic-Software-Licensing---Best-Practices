@@ -222,18 +222,30 @@ After merge:
 
 ## Automated Enforcement
 
-The following checks run automatically via GitHub Actions:
+The repository currently uses a simplified workflow model.
+
+### Required checks (blocking)
+
+These checks run automatically on pull requests and are intended to stay lightweight:
 
 | Check | Trigger | Scope |
 |---|---|---|
 | Branch name validation | PR opened | Enforces branch naming convention |
-| PR description completeness | PR opened / edited | Rejects missing or trivial descriptions |
-| PR checklist validation | PR opened / edited | Validates template checkbox selections |
-| Chapter status field validation | PR touches `00-index.md` | Validates allowed status values |
+| PR basics validation | PR opened / edited | Rejects empty or trivial PR descriptions |
 | Markdown lint | PR + push to `main` | Checks `.md` formatting |
-| Status table auto-update | Push to `main` touching `00-index.md` | Regenerates `best-practices/index.md` table |
-| Auto Draft PR creation | First push to chapter/annex/fix branch | Creates Draft PR automatically |
-| Auto-close linked issues | PR merged to `main` | Closes issues linked with `Closes #` |
+
+### Optional checks (manual)
+
+These workflows are available but not automatically enforced:
+
+| Check | Trigger | Scope |
+|---|---|---|
+| Chapter status field validation | Manual (`workflow_dispatch`) | Validates allowed status values |
+| Status table update | Manual (`workflow_dispatch`) | Regenerates `best-practices/index.md` table |
+| Draft PR creation | Manual (`workflow_dispatch`) | Creates Draft PR for current branch |
+| PR labeling | Manual (`workflow_dispatch`) | Applies labels from changed paths |
+
+Auto-close linked issues remains provided by GitHub through `Closes #` semantics.
 
 Manual editorial judgment remains required for merge readiness, content quality, and normative classification.
 

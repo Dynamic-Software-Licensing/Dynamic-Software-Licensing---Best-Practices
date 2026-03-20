@@ -1,11 +1,7 @@
-name: Auto-Update Chapter Status Table
+name: Auto-Update Chapter Status Table (Manual)
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'best-practices/**/00-index.md'
+  workflow_dispatch:
 
 permissions:
   contents: write

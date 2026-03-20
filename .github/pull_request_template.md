@@ -1,44 +1,26 @@
-## Where am I?
-
-Select exactly one:
-
-- [ ] 🟡 **Starting work** — branch created, first content in progress
-- [ ] 🔵 **Ready for review** — content complete, requesting editorial review
-- [ ] 🟢 **Review done** — feedback addressed, ready to merge to `main`
-
----
-
 ## Linked issue
 
-<!-- Required — use Closes #<issue> or Related to #<issue> -->
+<!-- Use Closes #<issue> or Related to #<issue> -->
 
 Closes #
 
----
+## What changed
 
-## What changed and why
+<!-- Short summary in 1-3 bullets -->
 
-<!-- One or two clear sentences -->
+-
 
-## Change type
+## Why
 
-Select all that apply:
+<!-- Why this change is needed -->
 
-- [ ] Editorial
-- [ ] Terminology
-- [ ] Informative
-- [ ] Normative
-- [ ] Structural
+## Review state
 
-## Chapter status change
+Select one:
 
-Select exactly one:
+- [ ] Draft / work in progress
+- [ ] Ready for review
 
-- [ ] No status change
-- [ ] Status changed — new value: <!-- e.g. Editorial maturity: developed draft -->
+## Optional notes
 
----
-
-## Open points
-
-<!-- Any unresolved questions or known gaps the reviewer should be aware of -->
+<!-- Risks, open points, or editor notes (optional) -->

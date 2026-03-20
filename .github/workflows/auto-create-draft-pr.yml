@@ -1,16 +1,7 @@
-name: Auto-Create Draft PR
+name: Auto-Create Draft PR (Manual)
 
 on:
-  push:
-    branches:
-      - 'chapter-**'
-      - 'annex-**'
-      - 'fix-**'
-      - 'hotfix-**'
-      - 'governance-**'
-      - 'schema-**'
-      - 'workflow-**'
-      - 'terminology-**'
+  workflow_dispatch:
 
 permissions:
   pull-requests: write
@@ -26,7 +17,7 @@ jobs:
 
       - name: Check for existing PR and create Draft PR if missing
         env:
-          GH_TOKEN: ${{ secrets.PR_BOT_TOKEN != '' && secrets.PR_BOT_TOKEN || secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: ${{ github.ref_name }}
           REPO: ${{ github.repository }}
         run: |
@@ -59,7 +50,6 @@ jobs:
             if echo "$CREATE_OUTPUT" | grep -q "not permitted to create or approve pull requests"; then
               echo "⚠️  Auto-PR skipped: GitHub Actions PR creation is disabled."
               echo "Fix: Settings → Actions → General → Allow GitHub Actions to create and approve pull requests."
-              echo "Or: add PR_BOT_TOKEN secret (PAT with 'repo' scope)."
               exit 0
             fi
             exit "$CREATE_EXIT"
