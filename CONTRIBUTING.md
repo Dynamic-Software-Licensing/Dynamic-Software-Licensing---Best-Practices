@@ -103,6 +103,23 @@ Before setting PR to Ready for review, check:
 - terminology is consistent,
 - obvious open points are noted.
 
+## Team review flow (practical)
+
+Use this as the default review process for chapter work.
+
+1. Author opens a Draft PR.
+2. Author adds all team members as reviewers.
+3. Team reviews asynchronously in GitHub (comment / request changes / approve).
+4. Author addresses feedback in the same branch.
+5. Author resolves conversations after fixes and re-requests review if needed.
+6. Merge when all were invited, required approvals are present, and no open
+	request-changes remains.
+7. Confirm linked issue is closed (automatic via `Closes #...` or manual).
+
+Recommended approval minimum:
+- Standard edits: 1 approval.
+- Normative/high-impact edits: 2 approvals.
+
 ## Terminal (optional)
 
 If you prefer working locally:
