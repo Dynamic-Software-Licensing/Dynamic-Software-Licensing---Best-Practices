@@ -78,6 +78,12 @@ Defines recurring abbreviations used throughout the best practices.
 
 This section should provide a concise and stable reference for abbreviated terms used across chapters and annexes.
 
+## Editorial Note: Drafting Order
+
+This chapter is intended to be completed **after** the substantive chapters (Ch 05–15).
+
+Controlled vocabulary should emerge from the actual content and usage patterns in the document rather than being prescribed in advance. This ensures terminology is practical, grounded in real usage, and reflects the concepts that actually matter in the best practices.
+
 ## Relationship to Other Chapters
 
 This chapter supports and informs:

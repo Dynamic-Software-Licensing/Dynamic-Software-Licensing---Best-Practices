@@ -1,3 +1,5 @@
+![IABM Logo](assets/IABM-Logo.png) 
+
 # Dynamic Software Licensing Best Practices
 
 ## Purpose
