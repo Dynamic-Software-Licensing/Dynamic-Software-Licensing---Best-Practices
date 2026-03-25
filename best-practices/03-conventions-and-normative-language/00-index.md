@@ -93,3 +93,9 @@ If needed, this chapter may later be expanded into subchapters such as:
 At the current stage, this chapter is primarily intended to create consistency across the repository.
 
 Its role is to stabilize interpretation early, before the detailed chapters on terminology, architecture, conformance, requirements, API behavior, and security become more mature.
+
+## Editorial Note: Drafting Order
+
+This chapter is intended to be completed **after** the substantive chapters (Ch 05–15). 
+
+Conventions and writing patterns should be derived from actual practice rather than prescribed in advance. This ensures the conventions are practical, grounded in the document's actual content, and reflect how the best practices naturally develop.
