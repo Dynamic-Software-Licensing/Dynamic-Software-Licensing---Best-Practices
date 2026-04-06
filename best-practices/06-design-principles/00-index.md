@@ -26,11 +26,11 @@ They define the qualities that the target licensing model should embody and prov
 ## Foundation of This Chapter
 
 The current DSL work is already strongly shaped by five recurring principles:
-- API-first access,
-- serverless or elastic service design,
-- security by design,
-- observability,
-- licensing-as-code. :contentReference[oaicite:5]{index=5} :contentReference[oaicite:6]{index=6}
+- API-first access
+- serverless or elastic service design
+- security by design
+- observability
+- licensing-as-code
 
 These principles should remain the anchor for this chapter.
 
@@ -39,8 +39,8 @@ These principles should remain the anchor for this chapter.
 This chapter is intended to define the core principles that influence the best practices as a whole.
 
 It should describe:
-- what these principles mean,
-- why they matter,
+- what these principles mean
+- why they matter
 - how they guide later chapters.
 
 It should not yet attempt to define all detailed implementation rules.
@@ -55,7 +55,7 @@ This chapter is expected to address principles such as:
 - licensing-as-code,
 - platform-agnostic design,
 - workload identity over host-based binding,
-- support for multiple customer maturity levels and access patterns. :contentReference[oaicite:7]{index=7} :contentReference[oaicite:8]{index=8} :contentReference[oaicite:9]{index=9}
+- support for multiple customer maturity levels and access patterns
 
 ## Relationship to Other Chapters
 
