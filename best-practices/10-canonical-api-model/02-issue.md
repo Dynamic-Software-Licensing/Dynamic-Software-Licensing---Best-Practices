@@ -16,7 +16,7 @@ Issue is a first-run operation. Once a lease is active, subsequent interactions 
 
 ## Endpoint
 
-```
+```text
 POST /leases/issue
 ```
 
