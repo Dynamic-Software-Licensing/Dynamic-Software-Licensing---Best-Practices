@@ -75,17 +75,10 @@ This chapter should help contributors answer the following questions:
 - Should this content be moved into an informative annex?
 - Is this topic outside the intended scope of the best practices?
 
-## Possible Future Expansion
+## Subchapters
 
-If needed, this chapter may later be expanded into subchapters such as:
-- in-scope topics,
-- out-of-scope topics,
-- intended audience,
-- scope boundary principles,
-- relationship to annex material.
+This chapter is divided into three subchapters:
 
-## Drafting Note
-
-At the current stage, this chapter is primarily intended to establish scope discipline.
-
-Its purpose is to prevent the best practices from becoming too broad, too vendor-specific, or too closely tied to implementation detail that belongs elsewhere in the repository.
+- [02.01. In Scope](01-in-scope.md) — defines the topics and areas that the best practices address, including the core licensing operations, API model, identity binding, metering, and migration guidance.
+- [02.02. Out of Scope](02-out-of-scope.md) — defines what is explicitly excluded, including existing proprietary licensing models, ERP integration, legal contract wording, and vendor-specific product packaging.
+- [02.03. Intended Audience](03-intended-audience.md) — describes the stakeholder groups this document is written for, from software vendors and system integrators to operations teams and finance stakeholders.
