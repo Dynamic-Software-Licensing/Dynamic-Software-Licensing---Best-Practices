@@ -14,9 +14,9 @@ This distinction is fundamental. The goal is not to build a compatibility layer 
 
 Organizations implementing the DSL framework are expected to adopt the target model. Migration guidance is provided to support the transition from legacy approaches, but the legacy approaches themselves are not in scope as reference models or design inputs.
 
-## The Media Services Themselves
+## The Media Functions Themselves
 
-The best practices address the licensing layer. The software products and media services that consume licenses — transcoders, graphics engines, ingest systems, quality control tools, playout systems, and similar applications — are considered only as consumers of the licensing API. Their internal design, configuration, and operation are outside the scope of this document.
+The best practices address the licensing layer. The software products and media functions (sometimes referred to as media services in deployment documentation) that consume licenses — transcoders, graphics engines, ingest systems, quality control tools, playout systems, and similar applications — are considered only as consumers of the licensing API. Their internal design, configuration, and operation are outside the scope of this document.
 
 ## ERP, CRM, and Financial System Integration
 
@@ -42,6 +42,8 @@ The best practices do not establish a formal certification scheme, test suite, o
 
 ## Platform-Specific Implementation Detail
 
-Where implementation detail is necessary to illustrate a concept, it is provided in informative annexes rather than in the main best practices. The core document should remain platform-agnostic.
+Where implementation detail is necessary to illustrate a concept, it is provided in informative annexes rather than in the main best practices. The core document is intentionally platform-agnostic and implementation-neutral.
 
-AWS-specific, Azure-specific, or other cloud-provider-specific implementation patterns belong in informative annexes. They do not belong in the normative body of the best practices.
+AWS-specific, Azure-specific, GCP-specific, or other cloud-provider-specific implementation patterns belong in informative annexes. They do not belong in the normative body of the best practices.
+
+Likewise, on-premises and hybrid deployment examples may be used for illustration, but they must not alter or narrow the normative requirements of the platform-agnostic DSL model.
