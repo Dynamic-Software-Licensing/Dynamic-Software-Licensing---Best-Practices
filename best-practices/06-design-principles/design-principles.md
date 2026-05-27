@@ -33,7 +33,7 @@ Licensing systems enforce both access control and revenue protection. Weak secur
 
 ### 5. Resilience and Continuity
 **What it means**<br>
-Licensing systems should tolerate transient failures and support continued operation through mechanisms such as local validation, renewal retries, grace policies, and controlled degradation.
+Licensing systems should tolerate transient failures and support continued operation through mechanisms such as local validation, renewal retries, grace policies, seamless failover, and controlled degradation.
 
 **Why it matters**<br>
 Media and broadcast workflows are often time-critical and cannot tolerate interruptions due to licensing dependencies. Licensing must not become a single point of failure. Systems should balance protection with operational continuity.
@@ -47,7 +47,7 @@ Licensing impacts both operations and financial planning. Transparent usage and 
 
 ### 7. Platform-Agnostic by Design
 **What it means**<br>
-The licensing model should function consistently across different environments, including cloud, on-premises, and hybrid deployments, without reliance on platform-specific constructs.
+The licensing model should function consistently across different environments, including cloud, on-premises, air gapped, and hybrid deployments, without reliance on platform-specific constructs.
 
 **Why it matters**<br>
 Media workflows are inherently heterogeneous. A platform-agnostic approach prevents lock-in, supports interoperability, and ensures the system can be adopted across diverse infrastructure environments.
@@ -68,7 +68,7 @@ Standardization reduces integration complexity and fragmentation, while flexibil
 
 ### 10. Designed for Real-World Media Workloads
 **What it means**<br>
-The licensing model should support diverse usage patterns, including continuous operation, event-based workloads, burst capacity, testing environments, and outcome-based services.
+The licensing model should support diverse usage patterns, including continuous operation, event-based workloads, burst capacity, testing environments, backup or disaster recovery workflows and outcome-based services.
 
 **Why it matters**<br>
 Media workflows vary significantly in duration, scale, and predictability. A one-size-fits-all licensing model is insufficient. Supporting multiple modalities ensures the system aligns with how software is actually used in production.
