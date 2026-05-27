@@ -75,6 +75,7 @@ Primary focus:
 Licensing perspective:
 - requires automation-friendly issue, renew, move, and release behavior,
 - expects licensing operations to be manageable through IaC and CI/CD pipelines,
+- requires user- and role-based access control over license allocation and checkout,
 - requires visibility into allocations, limits, and expiry state.
 
 Success criteria:
@@ -120,11 +121,31 @@ Primary focus:
 
 Licensing perspective:
 - requires secure, least-privilege license interactions,
+- requires role-scoped and user-scoped entitlements so teams can restrict access to unnecessary licenses,
 - requires auditable lifecycle events and policy alignment,
 - avoids workflows that require unnecessary privileged vendor access.
 
 Success criteria:
 - license operations are compliant, observable, and reviewable.
+
+## Access Control and Entitlement Segmentation (Cross-Persona)
+
+Beyond technical lifecycle handling, multiple personas require policy-level control over
+who can access which license rights and when.
+
+This requirement appears in three recurring patterns:
+- user- and role-based entitlement assignment to avoid over-provisioning,
+- project or production scoped license pools to separate teams and cost centers,
+- temporary access windows for external participants (for example rental or guest teams).
+
+Representative operational scenarios include:
+- restricting premium feature licenses to specifically authorized operators,
+- allowing studio-rental customers to use only the rights included in their contracted tier,
+- enforcing least-privilege defaults while preserving emergency override paths with audit logs.
+
+This cross-persona concern links operational efficiency, security policy, and commercial
+packaging. It should therefore be treated as a primary design input for use case and
+workflow modeling in Sections 5.3 to 5.5.
 
 ## ISV Personas
 
@@ -339,6 +360,13 @@ The personas above reveal recurring trade-offs:
 
 An additional recurring tension concerns commercial model design:
 - simplicity and predictability vs fine-grained value-based charging.
+- OPEX model flexibility (burn-down, pre-pay, post-pay, point-based) vs CAPEX/perpetual procurement consistency.
+
+In practice, organizations often combine several of these models in one account landscape.
+This creates additional friction points:
+- customer demand for predictable budgeting vs supplier need for usage-linked monetization,
+- SI resale simplicity vs mixed vendor contract logic,
+- entitlement clarity at runtime vs billing flexibility across tiers and periods.
 
 Supplier and integrator perspectives add two additional recurring tensions:
 - product differentiation vs interoperability standardization,
