@@ -61,17 +61,36 @@ Its role is to:
 - explain the motivation for the DSL initiative,
 - create a common starting point for the remainder of the best practices.
 
-## Possible Future Expansion
+## Subchapters
 
-If needed, this chapter may later be expanded into subchapters such as:
-- industry transition context,
-- current licensing pain points,
-- strategic motivation,
-- target vision,
-- rationale for the best practices.
+This chapter is organized into the following subchapters:
+
+### 01. Industry Context
+
+File: `01-industry-context.md`
+
+Describes the broader industry transformation from hardware-bound, CapEx-driven models toward software-defined, cloud-enabled, and hybrid production environments.
+
+### 02. Current Licensing Challenges
+
+File: `02-current-challenges.md`
+
+Identifies the concrete friction points that customers, system integrators, and vendors experience with current licensing approaches, organized by impact and structural nature.
+
+### 03. The DSL Initiative
+
+File: `03-dsl-initiative.md`
+
+Explains the origin, purpose, and collaborative nature of the IABM Dynamic Software Licensing initiative and who is involved.
+
+### 04. Objectives and Vision
+
+File: `04-objectives-and-vision.md`
+
+Defines what the DSL best practices aim to achieve and describes the target vision and core principles underpinning the framework.
 
 ## Drafting Note
 
-At the current stage, this chapter primarily serves as contextual framing.
+At the current stage, this chapter serves as contextual framing. Subchapter content is to be authored in subsequent drafting sprints.
 
-Its purpose is to help contributors and reviewers understand why the best practices exists before moving into scope, terminology, architecture, and requirements.
+Its purpose is to help contributors and reviewers understand why the best practices exist before moving into scope, terminology, architecture, and requirements.
