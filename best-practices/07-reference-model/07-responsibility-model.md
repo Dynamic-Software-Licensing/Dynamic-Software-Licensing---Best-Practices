@@ -106,7 +106,7 @@ The vendor is responsible for:
 - Defining what is licensed (products, dimensions, modalities).
 - Setting the rules of licensing (policies, grace periods, exhaustion actions).
 - Providing the tools for integration (SDK, license agent, IaC modules).
-- Ensuring fair monetization through usage metering.
+- Providing detailed usage reports to the customer.
 
 The vendor is not responsible for:
 - Operating the customer's workloads.
