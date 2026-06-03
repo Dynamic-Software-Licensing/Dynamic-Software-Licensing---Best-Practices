@@ -123,6 +123,8 @@ The control plane provides:
 - API-level auditing for compliance and security review.
 - Per-tenant throttle and quota monitoring.
 
+Depending on the system design, logs, metrics, and traces can be stored in a unified platform such as OpenTelemetry or Grafana stack. 
+
 ## Security Posture
 
 - Zero-trust: no implicit trust between components; all requests are authenticated and authorized.
