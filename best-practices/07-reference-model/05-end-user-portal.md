@@ -92,16 +92,6 @@ The portal does not bypass the control plane's authorization model. All operatio
 
 ## Interface Considerations
 
-### Customer Maturity Levels
-
-The document identifies three tiers of customer maturity:
-
-1. Documented process: customers who rely on portal UI and documented procedures.
-2. Custom integrations: customers who build integrations using the API alongside the portal.
-3. Standard process: customers who fully automate licensing via API/CLI and use the portal primarily for monitoring and exception handling.
-
-The portal should serve all three tiers, providing a usable interface for less technical users while not being a bottleneck for automated workflows.
-
 ### Multi-Interface Support
 
 The portal complements (but does not replace) the API and CLI interfaces. Customers who prefer programmatic access can achieve the same outcomes through the API. The portal provides a visual layer for scenarios where a graphical overview is more effective.
