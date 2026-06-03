@@ -15,7 +15,7 @@ Its purpose is to describe the security objectives, trust assumptions, and contr
 
 ## Role Within the Best Practices
 
-Security is a core principle of the DSL initiative, not a secondary appendix topic. Existing draft material repeatedly emphasizes cryptographic protection, auditability, least privilege, secure binding, and alignment with regulatory expectations. :contentReference[oaicite:27]{index=27} :contentReference[oaicite:28]{index=28} :contentReference[oaicite:29]{index=29}
+Security is a core principle of the DSL initiative, not a secondary appendix topic. Existing draft material repeatedly emphasizes cryptographic protection, auditability, least privilege, secure binding, and alignment with regulatory expectations.
 
 This chapter provides the structured home for those topics.
 
@@ -63,7 +63,7 @@ This section should explain how the best practices supports governance and regul
 ### 06. Offline and Grace Behavior
 Defines how the best practices treats continuity under partial disconnection or control-plane unavailability.
 
-This section should explain the trust and risk boundaries of offline validation, grace policies, retries, and bounded continuity behavior. :contentReference[oaicite:30]{index=30} :contentReference[oaicite:31]{index=31} :contentReference[oaicite:32]{index=32}
+This section should explain the trust and risk boundaries of offline validation, grace policies, retries, and bounded continuity behavior.
 
 ## Relationship to Other Chapters
 
