@@ -55,6 +55,7 @@ The portal provides data to support cost management and forecasting:
 
 - Usage summaries by application, dimension, time period, and environment tag (production, staging, dev).
 - Cost breakdowns mapped to licensing dimensions and modalities.
+- Cost estimation for pre-production planning.
 - Historical usage trends for capacity planning.
 - Export capabilities for integration with financial systems and reporting tools.
 
