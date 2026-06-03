@@ -24,6 +24,11 @@ A lease is:
 - expressed as a signed token that can be validated locally
 - subject to renewal, reissue, and revocation
 
+A lease may have one of three types:
+1 - Fixed term up-front lease: licenses are paid for based on a start/end time (or time allowed from initializing). When time runs out the application stops
+2 - A Credit-based or Unit-consumption model where a pre-purchased pool of value is depleted based on actual usage metrics. When the pool runs out, the application stops
+3 - An Audit-based or Post-paid model that allows for elastic scaling, with periodic financial reconciliation based on peak or average usage. The applications never stops, but we get a bill for our actual usage.
+
 ### Token
 
 A token is the portable, cryptographically signed artifact that represents a lease. It contains claims describing the user, application, dimensions, binding identity, expiry, and enforcement policy. Tokens are short-lived and validated locally by the application or SDK without requiring a round-trip to the control plane.
