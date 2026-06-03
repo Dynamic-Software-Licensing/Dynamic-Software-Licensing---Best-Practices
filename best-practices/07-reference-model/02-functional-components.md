@@ -18,7 +18,7 @@ The DSL model is composed of the following functional components:
 | Event Orchestrator | Control | Timer-driven events for expiry, alerts, and moves |
 | API Gateway | Control | Entry point for all REST and WebSocket traffic |
 | License Agent | Workspace | Mediate between application and control plane |
-| Application SDK | Workspace | In-process token validation and dimension enforcement |
+| Application SDK | Workspace | In-process token validation |
 | End User Portal | Cross-cutting | Aggregated license visibility and self-service |
 | Vendor Adapter | Control (optional) | Mirror usage to ISV back-office or marketplace |
 
