@@ -26,6 +26,9 @@ Higher-tier productions typically require redundant services, which must also be
 
 The diagram below illustrates a simplified live production workload intended to highlight the key concepts.
 
+![Event Production]([https://raw.githubusercontent.com/Dynamic-Software-Licensing/Dynamic-Software-Licensing---Best-Practices/a2c38c91c41ccdde30091b58f27f427e2e2cd187/diagrams/DSL%20Event%20Based%20Production.svg?token=ASORHH5X2JTOKVF37RTKSZLKEL3VU](https://raw.githubusercontent.com/Dynamic-Software-Licensing/Dynamic-Software-Licensing---Best-Practices/a2c38c91c41ccdde30091b58f27f427e2e2cd187/diagrams/DSL%20Event%20Based%20Production.svg?token=ASORHH5X2JTOKVF37RTKSZLKEL3VU))
+
+
 The workload represents an event-based production deployment. Resources are ephemeral and are deployed only for the duration of the production, including pre-event setup and post-event tear-down.
 
 Media functions used within the workload must be licensed appropriately. The licensing scheme must support ephemeral deployment. Each media function must obtain the required lease and associated license dimensions before operation and must release the lease when the workload terminates. The model must also support schedule overruns, such as extra time in sports events, through lease extension or renewal.
