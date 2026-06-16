@@ -1,40 +1,53 @@
 # 10.08 — Error Model
 
+## Status
+- Editorial maturity: working draft
+- Normative readiness: not started
+
 ## Purpose
 
 This section defines the structure of API error handling within the canonical API. It describes how failures, rejected requests, and non-successful outcomes are expressed consistently across all operations.
+
+## Standards Compliance
+
+This error model implements [RFC 9457 — Problem Details for HTTP APIs](https://www.rfc-editor.org/rfc/rfc9457.html) (the successor to RFC 7807). All error responses use the `application/problem+json` media type.
 
 ## Design Principles
 
 The error model follows these principles:
 
-1. Consistency: all operations use the same error response structure.
+1. Consistency: all operations use the same RFC 9457 error response structure.
 2. Actionability: errors include enough information for the license agent or operator to determine the appropriate next step.
-3. Machine-readability: error codes are structured for programmatic handling, not just human reading.
+3. Machine-readability: error types are URIs for programmatic handling; extension members provide structured context.
 4. Security: error responses do not leak sensitive information about the control plane's internal state, other tenants, or infrastructure details.
 
 ## Error Response Structure
 
-All failed API requests return a JSON response with the following structure:
+All failed API requests return a JSON response with `Content-Type: application/problem+json` following RFC 9457:
 
-| Field | Type | Required | Description |
-|---|---|---|---|
-| `error` | string | Yes | Machine-readable error code |
-| `message` | string | Yes | Human-readable description of the error |
-| `category` | string | Yes | Error category for programmatic classification |
-| `retryable` | boolean | Yes | Whether the client should retry the request |
-| `details` | object | No | Additional context (e.g., which field failed validation, remaining quota) |
+| Field | Type | Required | Source | Description |
+|---|---|---|---|---|
+| `type` | string (URI) | Yes | RFC 9457 | URI identifying the error type (e.g., `urn:dsl:error:entitlement-exhausted`) |
+| `title` | string | Yes | RFC 9457 | Short, human-readable summary of the problem type |
+| `status` | integer | Yes | RFC 9457 | HTTP status code |
+| `detail` | string | Yes | RFC 9457 | Human-readable explanation specific to this occurrence |
+| `instance` | string (URI) | No | RFC 9457 | URI identifying the specific occurrence (for support correlation) |
+| `category` | string | Yes | DSL extension | Error category for programmatic classification |
+| `retryable` | boolean | Yes | DSL extension | Whether the client should retry the request |
+
+Additional context relevant to the specific error type MAY be included as extension members at the top level of the response object, as permitted by RFC 9457.
 
 ```json
 {
-  "error": "ENTITLEMENT_EXHAUSTED",
-  "message": "All lease slots for this entitlement are currently in use.",
+  "type": "urn:dsl:error:entitlement-exhausted",
+  "title": "Entitlement Exhausted",
+  "status": 429,
+  "detail": "All lease slots for this entitlement are currently in use.",
+  "instance": "urn:dsl:request:req-8f3a2b",
   "category": "quota",
   "retryable": true,
-  "details": {
-    "entitled": 4,
-    "active": 4
-  }
+  "entitled": 4,
+  "active": 4
 }
 ```
 
@@ -56,62 +69,62 @@ Errors are grouped into categories that indicate the nature of the failure:
 | `internal` | Unexpected control plane error | 500 | Yes (with backoff) |
 | `unavailable` | Control plane is temporarily unavailable | 503 | Yes (with backoff) |
 
-## Standard Error Codes
+## Standard Error Types
 
-The following error codes are defined for the canonical API operations:
+The following error types are defined for the canonical API operations. Each `type` URI follows the pattern `urn:dsl:error:<error-name>`.
 
 ### Issue Errors
 
-| Error Code | Category | Description |
-|---|---|---|
-| `ENTITLEMENT_NOT_FOUND` | not_found | Tenant has no entitlement for the requested application |
-| `ENTITLEMENT_EXHAUSTED` | quota | All lease slots are in use |
-| `DIMENSIONS_EXCEEDED` | policy | Requested dimensions exceed entitlement limits |
-| `MODALITY_NOT_PERMITTED` | policy | Requested license modality is not available |
-| `ENVIRONMENT_NOT_PERMITTED` | policy | Requested environment tag is not allowed |
-| `IDENTITY_VERIFICATION_FAILED` | identity | Identity evidence could not be verified |
+| Type URI | Category | Title | HTTP Status |
+|---|---|---|---|
+| `urn:dsl:error:entitlement-not-found` | not_found | Entitlement Not Found | 404 |
+| `urn:dsl:error:entitlement-exhausted` | quota | Entitlement Exhausted | 429 |
+| `urn:dsl:error:dimensions-exceeded` | policy | Dimensions Exceeded | 403 |
+| `urn:dsl:error:modality-not-permitted` | policy | Modality Not Permitted | 403 |
+| `urn:dsl:error:environment-not-permitted` | policy | Environment Not Permitted | 403 |
+| `urn:dsl:error:identity-verification-failed` | identity | Identity Verification Failed | 403 |
 
 ### Renew Errors
 
-| Error Code | Category | Description |
-|---|---|---|
-| `LEASE_NOT_FOUND` | not_found | Lease does not exist |
-| `LEASE_REVOKED` | conflict | Lease has been revoked and cannot be renewed |
-| `LEASE_EXPIRED` | expired | Lease has expired beyond the grace period |
-| `IDENTITY_MISMATCH` | identity | Workload identity does not match the lease binding |
-| `ENTITLEMENT_REVOKED` | conflict | Underlying entitlement has been revoked |
+| Type URI | Category | Title | HTTP Status |
+|---|---|---|---|
+| `urn:dsl:error:lease-not-found` | not_found | Lease Not Found | 404 |
+| `urn:dsl:error:lease-revoked` | conflict | Lease Revoked | 409 |
+| `urn:dsl:error:lease-expired` | expired | Lease Expired | 410 |
+| `urn:dsl:error:identity-mismatch` | identity | Identity Mismatch | 403 |
+| `urn:dsl:error:entitlement-revoked` | conflict | Entitlement Revoked | 409 |
 
 ### Reissue Errors
 
-| Error Code | Category | Description |
-|---|---|---|
-| `LEASE_NOT_FOUND` | not_found | Original lease does not exist |
-| `LEASE_NOT_ACTIVE` | conflict | Original lease is not in an active state |
-| `REISSUE_ALREADY_PENDING` | conflict | A reissue is already in progress for this lease |
-| `IDENTITY_VERIFICATION_FAILED` | identity | Target workload identity could not be verified |
-| `REISSUE_NOT_FOUND` | not_found | Reissue operation does not exist (finalize phase) |
-| `CUTOVER_TOKEN_INVALID` | authentication | Cutover token does not match or has expired |
-| `REISSUE_DEADLINE_EXPIRED` | expired | Reissue was not finalized within the allowed time window |
+| Type URI | Category | Title | HTTP Status |
+|---|---|---|---|
+| `urn:dsl:error:lease-not-found` | not_found | Lease Not Found | 404 |
+| `urn:dsl:error:lease-not-active` | conflict | Lease Not Active | 409 |
+| `urn:dsl:error:reissue-already-pending` | conflict | Reissue Already Pending | 409 |
+| `urn:dsl:error:identity-verification-failed` | identity | Identity Verification Failed | 403 |
+| `urn:dsl:error:reissue-not-found` | not_found | Reissue Not Found | 404 |
+| `urn:dsl:error:cutover-token-invalid` | authentication | Cutover Token Invalid | 401 |
+| `urn:dsl:error:reissue-deadline-expired` | expired | Reissue Deadline Expired | 410 |
 
 ### Revoke Errors
 
-| Error Code | Category | Description |
-|---|---|---|
-| `LEASE_NOT_FOUND` | not_found | Lease does not exist |
-| `LEASE_ALREADY_REVOKED` | conflict | Lease has already been revoked |
-| `REVOKE_NOT_AUTHORIZED` | authorization | Requester does not have permission to revoke |
+| Type URI | Category | Title | HTTP Status |
+|---|---|---|---|
+| `urn:dsl:error:lease-not-found` | not_found | Lease Not Found | 404 |
+| `urn:dsl:error:lease-already-revoked` | conflict | Lease Already Revoked | 409 |
+| `urn:dsl:error:revoke-not-authorized` | authorization | Revoke Not Authorized | 403 |
 
 ### Usage Record Errors
 
-| Error Code | Category | Description |
-|---|---|---|
-| `LEASE_NOT_FOUND` | not_found | Referenced lease does not exist |
-| `INVALID_DIMENSION` | validation | Reported dimension is not recognized for this product |
-| `INVALID_TIMESTAMP` | validation | Timestamp is malformed or outside acceptable range |
+| Type URI | Category | Title | HTTP Status |
+|---|---|---|---|
+| `urn:dsl:error:lease-not-found` | not_found | Lease Not Found | 404 |
+| `urn:dsl:error:invalid-dimension` | validation | Invalid Dimension | 400 |
+| `urn:dsl:error:invalid-timestamp` | validation | Invalid Timestamp | 400 |
 
 ## License Agent Behavior on Errors
 
-The license agent should handle errors based on the `category` and `retryable` fields:
+The license agent should handle errors based on the `category` and `retryable` extension members:
 
 | Scenario | Agent Behavior |
 |---|---|
@@ -123,6 +136,8 @@ The license agent should handle errors based on the `category` and `retryable` f
 | `retryable: false`, category `expired` | Treat as terminal; a new Issue is required |
 | Category `internal` or `unavailable` | Retry with backoff; if retries are exhausted, enter grace period logic |
 
+The `instance` field, when present, should be included in support tickets or log entries to enable the control plane operator to correlate the error with server-side diagnostics.
+
 ## Security Considerations
 
 Error responses must not expose:
@@ -131,10 +146,11 @@ Error responses must not expose:
 - Information about other tenants or their entitlements.
 - Detailed cryptographic failure reasons that could aid an attacker.
 
-The `message` field should be informative enough for debugging but generic enough to avoid information leakage.
+The `detail` field should be informative enough for debugging but generic enough to avoid information leakage. The `instance` field should use opaque identifiers (not internal resource paths).
 
 ## Relationship to Other Chapters
 
 - Each API operation (Issue, Renew, Reissue, Revoke, Usage Record) references this error model for its failure cases.
 - The grace policy (defined in the reference model) governs how the license agent behaves when errors prevent renewal.
-- The audit log records both successful and failed operations, including the error code.
+- The audit log records both successful and failed operations, including the error `type`.
+- The `application/problem+json` content type is defined by [RFC 9457](https://www.rfc-editor.org/rfc/rfc9457.html) and supersedes the earlier RFC 7807.

@@ -1,8 +1,31 @@
 # 10.01 — Overview
 
+## Status
+- Editorial maturity: working draft
+- Normative readiness: not started
+
 ## Purpose
 
 This section defines the overall purpose and interaction model of the canonical API within the Dynamic Software Licensing (DSL) best practices. It explains how the API fits into the broader architecture and establishes the foundational patterns that all subsequent API operations follow.
+
+## Design Standards
+
+The canonical API adopts the following established standards to ensure interoperability, tooling compatibility, and alignment with industry practice:
+
+| Concern | Standard | Reference |
+|---|---|---|
+| URL structure | Google AIP (resource-oriented with custom methods) | [AIP-136](https://google.aip.dev/136) |
+| JSON field naming | lowerCamelCase | [AIP-140](https://google.aip.dev/140) |
+| Error responses | RFC 9457 — Problem Details for HTTP APIs | [RFC 9457](https://www.rfc-editor.org/rfc/rfc9457.html) |
+| Key discovery | RFC 7517 — JSON Web Key (JWK) | [RFC 7517](https://datatracker.ietf.org/doc/html/rfc7517) |
+| Distributed tracing | W3C Trace Context | [W3C Trace Context](https://www.w3.org/TR/trace-context/) |
+| Well-known URIs | RFC 8615 | [RFC 8615](https://www.rfc-editor.org/rfc/rfc8615.html) |
+
+### Rationale
+
+The API URL design follows the Google AIP custom-method pattern rather than pure CRUD REST or verb-based paths. Lease operations such as "renew" and "reissue" are domain-specific actions with side effects (identity re-verification, token re-signing, state transitions) that do not map cleanly to standard HTTP verbs like PATCH or PUT. The custom-method pattern (`:renew`, `:reissue`) preserves resource-oriented structure while being explicit about intent.
+
+JSON payloads use lowerCamelCase for consistency with JWT custom claims, the existing draft content, and the broader ecosystem of JavaScript/TypeScript API consumers.
 
 ## Role of the API in the DSL Architecture
 
@@ -20,19 +43,19 @@ The API follows a request-response model over REST for all transactional operati
 
 ### REST Operations (Synchronous)
 
-All lease lifecycle and usage operations are exposed as REST endpoints:
+All lease lifecycle and usage operations are exposed as versioned REST endpoints following the Google AIP resource-oriented design:
 
 | Operation | Endpoint | Method | Purpose |
 |---|---|---|---|
-| Issue | `/leases/issue` | POST | Request a new lease for a workload |
-| Renew | `/leases/renew` | POST | Extend an active lease |
-| Reissue | `/leases/reissue` | POST | Initiate lease transfer to a new workload |
-| Reissue Finalize | `/leases/reissue/finalize` | POST | Complete a lease transfer |
-| Revoke | `/leases/revoke` | POST | Terminate a lease |
-| Usage Record | `/usage/record` | POST | Submit metered usage events |
-| JWKS | `/.well-known/jwks.json` | GET | Retrieve public signing keys |
+| Issue | `/v1/leases` | POST | Request a new lease for a workload |
+| Renew | `/v1/leases/{leaseId}:renew` | POST | Extend an active lease |
+| Reissue | `/v1/leases/{leaseId}:reissue` | POST | Initiate lease transfer to a new workload |
+| Reissue Finalize | `/v1/leases/{leaseId}:finalizeReissue` | POST | Complete a lease transfer |
+| Revoke | `/v1/leases/{leaseId}` | DELETE | Terminate a lease |
+| Usage Record | `/v1/usage-records` | POST | Submit metered usage events |
+| JWKS | `/.well-known/jwks.json` | GET | Retrieve public signing keys (RFC 7517) |
 
-All operations use POST except JWKS discovery, which uses GET. This reflects the fact that lease operations are state-changing actions, not idempotent reads.
+Standard CRUD operations (create a lease, delete a lease) use standard HTTP methods. Domain-specific actions that have side effects beyond simple state mutation use custom methods (`:renew`, `:reissue`, `:finalizeReissue`) following [AIP-136](https://google.aip.dev/136).
 
 ### Push Channel (Asynchronous)
 
@@ -41,7 +64,7 @@ The control plane maintains a WebSocket connection to license agents for:
 - Revocation events: immediate notification when a lease is revoked.
 - Policy updates: notification when vendor changes grace, renewal, or exhaustion parameters.
 
-The push channel is a complement to the REST API, not a replacement. If the push channel is unavailable, revocation and policy changes take effect at the next renewal cycle.
+The push channel is a complement to the REST API, not a replacement. If the push channel is unavailable, revocation and policy changes take effect at the next renewal cycle. Implementations that cannot support WebSocket connections remain fully functional — they rely on token TTL and the renewal cycle for eventual consistency.
 
 ## Authentication and Authorization
 
@@ -55,7 +78,18 @@ Authorization is enforced per-tenant: a request can only operate on entitlements
 
 ## Common Request Patterns
 
-All REST operations share common structural patterns:
+All REST operations share common structural patterns.
+
+### Request Headers
+
+Every request SHOULD include [W3C Trace Context](https://www.w3.org/TR/trace-context/) headers for distributed tracing:
+
+| Header | Description |
+|---|---|
+| `traceparent` | Identifies the incoming request in a trace (version, trace-id, parent-id, trace-flags) |
+| `tracestate` | Carries vendor-specific trace data |
+
+The control plane MUST propagate `traceparent` in responses and internal spans. This enables end-to-end observability across the workspace plane, control plane, and ISV systems using OpenTelemetry-compatible tooling.
 
 ### Request Structure
 
@@ -77,19 +111,19 @@ Every successful response includes:
 
 ### Error Responses
 
-Failed requests return a structured error response. The error model is defined in subchapter 10.08.
+Failed requests return a structured error response following [RFC 9457 — Problem Details for HTTP APIs](https://www.rfc-editor.org/rfc/rfc9457.html). The error model is defined in subchapter 10.08.
 
 ## Idempotency
 
 Operations that may be retried (e.g., due to network interruption) support idempotency through:
 
 - The `workId` field, which correlates a request to a specific deployment or run.
-- The `leaseId` field for renewal and revocation operations.
+- The `leaseId` field (in the URL path) for renewal and revocation operations.
 - Usage records include timestamps and correlation identifiers to prevent double counting.
 
 ## Versioning
 
-The API includes a version indicator in the client descriptor (`client.version`) to support forward compatibility. The canonical model does not prescribe a URL-based versioning scheme at this stage; versioning strategy is reserved for implementation guidance.
+The API uses URL-based versioning with a `/v1/` prefix. This provides clear contract boundaries and supports non-breaking evolution within a version and breaking changes across versions. The client descriptor (`client.version`) additionally communicates the agent's software version for diagnostics and forward compatibility negotiation.
 
 ## Transport Security
 

@@ -1,5 +1,9 @@
 # 10.05 — Revoke
 
+## Status
+- Editorial maturity: working draft
+- Normative readiness: not started
+
 ## Purpose
 
 This section defines the revocation interaction within the canonical API. The Revoke operation terminates an active lease, invalidating the workload's right to continue operating under that license.
@@ -19,14 +23,14 @@ Revoke is a terminal operation. Once a lease is revoked, it cannot be renewed or
 ## Endpoint
 
 ```
-POST /leases/revoke
+DELETE /v1/leases/{leaseId}
 ```
 
 ## Interaction Flow
 
 ### When the License Agent Is Online
 
-1. An administrator, policy engine, or system operation sends a POST request to `/leases/revoke`.
+1. An administrator, policy engine, or system operation sends a DELETE request to `/v1/leases/{leaseId}`.
 2. The control plane validates the request:
    - Confirms the lease exists and is active.
    - Confirms the requester has authorization to revoke (admin, policy engine, or tenant with appropriate permissions).
@@ -54,14 +58,18 @@ The maximum delay before revocation takes effect is bounded by the token's TTL. 
 
 ## Request Structure
 
+The lease identifier is provided in the URL path. The request body contains:
+
 | Field | Type | Required | Description |
 |---|---|---|---|
-| `leaseId` | string | Yes | Identifier of the lease to revoke |
 | `reason` | string | Yes | Reason for revocation (e.g., `"policy_violation"`, `"admin_action"`, `"entitlement_expired"`, `"decommissioned"`, `"force_release"`) |
+
+```
+DELETE /v1/leases/L-01HY6G1Q3Z5W6E3Z2N7X0
+```
 
 ```json
 {
-  "leaseId": "L-01HY6G1Q3Z5W6E3Z2N7X0",
   "reason": "policy_violation"
 }
 ```

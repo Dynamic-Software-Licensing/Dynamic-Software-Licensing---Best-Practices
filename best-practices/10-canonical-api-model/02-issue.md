@@ -1,5 +1,9 @@
 # 10.02 — Issue
 
+## Status
+- Editorial maturity: working draft
+- Normative readiness: not started
+
 ## Purpose
 
 This section defines the initial license issuance interaction within the canonical API. The Issue operation is the entry point for a workload to acquire a lease and begin operating under a licensed entitlement.
@@ -16,8 +20,8 @@ Issue is a first-run operation. Once a lease is active, subsequent interactions 
 
 ## Endpoint
 
-```text
-POST /leases/issue
+```
+POST /v1/leases
 ```
 
 ## Interaction Flow
@@ -25,7 +29,7 @@ POST /leases/issue
 1. The license agent starts alongside the application workload.
 2. The license agent collects identity evidence from the runtime environment (e.g., Instance Identity Document, IAM role, Kubernetes Service Account JWT).
 3. The license agent generates or retrieves a `workId` to correlate this deployment.
-4. The license agent sends a POST request to `/leases/issue` with the required fields.
+4. The license agent sends a POST request to `/v1/leases` with the required fields.
 5. The control plane validates the request:
    - Verifies the tenant's entitlement for the requested application.
    - Checks that the requested dimensions are within the entitlement's limits.

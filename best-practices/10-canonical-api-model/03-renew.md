@@ -1,5 +1,9 @@
 # 10.03 — Renew
 
+## Status
+- Editorial maturity: working draft
+- Normative readiness: not started
+
 ## Purpose
 
 This section defines the renewal interaction within the canonical API. The Renew operation extends the lifetime of an active lease, ensuring continuous operation of a licensed workload without interruption.
@@ -17,13 +21,13 @@ Renew is a continuation operation. It assumes a lease has already been issued vi
 ## Endpoint
 
 ```
-POST /leases/renew
+POST /v1/leases/{leaseId}:renew
 ```
 
 ## Interaction Flow
 
 1. The license agent monitors the current token's expiry and the `renewBeforeSeconds` policy value.
-2. When the renewal window opens (e.g., 5 minutes before expiry), the license agent sends a POST request to `/leases/renew`.
+2. When the renewal window opens (e.g., 5 minutes before expiry), the license agent sends a POST request to `/v1/leases/{leaseId}:renew`.
 3. The control plane validates the request:
    - Confirms the lease is still active (not revoked or expired beyond grace).
    - Re-verifies the identity evidence to confirm the same workload is requesting renewal.
@@ -38,26 +42,32 @@ POST /leases/renew
 
 ## Request Structure
 
-The Renew request is intentionally minimal:
+The lease identifier is provided in the URL path. The request body contains:
 
 | Field | Type | Required | Description |
 |---|---|---|---|
-| `leaseId` | string | Yes | Identifier of the lease to renew |
 | `identityEvidence` | object | Yes | Current proof of workload identity |
+| `workId` | string | No | Correlation identifier for the deployment or production chain |
+
+```
+POST /v1/leases/L-01HY6G1Q3Z5W6E3Z2N7X0:renew
+```
 
 ```json
 {
-  "leaseId": "L-01HY6G1Q3Z5W6E3Z2N7X0",
   "identityEvidence": {
     "aws": {
       "iidDocument": "...",
       "iidSignature": "..."
     }
-  }
+  },
+  "workId": "deploy-i-0abc123def456"
 }
 ```
 
 Identity evidence is required at every renewal to re-verify that the requesting workload is the same one the lease was originally bound to. This prevents a compromised or migrated token from being renewed by an unauthorized workload.
+
+The `workId` field is optional but recommended. It enables correlation of individual leases to a higher-level production chain or workload group, supporting aggregated billing and operational visibility across multi-resource deployments.
 
 ## Response Structure
 

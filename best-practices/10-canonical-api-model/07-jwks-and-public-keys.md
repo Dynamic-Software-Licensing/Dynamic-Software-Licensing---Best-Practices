@@ -1,14 +1,25 @@
 # 10.07 — JWKS and Public Keys
 
+## Status
+- Editorial maturity: working draft
+- Normative readiness: not started
+
 ## Purpose
 
 This section defines the key discovery aspect of the canonical API. It describes how token validation material (public signing keys) is published by the control plane and consumed by applications and SDKs in the workspace plane.
+
+## Standards Compliance
+
+This section implements the following standards:
+
+- [RFC 7517 — JSON Web Key (JWK)](https://datatracker.ietf.org/doc/html/rfc7517) for the key set structure and format.
+- [RFC 8615 — Well-Known URIs](https://www.rfc-editor.org/rfc/rfc8615.html) for the discovery endpoint path convention.
 
 ## Why Key Discovery Matters
 
 The DSL model relies on local token validation — the application SDK verifies lease tokens without calling the control plane on every check. To do this, the SDK needs the public key that corresponds to the private key used to sign the token.
 
-The JWKS (JSON Web Key Set) endpoint provides this public key in a standard, discoverable format.
+The JWKS (JSON Web Key Set) endpoint provides this public key in the standard format defined by RFC 7517.
 
 ## Endpoint
 
@@ -31,7 +42,7 @@ This follows the standard well-known URI convention used in OAuth 2.0 and OpenID
 
 ## Response Structure
 
-The JWKS response follows the standard JSON Web Key Set format (RFC 7517):
+The JWKS response follows [RFC 7517 — JSON Web Key Set](https://datatracker.ietf.org/doc/html/rfc7517):
 
 ```json
 {

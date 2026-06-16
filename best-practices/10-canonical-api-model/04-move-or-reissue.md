@@ -1,5 +1,9 @@
 # 10.04 — Move or Reissue
 
+## Status
+- Editorial maturity: working draft
+- Normative readiness: not started
+
 ## Purpose
 
 This section defines the move or reissue interaction within the canonical API. The Reissue operation transfers an active lease from one workload to another, supporting failover, blue/green deployments, and planned migration scenarios without requiring a new entitlement or causing license downtime.
@@ -27,8 +31,8 @@ This design ensures that at no point are both leases fully active simultaneously
 ## Endpoints
 
 ```
-POST /leases/reissue           (Phase 1: shadow)
-POST /leases/reissue/finalize  (Phase 2: finalize)
+POST /v1/leases/{leaseId}:reissue           (Phase 1: shadow)
+POST /v1/leases/{leaseId}:finalizeReissue   (Phase 2: finalize)
 ```
 
 ## Phase 1: Shadow
@@ -37,7 +41,7 @@ POST /leases/reissue/finalize  (Phase 2: finalize)
 
 1. A new workload instance starts (e.g., backup EC2, new Kubernetes pod).
 2. The license agent on the new instance collects its identity evidence.
-3. The license agent sends a POST request to `/leases/reissue` referencing the original lease.
+3. The license agent sends a POST request to `/v1/leases/{leaseId}:reissue` referencing the original lease.
 4. The control plane validates:
    - The original lease exists and is active.
    - The requesting tenant owns the original lease.
@@ -50,15 +54,19 @@ POST /leases/reissue/finalize  (Phase 2: finalize)
 
 ### Request Structure
 
+The original lease identifier is provided in the URL path. The request body contains:
+
 | Field | Type | Required | Description |
 |---|---|---|---|
-| `fromLeaseId` | string | Yes | Identifier of the original lease to transfer |
 | `toIdentityEvidence` | object | Yes | Identity evidence of the target workload |
 | `toWorkId` | string | Yes | Work ID for the target deployment |
 
+```
+POST /v1/leases/L-01HY6G1Q3Z5W6E3Z2N7X0:reissue
+```
+
 ```json
 {
-  "fromLeaseId": "L-01HY6G1Q3Z5W6E3Z2N7X0",
   "toIdentityEvidence": {
     "aws": {
       "iidDocument": "...",
@@ -96,7 +104,7 @@ POST /leases/reissue/finalize  (Phase 2: finalize)
 ### Interaction Flow
 
 1. The orchestrator or license agent on the new workload confirms the target is ready.
-2. A POST request is sent to `/leases/reissue/finalize` with the reissue ID and cutover token.
+2. A POST request is sent to `/v1/leases/{leaseId}:finalizeReissue` with the reissue ID and cutover token.
 3. The control plane:
    - Validates the cutover token.
    - Revokes the original lease.
@@ -107,10 +115,16 @@ POST /leases/reissue/finalize  (Phase 2: finalize)
 
 ### Request Structure
 
+The lease identifier is provided in the URL path. The request body contains:
+
 | Field | Type | Required | Description |
 |---|---|---|---|
 | `reissueId` | string | Yes | Identifier from the shadow phase |
 | `cutoverToken` | string | Yes | Authorization token from the shadow phase |
+
+```
+POST /v1/leases/L-01HY6G1Q3Z5W6E3Z2N7X0:finalizeReissue
+```
 
 ```json
 {

@@ -1,5 +1,9 @@
 # 10.06 — Usage Record
 
+## Status
+- Editorial maturity: working draft
+- Normative readiness: not started
+
 ## Purpose
 
 This section defines the usage reporting interaction within the canonical API. The Usage Record operation allows license agents and SDKs to submit metered consumption events to the control plane for billing, analytics, and compliance purposes.
@@ -17,13 +21,13 @@ Usage recording is a continuous background operation. It does not affect the app
 ## Endpoint
 
 ```
-POST /usage/record
+POST /v1/usage-records
 ```
 
 ## Interaction Flow
 
 1. The license agent or SDK collects usage data during operation (e.g., minutes of active use, sessions, process units).
-2. At the configured interval, the license agent sends a POST request to `/usage/record`.
+2. At the configured interval, the license agent sends a POST request to `/v1/usage-records`.
 3. The control plane validates and stores the usage event:
    - Hot store for operational queries and near-real-time dashboards.
    - Cold store (e.g., data lake) for long-term analytics, billing reconciliation, and reporting.
