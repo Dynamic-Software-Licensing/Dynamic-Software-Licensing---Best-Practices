@@ -20,7 +20,7 @@ Issue is a first-run operation. Once a lease is active, subsequent interactions 
 
 ## Endpoint
 
-```
+```http
 POST /v1/leases
 ```
 

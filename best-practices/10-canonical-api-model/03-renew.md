@@ -20,7 +20,7 @@ Renew is a continuation operation. It assumes a lease has already been issued vi
 
 ## Endpoint
 
-```
+```http
 POST /v1/leases/{leaseId}:renew
 ```
 
@@ -49,7 +49,7 @@ The lease identifier is provided in the URL path. The request body contains:
 | `identityEvidence` | object | Yes | Current proof of workload identity |
 | `workId` | string | No | Correlation identifier for the deployment or production chain |
 
-```
+```http
 POST /v1/leases/L-01HY6G1Q3Z5W6E3Z2N7X0:renew
 ```
 
@@ -95,6 +95,7 @@ The license agent follows this renewal strategy:
 
 1. Begin renewal attempts at `expiresAt - renewBeforeSeconds` (e.g., 5 minutes before expiry).
 2. If the first attempt fails, retry with exponential backoff and jitter as defined by the policy's `renewBackoff` parameters:
+
    ```json
    {
      "renewBackoff": {
@@ -104,6 +105,7 @@ The license agent follows this renewal strategy:
      }
    }
    ```
+
 3. Continue retrying until either:
    - Renewal succeeds, or
    - The token expires and the offline grace period begins.

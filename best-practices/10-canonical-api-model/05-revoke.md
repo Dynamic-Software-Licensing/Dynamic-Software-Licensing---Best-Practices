@@ -22,7 +22,7 @@ Revoke is a terminal operation. Once a lease is revoked, it cannot be renewed or
 
 ## Endpoint
 
-```
+```http
 DELETE /v1/leases/{leaseId}
 ```
 
@@ -64,7 +64,7 @@ The lease identifier is provided in the URL path. The request body contains:
 |---|---|---|---|
 | `reason` | string | Yes | Reason for revocation (e.g., `"policy_violation"`, `"admin_action"`, `"entitlement_expired"`, `"decommissioned"`, `"force_release"`) |
 
-```
+```http
 DELETE /v1/leases/L-01HY6G1Q3Z5W6E3Z2N7X0
 ```
 

@@ -30,7 +30,7 @@ This design ensures that at no point are both leases fully active simultaneously
 
 ## Endpoints
 
-```
+```http
 POST /v1/leases/{leaseId}:reissue           (Phase 1: shadow)
 POST /v1/leases/{leaseId}:finalizeReissue   (Phase 2: finalize)
 ```
@@ -61,7 +61,7 @@ The original lease identifier is provided in the URL path. The request body cont
 | `toIdentityEvidence` | object | Yes | Identity evidence of the target workload |
 | `toWorkId` | string | Yes | Work ID for the target deployment |
 
-```
+```http
 POST /v1/leases/L-01HY6G1Q3Z5W6E3Z2N7X0:reissue
 ```
 
@@ -122,7 +122,7 @@ The lease identifier is provided in the URL path. The request body contains:
 | `reissueId` | string | Yes | Identifier from the shadow phase |
 | `cutoverToken` | string | Yes | Authorization token from the shadow phase |
 
-```
+```http
 POST /v1/leases/L-01HY6G1Q3Z5W6E3Z2N7X0:finalizeReissue
 ```
 
