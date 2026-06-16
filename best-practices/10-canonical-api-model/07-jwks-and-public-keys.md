@@ -23,7 +23,7 @@ The JWKS (JSON Web Key Set) endpoint provides this public key in the standard fo
 
 ## Endpoint
 
-```
+```http
 GET /.well-known/jwks.json
 ```
 

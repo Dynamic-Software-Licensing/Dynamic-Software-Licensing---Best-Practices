@@ -20,7 +20,7 @@ Usage recording is a continuous background operation. It does not affect the app
 
 ## Endpoint
 
-```
+```http
 POST /v1/usage-records
 ```
 
