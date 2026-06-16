@@ -18,7 +18,7 @@ The DSL trust model is based on the following principles:
 
 The DSL model defines the following trust boundaries:
 
-```
+```text
 ┌──────────────────────────────────────────────────┐
 │              CONTROL PLANE (trusted)             │
 │                                                  │
@@ -105,7 +105,7 @@ The trust chain for a lease token follows this path:
 
 At no point does the private key leave the key management service. The trust chain is:
 
-```
+```text
 Key Management Service (private key)
     → Leases Service (requests signature)
         → Token (signed artifact)

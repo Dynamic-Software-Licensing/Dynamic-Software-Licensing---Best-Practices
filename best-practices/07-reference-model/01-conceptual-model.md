@@ -55,7 +55,7 @@ A work ID is a correlation identifier associated with a specific deployment or r
 
 The relationships between these concepts follow a clear hierarchy:
 
-```
+```text
                         ┌──────────────┐
                         │  Entitlement │
                         └──────┬───────┘

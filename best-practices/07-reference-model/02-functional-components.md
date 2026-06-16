@@ -130,7 +130,7 @@ The vendor adapter is an optional component that mirrors usage and lease events 
 
 ## Component Interaction Summary
 
-```
+```text
 ┌─────────────────────────────────────────────────────┐
 │                   CONTROL PLANE                     │
 │                                                     │
