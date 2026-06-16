@@ -18,8 +18,10 @@ An entitlement exists independently of any running workload. It is the source of
 
 A lease is a time-bound, active binding between an entitlement and a running workload. When a workload requests access to a licensed application, the system issues a lease that grants usage rights for a defined period.
 
+A lease is derived from an entitlement through the following process: the license agent presents the workload's identity evidence and the requested application/dimensions to the control plane. The control plane looks up the tenant's entitlement for that application, verifies that the requested dimensions are within the entitlement's limits, confirms quota availability (i.e., not all lease slots are consumed), and — if all checks pass — creates a lease record and returns a signed token. The lease inherits its dimension limits and policy from the entitlement, scoped to a specific workload and bounded in time.
+
 A lease is:
-- derived from an entitlement
+- derived from an entitlement (inheriting dimensions, modality, and policy)
 - bound to a specific workload identity
 - expressed as a signed token that can be validated locally
 - subject to renewal, reissue, and revocation
@@ -107,7 +109,8 @@ The DSL model assumes an interaction pattern where:
 
 - The control plane is the authority for entitlements, lease issuance, policy, and centralized monitoring and observability.
 - The workspace plane is where applications run and where tokens are validated locally.
-- Communication between planes happens via well-defined API calls (REST) and push channels (WebSocket) for revocation.
+- Communication between planes happens via well-defined API calls (REST) for all transactional operations.
+- A push channel (WebSocket) MAY be used for real-time revocation and policy update delivery. The push channel is a complement to the REST API, not a requirement. If the push channel is unavailable or not implemented, revocation and policy changes take effect at the next renewal cycle (bounded by token TTL). Implementations that cannot support persistent connections remain fully functional.
 - The license agent acts as the intermediary between the application and the control plane, handling all licensing operations transparently.
 
 ## Platform Neutrality

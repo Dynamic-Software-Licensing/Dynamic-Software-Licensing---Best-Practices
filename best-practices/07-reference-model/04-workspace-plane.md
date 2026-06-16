@@ -73,9 +73,11 @@ The license agent abstracts all licensing complexity from the application. From 
 The SDK is an in-process library integrated into the application. It provides:
 
 - Token parsing and signature validation using JWKS public keys.
-- Dimension enforcement (e.g., rejecting operations that exceed licensed channel count).
+- Exposure of granted dimension claims (e.g., licensed channel count, FPS limit) to the application.
 - Expiry monitoring and grace policy evaluation.
 - A simple interface for the application to query its current licensing state.
+
+The SDK validates the token and exposes entitlement data. Dimension enforcement (deciding what happens when a limit is exceeded) is the responsibility of the application itself, since enforcement logic is application-specific and high-liability.
 
 The SDK is designed to be vendor-agnostic and open source, enabling consistent integration across different ISV products.
 

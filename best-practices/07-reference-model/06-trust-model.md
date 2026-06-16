@@ -128,8 +128,27 @@ During a grace period (when the license agent cannot reach the control plane to 
 - The grace period is bounded (defined by `offlineGraceSeconds` in the policy).
 - When grace expires, the configured exhaustion action applies (drain, degrade, or stop).
 - When connectivity returns, the license agent must successfully renew to continue operation.
+- Upon successful renewal after a grace period, operation SHOULD resume automatically without manual intervention. This is the expected default behavior for programmatically configured deployments. Implementations that require manual restart after grace recovery MUST document this clearly.
 
 The grace period represents a deliberate trade-off between production continuity and strict license enforcement. The parameters of this trade-off are controlled by the vendor (with optional tenant overrides).
+
+### Grace Period Configuration Guidance
+
+The `offlineGraceSeconds` value may be configured as either:
+
+- A fixed pre-defined value (e.g., 1800 seconds / 30 minutes) set by the vendor as a default.
+- A function-based value derived from operational context (e.g., a multiple of the token TTL, or proportional to the application's typical session duration).
+
+The choice between fixed and function-based grace periods is a vendor policy decision. The following guidelines apply:
+
+| Consideration | Guidance |
+|---|---|
+| Short-lived workloads (event-driven, serverless) | Shorter grace periods (minutes) are appropriate; the workload can restart quickly |
+| Long-running production chains (live broadcast) | Longer grace periods (30–60 minutes) protect against transient network issues |
+| High-value workloads | Grace periods should be long enough to allow human investigation before disruption |
+| Metered / consumption-based entitlements | Grace periods should be bounded to limit unbilled usage during outages |
+
+Vendors SHOULD document their grace period defaults and whether tenant overrides are permitted. Tenants SHOULD NOT need to guess how much time they have before an exhaustion action fires.
 
 ## Anti-Tampering Considerations
 
@@ -151,6 +170,26 @@ The DSL model involves multiple organizational participants, each with different
 | Vendor → Control Plane | Key custody, entitlement management, policy definition |
 | SI → Control Plane | API access with scoped permissions for deployment automation |
 | Customer → Vendor | Entitlement agreement, usage transparency via portal and analytics |
+
+### Multi-Vendor Trust in a Shared Control Plane
+
+In a multi-vendor environment, the expectation is that a single DSL control plane serves multiple ISVs. This raises the question of how each ISV can trust that their licensing logic is enforced correctly and that their entitlements are not tampered with.
+
+The DSL model addresses this through:
+
+1. Cryptographic isolation: each ISV MAY have dedicated signing keys managed within the control plane's key management service. Tokens signed with ISV-specific keys cannot be forged or repurposed across vendors.
+
+2. Logical tenant and vendor separation: entitlements, leases, and usage data are scoped per vendor and per tenant. No ISV can access, modify, or observe another ISV's entitlement records or usage data.
+
+3. Immutable audit logging: all lease operations (issue, renew, revoke) are recorded in an append-only audit log. ISVs can access audit data for their own products to verify correct enforcement.
+
+4. Vendor-specific policy encapsulation: each ISV defines their own entitlement catalog, dimension definitions, policies (grace, renewal, exhaustion), and pricing. These are stored and enforced per-vendor within the control plane. The control plane applies the correct vendor's policy when processing a lease request for that vendor's product.
+
+5. Optional call-home / audit webhook: the control plane MAY support an outbound webhook or event stream per ISV, allowing vendors to receive real-time notifications of lease operations for their products. This enables independent auditing without requiring ISVs to trust the control plane operator blindly.
+
+6. Concurrent lease enforcement: the control plane enforces quota constraints (e.g., a license with dimension of 1 can only have one active lease at a time). Lease binding to a verified workload identity prevents a single license from being concurrently leased to multiple workloads.
+
+This architecture ensures that adding a new vendor to a shared control plane does not require changes to the API or message flow. Each ISV's business logic, policy, and security boundaries are encapsulated within their entitlement and key configuration.
 
 ## Platform Neutrality
 

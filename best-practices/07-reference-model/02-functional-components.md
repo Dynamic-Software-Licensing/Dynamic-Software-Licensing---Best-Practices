@@ -62,6 +62,8 @@ The usage service records metered usage events submitted by license agents or SD
 - Stores records in a hot store for operational queries and a cold store for analytics and billing.
 - Supports idempotent submission to handle retries after network interruptions.
 
+In a multi-vendor environment, usage data MUST be logically separated per ISV. Each vendor receives only the usage data associated with their own products. This prevents ISVs from accessing competitor usage data that may be collected within the same control plane deployment.
+
 Usage data follows a metering model compatible with marketplace-style billing.
 
 ### Reissue Service
@@ -111,8 +113,10 @@ The license agent abstracts all licensing complexity from the application.
 The application SDK is an in-process library that the application uses to:
 
 - Validate the lease token locally using cached JWKS public keys.
-- Enforce dimension limits (e.g., channel count, FPS).
+- Expose granted dimension claims (e.g., channel count, FPS limit) to the application.
 - React to token expiry and grace policy actions.
+
+The SDK's role is to validate the token and make the granted entitlement data available to the application. Dimension enforcement — deciding whether to reject an operation that exceeds the licensed limits — is the responsibility of the application logic, not the SDK. This separation exists because dimension enforcement is highly application-specific, carries high liability, and cannot be generalized across different media functions. For example, the SDK exposes that the lease grants 4 channels; the application decides what happens when a 5th channel is requested.
 
 The SDK is vendor-agnostic and open source.
 
@@ -152,6 +156,6 @@ The vendor adapter is an optional component that mirrors usage and lease events 
 │       └── usage buffering                           │
 │                    │                                │
 │              local token validation                  │
-│              dimension enforcement                   │
+│              dimension data exposure                  │
 └─────────────────────────────────────────────────────┘
 ```
