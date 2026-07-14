@@ -35,21 +35,21 @@ The workload represents an event-based production deployment. Resources are ephe
 Media functions used within the workload must be licensed appropriately. The licensing scheme must support ephemeral deployment. Each media function must obtain the required lease and associated license dimensions before operation and must release the lease when the workload terminates. The model must also support schedule overruns, such as extra time in sports events, through lease extension or renewal.
 
 In the scenario described, the workload supports a small studio operation comprising:
--	**Studio Cameras** deployed on the studio floor. These may require feature licenses, such as HDR processing. Cameras may be network-connected or air-gapped.
--	**Input Processing** functions used to normalize and convert studio camera output. These may require frame synchronization, facility time alignment, or other licensed advanced features.
--	A **Switcher** providing vision mixing for compositing video elements. The switcher may require licenses for supported input types, input counts, or advanced processing functions such as keyers.
--	An **Audio Mixer** providing program audio mixing from studio cameras and external microphones. The audio mixer may require licenses for specific filters and effects.
--	**Output Processing** used to combine switcher and audio mixer outputs for onward distribution. This may require licenses for signal encoding.
+ - **Studio Cameras** deployed on the studio floor. These may require feature licenses, such as HDR processing. Cameras may be network-connected or air-gapped.
+ - **Input Processing** functions used to normalize and convert studio camera output. These may require frame synchronization, facility time alignment, or other licensed advanced features.
+ - A **Switcher** providing vision mixing for compositing video elements. The switcher may require licenses for supported input types, input counts, or advanced processing functions such as keyers.
+ - An **Audio Mixer** providing program audio mixing from studio cameras and external microphones. The audio mixer may require licenses for specific filters and effects.
+ - **Output Processing** used to combine switcher and audio mixer outputs for onward distribution. This may require licenses for signal encoding.
 
 ## How DSL addresses Event Production
 
 The industry is transitioning toward software-defined infrastructure and new licensing models. The DSL addresses event-based licensing requirements and supports the following scenarios:
--	Multivendor ecosystems and best-of-breed deployments, with vendor-specific license models for required features and dimensions
--	Platform-neutral licensing for both public cloud and on-premises deployments
--	Leasing of licenses and associated dimensions for a defined validity period
--	Usage metering to support consumption-based models
--	Lease extension for overrunning events and schedule changes
--	High-availability deployments, including licensing of redundant instances and lease transfer from failed instances to replacement instances
+ - Multivendor ecosystems and best-of-breed deployments, with vendor-specific license models for required features and dimensions
+ - Platform-neutral licensing for both public cloud and on-premises deployments
+ - Leasing of licenses and associated dimensions for a defined validity period
+ - Usage metering to support consumption-based models
+ - Lease extension for overrunning events and schedule changes
+ - High-availability deployments, including licensing of redundant instances and lease transfer from failed instances to replacement instances
 
 Adoption of the DSL may not be uniform across the vendor community in the early stages. However, the best practices defined in this repository are intended to provide a vendor-neutral solution developed by the industry for the needs of end users, system integrators, and ISVs.
 
