@@ -162,7 +162,7 @@ def build_version_page(
     document_date: str,
 ) -> list[str]:
     return [
-        "# Version Information",
+        "# Version Information {.unnumbered}",
         "",
         f"- Version: {document_version}",
         f"- Status: {document_status}",
@@ -189,7 +189,7 @@ def build_document(
     document_date: str,
     exclude_index_files: bool,
 ) -> int:
-    sections = ["---", f"title: {document_title}", "lang: en", "---", ""]
+    sections = ["---", "lang: en", "---", ""]
     sections.extend(
         build_cover_page(
             document_title,

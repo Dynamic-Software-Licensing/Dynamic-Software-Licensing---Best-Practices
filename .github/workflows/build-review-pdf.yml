@@ -55,9 +55,9 @@ jobs:
         uses: docker://pandoc/latex:3.5
         with:
           args: >-
-            --from=gfm
+            --from=gfm+raw_tex+header_attributes
             --standalone
-            --number-sections
+            --metadata=title:Dynamic Software Licensing
             --resource-path=.:_build
             --output=_build/dynamic-software-licensing-review-draft.pdf
             _build/review-draft.md
