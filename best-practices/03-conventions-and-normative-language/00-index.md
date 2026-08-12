@@ -11,64 +11,22 @@
 
 This chapter defines the writing, interpretation, and classification conventions used throughout the Dynamic Software Licensing best practices.
 
-Its purpose is to ensure that contributors and readers understand how the document should be read, how different kinds of statements should be interpreted, and how normative and informative material are separated.
+Its purpose is to ensure that contributors and readers understand how the document is read, how different kinds of statements are interpreted, and how normative and informative material are separated.
 
 ## Role Within the Best Practices
 
 The Dynamic Software Licensing best practices are not a formal standard. However, they are intentionally structured in a standard-like way.
 
-This means the document should use clear and disciplined language, especially where implementation guidance, conformance expectations, or interpretation rules are involved.
+This means the document uses clear and disciplined language, especially where implementation guidance, conformance expectations, or interpretation rules are involved.
 
 This chapter provides the common conventions that support that approach.
 
-## Normative and Informative Content
+## Core Topics
 
-A central function of this chapter is to distinguish between:
-- normative content,
-- informative content,
-- editorial or explanatory content.
-
-Normative content expresses requirements, expectations, constraints, or guidance that are important for consistent interpretation of the best practices.
-
-Informative content explains, illustrates, contextualizes, or provides examples. Informative material helps understanding, but should not automatically be interpreted as mandatory.
-
-Editorial or explanatory content helps organize the draft and clarify intent during development.
-
-## Normative Language
-
-This best practices may use terms such as:
-- **MUST**
-- **SHOULD**
-- **MAY**
-
-These keywords should only be used where they help express a clear level of expectation or allowed variation.
-
-As a drafting principle:
-- **MUST** should be used for essential requirements or interpretation rules,
-- **SHOULD** should be used for strong best practices,
-- **MAY** should be used for optional behavior or acceptable variation.
-
-These keywords should not be overused, especially in introductory or purely explanatory sections.
-
-## Controlled Vocabulary
-
-This chapter also supports terminology discipline across the repository.
-
-Where a term is formally defined in the terminology chapter, contributors should use that term consistently and avoid introducing parallel labels, synonyms, or local variations unless there is an explicit editorial decision to do so.
-
-## Platform-Agnostic Drafting Principle
-
-The main body of the best practices should remain platform-agnostic wherever possible.
-
-Where content becomes:
-- vendor-specific,
-- platform-specific,
-- implementation-example-heavy,
-- operationally narrow rather than broadly reusable,
-
-it should normally be moved into an annex, especially an informative annex.
-
-This principle is particularly important for maintaining a clear distinction between the core best practices and example reference architectures.
+This chapter establishes three sets of conventions for the repository:
+- normative keywords and statement strength,
+- classification of normative, informative, and explanatory content,
+- platform-agnostic boundaries for the core document and annex material.
 
 ## Role of This Chapter
 
@@ -78,6 +36,14 @@ This chapter helps contributors decide:
 - whether a statement belongs in the main best practices or in an annex,
 - when controlled vocabulary must be used,
 - how to keep the tone neutral and standard-like.
+
+## Subchapters
+
+This chapter is divided into three subchapters:
+
+- [03.01. Normative Keywords and Statement Strength](01-normative-keywords-and-statement-strength.md) — defines how terms such as **MUST**, **SHOULD**, and **MAY** are used and how statement strength is interpreted.
+- [03.02. Content Classification](02-content-classification.md) — defines the distinction between normative, informative, and explanatory material and how mixed passages are handled.
+- [03.03. Platform-Agnostic Boundaries and Annex Use](03-platform-agnostic-boundaries-and-annex-use.md) — defines what belongs in the core document, what belongs in annexes, and how platform-specific material is contained.
 
 ## Chapter Positioning
 
