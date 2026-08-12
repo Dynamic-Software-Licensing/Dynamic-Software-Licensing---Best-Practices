@@ -68,8 +68,8 @@ flowchart TD
     modality[License Modality]
     identity[Identity Evidence]
     workid[Work ID]
-    token[Token<br/>contains:<br/>- dims<br/>- policy<br/>- binding<br/>- expiry]
-    lease[Lease<br/>- issued from an Entitlement<br/>- bound via Identity Evidence<br/>- correlated via Work ID<br/>- governed by Policy<br/>- expressed as a Token]
+  lease[Lease]
+  token[Token]
 
     entitlement -->|authorizes| dimensions
     entitlement -->|authorizes| policy
@@ -81,6 +81,21 @@ flowchart TD
     lease -->|expressed as| token
     modality -. constrains .-> lease
 ```
+
+Lease characteristics shown in the model:
+
+- issued from an entitlement,
+- bound via identity evidence,
+- correlated via work ID,
+- governed by policy,
+- expressed as a token.
+
+Token content shown in the model:
+
+- dimensions,
+- policy,
+- binding,
+- expiry.
 
 ## Lifecycle Summary
 
