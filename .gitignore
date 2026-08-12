@@ -1,3 +1,6 @@
 .DS_Store
 ._*
 Local/
+_build/
+__pycache__/
+*.pyc

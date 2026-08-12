@@ -1,0 +1,23 @@
+# Release-oriented PDF source order
+#
+# This manifest excludes repository navigation pages such as README.md and api/README.md.
+# Chapter 00-index files can still be included or excluded at workflow runtime.
+
+best-practices/00-status-of-this-document/**/*.md
+best-practices/01-introduction/**/*.md
+best-practices/02-scope/**/*.md
+best-practices/03-conventions-and-normative-language/**/*.md
+best-practices/04-terminology-and-abbreviations/**/*.md
+best-practices/05-stakeholders-use-cases-and-requirements/**/*.md
+best-practices/06-design-principles/**/*.md
+best-practices/07-reference-model/**/*.md
+best-practices/08-conformance-and-profiles/**/*.md
+best-practices/09-normative-requirements/**/*.md
+best-practices/10-canonical-api-model/**/*.md
+best-practices/11-canonical-data-model/**/*.md
+best-practices/12-security-and-trust-framework/**/*.md
+best-practices/13-operational-and-deployment-profiles/**/*.md
+best-practices/14-migration-and-transition/**/*.md
+best-practices/15-governance-and-future-work/**/*.md
+annexes/normative/**/*.md
+annexes/informative/**/*.md

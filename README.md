@@ -53,3 +53,18 @@ This repository does **not** yet represent a final published best-practices docu
 Repository status: **Reviewed Draft**
 
 The main document is now organized as a complete review draft for group comment ahead of the planned end-of-August release. See [best-practices/index.md](best-practices/index.md) for chapter-level status.
+
+## Automated PDF Build
+
+A manual GitHub Actions workflow is available at `.github/workflows/build-review-pdf.yml`.
+
+It assembles a combined Markdown source and renders a PDF artifact using Pandoc.
+
+Two source manifests are provided:
+
+- `.github/review-pdf-manifest.txt` for a review-facing PDF that includes repository framing pages such as `README.md` and `api/README.md`
+- `.github/release-pdf-manifest.txt` for a leaner release-oriented PDF that excludes those repository navigation pages
+
+When running the workflow, you can also choose whether chapter `00-index.md` files should be included. A practical default for release packaging is to exclude those index pages first, then add them back only if they provide reader value in the final PDF.
+
+The generated PDF source now includes an explicit cover page and a fixed-position table of contents before the document body, so the export behaves more like a publication artifact than a raw Markdown concatenation.

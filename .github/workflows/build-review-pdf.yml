@@ -1,0 +1,71 @@
+name: Build Review Draft PDF
+
+on:
+  workflow_dispatch:
+    inputs:
+      document_profile:
+        description: Choose whether to build a review-facing PDF or a leaner release-oriented PDF
+        required: true
+        default: release
+        type: choice
+        options:
+          - review
+          - release
+      include_index_files:
+        description: Include chapter 00-index.md files in the combined PDF source
+        required: true
+        default: false
+        type: boolean
+
+jobs:
+  build-review-pdf:
+    name: Assemble and render review draft PDF
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Build combined Markdown source
+        run: |
+          manifest=.github/review-pdf-manifest.txt
+
+          if [ "${{ inputs.document_profile }}" = 'release' ]; then
+            manifest=.github/release-pdf-manifest.txt
+          fi
+
+          cmd=(python3 .github/scripts/build_review_draft.py \
+            --manifest "$manifest" \
+            --output _build/review-draft.md \
+            --document-title "Dynamic Software Licensing" \
+            --document-subtitle "Best Practices" \
+            --document-status "Reviewed Draft")
+
+          if [ "${{ inputs.include_index_files }}" != 'true' ]; then
+            cmd+=(--exclude-index-files)
+          fi
+
+          "${cmd[@]}"
+
+      - name: Render PDF with Pandoc
+        uses: docker://pandoc/latex:3.5
+        with:
+          args: >-
+            --from=gfm
+            --standalone
+            --number-sections
+            --resource-path=.:_build
+            --output=_build/dynamic-software-licensing-review-draft.pdf
+            _build/review-draft.md
+
+      - name: Upload review draft artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: review-draft-pdf
+          path: |
+            _build/review-draft.md
+            _build/dynamic-software-licensing-review-draft.pdf
