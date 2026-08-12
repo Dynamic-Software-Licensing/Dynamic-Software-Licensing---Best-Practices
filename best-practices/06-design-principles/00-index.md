@@ -26,11 +26,11 @@ They define the qualities that the target licensing model should embody and prov
 ## Foundation of This Chapter
 
 The current DSL work is already strongly shaped by five recurring principles:
-- API-first access,
-- serverless or elastic service design,
-- security by design,
-- observability,
-- licensing-as-code. :contentReference[oaicite:5]{index=5} :contentReference[oaicite:6]{index=6}
+- API-first access
+- serverless or elastic service design
+- security by design
+- observability
+- licensing-as-code
 
 These principles should remain the anchor for this chapter.
 
@@ -39,23 +39,22 @@ These principles should remain the anchor for this chapter.
 This chapter is intended to define the core principles that influence the best practices as a whole.
 
 It should describe:
-- what these principles mean,
-- why they matter,
+- what these principles mean
+- why they matter
 - how they guide later chapters.
 
 It should not yet attempt to define all detailed implementation rules.
 
-## Possible Principle Areas
+## Structure of This Chapter
 
-This chapter is expected to address principles such as:
-- API-first / CLI-first interaction,
-- serverless or elastic architecture,
-- security by design,
-- observability and transparency,
-- licensing-as-code,
-- platform-agnostic design,
-- workload identity over host-based binding,
-- support for multiple customer maturity levels and access patterns. :contentReference[oaicite:7]{index=7} :contentReference[oaicite:8]{index=8} :contentReference[oaicite:9]{index=9}
+This chapter is organized into the following subchapter:
+
+### 01. Design Principles
+
+Defines the core design principles that guide the DSL best practices.
+
+This section explains what each principle means, why it matters, and how it should
+shape later architecture, interface, operational, and conformance decisions.
 
 ## Relationship to Other Chapters
 
@@ -68,26 +67,13 @@ This chapter informs:
 
 It should act as a stable point of reference when contributors make decisions about detailed wording elsewhere in the best practices.
 
-## Editorial Guidance
+## Chapter Positioning
 
-At the current stage, this chapter should focus on principle clarity rather than length.
+This chapter provides the shared architectural philosophy for the DSL best practices.
+It translates recurring repository themes such as automation, security, portability,
+observability, and resilience into durable design guidance that later chapters can apply
+more concretely.
 
-Contributors should aim to:
-- keep each principle distinct,
-- explain each principle in neutral language,
-- avoid platform-specific detail in the principle statements,
-- ensure that the principles are broad enough to guide the whole best practices.
-
-## Possible Future Expansion
-
-If needed, this chapter may later be expanded into subchapters such as:
-- principle overview,
-- rationale for each principle,
-- principle-to-requirement mapping,
-- principle-to-architecture mapping.
-
-## Drafting Note
-
-At the current stage, this chapter should provide a concise but stable set of design anchors for the Dynamic Software Licensing best practices.
-
-Its immediate purpose is to ensure that later chapters are shaped by a shared and explicit architectural philosophy.
+The chapter is intentionally platform-agnostic. It defines the design qualities the DSL
+should embody, while leaving API details, schema definitions, and deployment-specific
+realizations to the canonical model, security framework, and operational profiles.
