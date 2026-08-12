@@ -28,7 +28,7 @@ Higher-tier productions typically require redundant services, which must also be
 
 The diagram below illustrates a simplified live production workload intended to highlight the key concepts.
 
-![Event Production](https://github.com/Dynamic-Software-Licensing/Dynamic-Software-Licensing---Best-Practices/blob/9d60f10010a8656e41851130357dfbc177e39ec3/diagrams/DSL%20Event%20Based%20Production.svg)
+![Event Production](../../diagrams/DSL Event Based Production.svg)
 
 The workload represents an event-based production deployment. Resources are ephemeral and are deployed only for the duration of the production, including pre-event setup and post-event tear-down.
 
@@ -55,8 +55,11 @@ The industry is transitioning toward software-defined infrastructure and new lic
 
 Adoption of the DSL may not be uniform across the vendor community in the early stages. However, the best practices defined in this repository are intended to provide a vendor-neutral solution developed by the industry for the needs of end users, system integrators, and ISVs.
 
-## Drafting Note
+## Chapter Positioning
 
-At the current stage, this chapter should provide the operational interpretation layer of the DSL best practices.
+This chapter provides the operational interpretation layer for event-driven deployments within
+the DSL best practices.
 
-Its immediate purpose is to help the team think in terms of real deployment modes rather than a single abstract target environment.
+It connects the abstract lifecycle, entitlement, metering, and continuity concepts from the
+earlier chapters to a concrete deployment profile with short-lived workloads, schedule-driven
+runtime, and tier-dependent availability expectations.
