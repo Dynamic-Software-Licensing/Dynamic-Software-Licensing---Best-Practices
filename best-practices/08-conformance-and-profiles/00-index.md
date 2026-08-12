@@ -40,6 +40,22 @@ This chapter defines:
 
 It is not presented as a full certification framework.
 
+## How to Use This Chapter
+
+This chapter is easiest to use in the following order:
+
+1. Identify the conformance target in Section 08.01: control plane, workspace plane, interface, or end-to-end system.
+2. Use Section 08.02 to decide which profile best matches the current implementation context.
+3. Read the matching profile in Sections 08.03 to 08.05 as the practical expectation bundle.
+4. Use Annex A to test whether the claim is supported by observable behavior.
+
+In practical terms, this chapter answers four questions:
+
+- what exactly is being assessed,
+- which profile best fits the implementation,
+- what level of maturity that profile implies,
+- how that claim can be checked in review.
+
 ## Structure of This Chapter
 
 This chapter is organized into the following subchapters:
