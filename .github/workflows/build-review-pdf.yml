@@ -57,7 +57,6 @@ jobs:
           args: >-
             --from=markdown+raw_tex
             --standalone
-            --metadata=title:Dynamic Software Licensing
             --resource-path=.:_build
             --output=_build/dynamic-software-licensing-review-draft.pdf
             _build/review-draft.md

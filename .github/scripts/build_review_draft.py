@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 from datetime import datetime, timezone
+from urllib.parse import quote
 from os.path import relpath as os_relpath
 import re
 import sys
@@ -113,7 +114,8 @@ def rewrite_local_links(text: str, source_path: Path, output_path: Path) -> str:
             return match.group(0)
 
         rel_string = os_relpath(candidate, output_dir)
-        return f"{label}({rel_string}{anchor})"
+        rel_string = quote(rel_string, safe="/#-_.")
+        return f"{label}(<{rel_string}{anchor}>)"
 
     return LINK_PATTERN.sub(replace, text)
 
