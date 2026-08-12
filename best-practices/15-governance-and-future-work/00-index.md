@@ -17,7 +17,7 @@ Its purpose is to describe how the best practices evolves over time and which fu
 
 The DSL best practices are more than a static one-off document.
 
-As an IABM initiative, it evolves through collaboration, refinement, and clarification of terminology and requirements toward a more mature industry reference point.
+As an IAMT initiative, it evolves through collaboration, refinement, and clarification of terminology and requirements toward a more mature industry reference point.
 
 This chapter provides the structural home for those topics.
 

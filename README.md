@@ -4,7 +4,7 @@
 
 ## Purpose
 
-This repository contains the reviewed draft of an IABM industry best practices document for software-based, dynamic software licensing in broadcast and media workflows.
+This repository contains the reviewed draft of an IAMT industry best practices document for software-based, dynamic software licensing in broadcast and media workflows.
 
 The best-practices document is not a formal standard. It is deliberately structured in a standard-like way to support alignment across manufacturers, operators, system integrators, and industry stakeholders.
 

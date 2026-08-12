@@ -2,7 +2,7 @@
 
 ## Origin
 
-A review of IABM member organizations in the vendor community identified a clear gap: there is no common approach to software licensing within the broadcast and media industry.
+A review of IAMT member organizations in the vendor community identified a clear gap: there is no common approach to software licensing within the broadcast and media industry.
 
 Each manufacturer implements licensing differently. Each activation process is proprietary. System integrators building multi-vendor solutions must navigate a different licensing model for every product in the stack, and customers bear the accumulated cost of that fragmentation in operational overhead, audit risk, and deployment friction.
 
@@ -18,7 +18,7 @@ The initiative is deliberately implementation-oriented. The goal is practical ad
 
 ## Participants
 
-The DSL initiative operates under the IABM — the International Association of Broadcast and Media Technology Suppliers — and involves collaboration across multiple stakeholder groups:
+The DSL initiative operates under the IAMT — the International Association of Broadcast and Media Technology Suppliers — and involves collaboration across multiple stakeholder groups:
 
 - **Cloud platform providers**, who contributed architectural patterns and reference implementations
 - **System integrators**, who provided operational requirements from real-world multi-vendor deployments
@@ -43,4 +43,4 @@ A system integrator deploying ten different broadcast applications from ten diff
 
 Common best practices reduce the integration surface, lower the operational burden on all parties, and give the entire ecosystem a shared foundation to build on. The value of the framework increases as more of the industry adopts it.
 
-IABM members are driving this initiative, and its success depends on continued industry collaboration and a shared commitment to developing and accepting a common approach to licensing.
+IAMT members are driving this initiative, and its success depends on continued industry collaboration and a shared commitment to developing and accepting a common approach to licensing.

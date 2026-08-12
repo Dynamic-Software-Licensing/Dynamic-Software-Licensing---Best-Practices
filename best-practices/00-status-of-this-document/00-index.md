@@ -15,7 +15,7 @@ It explains what this document is, what it aims to achieve, and how it is unders
 
 ## Initiative Context
 
-This document is part of **Dynamic Software Licensing (DSL)**, an **IABM initiative** focused on modern software licensing approaches for broadcast and media workflows.
+This document is part of **Dynamic Software Licensing (DSL)**, an **IAMT initiative** focused on modern software licensing approaches for broadcast and media workflows.
 
 The best-practices document is being developed as a structured industry document that supports collaboration across manufacturers, broadcasters, media organizations, system integrators, and other stakeholders.
 

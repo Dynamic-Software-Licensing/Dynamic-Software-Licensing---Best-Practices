@@ -15,7 +15,7 @@ It explains why a new licensing approach is needed, why existing models are incr
 
 ## Initiative Context
 
-Dynamic Software Licensing (DSL) is an IABM initiative focused on modern software licensing for broadcast and media workflows.
+Dynamic Software Licensing (DSL) is an IAMT initiative focused on modern software licensing for broadcast and media workflows.
 
 This best-practices document supports a more consistent and future-ready licensing approach across manufacturers, broadcasters, media organizations, system integrators, and other stakeholders.
 
@@ -81,7 +81,7 @@ Identifies the concrete friction points that customers, system integrators, and 
 
 File: `03-dsl-initiative.md`
 
-Explains the origin, purpose, and collaborative nature of the IABM Dynamic Software Licensing initiative and who is involved.
+Explains the origin, purpose, and collaborative nature of the IAMT Dynamic Software Licensing initiative and who is involved.
 
 ### 04. Objectives and Vision
 

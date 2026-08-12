@@ -13,7 +13,7 @@ requirement themes, and ultimately to the normative requirements chapter.
 ## Method and Input Basis
 
 The workflows below are derived from:
-- team prework, in particular the Miro workshop board *IABM DSL Workflows*, which is the
+- team prework, in particular the Miro workshop board *IAMT DSL Workflows*, which is the
   primary source baseline for this section,
 - the use case classes in Section 5.3 and the requirement themes in Section 5.4,
 - the original proposal draft, which contributed the lifecycle-continuity workflows.

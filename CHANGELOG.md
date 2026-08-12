@@ -2,7 +2,7 @@
 
 All notable changes to the Dynamic Software Licensing repository should be documented in this file.
 
-This changelog is used to track the evolution of the DSL best practices as an IABM initiative, including structural, editorial, and content-related changes.
+This changelog is used to track the evolution of the DSL best practices as an IAMT initiative, including structural, editorial, and content-related changes.
 
 The format is intentionally lightweight at this stage and is primarily intended to support transparency during drafting and repository organization.
 

@@ -1,6 +1,6 @@
 # Dynamic Software Licensing
 
-An IABM initiative for modern software licensing in broadcast and media workflows.
+An IAMT initiative for modern software licensing in broadcast and media workflows.
 
 ## Document Purpose
 
