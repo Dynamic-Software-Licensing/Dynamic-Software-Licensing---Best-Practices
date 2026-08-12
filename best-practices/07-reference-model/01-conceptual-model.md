@@ -27,9 +27,14 @@ A lease is:
 - subject to renewal, reissue, and revocation
 
 A lease may have one of three types:
-1 - Fixed term up-front lease: licenses are paid for based on a start/end time (or time allowed from initializing). When time runs out the application stops
-2 - A Credit-based or Unit-consumption model where a pre-purchased pool of value is depleted based on actual usage metrics. When the pool runs out, the application stops
-3 - An Audit-based or Post-paid model that allows for elastic scaling, with periodic financial reconciliation based on peak or average usage. The applications never stops, but we get a bill for our actual usage.
+
+1. Fixed-term up-front lease: licenses are paid for based on a start/end time or on the
+  allowed runtime from initialization. When the time runs out, the application stops.
+2. Credit-based or unit-consumption model: a pre-purchased pool of value is depleted based on
+  actual usage metrics. When the pool runs out, the application stops.
+3. Audit-based or post-paid model: elastic scaling is allowed, with periodic financial
+  reconciliation based on peak or average usage. The application does not stop, but the
+  customer is billed for actual usage.
 
 ### Token
 
@@ -41,7 +46,7 @@ Dimensions are the metered attributes that define what a user is entitled to use
 
 ### Identity Evidence
 
-Identity evidence is the proof that a workload presents to establish its identity when requesting or renewing a lease. Examples include EC2 Instance Identity Documents (IID), IAM role ARNs, or Kubernetes Service Account JWTs. Identity evidence replaces traditional hardware-bound identifiers such as hostnames or MAC addresses.
+Identity evidence is the proof that a workload presents to establish its identity when requesting or renewing a lease. Examples include OpenID Connect workload tokens, SPIFFE/SVID identities, X.509 workload certificates, or platform-issued service account tokens. Identity evidence replaces traditional hardware-bound identifiers such as hostnames or MAC addresses.
 
 ### Policy
 
@@ -55,40 +60,26 @@ A work ID is a correlation identifier associated with a specific deployment or r
 
 The relationships between these concepts follow a clear hierarchy:
 
-```text
-                        ┌──────────────┐
-                        │  Entitlement │
-                        └──────┬───────┘
-                               │ authorizes
-                               │
-        ┌──────────────────────┼──────────────────────┐
-        │                      │                      │
-   ┌────▼─────┐          ┌────▼─────┐          ┌─────▼────┐
-     │Dimensions│          │  Policy  │    │License Modality│
-   └────┬─────┘          └────┬─────┘          └──────────┘
-        │ carried into        │ governs
-        │                     │
-        │    ┌────────────────▼───────────────────┐
-        │    │              Lease                  │
-        │    │                                     │
-        ├───►│  - issued from an Entitlement       │
-        │    │  - bound via Identity Evidence      │◄──── Identity Evidence
-        │    │  - correlated via Work ID           │◄──── Work ID
-        │    │  - governed by Policy               │
-        │    │  - expressed as a Token             │
-        │    └────────────────┬────────────────────┘
-        │                     │ expressed as
-        │                     │
-        │               ┌─────▼─────┐
-        └──────────────►│   Token   │
-                        │           │
-                        │ contains: │
-                        │ - dims    │
-                        │ - policy  │
-                        │ - binding │
-                        │ - expiry  │
-                        └───────────┘
+```mermaid
+flowchart TD
+    entitlement[Entitlement]
+    dimensions[Dimensions]
+    policy[Policy]
+    modality[License Modality]
+    identity[Identity Evidence]
+    workid[Work ID]
+    token[Token<br/>contains:<br/>- dims<br/>- policy<br/>- binding<br/>- expiry]
+    lease[Lease<br/>- issued from an Entitlement<br/>- bound via Identity Evidence<br/>- correlated via Work ID<br/>- governed by Policy<br/>- expressed as a Token]
 
+    entitlement -->|authorizes| dimensions
+    entitlement -->|authorizes| policy
+    entitlement -->|authorizes| modality
+    dimensions -->|carried into| lease
+    policy -->|governs| lease
+    identity -->|binds| lease
+    workid -->|correlates| lease
+    lease -->|expressed as| token
+    modality -. constrains .-> lease
 ```
 
 ## Lifecycle Summary
