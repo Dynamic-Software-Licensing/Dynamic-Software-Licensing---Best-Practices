@@ -156,7 +156,7 @@ whether proposed requirements are complete, balanced, and operationally credible
 This section defines stakeholder categories at group level.
 Section 5.2 defines role-level perspectives within and across those groups.
 
-## Drafting Notes
+## Section Positioning
 
 This section is descriptive and analytical.
 It provides context and traceability input for downstream architecture and requirement

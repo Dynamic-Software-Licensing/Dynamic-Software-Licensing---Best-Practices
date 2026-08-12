@@ -2,10 +2,10 @@
 
 ## Chapter Status
 
-- Status: Working Draft
-- Editorial maturity: outline
-- Normative readiness: not started
-- Open drafting points: yes
+- Status: Reviewed Draft
+- Editorial maturity: review-ready
+- Normative readiness: informative only
+- Open drafting points: no
 
 ## Purpose
 
@@ -78,11 +78,13 @@ Defines recurring abbreviations used throughout the best practices.
 
 This section should provide a concise and stable reference for abbreviated terms used across chapters and annexes.
 
-## Editorial Note: Drafting Order
+## Controlled Vocabulary Maintenance
 
-This chapter is intended to be completed **after** the substantive chapters (Ch 05–15).
+This chapter should be treated as the repository's controlled vocabulary baseline for the
+review draft.
 
-Controlled vocabulary should emerge from the actual content and usage patterns in the document rather than being prescribed in advance. This ensures terminology is practical, grounded in real usage, and reflects the concepts that actually matter in the best practices.
+If review feedback requires term changes, the update should be applied consistently across the
+main document, relevant annexes, and any affected schema or API descriptions.
 
 ## Relationship to Other Chapters
 
@@ -116,8 +118,10 @@ If needed, this chapter may later include:
 - cross-references into API, data model, or annex material,
 - a terminology change log if vocabulary evolves significantly over time.
 
-## Drafting Note
+## Chapter Positioning
 
-At the current stage, this chapter should primarily serve as the vocabulary anchor for the Dynamic Software Licensing best practices.
+This chapter acts as the vocabulary anchor for the full review draft and should be consulted
+whenever wording, concept naming, or cross-chapter consistency is reviewed.
 
-Its immediate purpose is to make the rest of the repository easier to organize, review, and write consistently.
+Its role is to reduce ambiguity and prevent multiple labels for the same concept across the
+document set.

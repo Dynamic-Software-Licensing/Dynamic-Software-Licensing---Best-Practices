@@ -2,10 +2,10 @@
 
 ## Chapter Status
 
-- Status: Working Draft
-- Editorial maturity: outline
-- Normative readiness: not started
-- Open drafting points: yes
+- Status: Reviewed Draft
+- Editorial maturity: developed draft
+- Normative readiness: informative only
+- Open drafting points: no
 
 ## Purpose
 

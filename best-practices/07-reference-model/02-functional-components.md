@@ -9,7 +9,7 @@ This section identifies the core services and functional building blocks that ap
 The DSL model is composed of the following functional components:
 
 | Component | Plane | Primary Responsibility |
-|---|---|---|
+| --- | --- | --- |
 | Leases Service | Control | Issue, renew, reissue, and revoke leases |
 | Entitlements Service | Control | Manage tenant entitlements, quotas, and policy |
 | Keys / JWKS Service | Control | Manage signing keys and publish public keys |

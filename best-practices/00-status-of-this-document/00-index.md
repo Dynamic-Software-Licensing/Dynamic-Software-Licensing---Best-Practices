@@ -2,10 +2,10 @@
 
 ## Chapter Status
 
-- Status: Working Draft
-- Editorial maturity: outline
-- Normative readiness: not started
-- Open drafting points: yes
+- Status: Reviewed Draft
+- Editorial maturity: review-ready
+- Normative readiness: informative only
+- Open drafting points: no
 
 ## Purpose
 
@@ -36,14 +36,14 @@ The best-practices document is intended to:
 
 ## Current Maturity
 
-Current maturity: **Working Draft**
+Current maturity: **Reviewed Draft**
 
 At this stage, this means:
-- the document structure is being established,
-- chapter boundaries are being defined,
-- terminology is still being aligned,
-- requirement language is still provisional,
-- some chapters may still contain placeholders or editorial guidance.
+- the document structure is broadly stable,
+- all main chapters are present and reviewable,
+- terminology and cross-chapter framing have been aligned to a common baseline,
+- normative material exists but still requires final group feedback before publication,
+- the repository is ready for structured review comments ahead of release preparation.
 
 ## Unified Status Model
 
@@ -86,9 +86,9 @@ Recommended format:
 ## How This Draft Should Be Interpreted
 
 This draft should currently be interpreted as:
-- an editorial working basis,
-- a structured collaboration framework,
-- a repository-level draft rather than a publication-ready best practices.
+- the official review baseline for the current group-comment cycle,
+- a structured and coherent best-practices draft,
+- a pre-publication document that is mature enough for targeted editorial and technical review.
 
 Unless explicitly stated otherwise, examples, implementation references, and platform-specific content should not be interpreted as mandatory requirements.
 
@@ -142,12 +142,11 @@ If this area becomes more detailed over time, it may later include subchapters f
 - versioning and change control,
 - publication criteria.
 
-## Drafting Note
+## Review Draft Baseline
 
-At the current stage, this chapter is primarily intended to guide contributors and reviewers.
+This chapter defines the status interpretation for the review draft issued for group comment.
 
-Its role is to make clear:
-- what kind of document this is,
-- what level of authority it currently has,
-- how it should be read,
-- how it is expected to evolve.
+For this review round, the best practices should be read as a coherent, commentable document
+rather than as an internal drafting scaffold. Remaining changes before publication should
+focus on reviewer feedback, wording precision, traceability, and final consistency rather
+than on reopening the overall document structure.

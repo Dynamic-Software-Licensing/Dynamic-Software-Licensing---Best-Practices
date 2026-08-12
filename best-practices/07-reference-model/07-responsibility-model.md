@@ -9,7 +9,7 @@ This section defines which participant or component is responsible for which asp
 The DSL model involves the following participants:
 
 | Participant | Role |
-|---|---|
+| --- | --- |
 | Independent Software Vendor (ISV) | Produces the licensed application; defines entitlement catalogs, dimensions, pricing, and default policies |
 | Customer | Consumes the licensed application; manages workloads, monitors usage, and controls spend |
 | System Integrator (SI) | Deploys and integrates licensed applications on behalf of customers; automates licensing via IaC |
@@ -21,7 +21,7 @@ The DSL model involves the following participants:
 ### Entitlement Lifecycle
 
 | Responsibility | ISV | Customer | SI | Control Plane |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Define product catalog and dimensions | Owns | | | |
 | Define pricing and modalities | Owns | | | |
 | Define default policies (grace, renewal, exhaustion) | Owns | | | |
@@ -33,7 +33,7 @@ The DSL model involves the following participants:
 ### Lease Lifecycle
 
 | Responsibility | License Agent | Control Plane | Application/SDK | Customer/Ops | SI |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | Collect identity evidence | Owns | | | | |
 | Request lease (ISSUE) | Initiates | Validates and issues | | | |
 | Deliver token to application | Delivers | | Receives | | |
@@ -47,7 +47,7 @@ The DSL model involves the following participants:
 ### Usage and Metering
 
 | Responsibility | License Agent | Control Plane | Customer | ISV | SI |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | Collect usage events | Owns | | | | |
 | Buffer usage during connectivity loss | Owns | | | | |
 | Submit usage records | Submits | Receives and stores | | | |
@@ -59,7 +59,7 @@ The DSL model involves the following participants:
 ### Security and Trust
 
 | Responsibility | Control Plane | License Agent | Application/SDK | ISV | Customer | SI |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | Manage signing keys | Owns | | | | | |
 | Sign lease tokens | Owns | | | | | |
 | Publish JWKS public keys | Owns | | | | | |
@@ -75,7 +75,7 @@ The DSL model involves the following participants:
 ### Deployment and Integration
 
 | Responsibility | ISV | SI | Customer | Control Plane |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Provide IaC modules (Terraform/CFN) | Provides | Extends and customizes | | |
 | Include licensing in deployment automation | | Integrates | Integrates (if self-deploying) | |
 | Provide license agent binaries/packages | Provides | Distributes to customer environments | | |
@@ -89,7 +89,7 @@ The DSL model involves the following participants:
 ### End User Portal
 
 | Responsibility | Control Plane | Customer | ISV | SI |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | Provide portal interface | Provides (or ISV) | | Provides (or shared) | |
 | View license status and usage | | Views | Views | Views (on behalf of customer) |
 | Force-release stuck licenses | | Executes | | Executes (on behalf of customer) |
@@ -160,7 +160,7 @@ The control plane is not responsible for:
 Some responsibilities are shared between participants:
 
 | Area | Shared Between | Nature of Sharing |
-|---|---|---|
+| --- | --- | --- |
 | Policy definition | ISV + Customer (+ SI as advisor) | Vendor sets defaults; customer may request overrides; SI advises on appropriate settings |
 | Entitlement provisioning | ISV + Customer + SI | Any party may initiate depending on the commercial relationship |
 | Deployment automation | ISV + SI + Customer | Vendor provides modules; SI integrates and customizes; customer may self-integrate |

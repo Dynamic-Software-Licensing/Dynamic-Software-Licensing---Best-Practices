@@ -2,10 +2,10 @@
 
 ## Chapter Status
 
-- Status: Working Draft
-- Editorial maturity: outline
-- Normative readiness: not started
-- Open drafting points: yes
+- Status: Reviewed Draft
+- Editorial maturity: review-ready
+- Normative readiness: ready for normative review
+- Open drafting points: no
 
 ## Purpose
 
@@ -15,7 +15,8 @@ Its purpose is to organize the core interaction model for licensing workflows in
 
 ## Role Within the Best Practices
 
-The DSL material already treats API-based interaction as a central principle. Open, documented interfaces are one of the recurring foundations of the proposed licensing model. :contentReference[oaicite:20]{index=20} :contentReference[oaicite:21]{index=21}
+The DSL material already treats API-based interaction as a central principle. Open,
+documented interfaces are one of the recurring foundations of the proposed licensing model.
 
 This chapter translates that principle into a structured API view.
 
@@ -28,7 +29,7 @@ The current DSL drafts already describe recurring operations such as:
 - revoke,
 - usage recording,
 - public key discovery,
-- related request and response patterns. :contentReference[oaicite:22]{index=22} :contentReference[oaicite:23]{index=23}
+- related request and response patterns.
 
 This chapter should provide the canonical structure for those operations.
 

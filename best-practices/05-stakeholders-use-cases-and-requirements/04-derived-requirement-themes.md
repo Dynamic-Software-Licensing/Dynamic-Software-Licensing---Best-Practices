@@ -368,7 +368,7 @@ records the primary mapping; a theme may also contribute secondarily to other gr
 | T9 Continuity Under Failure and Grace Behavior | Lease and Policy |
 | T10 Interoperability and Anti-Fragmentation | General; Integration |
 
-## Drafting Notes
+## Section Positioning
 
 This section is descriptive and analytical. It consolidates needs into themes and traces them
 forward; it does not state normative requirements, does not use normative keywords as
@@ -376,12 +376,8 @@ requirement language, and does not define API-level or schema-level behavior. Th
 requirements chapter is the place where these themes become disciplined, testable
 requirements.
 
-## Drafting To-Do
+## Review Focus
 
-The following items should be considered in later drafting iterations:
-- confirm the forward-traceability mapping against the final subchapter structure of the
-  normative requirements chapter,
-- verify that every persona success criterion in Section 5.2 is represented by at least one
-  theme,
-- consider whether the theme tensions warrant a dedicated trade-off discussion in the design
-  principles chapter.
+Review comments on this section should focus on whether the theme set is complete, whether the
+traceability into the normative requirements chapter is credible, and whether any important
+cross-theme tensions still need to be surfaced more explicitly.

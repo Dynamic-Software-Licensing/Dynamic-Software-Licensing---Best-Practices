@@ -73,7 +73,7 @@ Trust in the workspace plane is bounded by:
 Identity evidence is the mechanism by which a workload proves its identity to the control plane. The DSL model supports multiple forms of identity evidence depending on the runtime environment:
 
 | Environment | Identity Evidence | Verification |
-|---|---|---|
+| --- | --- | --- |
 | Cloud VM (e.g., EC2) | Instance Identity Document (IID) + PKCS7 signature | Control plane verifies the IID signature against the cloud provider's public key |
 | Kubernetes | Service Account JWT | Control plane validates the JWT against the cluster's OIDC issuer |
 | On-premises | Platform certificate or custom identity token | Control plane validates against a pre-registered trust anchor |
@@ -142,7 +142,7 @@ The `offlineGraceSeconds` value may be configured as either:
 The choice between fixed and function-based grace periods is a vendor policy decision. The following guidelines apply:
 
 | Consideration | Guidance |
-|---|---|
+| --- | --- |
 | Short-lived workloads (event-driven, serverless) | Shorter grace periods (minutes) are appropriate; the workload can restart quickly |
 | Long-running production chains (live broadcast) | Longer grace periods (30–60 minutes) protect against transient network issues |
 | High-value workloads | Grace periods should be long enough to allow human investigation before disruption |
@@ -163,7 +163,7 @@ Vendors SHOULD document their grace period defaults and whether tenant overrides
 The DSL model involves multiple organizational participants, each with different trust relationships:
 
 | Relationship | Trust Mechanism |
-|---|---|
+| --- | --- |
 | Customer → Control Plane | Authentication (IAM/OIDC), TLS, audit trails |
 | Control Plane → Workload | Identity evidence verification at issuance and renewal |
 | Workload → Token | Cryptographic signature validation |

@@ -2,10 +2,10 @@
 
 ## Chapter Status
 
-- Status: Working Draft
-- Editorial maturity: outline
-- Normative readiness: not started
-- Open drafting points: yes
+- Status: Reviewed Draft
+- Editorial maturity: review-ready
+- Normative readiness: partially normative
+- Open drafting points: no
 
 ## Purpose
 
@@ -88,14 +88,20 @@ If needed, this chapter may later be expanded into subchapters such as:
 - terminology usage conventions,
 - guidance for chapter authors and reviewers.
 
-## Drafting Note
+## Chapter Positioning
 
-At the current stage, this chapter is primarily intended to create consistency across the repository.
+This chapter provides the interpretation rules that make the rest of the review draft
+readable and reviewable in a consistent way.
 
-Its role is to stabilize interpretation early, before the detailed chapters on terminology, architecture, conformance, requirements, API behavior, and security become more mature.
+It should be used as the reference point for distinguishing informative text from normative
+intent, for controlling keyword usage, and for deciding when material belongs in the main
+document versus an annex.
 
-## Editorial Note: Drafting Order
+## Editorial Note: Review Use
 
-This chapter is intended to be completed **after** the substantive chapters (Ch 05–15).
+During review, this chapter should be used to assess whether wording strength, classification,
+and terminology discipline are applied consistently across the repository.
 
-Conventions and writing patterns should be derived from actual practice rather than prescribed in advance. This ensures the conventions are practical, grounded in the document's actual content, and reflect how the best practices naturally develop.
+Where reviewers identify ambiguous use of **MUST**, **SHOULD**, **MAY**, or unclear separation
+between informative and normative material, those comments should be resolved against the
+rules defined here.

@@ -13,7 +13,7 @@ For contribution mechanics (branch, PR, git commands), see [CONTRIBUTING.md](CON
 ## Roles in the Team
 
 | Role | Primary responsibility |
-|---|---|
+| --- | --- |
 | Manager | Milestone planning, priority, delivery tracking |
 | Editor | Content decisions, status confirmation, merge approval |
 | Owner / Contributor | Content creation, branch work, PR |
@@ -26,7 +26,7 @@ The Manager and Editor role may be combined in one person.
 ## GitHub Objects and Their Purpose
 
 | Object | Purpose |
-|---|---|
+| --- | --- |
 | Milestone | Time-bounded delivery goal with scope and deadline |
 | Issue | One work item with scope, owner, acceptance criteria |
 | Branch | Working context for one issue |
@@ -48,7 +48,7 @@ The team uses a GitHub Project as the central tracking board.
 ### Recommended Fields
 
 | Field | Type | Purpose |
-|---|---|---|
+| --- | --- | --- |
 | Status | Single select | Workflow stage |
 | Chapter | Text | Affected chapter number |
 | Type | Single select | Editorial / Terminology / Informative / Normative / Structural |
@@ -63,7 +63,7 @@ The team uses a GitHub Project as the central tracking board.
 ### Status Values
 
 | Status | Meaning |
-|---|---|
+| --- | --- |
 | Backlog | Identified but not yet planned |
 | Ready | Issue defined, roles assigned, DoR met |
 | Drafting | Active work in branch + Draft PR |
@@ -178,7 +178,7 @@ Set Project status to `Review`.
 After review is complete, the Editor decides:
 
 | Decision | Action |
-|---|---|
+| --- | --- |
 | Merge | PR is merged to `main`, issue closes automatically |
 | Rework | PR returns to `Drafting`, Owner is notified |
 | Defer | Item is moved to next milestone; Project status to `Deferred` |
@@ -231,7 +231,7 @@ A work item is done when:
 Small, focused PRs lead to better review quality and render correctly as rich diffs in GitHub.
 
 | Guideline | Rationale |
-|---|---|
+| --- | --- |
 | One issue topic per PR | Keeps scope clear |
 | Separate structural and content changes | Structure first, then detail |
 | Avoid large table or list rebuilds in a single PR | GitHub rich diff breaks on large table changes |
@@ -286,7 +286,7 @@ All escalation decisions are documented briefly in the PR or issue.
 **End date:** 28 March 2026
 
 | Issue | Owner | Reviewer | Editor | Deadline |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | 09.01 General Requirements structure | TBD | TBD | TBD | 20 Mar |
 | 09.02 Identity and binding section cleanup | TBD | TBD | TBD | 24 Mar |
 | 09.03 Lease and policy boundary sharpening | TBD | TBD | TBD | 28 Mar |

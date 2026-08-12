@@ -2,10 +2,10 @@
 
 ## Chapter Status
 
-- Status: Working Draft
-- Editorial maturity: outline
-- Normative readiness: not started
-- Open drafting points: yes
+- Status: Reviewed Draft
+- Editorial maturity: developed draft
+- Normative readiness: informative only
+- Open drafting points: no
 
 ## Purpose
 
@@ -33,7 +33,7 @@ The current DSL drafts already refer to recurring objects and structured concept
 - usage events,
 - identity evidence,
 - token claims,
-- license envelope. :contentReference[oaicite:24]{index=24} :contentReference[oaicite:25]{index=25} :contentReference[oaicite:26]{index=26}
+- license envelope.
 
 This chapter should organize those objects coherently.
 
@@ -113,8 +113,9 @@ If needed, this chapter may later include:
 - schema references,
 - normative constraints on object fields.
 
-## Drafting Note
+## Chapter Positioning
 
-At the current stage, this chapter should serve as the data-model anchor of the DSL best practices.
+This chapter serves as the shared data-model anchor for the review draft.
 
-Its immediate purpose is to provide a stable structural home for the main object types used throughout the repository.
+It should be reviewed for consistency of object boundaries, naming, and alignment with the
+canonical API model, schemas, and security assumptions.

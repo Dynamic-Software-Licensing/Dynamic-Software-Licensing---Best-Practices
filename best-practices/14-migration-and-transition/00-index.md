@@ -2,10 +2,10 @@
 
 ## Chapter Status
 
-- Status: Working Draft
-- Editorial maturity: outline
-- Normative readiness: not started
-- Open drafting points: yes
+- Status: Reviewed Draft
+- Editorial maturity: developed draft
+- Normative readiness: informative only
+- Open drafting points: no
 
 ## Purpose
 
@@ -17,7 +17,9 @@ Its purpose is to describe how organizations can move from legacy licensing appr
 
 The DSL initiative is not only about defining a future target model. It must also support the path from current reality to that model.
 
-The existing best practices material already describes migration as a phased transformation rather than a one-step replacement, including analysis, pilot operation, technical transformation, business logic expansion, decommissioning, and scaling. :contentReference[oaicite:35]{index=35} :contentReference[oaicite:36]{index=36}
+The existing best practices material already describes migration as a phased transformation
+rather than a one-step replacement, including analysis, pilot operation, technical
+transformation, business logic expansion, decommissioning, and scaling.
 
 This chapter provides the structural home for that transition logic.
 
@@ -94,8 +96,9 @@ If needed, this chapter may later include:
 - dependency tables,
 - transition risks and mitigation patterns.
 
-## Drafting Note
+## Chapter Positioning
 
-At the current stage, this chapter should provide the transformation roadmap structure of the DSL best practices.
+This chapter provides the transformation roadmap perspective for the review draft.
 
-Its immediate purpose is to show that The best-practices document is intended to be adoptable, not only aspirational.
+Its role in review is to test whether the DSL target model is not only desirable, but also
+adoptable through realistic staged transition.

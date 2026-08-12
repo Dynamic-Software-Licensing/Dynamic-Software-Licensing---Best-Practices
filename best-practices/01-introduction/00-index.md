@@ -2,10 +2,10 @@
 
 ## Chapter Status
 
-- Status: Working Draft
-- Editorial maturity: outline
-- Normative readiness: not started
-- Open drafting points: yes
+- Status: Reviewed Draft
+- Editorial maturity: developed draft
+- Normative readiness: informative only
+- Open drafting points: no
 
 ## Purpose
 
@@ -89,8 +89,11 @@ File: `04-objectives-and-vision.md`
 
 Defines what the DSL best practices aim to achieve and describes the target vision and core principles underpinning the framework.
 
-## Drafting Note
+## Chapter Positioning
 
-At the current stage, this chapter serves as contextual framing. Subchapter content is to be authored in subsequent drafting sprints.
+This chapter provides the common entry point for readers and reviewers by framing the
+industry problem, the motivation for DSL, and the overall objective of the best practices.
 
-Its purpose is to help contributors and reviewers understand why the best practices exist before moving into scope, terminology, architecture, and requirements.
+It should be read as the rationale layer for the document rather than as a requirement
+chapter. Its role in the review draft is to ensure that later technical and normative
+chapters are interpreted against the right industry context.

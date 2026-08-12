@@ -6,6 +6,20 @@ This changelog is used to track the evolution of the DSL best practices as an IA
 
 The format is intentionally lightweight at this stage and is primarily intended to support transparency during drafting and repository organization.
 
+## [0.2.0-review-draft] - 2026-08-12
+
+### Changed
+
+- Promoted the main best-practices document from Working Draft to Reviewed Draft status
+- Aligned chapter-level status blocks and the central chapter status overview with the current maturity baseline
+- Reworked the Governance and Future Work chapter into a substantive closing chapter for the review draft
+
+### Clarified
+
+- Established the current repository baseline as the official review draft for group comment
+- Removed visible drafting markers, outdated editorial scaffolding, and transient citation artifacts from the main text
+- Clarified the review role of core framing chapters, including status, conventions, terminology, conformance, migration, and operational profiles
+
 ## Change Categories
 
 The following categories should be used where applicable:
@@ -48,13 +62,3 @@ Content, files, or structures that have been deleted from the repository.
 - Repository purpose as a working draft for the Dynamic Software Licensing initiative
 - Editorial positioning as industry best practices with standard-like structure
 - Separation between main best practices content and annex material
-
-## Drafting Note
-
-At the current stage, the changelog should focus on:
-- repository structure,
-- chapter organization,
-- editorial positioning,
-- major drafting milestones.
-
-Detailed requirement-level or wording-level changes can be tracked later once the best practices content becomes more mature.

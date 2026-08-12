@@ -4,7 +4,7 @@
 
 ## Purpose
 
-This repository contains the working draft of an IABM industry best practices document for software-based, dynamic software licensing in broadcast and media workflows.
+This repository contains the reviewed draft of an IABM industry best practices document for software-based, dynamic software licensing in broadcast and media workflows.
 
 The best-practices document is not a formal standard. It is deliberately structured in a standard-like way to support alignment across manufacturers, operators, system integrators, and industry stakeholders.
 
@@ -21,7 +21,7 @@ This repository does **not** yet represent a final published best-practices docu
 ## Document Structure
 
 | Area | Purpose |
-|---|---|
+| --- | --- |
 | `best-practices/` | Core best practices chapters |
 | `annexes/normative/` | Normative annexes required for consistent interpretation |
 | `annexes/informative/` | Examples, mappings, FAQs, reference architectures |
@@ -50,6 +50,6 @@ This repository does **not** yet represent a final published best-practices docu
 
 ## Current Status
 
-Repository status: **Working Draft**
+Repository status: **Reviewed Draft**
 
-All chapters are in working draft state. See [best-practices/index.md](best-practices/index.md) for chapter-level status.
+The main document is now organized as a complete review draft for group comment ahead of the planned end-of-August release. See [best-practices/index.md](best-practices/index.md) for chapter-level status.

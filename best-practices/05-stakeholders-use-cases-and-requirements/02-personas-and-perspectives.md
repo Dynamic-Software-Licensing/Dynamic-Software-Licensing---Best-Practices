@@ -390,7 +390,7 @@ This section informs:
 The intent is explicit traceability from stakeholder groups (Section 5.1), to role-level
 perspectives (Section 5.2), to scenario and workflow structure (Sections 5.3 to 5.5).
 
-## Drafting Notes
+## Section Positioning
 
 This section is descriptive and analytical.
 It does not prescribe normative requirement language; it captures role-level viewpoints

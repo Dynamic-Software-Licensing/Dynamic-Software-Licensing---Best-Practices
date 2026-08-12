@@ -3,10 +3,10 @@
 
 ## Chapter Status
 
-- Status: Working Draft
-- Editorial maturity: outline
-- Normative readiness: not started
-- Open drafting points: yes
+- Status: Reviewed Draft
+- Editorial maturity: developed draft
+- Normative readiness: informative only
+- Open drafting points: no
 
 ## Purpose
 
@@ -23,7 +23,7 @@ This chapter provides the structure for expressing how the licensing model shoul
 - event-driven production,
 - temporary or test environments,
 - hybrid or DR-focused environments,
-- value-oriented or AI-enabled scenarios. :contentReference[oaicite:33]{index=33} :contentReference[oaicite:34]{index=34}
+- value-oriented or AI-enabled scenarios.
 
 ## Scope of This Chapter
 
@@ -93,8 +93,9 @@ If needed, this chapter may later include:
 - example deployment characteristics,
 - links to migration and conformance guidance.
 
-## Drafting Note
+## Chapter Positioning
 
-At the current stage, this chapter should provide the operational interpretation layer of the DSL best practices.
+This chapter provides the operational interpretation layer for the review draft.
 
-Its immediate purpose is to help the team think in terms of real deployment modes rather than a single abstract target environment.
+It should be reviewed as the link between abstract architecture and real deployment modes,
+especially where continuity, resilience, metering, and commercial behavior differ by profile.

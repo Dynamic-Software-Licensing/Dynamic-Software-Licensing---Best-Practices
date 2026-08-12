@@ -2,10 +2,10 @@
 
 ## Chapter Status
 
-- Status: Working Draft
-- Editorial maturity: outline
-- Normative readiness: not started
-- Open drafting points: yes
+- Status: Reviewed Draft
+- Editorial maturity: developed draft
+- Normative readiness: informative only
+- Open drafting points: no
 
 ## Purpose
 
@@ -23,26 +23,70 @@ This chapter provides the structural home for those topics.
 
 ## Scope of This Chapter
 
-This chapter is intended to capture:
-- governance-related considerations,
-- future development themes,
-- open questions,
-- areas requiring further alignment,
-- possible next steps for broader industry adoption.
+This chapter captures:
+- governance-related considerations for maintaining the best practices,
+- future development themes that are already visible from the current draft,
+- areas where additional industry alignment is expected,
+- next-step priorities for post-review refinement and publication.
 
 It should not duplicate repository governance files, but it should explain how governance and evolution relate to the best practices itself.
 
-## Possible Topic Areas
+## Governance of the Best Practices
 
-This chapter may address areas such as:
-- future refinement of chapter content,
-- terminology stabilization,
-- conformance evolution,
-- annex expansion,
-- interoperability work,
-- testability and validation approaches,
-- alignment with additional industry stakeholders or bodies,
-- future publication and maintenance models.
+The DSL best practices should be governed as a controlled, reviewable industry document.
+That governance should ensure that future revisions remain coherent across terminology,
+architecture, requirements, annexes, and schemas.
+
+The governance model for the document should follow these principles:
+- editorial decisions remain explicit and traceable,
+- terminology changes are treated as controlled vocabulary changes,
+- normative changes are reviewed for cross-chapter impact before acceptance,
+- annex growth remains aligned with the main document rather than becoming a parallel specification,
+- publication updates are versioned and documented.
+
+This chapter complements the operational governance files in the repository root by
+describing the governance expectations of the best-practices text itself.
+
+## Post-Review Priorities
+
+The current review draft already establishes the main document structure and a substantial
+content baseline. The next priorities after group review should be:
+- resolve cross-chapter terminology adjustments identified during review,
+- tighten requirement wording where informative text must become more disciplined,
+- confirm traceability between use cases, requirement themes, workflows, and normative requirements,
+- align conformance, API, data model, and security chapters on shared interpretation points,
+- verify that annex content remains supportive and does not conflict with the main text.
+
+These priorities are intended to convert review feedback into a stable publication baseline
+rather than to reopen the document scope.
+
+## Expected Areas of Future Development
+
+Several themes are likely to require further development after the review cycle:
+
+### Conformance and Validation Evolution
+
+The current best practices establishes conformance structure and profiles, but future
+iterations may expand practical validation approaches, implementation evidence, and
+profile-oriented assessment guidance.
+
+### Interoperability and Ecosystem Alignment
+
+As more stakeholders review and apply the DSL model, additional interoperability questions
+are likely to emerge around API conventions, identity evidence, token handling, policy
+expression, and operational handoff between vendors and operators.
+
+### Migration and Adoption Guidance
+
+Migration will remain an area of ongoing refinement. Later revisions may provide more
+explicit transition patterns, readiness indicators, and practical adoption sequencing for
+different organizational starting points.
+
+### Annex and Schema Expansion
+
+Future revisions may expand supporting annexes and machine-readable artifacts where that
+improves consistency, testability, or implementation clarity. Such additions should remain
+subordinate to the main document and should only be introduced where they reduce ambiguity.
 
 ## Relationship to Other Chapters
 
@@ -55,25 +99,37 @@ This chapter is closely related to:
 
 It provides the long-term orientation layer of the best practices.
 
-## Editorial Guidance
+## Review and Publication Path
 
-At the current stage, contributors should focus on:
-- keeping this chapter strategic,
-- identifying open areas without overcommitting,
-- distinguishing best practices governance from repository mechanics,
-- documenting future themes in a structured and useful way.
+The current document state is intended to support formal group review.
+That review should be used to:
+- confirm that the document structure is complete,
+- identify wording improvements and consistency fixes,
+- surface remaining editorial ambiguities,
+- validate whether the maturity claim should advance toward publication readiness.
 
-## Possible Future Expansion
+Following review, the publication path should proceed in a controlled sequence:
+- incorporate accepted comments,
+- confirm status updates at chapter and repository level,
+- publish a release candidate baseline for final editorial approval,
+- publish the agreed best-practices release with versioned change documentation.
 
-If needed, this chapter may later include:
-- change themes for future versions,
-- identified open technical questions,
-- future annex candidates,
-- collaboration and review pathways,
-- long-term maintenance considerations.
+## Maintenance Expectations
 
-## Drafting Note
+Once published, the best practices should remain maintainable through versioned updates rather
+than ad hoc edits. Proposed changes should be evaluated according to their impact on:
+- terminology stability,
+- normative interpretation,
+- interoperability expectations,
+- annex and schema consistency,
+- migration guidance and operational applicability.
 
-At the current stage, this chapter should serve as the forward-looking closing chapter of the DSL best practices.
+This allows the DSL initiative to evolve responsibly while preserving a stable baseline for
+industry adoption.
 
-Its immediate purpose is to show that The best-practices document is intended to remain evolvable, reviewable, and expandable as the Dynamic Software Licensing initiative matures.
+## Chapter Positioning
+
+This chapter closes the main body of the DSL best practices by linking the current review
+baseline to its future maintenance and publication lifecycle. It makes clear that the
+document is intended to become stable enough for adoption while remaining governed,
+versioned, and improvable over time.

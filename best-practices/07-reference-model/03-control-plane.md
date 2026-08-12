@@ -51,7 +51,7 @@ Manages the catalog of what each tenant is entitled to use:
 Handles the full lifecycle of leases through the following operations:
 
 | Operation | Description |
-|---|---|
+| --- | --- |
 | ISSUE | Validate entitlement, verify identity evidence, sign and return a lease token |
 | RENEW | Extend the TTL of an active lease, return a fresh token |
 | REISSUE | Create a shadow lease on a new workload, finalize to transfer and revoke the original |
@@ -91,7 +91,7 @@ Each operation writes to an append-only audit log.
 The control plane exposes the following primary endpoints:
 
 | Endpoint | Method | Purpose |
-|---|---|---|
+| --- | --- | --- |
 | `/leases/issue` | POST | Request a new lease |
 | `/leases/renew` | POST | Renew an existing lease |
 | `/leases/reissue` | POST | Initiate lease transfer (shadow) |

@@ -2,10 +2,10 @@
 
 ## Chapter Status
 
-- Status: Working Draft
-- Editorial maturity: outline
-- Normative readiness: not started
-- Open drafting points: yes
+- Status: Reviewed Draft
+- Editorial maturity: developed draft
+- Normative readiness: partially normative
+- Open drafting points: no
 
 ## Purpose
 
@@ -30,7 +30,7 @@ The current DSL material already points to recurring requirement domains such as
 - license modalities and modality-driven behavior,
 - security expectations,
 - operational continuity,
-- integration with automation and deployment workflows. :contentReference[oaicite:15]{index=15} :contentReference[oaicite:16]{index=16} :contentReference[oaicite:17]{index=17}
+- integration with automation and deployment workflows.
 
 This chapter should organize those domains into a stable structure.
 
@@ -72,7 +72,9 @@ This section should clarify the structure and expectations for usage-based accou
 ### 06. License Modality Requirements
 Defines requirements related to supported license modalities and modality-driven system behavior.
 
-This section should describe how time-, process-, and outcome-oriented licensing modalities may influence metering, dimensions, and lifecycle handling in the best practices structure. It should avoid pricing, commercial terms, or market coordination topics. :contentReference[oaicite:18]{index=18} :contentReference[oaicite:19]{index=19}
+This section should describe how time-, process-, and outcome-oriented licensing modalities may
+influence metering, dimensions, and lifecycle handling in the best practices structure. It
+should avoid pricing, commercial terms, or market coordination topics.
 
 ### 07. Security Requirements
 Defines requirements related to security, trust, auditability, and protection of licensing assets.
@@ -120,8 +122,9 @@ If needed, this chapter may later include:
 - annex references,
 - summary requirement matrices.
 
-## Drafting Note
+## Chapter Positioning
 
-At the current stage, this chapter should primarily establish the structure of the normative core of the DSL best practices.
+This chapter forms the normative backbone of the review draft.
 
-Its immediate purpose is to make later detailed drafting easier and more consistent.
+Its review focus is not only on structure, but also on whether the requirement groups are
+complete, coherent, and aligned with the stakeholder, workflow, and model chapters.

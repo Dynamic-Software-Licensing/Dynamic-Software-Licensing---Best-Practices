@@ -637,19 +637,14 @@ chapter-internal bridge intended to support derivation of normative requirements
 - Implementation-specific realizations (for example particular authentication flows or
   reference architectures) belong in the informative annexes.
 
-## Drafting Notes
+## Section Positioning
 
 This section is descriptive and analytical. It defines workflow patterns at the "what, not
 how" level established in the prework. It does not prescribe normative requirement language
 and does not contain API-level or schema-level detail; both are out of scope for this section.
 
-## Drafting To-Do
+## Review Focus
 
-The following items should be considered in later drafting iterations:
-- confirm that Group A remains faithful to the Miro board as it evolves,
-- review whether any Group B workflow should be promoted, split, or merged once the canonical
-  API model stabilizes,
-- add explicit cross-references from each workflow to the specific normative requirements once
-  the normative requirements chapter assigns identifiers,
-- consider lightweight diagrams for the most-referenced workflows (activation, failover
-  reissue, grace and offline continuity).
+Review comments on this section should focus on workflow completeness, clarity of actors and
+failure paths, and whether the workflow set is sufficient to support later requirement,
+reference-model, and API decisions.

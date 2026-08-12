@@ -89,7 +89,7 @@ Status is used at two levels: repository maturity and chapter-level drafting sta
 ### Repository Maturity
 
 | Value | Meaning |
-|---|---|
+| --- | --- |
 | Working Draft | Structure and content are still evolving. |
 | Reviewed Draft | Structure is broadly stable; key sections have been reviewed. |
 | Candidate Best Practices | Technically and editorially mature enough for final validation. |
@@ -102,7 +102,7 @@ Each chapter `00-index.md` must contain a `## Chapter Status` section with the f
 **Status**
 
 | Value | Meaning |
-|---|---|
+| --- | --- |
 | Working Draft | Chapter structure or content is still actively changing. |
 | Reviewed Draft | Chapter has been reviewed and is broadly stable. |
 | Candidate Best Practices Text | Chapter content is considered ready for final best practices. |
@@ -111,7 +111,7 @@ Each chapter `00-index.md` must contain a `## Chapter Status` section with the f
 **Editorial maturity**
 
 | Value | Meaning |
-|---|---|
+| --- | --- |
 | outline | Structure exists; substantive drafting has not started. |
 | partial draft | First substantive content exists; significant sections are still incomplete. |
 | developed draft | Substantial draft content exists across planned sections. |
@@ -120,7 +120,7 @@ Each chapter `00-index.md` must contain a `## Chapter Status` section with the f
 **Normative readiness**
 
 | Value | Meaning |
-|---|---|
+| --- | --- |
 | not started | No normative-level text has been drafted. |
 | informative only | Chapter provides context or explanation only. |
 | partially normative | Some normative intent or requirement language is present. |
@@ -129,7 +129,7 @@ Each chapter `00-index.md` must contain a `## Chapter Status` section with the f
 **Open drafting points**
 
 | Value |
-|---|
+| --- |
 | yes |
 | no |
 
@@ -160,7 +160,7 @@ Contributors indicate status intent in the pull request. Editors confirm reposit
 ## Change Categories
 
 | Category | Meaning |
-|---|---|
+| --- | --- |
 | Editorial | Wording, clarity, grammar, formatting without meaning change. |
 | Terminology | Introduction, removal, rename, or redefinition of controlled terms. |
 | Informative | Examples, mappings, annexes, FAQs, platform-specific content. |
@@ -229,7 +229,7 @@ The repository currently uses a simplified workflow model.
 These checks run automatically on pull requests and are intended to stay lightweight:
 
 | Check | Trigger | Scope |
-|---|---|---|
+| --- | --- | --- |
 | Branch name validation | PR opened | Enforces branch naming convention |
 | PR basics validation | PR opened / edited | Rejects empty or trivial PR descriptions |
 | Markdown lint | PR + push to `main` | Checks `.md` formatting |
@@ -239,7 +239,7 @@ These checks run automatically on pull requests and are intended to stay lightwe
 These workflows are available but not automatically enforced:
 
 | Check | Trigger | Scope |
-|---|---|---|
+| --- | --- | --- |
 | Chapter status field validation | Manual (`workflow_dispatch`) | Validates allowed status values |
 | Status table update | Manual (`workflow_dispatch`) | Regenerates `best-practices/index.md` table |
 | Draft PR creation | Manual (`workflow_dispatch`) | Creates Draft PR for current branch |

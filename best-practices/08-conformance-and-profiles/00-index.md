@@ -2,10 +2,10 @@
 
 ## Chapter Status
 
-- Status: Working Draft
-- Editorial maturity: outline
-- Normative readiness: not started
-- Open drafting points: yes
+- Status: Reviewed Draft
+- Editorial maturity: developed draft
+- Normative readiness: informative only
+- Open drafting points: no
 
 ## Purpose
 
@@ -25,7 +25,9 @@ This chapter helps by introducing a structured view of:
 
 ## Basis for This Chapter
 
-The current DSL material already points toward different access patterns and maturity levels, including varying support for documented processes, custom integrations, standard process models, CLI/API usage, and self-service capabilities. :contentReference[oaicite:13]{index=13} :contentReference[oaicite:14]{index=14}
+The current DSL material already points toward different access patterns and maturity levels,
+including varying support for documented processes, custom integrations, standard process
+models, CLI or API usage, and self-service capabilities.
 
 This chapter should provide the structure for those ideas.
 
@@ -94,8 +96,10 @@ If needed, this chapter may later include:
 - mapping from profiles to requirement sets,
 - migration guidance between profiles.
 
-## Drafting Note
+## Chapter Positioning
 
-At the current stage, this chapter should primarily provide a scaffolding for how the best practices can be adopted at different levels.
+This chapter provides the adoption and interpretation framework for implementations at
+different levels of maturity and interoperability.
 
-Its immediate purpose is to help the DSL initiative balance ambition with practical implementability.
+For review purposes, it should be assessed as the bridge between architectural intent,
+requirement depth, and practical implementation profiles.

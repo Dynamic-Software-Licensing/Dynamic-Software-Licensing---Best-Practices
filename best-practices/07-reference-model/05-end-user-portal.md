@@ -42,7 +42,7 @@ Data is sourced from the control plane's lease and entitlement records.
 The portal enables customers to perform operational actions without contacting the vendor or SI:
 
 | Operation | Description |
-|---|---|
+| --- | --- |
 | Force release | Release a license from a failed or terminated instance, returning it to the available pool |
 | View history | Review lease history, including issuance, renewals, reissues, and revocations |
 | Request capacity | Initiate a request for additional entitlements or dimension increases |
@@ -72,7 +72,7 @@ For production-critical scenarios, the portal supports:
 The End User Portal serves multiple personas within a customer organization:
 
 | Persona | Primary Use |
-|---|---|
+| --- | --- |
 | Operations team | Monitor active leases, release stuck licenses, verify feature availability |
 | Finance officer | Review usage costs, forecast spend, audit license compliance |
 | License manager | Compare models, track pool utilization, manage renewals |

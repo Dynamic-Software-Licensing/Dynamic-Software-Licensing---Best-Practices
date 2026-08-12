@@ -2,10 +2,10 @@
 
 ## Chapter Status
 
-- Status: Working Draft
-- Editorial maturity: outline
-- Normative readiness: not started
-- Open drafting points: yes
+- Status: Reviewed Draft
+- Editorial maturity: developed draft
+- Normative readiness: informative only
+- Open drafting points: no
 
 ## Purpose
 
@@ -112,8 +112,9 @@ If needed, this chapter may later include:
 - responsibility tables,
 - state and lifecycle cross-references.
 
-## Drafting Note
+## Chapter Positioning
 
-At the current stage, this chapter should serve as the primary architectural overview of the Dynamic Software Licensing best practices.
+This chapter serves as the primary architectural overview for the review draft.
 
-Its immediate purpose is to stabilize the model that later API, requirement, security, and migration chapters will build upon.
+It should be used during review as the architectural reference point for API behavior, trust
+boundaries, operational responsibilities, and chapter-to-chapter consistency.

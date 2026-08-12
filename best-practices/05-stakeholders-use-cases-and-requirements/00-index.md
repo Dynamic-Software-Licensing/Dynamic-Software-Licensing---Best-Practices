@@ -2,10 +2,10 @@
 
 ## Chapter Status
 
-- Status: Working Draft
-- Editorial maturity: outline
-- Normative readiness: not started
-- Open drafting points: yes
+- Status: Reviewed Draft
+- Editorial maturity: developed draft
+- Normative readiness: informative only
+- Open drafting points: no
 
 ## Purpose
 
@@ -101,19 +101,20 @@ Additional future expansion may include:
 - workflow-to-requirement derivation tables linked to Section 05,
 - a concise summary view for readers seeking a non-detailed overview.
 
-## Drafting Note
+## Chapter Positioning
 
-At the current stage, this chapter serves as the needs and context layer of the best practices.
+This chapter provides the needs, stakeholder, and workflow rationale behind the later
+architectural and normative choices.
 
-Its immediate purpose is to make clear which industry problems the DSL initiative is intended to address and why later requirements and architectural choices matter.
+It should be used during review to test whether later chapters remain traceable back to real
+stakeholder pressures, recurring use cases, and explicit workflow patterns.
 
-This chapter is descriptive and analytical in nature. Later chapters may derive normative statements from it, but this chapter itself primarily establishes scope, relevance, and traceability.
+This chapter is descriptive and analytical in nature. Later chapters may derive normative
+statements from it, but this chapter itself primarily establishes scope, relevance, and
+traceability.
 
-## Drafting To-Do
+## Review Focus
 
-The following items should be considered in later drafting iterations:
-- verify that all four subchapters remain aligned in scope and terminology,
-- add and maintain Section 05 workflow definitions based on the original draft and the current micro exercise,
-- review whether cross-references to later chapters should be made more explicit,
-- confirm whether any content currently in this chapter should later move into annex material,
-- assess whether a short summary or overview table should be added at chapter level.
+Review comments on this chapter should focus on completeness of traceability, consistency of
+persona and use-case framing, and whether the derived themes and workflows adequately support
+the later requirement and model chapters.

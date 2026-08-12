@@ -371,18 +371,15 @@ This section informs:
 The intended traceability chain is: stakeholder groups (5.1) → role perspectives (5.2) → use
 case classes (5.3) → requirement themes (5.4) and workflow definitions (5.5).
 
-## Drafting Notes
+## Section Positioning
 
 This section is descriptive and analytical. It classifies operating situations and the
 licensing pressures they create; it does not prescribe normative requirement language and
 does not specify API-level or schema-level behavior. Those concerns are addressed in the
 canonical API model and in the normative requirements chapter.
 
-## Drafting To-Do
+## Review Focus
 
-The following items should be considered in later drafting iterations:
-- confirm that the five-class set plus continuity overlay remains aligned with the operational
-  and deployment profiles chapter,
-- consider whether a use-case-class-to-modality matrix should be added once modality
-  terminology is finalized,
-- verify persona references against the final persona set in Section 5.2.
+Review comments on this section should focus on whether the class set is complete, whether it
+aligns with the operational profiles chapter, and whether the mapping from class to downstream
+requirements remains clear and defensible.

@@ -111,23 +111,23 @@ Captures future development areas, governance considerations, open issues, and l
 Current chapter drafting status (as defined in `GOVERNANCE.md`):
 
 | Chapter | Status | Editorial maturity | Normative readiness |
-|---|---|---|---|
-| 00. Status of this Document | Working Draft | outline | not started |
-| 01. Introduction | Working Draft | outline | not started |
-| 02. Scope | Working Draft | outline | not started |
-| 03. Conventions and Normative Language | Working Draft | outline | not started |
-| 04. Terminology and Abbreviations | Working Draft | outline | not started |
-| 05. Stakeholders, Use Cases and Requirements | Working Draft | outline | not started |
-| 06. Design Principles | Working Draft | outline | not started |
-| 07. Reference Model | Working Draft | outline | not started |
-| 08. Conformance and Profiles | Working Draft | outline | not started |
-| 09. Normative Requirements | Working Draft | outline | not started |
-| 10. Canonical API Model | Working Draft | outline | not started |
-| 11. Canonical Data Model | Working Draft | outline | not started |
-| 12. Security and Trust Framework | Working Draft | outline | not started |
-| 13. Operational and Deployment Profiles | Working Draft | outline | not started |
-| 14. Migration and Transition | Working Draft | outline | not started |
-| 15. Governance and Future Work | Working Draft | outline | not started |
+| --- | --- | --- | --- |
+| 00. Status of this Document | Reviewed Draft | review-ready | informative only |
+| 01. Introduction | Reviewed Draft | developed draft | informative only |
+| 02. Scope | Reviewed Draft | review-ready | informative only |
+| 03. Conventions and Normative Language | Reviewed Draft | review-ready | partially normative |
+| 04. Terminology and Abbreviations | Reviewed Draft | review-ready | informative only |
+| 05. Stakeholders, Use Cases and Requirements | Reviewed Draft | developed draft | informative only |
+| 06. Design Principles | Reviewed Draft | developed draft | informative only |
+| 07. Reference Model | Reviewed Draft | developed draft | informative only |
+| 08. Conformance and Profiles | Reviewed Draft | developed draft | informative only |
+| 09. Normative Requirements | Reviewed Draft | developed draft | partially normative |
+| 10. Canonical API Model | Reviewed Draft | review-ready | ready for normative review |
+| 11. Canonical Data Model | Reviewed Draft | developed draft | informative only |
+| 12. Security and Trust Framework | Reviewed Draft | review-ready | ready for normative review |
+| 13. Operational and Deployment Profiles | Reviewed Draft | developed draft | informative only |
+| 14. Migration and Transition | Reviewed Draft | developed draft | informative only |
+| 15. Governance and Future Work | Reviewed Draft | developed draft | informative only |
 
 ## Relationship to Annexes
 
@@ -137,14 +137,14 @@ Supporting material is located outside this directory:
 - `annexes/normative/` for normative supporting annexes,
 - `annexes/informative/` for examples, mappings, FAQs, and reference architectures.
 
-## Current Drafting Note
+## Current Review Draft Baseline
 
-At the current stage, this structure is primarily intended to organize the drafting process.
+The main best-practices text is now organized as a complete review draft.
 
-The immediate objective is to:
-- stabilize the chapter structure,
-- define content boundaries,
-- align terminology,
-- prepare the best practices for iterative expansion.
+The current objective is to:
+- gather structured group review comments,
+- resolve wording and consistency issues,
+- confirm chapter maturity and interpretation,
+- prepare the document for release by the end of August.
 
-Detailed wording and final requirement language will be refined over time.
+Remaining changes should refine the baseline rather than reopen the document structure.
