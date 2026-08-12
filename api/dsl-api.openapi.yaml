@@ -1,0 +1,694 @@
+openapi: 3.1.0
+info:
+  title: DSL Canonical API
+  version: 0.1.0-review-draft
+  summary: Machine-readable companion contract for the Dynamic Software Licensing review draft.
+  description: |
+    This OpenAPI document captures the baseline REST contract described in Chapter 10 and
+    Annex B of the Dynamic Software Licensing best practices.
+
+    It is intentionally scoped to the canonical lifecycle, reporting, and key-discovery
+    endpoints of the review draft. It does not attempt to model vendor-specific extensions,
+    administrative back-office APIs, or deployment-specific realization details.
+jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
+servers:
+  - url: https://api.example.com
+    description: Illustrative control-plane endpoint
+tags:
+  - name: Leases
+  - name: Usage
+  - name: Discovery
+security:
+  - bearerAuth: []
+  - oidcAuth: []
+paths:
+  /v1/leases:
+    post:
+      tags: [Leases]
+      operationId: issueLease
+      summary: Issue a new lease
+      description: Request a new lease for a workload and receive a signed runtime token.
+      parameters:
+        - $ref: '#/components/parameters/Traceparent'
+        - $ref: '#/components/parameters/Tracestate'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IssueLeaseRequest'
+            example:
+              app: app-A
+              tenantId: t-123
+              dimensions:
+                - name: CHANNELS
+                  quantity: 4
+              licenseModality: hourly
+              identityEvidence:
+                oidc:
+                  issuer: https://issuer.example.com
+                  subject: workload-prod-01
+                  token: <workload-token>
+              workId: deploy-prod-001
+              environment: production
+              client:
+                type: license-agent
+                version: 1.4.0
+      responses:
+        '201':
+          description: Lease issued successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IssueLeaseResponse'
+              example:
+                leaseId: L-01HY6G1Q3Z5W6E3Z2N7X0
+                app: app-A
+                tenantId: t-123
+                token: <signed-token>
+                issuedAt: '2025-10-13T16:10:00Z'
+                expiresAt: '2025-10-13T17:10:00Z'
+                licenseModality: hourly
+                dimensions:
+                  - name: CHANNELS
+                    quantity: 4
+                boundIdentity:
+                  platform: oidc
+                  subject: workload-prod-01
+                policy:
+                  renewBeforeSeconds: 300
+                  offlineGraceSeconds: 1800
+                  onGraceExhausted: DRAIN
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '429':
+          description: Quota-related issue failure
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: urn:dsl:error:entitlement-exhausted
+                title: Entitlement Exhausted
+                status: 429
+                detail: All lease slots for this entitlement are currently in use.
+                instance: urn:dsl:request:req-8f3a2b
+                category: quota
+                retryable: true
+                entitled: 4
+                active: 4
+        '500':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+  /v1/leases/{leaseId}:renew:
+    post:
+      tags: [Leases]
+      operationId: renewLease
+      summary: Renew an active lease
+      description: Extend the lifetime of an existing lease after identity re-verification.
+      parameters:
+        - $ref: '#/components/parameters/LeaseId'
+        - $ref: '#/components/parameters/Traceparent'
+        - $ref: '#/components/parameters/Tracestate'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RenewLeaseRequest'
+            example:
+              identityEvidence:
+                oidc:
+                  issuer: https://issuer.example.com
+                  subject: workload-prod-01
+                  token: <workload-token>
+              workId: deploy-prod-001
+      responses:
+        '200':
+          description: Lease renewed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RenewLeaseResponse'
+              example:
+                leaseId: L-01HY6G1Q3Z5W6E3Z2N7X0
+                token: <new-signed-token>
+                expiresAt: '2025-10-13T18:10:00Z'
+                policy:
+                  renewBeforeSeconds: 300
+                  offlineGraceSeconds: 1800
+                  onGraceExhausted: DRAIN
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '410':
+          $ref: '#/components/responses/Problem'
+        '500':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+  /v1/leases/{leaseId}:reissue:
+    post:
+      tags: [Leases]
+      operationId: reissueLease
+      summary: Initiate lease transfer
+      description: Create a shadow lease for a new workload identity.
+      parameters:
+        - $ref: '#/components/parameters/LeaseId'
+        - $ref: '#/components/parameters/Traceparent'
+        - $ref: '#/components/parameters/Tracestate'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReissueLeaseRequest'
+            example:
+              toIdentityEvidence:
+                oidc:
+                  issuer: https://issuer.example.com
+                  subject: workload-prod-02
+                  token: <target-workload-token>
+              toWorkId: deploy-prod-002
+      responses:
+        '200':
+          description: Shadow lease created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReissueLeaseResponse'
+              example:
+                reissueId: M-9kqj8f
+                cutoverToken: ct-7f2e
+                toLease:
+                  leaseId: L-02HY6G1Q3Z5W6E3Z2N7X1
+                  token: <shadow-token>
+                  expiresAt: '2025-10-13T17:10:00Z'
+                  dimensions:
+                    - name: CHANNELS
+                      quantity: 4
+                  policy:
+                    renewBeforeSeconds: 300
+                    offlineGraceSeconds: 1800
+                    onGraceExhausted: DRAIN
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '410':
+          $ref: '#/components/responses/Problem'
+        '500':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+  /v1/leases/{leaseId}:finalizeReissue:
+    post:
+      tags: [Leases]
+      operationId: finalizeLeaseReissue
+      summary: Finalize lease transfer
+      description: Activate the shadow lease and revoke the original lease.
+      parameters:
+        - $ref: '#/components/parameters/LeaseId'
+        - $ref: '#/components/parameters/Traceparent'
+        - $ref: '#/components/parameters/Tracestate'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FinalizeReissueRequest'
+            example:
+              reissueId: M-9kqj8f
+              cutoverToken: ct-7f2e
+      responses:
+        '200':
+          description: Reissue finalized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FinalizeReissueResponse'
+              example:
+                state: COMPLETED
+                revoked: L-01HY6G1Q3Z5W6E3Z2N7X0
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '410':
+          $ref: '#/components/responses/Problem'
+        '500':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+  /v1/leases/{leaseId}:
+    delete:
+      tags: [Leases]
+      operationId: revokeLease
+      summary: Revoke an active lease
+      description: Terminate a lease and invalidate further renewal or reissue.
+      parameters:
+        - $ref: '#/components/parameters/LeaseId'
+        - $ref: '#/components/parameters/Traceparent'
+        - $ref: '#/components/parameters/Tracestate'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RevokeLeaseRequest'
+            example:
+              reason: policy_violation
+      responses:
+        '200':
+          description: Lease revoked
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RevokeLeaseResponse'
+              example:
+                status: revoked
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '409':
+          $ref: '#/components/responses/Problem'
+        '500':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+  /v1/usage-records:
+    post:
+      tags: [Usage]
+      operationId: submitUsageRecord
+      summary: Submit a usage record
+      description: Submit metered consumption data for a lease.
+      parameters:
+        - $ref: '#/components/parameters/Traceparent'
+        - $ref: '#/components/parameters/Tracestate'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UsageRecordRequest'
+            example:
+              leaseId: L-01HY6G1Q3Z5W6E3Z2N7X0
+              tenantId: t-123
+              productId: app-A
+              dimension: HOURS
+              quantity: 1
+              granularity: minutes
+              timestamp: '2025-10-13T16:15:00Z'
+              workId: deploy-prod-001
+      responses:
+        '202':
+          description: Usage record accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageRecordResponse'
+              example:
+                status: accepted
+        '400':
+          $ref: '#/components/responses/Problem'
+        '401':
+          $ref: '#/components/responses/Problem'
+        '403':
+          $ref: '#/components/responses/Problem'
+        '404':
+          $ref: '#/components/responses/Problem'
+        '500':
+          $ref: '#/components/responses/Problem'
+        '503':
+          $ref: '#/components/responses/Problem'
+  /.well-known/jwks.json:
+    get:
+      tags: [Discovery]
+      operationId: getJwks
+      security: []
+      summary: Retrieve public signing keys
+      description: Retrieve the JSON Web Key Set used for local token validation.
+      responses:
+        '200':
+          description: JWKS document
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JwksDocument'
+              example:
+                keys:
+                  - kty: RSA
+                    kid: dsl-key-2025-01
+                    use: sig
+                    alg: RS256
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Generic bearer-token authentication for control-plane operations.
+    oidcAuth:
+      type: openIdConnect
+      openIdConnectUrl: https://issuer.example.com/.well-known/openid-configuration
+      description: Illustrative OpenID Connect discovery endpoint for workload or client authentication.
+  parameters:
+    LeaseId:
+      name: leaseId
+      in: path
+      required: true
+      description: Unique identifier of the lease.
+      schema:
+        type: string
+    Traceparent:
+      name: traceparent
+      in: header
+      required: false
+      description: W3C Trace Context header for distributed tracing.
+      schema:
+        type: string
+    Tracestate:
+      name: tracestate
+      in: header
+      required: false
+      description: W3C Trace Context vendor-specific trace state.
+      schema:
+        type: string
+  responses:
+    Problem:
+      description: RFC 9457 problem-details response.
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetails'
+  schemas:
+    Dimension:
+      $ref: './lease.schema.json#/$defs/dimension'
+    BoundIdentity:
+      $ref: './lease.schema.json#/$defs/boundIdentity'
+    Policy:
+      $ref: './policy.schema.json'
+    UsageRecordRequest:
+      $ref: './usage-event.schema.json'
+    IdentityEvidence:
+      type: object
+      description: |
+        Runtime identity evidence presented by the workload. The evidence structure varies by
+        platform and trust domain.
+      minProperties: 1
+      additionalProperties:
+        type: object
+        additionalProperties: true
+    ClientDescriptor:
+      type: object
+      additionalProperties: false
+      properties:
+        type:
+          type: string
+        version:
+          type: string
+      required: [type, version]
+    PolicyHints:
+      type: object
+      additionalProperties: false
+      properties:
+        heartbeatSeconds:
+          type: integer
+          minimum: 0
+        offlineGraceSeconds:
+          type: integer
+          minimum: 0
+    LeaseSummary:
+      type: object
+      additionalProperties: false
+      properties:
+        leaseId:
+          type: string
+        token:
+          type: string
+        expiresAt:
+          type: string
+          format: date-time
+        dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dimension'
+        policy:
+          $ref: '#/components/schemas/Policy'
+      required: [leaseId, token, expiresAt]
+    IssueLeaseRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        app:
+          type: string
+        tenantId:
+          type: string
+        dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dimension'
+        licenseModality:
+          type: string
+        identityEvidence:
+          $ref: '#/components/schemas/IdentityEvidence'
+        workId:
+          type: string
+        version:
+          type: string
+        environment:
+          type: string
+        client:
+          $ref: '#/components/schemas/ClientDescriptor'
+        policyHints:
+          $ref: '#/components/schemas/PolicyHints'
+      required:
+        - app
+        - tenantId
+        - dimensions
+        - licenseModality
+        - identityEvidence
+        - workId
+    IssueLeaseResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        leaseId:
+          type: string
+        app:
+          type: string
+        tenantId:
+          type: string
+        token:
+          type: string
+        issuedAt:
+          type: string
+          format: date-time
+        expiresAt:
+          type: string
+          format: date-time
+        licenseModality:
+          type: string
+        dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dimension'
+        boundIdentity:
+          $ref: '#/components/schemas/BoundIdentity'
+        policy:
+          $ref: '#/components/schemas/Policy'
+      required:
+        - leaseId
+        - app
+        - tenantId
+        - token
+        - issuedAt
+        - expiresAt
+        - licenseModality
+        - dimensions
+        - boundIdentity
+        - policy
+    RenewLeaseRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        identityEvidence:
+          $ref: '#/components/schemas/IdentityEvidence'
+        workId:
+          type: string
+      required: [identityEvidence]
+    RenewLeaseResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        leaseId:
+          type: string
+        token:
+          type: string
+        expiresAt:
+          type: string
+          format: date-time
+        policy:
+          $ref: '#/components/schemas/Policy'
+      required: [leaseId, token, expiresAt]
+    ReissueLeaseRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        toIdentityEvidence:
+          $ref: '#/components/schemas/IdentityEvidence'
+        toWorkId:
+          type: string
+      required: [toIdentityEvidence, toWorkId]
+    ReissueLeaseResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        reissueId:
+          type: string
+        cutoverToken:
+          type: string
+        toLease:
+          $ref: '#/components/schemas/LeaseSummary'
+      required: [reissueId, cutoverToken, toLease]
+    FinalizeReissueRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        reissueId:
+          type: string
+        cutoverToken:
+          type: string
+      required: [reissueId, cutoverToken]
+    FinalizeReissueResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        state:
+          type: string
+        revoked:
+          type: string
+      required: [state, revoked]
+    RevokeLeaseRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        reason:
+          type: string
+          enum:
+            - admin_action
+            - policy_violation
+            - entitlement_expired
+            - decommissioned
+            - force_release
+      required: [reason]
+    RevokeLeaseResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        status:
+          type: string
+          enum: [revoked]
+      required: [status]
+    UsageRecordResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        status:
+          type: string
+          enum: [accepted]
+      required: [status]
+    JwksKey:
+      type: object
+      additionalProperties: true
+      properties:
+        kty:
+          type: string
+        kid:
+          type: string
+        use:
+          type: string
+        alg:
+          type: string
+      required: [kty, kid]
+    JwksDocument:
+      type: object
+      additionalProperties: false
+      properties:
+        keys:
+          type: array
+          items:
+            $ref: '#/components/schemas/JwksKey'
+      required: [keys]
+    ProblemDetails:
+      type: object
+      additionalProperties: true
+      properties:
+        type:
+          type: string
+          format: uri
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
+        instance:
+          type: string
+          format: uri
+        category:
+          type: string
+          enum:
+            - validation
+            - authentication
+            - authorization
+            - not_found
+            - conflict
+            - quota
+            - identity
+            - policy
+            - expired
+            - internal
+            - unavailable
+        retryable:
+          type: boolean
+      required:
+        - type
+        - title
+        - status
+        - detail
+        - category
+        - retryable

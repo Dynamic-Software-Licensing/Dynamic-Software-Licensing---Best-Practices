@@ -29,7 +29,7 @@ assignees: []
 
 - [ ] best-practices/
 - [ ] annexes/
-- [ ] schemas/
+- [ ] api/
 - [ ] diagrams/
 - [ ] governance/process
 

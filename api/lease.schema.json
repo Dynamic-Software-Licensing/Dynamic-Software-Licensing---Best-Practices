@@ -1,6 +1,6 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"$id": "https://dynamic-software-licensing.org/schemas/lease.schema.json",
+	"$id": "https://dynamic-software-licensing.org/api/lease.schema.json",
 	"title": "DSL Lease Object",
 	"type": "object",
 	"additionalProperties": false,

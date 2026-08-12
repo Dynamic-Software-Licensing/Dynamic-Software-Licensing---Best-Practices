@@ -59,6 +59,19 @@ preserve enough detail for automation, diagnostics, and tenant-safe troubleshoot
 - Implementations may add vendor-specific fields only where they do not break canonical
  semantics.
 
+## Machine-Readable OpenAPI Companion
+
+A machine-readable companion contract for the baseline REST surface is provided at
+[api/dsl-api.openapi.yaml](../../api/dsl-api.openapi.yaml).
+
+The OpenAPI artifact captures the canonical endpoints, common request and response structures,
+security expectations, and the RFC 9457 problem-details error envelope in a form that can be
+used for review, mock generation, client scaffolding, and contract testing.
+
+During the current review-draft stage, Annex B and Chapter 10 remain the primary textual
+authorities if a wording ambiguity exists. The OpenAPI file is intended to stay aligned with
+that baseline contract surface, not to redefine it independently.
+
 ## Annex Positioning
 
 This annex is the compact normative reference surface for the baseline API operations of the

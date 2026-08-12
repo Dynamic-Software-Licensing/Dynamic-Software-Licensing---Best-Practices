@@ -25,7 +25,7 @@ This repository does **not** yet represent a final published best-practices docu
 | `best-practices/` | Core best practices chapters |
 | `annexes/normative/` | Normative annexes required for consistent interpretation |
 | `annexes/informative/` | Examples, mappings, FAQs, reference architectures |
-| `schemas/` | Machine-readable data schemas |
+| `api/` | Machine-readable API contract and data schemas |
 | `diagrams/` | Architecture and sequence diagrams |
 
 ## How to Navigate

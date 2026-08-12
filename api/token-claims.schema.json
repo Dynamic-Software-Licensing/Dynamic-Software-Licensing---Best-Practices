@@ -1,6 +1,6 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"$id": "https://dynamic-software-licensing.org/schemas/token-claims.schema.json",
+	"$id": "https://dynamic-software-licensing.org/api/token-claims.schema.json",
 	"title": "DSL Token Claims Object",
 	"type": "object",
 	"additionalProperties": false,
