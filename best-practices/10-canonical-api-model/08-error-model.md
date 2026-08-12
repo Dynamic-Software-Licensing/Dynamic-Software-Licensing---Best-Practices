@@ -1,9 +1,5 @@
 # 10.08 — Error Model
 
-## Status
-- Editorial maturity: working draft
-- Normative readiness: not started
-
 ## Purpose
 
 This section defines the structure of API error handling within the canonical API. It describes how failures, rejected requests, and non-successful outcomes are expressed consistently across all operations.
@@ -26,7 +22,7 @@ The error model follows these principles:
 All failed API requests return a JSON response with `Content-Type: application/problem+json` following RFC 9457:
 
 | Field | Type | Required | Source | Description |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | `type` | string (URI) | Yes | RFC 9457 | URI identifying the error type (e.g., `urn:dsl:error:entitlement-exhausted`) |
 | `title` | string | Yes | RFC 9457 | Short, human-readable summary of the problem type |
 | `status` | integer | Yes | RFC 9457 | HTTP status code |
@@ -56,7 +52,7 @@ Additional context relevant to the specific error type MAY be included as extens
 Errors are grouped into categories that indicate the nature of the failure:
 
 | Category | Description | Typical HTTP Status | Retryable |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `validation` | Request is malformed or missing required fields | 400 | No (fix the request) |
 | `authentication` | Caller identity could not be verified | 401 | No (fix credentials) |
 | `authorization` | Caller does not have permission for this operation | 403 | No |
@@ -76,7 +72,7 @@ The following error types are defined for the canonical API operations. Each `ty
 ### Issue Errors
 
 | Type URI | Category | Title | HTTP Status |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `urn:dsl:error:entitlement-not-found` | not_found | Entitlement Not Found | 404 |
 | `urn:dsl:error:entitlement-exhausted` | quota | Entitlement Exhausted | 429 |
 | `urn:dsl:error:dimensions-exceeded` | policy | Dimensions Exceeded | 403 |
@@ -87,7 +83,7 @@ The following error types are defined for the canonical API operations. Each `ty
 ### Renew Errors
 
 | Type URI | Category | Title | HTTP Status |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `urn:dsl:error:lease-not-found` | not_found | Lease Not Found | 404 |
 | `urn:dsl:error:lease-revoked` | conflict | Lease Revoked | 409 |
 | `urn:dsl:error:lease-expired` | expired | Lease Expired | 410 |
@@ -97,7 +93,7 @@ The following error types are defined for the canonical API operations. Each `ty
 ### Reissue Errors
 
 | Type URI | Category | Title | HTTP Status |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `urn:dsl:error:lease-not-found` | not_found | Lease Not Found | 404 |
 | `urn:dsl:error:lease-not-active` | conflict | Lease Not Active | 409 |
 | `urn:dsl:error:reissue-already-pending` | conflict | Reissue Already Pending | 409 |
@@ -109,7 +105,7 @@ The following error types are defined for the canonical API operations. Each `ty
 ### Revoke Errors
 
 | Type URI | Category | Title | HTTP Status |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `urn:dsl:error:lease-not-found` | not_found | Lease Not Found | 404 |
 | `urn:dsl:error:lease-already-revoked` | conflict | Lease Already Revoked | 409 |
 | `urn:dsl:error:revoke-not-authorized` | authorization | Revoke Not Authorized | 403 |
@@ -117,7 +113,7 @@ The following error types are defined for the canonical API operations. Each `ty
 ### Usage Record Errors
 
 | Type URI | Category | Title | HTTP Status |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `urn:dsl:error:lease-not-found` | not_found | Lease Not Found | 404 |
 | `urn:dsl:error:invalid-dimension` | validation | Invalid Dimension | 400 |
 | `urn:dsl:error:invalid-timestamp` | validation | Invalid Timestamp | 400 |
@@ -127,7 +123,7 @@ The following error types are defined for the canonical API operations. Each `ty
 The license agent should handle errors based on the `category` and `retryable` extension members:
 
 | Scenario | Agent Behavior |
-|---|---|
+| --- | --- |
 | `retryable: true` | Retry with exponential backoff and jitter (per `renewBackoff` policy) |
 | `retryable: false`, category `validation` | Log the error; do not retry; alert the operator |
 | `retryable: false`, category `identity` | Log the error; do not retry; the workload identity configuration needs attention |

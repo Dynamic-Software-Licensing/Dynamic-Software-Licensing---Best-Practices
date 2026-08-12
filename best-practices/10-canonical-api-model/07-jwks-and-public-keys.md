@@ -1,9 +1,5 @@
 # 10.07 — JWKS and Public Keys
 
-## Status
-- Editorial maturity: working draft
-- Normative readiness: not started
-
 ## Purpose
 
 This section defines the key discovery aspect of the canonical API. It describes how token validation material (public signing keys) is published by the control plane and consumed by applications and SDKs in the workspace plane.
@@ -60,7 +56,7 @@ The JWKS response follows [RFC 7517 — JSON Web Key Set](https://datatracker.ie
 ```
 
 | Field | Description |
-|---|---|
+| --- | --- |
 | `kty` | Key type (e.g., `"RSA"`, `"EC"`) |
 | `kid` | Key identifier — matches the `kid` in token headers |
 | `use` | Key usage — always `"sig"` (signature) for this purpose |

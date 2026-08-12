@@ -1,9 +1,5 @@
 # 10.04 — Move or Reissue
 
-## Status
-- Editorial maturity: working draft
-- Normative readiness: not started
-
 ## Purpose
 
 This section defines the move or reissue interaction within the canonical API. The Reissue operation transfers an active lease from one workload to another, supporting failover, blue/green deployments, and planned migration scenarios without requiring a new entitlement or causing license downtime.
@@ -57,7 +53,7 @@ POST /v1/leases/{leaseId}:finalizeReissue   (Phase 2: finalize)
 The original lease identifier is provided in the URL path. The request body contains:
 
 | Field | Type | Required | Description |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `toIdentityEvidence` | object | Yes | Identity evidence of the target workload |
 | `toWorkId` | string | Yes | Work ID for the target deployment |
 
@@ -80,7 +76,7 @@ POST /v1/leases/L-01HY6G1Q3Z5W6E3Z2N7X0:reissue
 ### Response Structure
 
 | Field | Type | Description |
-|---|---|---|
+| --- | --- | --- |
 | `reissueId` | string | Identifier for this reissue operation |
 | `cutoverToken` | string | Authorization token required to finalize |
 | `toLease` | object | Shadow lease details (lease ID, token, expiry, dimensions, policy) |
@@ -118,7 +114,7 @@ POST /v1/leases/L-01HY6G1Q3Z5W6E3Z2N7X0:reissue
 The lease identifier is provided in the URL path. The request body contains:
 
 | Field | Type | Required | Description |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `reissueId` | string | Yes | Identifier from the shadow phase |
 | `cutoverToken` | string | Yes | Authorization token from the shadow phase |
 
@@ -136,7 +132,7 @@ POST /v1/leases/L-01HY6G1Q3Z5W6E3Z2N7X0:finalizeReissue
 ### Response Structure
 
 | Field | Type | Description |
-|---|---|---|
+| --- | --- | --- |
 | `state` | string | Outcome of the finalization (e.g., `"COMPLETED"`) |
 | `revoked` | string | Lease ID of the original (now revoked) lease |
 
@@ -162,7 +158,7 @@ This prevents orphaned shadow leases from consuming entitlement quota indefinite
 ### Shadow Phase
 
 | Check | Failure Condition |
-|---|---|
+| --- | --- |
 | Original lease exists and is active | Lease not found, already revoked, or expired |
 | Tenant owns the original lease | Requesting tenant does not match |
 | Target identity evidence is valid | Evidence verification fails |
@@ -171,7 +167,7 @@ This prevents orphaned shadow leases from consuming entitlement quota indefinite
 ### Finalize Phase
 
 | Check | Failure Condition |
-|---|---|
+| --- | --- |
 | Reissue ID exists and is pending | Reissue not found or already completed/expired |
 | Cutover token is valid | Token does not match or has expired |
 

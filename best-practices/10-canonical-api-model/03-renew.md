@@ -1,9 +1,5 @@
 # 10.03 — Renew
 
-## Status
-- Editorial maturity: working draft
-- Normative readiness: not started
-
 ## Purpose
 
 This section defines the renewal interaction within the canonical API. The Renew operation extends the lifetime of an active lease, ensuring continuous operation of a licensed workload without interruption.
@@ -45,7 +41,7 @@ POST /v1/leases/{leaseId}:renew
 The lease identifier is provided in the URL path. The request body contains:
 
 | Field | Type | Required | Description |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `identityEvidence` | object | Yes | Current proof of workload identity |
 | `workId` | string | No | Correlation identifier for the deployment or production chain |
 
@@ -74,7 +70,7 @@ The `workId` field is optional but recommended. It enables correlation of indivi
 A successful Renew response contains:
 
 | Field | Type | Description |
-|---|---|---|
+| --- | --- | --- |
 | `leaseId` | string | Lease identifier (unchanged) |
 | `token` | string | New signed token with updated expiry |
 | `expiresAt` | string (ISO 8601) | New expiry timestamp |
@@ -115,7 +111,7 @@ The license agent follows this renewal strategy:
 If the license agent cannot successfully renew before the token expires:
 
 | Phase | Duration | Behavior |
-|---|---|---|
+| --- | --- | --- |
 | Token valid | Before `expiresAt` | Application operates normally; license agent retries renewal |
 | Grace period | `expiresAt` to `expiresAt + offlineGraceSeconds` | Application continues operating (full or degraded per policy); license agent continues retrying |
 | Grace exhausted | After grace period ends | Configured exhaustion action applies: DRAIN, DEGRADE, or STOP |
@@ -127,7 +123,7 @@ When renewal eventually succeeds (e.g., after network recovery), the application
 The control plane applies the following validation during Renew:
 
 | Check | Failure Condition |
-|---|---|
+| --- | --- |
 | Lease exists and is active | Lease not found, already revoked, or expired beyond grace |
 | Identity evidence matches | Workload identity does not match the lease binding |
 | Entitlement still valid | Underlying entitlement has been revoked or modified |

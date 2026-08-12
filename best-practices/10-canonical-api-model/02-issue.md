@@ -1,9 +1,5 @@
 # 10.02 — Issue
 
-## Status
-- Editorial maturity: working draft
-- Normative readiness: not started
-
 ## Purpose
 
 This section defines the initial license issuance interaction within the canonical API. The Issue operation is the entry point for a workload to acquire a lease and begin operating under a licensed entitlement.
@@ -48,7 +44,7 @@ POST /v1/leases
 The Issue request contains the following fields:
 
 | Field | Type | Required | Description |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `app` | string | Yes | Application identifier (e.g., `"app-A"`) |
 | `tenantId` | string | Yes | Tenant identifier |
 | `dimensions` | array | Yes | Requested dimension limits (e.g., channels, FPS) |
@@ -108,7 +104,7 @@ The license agent may suggest policy parameters. The control plane is not obliga
 A successful Issue response contains:
 
 | Field | Type | Description |
-|---|---|---|
+| --- | --- | --- |
 | `leaseId` | string | Unique identifier for the issued lease |
 | `app` | string | Application identifier |
 | `tenantId` | string | Tenant identifier |
@@ -141,7 +137,7 @@ The policy returned in the response governs runtime behavior:
 The control plane applies the following validation during Issue:
 
 | Check | Failure Condition |
-|---|---|
+| --- | --- |
 | Entitlement exists | Tenant has no entitlement for the requested application |
 | Dimensions within limits | Requested dimensions exceed entitlement limits |
 | Quota available | All lease slots for this entitlement are already in use |

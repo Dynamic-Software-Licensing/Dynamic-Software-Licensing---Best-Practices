@@ -1,9 +1,5 @@
 # 10.06 — Usage Record
 
-## Status
-- Editorial maturity: working draft
-- Normative readiness: not started
-
 ## Purpose
 
 This section defines the usage reporting interaction within the canonical API. The Usage Record operation allows license agents and SDKs to submit metered consumption events to the control plane for billing, analytics, and compliance purposes.
@@ -42,7 +38,7 @@ POST /v1/usage-records
 ## Request Structure
 
 | Field | Type | Required | Description |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `leaseId` | string | Yes | Identifier of the active lease |
 | `tenantId` | string | Yes | Tenant identifier |
 | `productId` | string | Yes | Application identifier |
@@ -82,7 +78,7 @@ The control plane does not return detailed processing results in the synchronous
 Usage dimensions align with the dimension model defined in the entitlement and lease. Common usage dimensions include:
 
 | Dimension | Description | Typical Granularity |
-|---|---|---|
+| --- | --- | --- |
 | `HOURS` | Time-based usage | Per minute or per hour |
 | `SESSIONS` | Session-based usage (start/stop) | Per session |
 | `CHANNELS` | Active channel count over time | Per minute |

@@ -1,9 +1,5 @@
 # 10.01 — Overview
 
-## Status
-- Editorial maturity: working draft
-- Normative readiness: not started
-
 ## Purpose
 
 This section defines the overall purpose and interaction model of the canonical API within the Dynamic Software Licensing (DSL) best practices. It explains how the API fits into the broader architecture and establishes the foundational patterns that all subsequent API operations follow.
@@ -13,7 +9,7 @@ This section defines the overall purpose and interaction model of the canonical 
 The canonical API adopts the following established standards to ensure interoperability, tooling compatibility, and alignment with industry practice:
 
 | Concern | Standard | Reference |
-|---|---|---|
+| --- | --- | --- |
 | URL structure | Google AIP (resource-oriented with custom methods) | [AIP-136](https://google.aip.dev/136) |
 | JSON field naming | lowerCamelCase | [AIP-140](https://google.aip.dev/140) |
 | Error responses | RFC 9457 — Problem Details for HTTP APIs | [RFC 9457](https://www.rfc-editor.org/rfc/rfc9457.html) |
@@ -46,7 +42,7 @@ The API follows a request-response model over REST for all transactional operati
 All lease lifecycle and usage operations are exposed as versioned REST endpoints following the Google AIP resource-oriented design:
 
 | Operation | Endpoint | Method | Purpose |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Issue | `/v1/leases` | POST | Request a new lease for a workload |
 | Renew | `/v1/leases/{leaseId}:renew` | POST | Extend an active lease |
 | Reissue | `/v1/leases/{leaseId}:reissue` | POST | Initiate lease transfer to a new workload |
@@ -85,7 +81,7 @@ All REST operations share common structural patterns.
 Every request SHOULD include [W3C Trace Context](https://www.w3.org/TR/trace-context/) headers for distributed tracing:
 
 | Header | Description |
-|---|---|
+| --- | --- |
 | `traceparent` | Identifies the incoming request in a trace (version, trace-id, parent-id, trace-flags) |
 | `tracestate` | Carries vendor-specific trace data |
 

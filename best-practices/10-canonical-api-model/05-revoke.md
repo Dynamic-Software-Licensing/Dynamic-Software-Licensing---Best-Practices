@@ -1,9 +1,5 @@
 # 10.05 — Revoke
 
-## Status
-- Editorial maturity: working draft
-- Normative readiness: not started
-
 ## Purpose
 
 This section defines the revocation interaction within the canonical API. The Revoke operation terminates an active lease, invalidating the workload's right to continue operating under that license.
@@ -60,9 +56,9 @@ The maximum delay before revocation takes effect is bounded by the token's TTL. 
 
 The lease identifier is provided in the URL path. The request body contains:
 
-| Field | Type | Required | Description |
+|Field|Type|Required|Description|
 |---|---|---|---|
-| `reason` | string | Yes | Reason for revocation (e.g., `"policy_violation"`, `"admin_action"`, `"entitlement_expired"`, `"decommissioned"`, `"force_release"`) |
+|`reason`|string|Yes|Reason for revocation (e.g., `"policy_violation"`, `"admin_action"`, `"entitlement_expired"`, `"decommissioned"`, `"force_release"`)|
 
 ```http
 DELETE /v1/leases/L-01HY6G1Q3Z5W6E3Z2N7X0
@@ -76,9 +72,9 @@ DELETE /v1/leases/L-01HY6G1Q3Z5W6E3Z2N7X0
 
 ## Response Structure
 
-| Field | Type | Description |
+|Field|Type|Description|
 |---|---|---|
-| `status` | string | Resulting lease status (`"revoked"`) |
+|`status`|string|Resulting lease status (`"revoked"`)|
 
 ```json
 {
@@ -91,7 +87,7 @@ DELETE /v1/leases/L-01HY6G1Q3Z5W6E3Z2N7X0
 The canonical model defines the following standard revocation reasons:
 
 | Reason | Description |
-|---|---|
+| --- | --- |
 | `admin_action` | Explicit revocation by an administrator |
 | `policy_violation` | Automated revocation triggered by a policy rule |
 | `entitlement_expired` | The underlying entitlement has expired or been removed |
@@ -107,7 +103,7 @@ Implementations may extend this list with additional vendor-specific reasons.
 Revocation requires elevated permissions. Not all API consumers can revoke a lease:
 
 | Actor | Can Revoke | Typical Scenario |
-|---|---|---|
+| --- | --- | --- |
 | Tenant administrator | Yes | Admin action, force release, decommissioning |
 | Policy engine (control plane) | Yes | Automated policy enforcement, entitlement expiry |
 | Reissue service (control plane) | Yes | Cutover finalization |
