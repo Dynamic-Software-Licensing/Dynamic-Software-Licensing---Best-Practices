@@ -54,8 +54,6 @@ Summarises the recurring requirement patterns that emerge from the stakeholder a
 
 Defines canonical workflow patterns derived from the challenge and use-case analysis.
 
-This section should capture workflow inputs, actors, steps, decisions, outputs, and failure paths, and should provide the traceability bridge from challenges and use cases to derived system requirements.
-
 ## Relationship to Other Chapters
 
 This chapter informs:
@@ -67,54 +65,21 @@ This chapter informs:
 
 It provides the rationale for many of the later design and requirement decisions.
 
-In particular, this chapter should be read as the justification layer for later statements on:
+In particular, this chapter is the justification layer for later statements on:
 - control-plane and workspace-plane responsibilities,
 - lifecycle operations for issue, renew, reissue, revoke, and inspect,
 - entitlement and lease handling,
 - observability and audit expectations,
 - license modality flexibility and profile differentiation.
 
-## Editorial Guidance
-
-At the current stage, this chapter focuses on organizing perspectives and patterns rather than over-specifying detail.
-
-Contributors should aim to:
-- keep stakeholder categories distinct,
-- avoid duplicating the same concern across multiple personas without explanation,
-- connect use cases to requirement themes clearly,
-- preserve a practical industry view rather than an abstract one,
-- keep the main text platform-agnostic.
-
-Where examples are used, they should illustrate classes of concern rather than vendor-specific implementation choices.
-
-## Possible Future Expansion
-
-If needed, this chapter may later include:
-- stakeholder maps,
-- persona-to-requirement traceability,
-- use-case-to-profile mapping,
-- summary tables linking pain points to best practices areas.
-
-Additional future expansion may include:
-- cross-references to specific lifecycle operations and canonical model elements,
-- a chapter-internal traceability structure linking Sections 01 to 04 more explicitly,
-- workflow-to-requirement derivation tables linked to Section 05,
-- a concise summary view for readers seeking a non-detailed overview.
-
 ## Chapter Positioning
 
 This chapter provides the needs, stakeholder, and workflow rationale behind the later
 architectural and normative choices.
 
-It should be used during review to test whether later chapters remain traceable back to real
+It is used during review to test whether later chapters remain traceable back to real
 stakeholder pressures, recurring use cases, and explicit workflow patterns.
 
 This chapter is descriptive and analytical in nature. Later chapters may derive normative
 statements from it, but this chapter itself primarily establishes scope, relevance, and
 traceability.
-
-## Review Focus
-
-Review comments on this chapter should focus on completeness of traceability, consistency of
-persona and use-case framing, and whether the derived themes and workflows adequately support
-the later requirement and model chapters.

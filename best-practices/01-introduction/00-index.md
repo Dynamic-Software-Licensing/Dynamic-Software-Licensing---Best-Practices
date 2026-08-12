@@ -17,7 +17,7 @@ It explains why a new licensing approach is needed, why existing models are incr
 
 Dynamic Software Licensing (DSL) is an IABM initiative focused on modern software licensing for broadcast and media workflows.
 
-This best-practices document is intended to support a more consistent and future-ready licensing approach across manufacturers, broadcasters, media organizations, system integrators, and other stakeholders.
+This best-practices document supports a more consistent and future-ready licensing approach across manufacturers, broadcasters, media organizations, system integrators, and other stakeholders.
 
 ## Industry Background
 
@@ -53,7 +53,7 @@ The intention is to support a licensing model that is:
 
 ## Role of This Chapter
 
-This chapter is not intended to define detailed requirements.
+This chapter does not define detailed requirements.
 
 Its role is to:
 - establish the industry context,
@@ -94,6 +94,6 @@ Defines what the DSL best practices aim to achieve and describes the target visi
 This chapter provides the common entry point for readers and reviewers by framing the
 industry problem, the motivation for DSL, and the overall objective of the best practices.
 
-It should be read as the rationale layer for the document rather than as a requirement
+It serves as the rationale layer for the document rather than as a requirement
 chapter. Its role in the review draft is to ensure that later technical and normative
 chapters are interpreted against the right industry context.

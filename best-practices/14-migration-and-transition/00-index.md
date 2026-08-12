@@ -25,14 +25,14 @@ This chapter provides the structural home for that transition logic.
 
 ## Scope of This Chapter
 
-This chapter is intended to define:
+This chapter defines:
 - migration phases,
 - transition logic,
 - adoption sequencing,
 - relationship between technical and business transformation,
 - practical considerations for moving away from legacy models.
 
-It should not become a vendor-specific project plan, but it should provide a structured migration view.
+It provides a structured migration view without becoming a vendor-specific project plan.
 
 ## Structure of This Chapter
 
@@ -41,32 +41,20 @@ This chapter is organized into the following subchapters:
 ### 01. Assessment and Preparation
 Defines the initial analysis and preparation phase.
 
-This section should describe inventory, current-state understanding, dependency analysis, and preparation for migration.
-
 ### 02. Pilot and Parallel Operation
 Defines the initial transition phase in which legacy and new approaches may coexist.
-
-This section should describe early pilot implementations and low-risk adoption patterns.
 
 ### 03. Technical Transformation
 Defines the phase in which the foundational technical building blocks of the new model are established.
 
-This section should describe the move toward API-first, signed tokens, observability, and licensing-as-code foundations.
-
 ### 04. Business Logic Expansion
 Defines the phase in which the commercial and business logic of the model becomes more capable.
-
-This section should describe the expansion toward hybrid, process-based, outcome-based, and more flexible service logic.
 
 ### 05. Full Migration and Decommissioning
 Defines the phase in which legacy mechanisms are retired.
 
-This section should describe the conditions and actions required to phase out traditional license servers, dongles, or similar legacy models.
-
 ### 06. Scaling and Industry Establishment
 Defines the phase in which the new model becomes broader, repeatable, and industry-established.
-
-This section should describe scaling, ecosystem alignment, and the move from project-specific adoption toward broader industry normalization.
 
 ## Relationship to Other Chapters
 
@@ -79,22 +67,6 @@ This chapter is closely related to:
 - governance and future work.
 
 It provides the transition logic between the current industry state and the DSL target model.
-
-## Editorial Guidance
-
-At the current stage, contributors should focus on:
-- realistic migration sequencing,
-- practical transformation phases,
-- the connection between technical and commercial transition,
-- avoiding overly implementation-specific project planning.
-
-## Possible Future Expansion
-
-If needed, this chapter may later include:
-- migration readiness checklists,
-- profile-based migration paths,
-- dependency tables,
-- transition risks and mitigation patterns.
 
 ## Chapter Positioning
 

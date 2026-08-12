@@ -11,7 +11,7 @@
 
 This chapter defines the status, intended role, maturity, and interpretation of the Dynamic Software Licensing best practices.
 
-It explains what this document is, what it is intended to achieve, and how it should be understood during the drafting phase and in later publication stages.
+It explains what this document is, what it aims to achieve, and how it is understood during the review and publication lifecycle.
 
 ## Initiative Context
 
@@ -27,7 +27,7 @@ It is not currently a formal standard, certification framework, or legal specifi
 
 ## Intended Role of the Best Practices
 
-The best-practices document is intended to:
+The best-practices document:
 - establish a common industry vocabulary,
 - define a shared conceptual and architectural model,
 - describe a practical target model for licensing, metering, trust, and policy handling,
@@ -63,15 +63,15 @@ The repository-level maturity states are:
 
 ### Chapter-Level Status
 
-Each chapter should include a compact status block in its `00-index.md` file.
+Each chapter includes a compact status block in its `00-index.md` file.
 
-The block should use the following fields:
+The block uses the following fields:
 - `Status`,
 - `Editorial maturity`,
 - `Normative readiness`,
 - `Open drafting points`.
 
-The allowed values for these fields are defined in `GOVERNANCE.md` and should be used without local variants.
+The allowed values for these fields are defined in `GOVERNANCE.md` and are used without local variants.
 
 ### Chapter Status Template
 
@@ -111,19 +111,15 @@ Significant changes should be reflected in:
 
 ## Normative Development Status
 
-Normative keywords such as **MUST**, **SHOULD**, and **MAY** may appear in later drafting stages where appropriate.
-
-At the current stage, the main objective is not yet to finalize all requirements, but to establish:
-- a stable overall structure,
-- consistent terminology,
-- clear editorial intent,
-- a reliable distinction between normative and informative content.
+Normative keywords such as **MUST**, **SHOULD**, and **MAY** appear where appropriate to
+express disciplined requirement language and interpretation strength.
 
 ## Publication Intent
 
-A later version of this document may be published as a formal best practices of the Dynamic Software Licensing initiative.
+The document progresses from review draft toward formal publication as best practices of the
+Dynamic Software Licensing initiative.
 
-Before that stage, the repository should reach a level of maturity that includes:
+That maturity path includes:
 - structural completeness,
 - terminology consistency,
 - stable chapter ownership,
@@ -131,22 +127,11 @@ Before that stage, the repository should reach a level of maturity that includes
 - coherent annex structure,
 - clear interpretation guidance.
 
-## Chapter Structure
-
-This chapter currently serves as the entry point for status-related information.
-
-If this area becomes more detailed over time, it may later include subchapters for:
-- document identity,
-- maturity and release states,
-- interpretation guidance,
-- versioning and change control,
-- publication criteria.
-
 ## Review Draft Baseline
 
 This chapter defines the status interpretation for the review draft issued for group comment.
 
-For this review round, the best practices should be read as a coherent, commentable document
+For this review round, the best practices is presented as a coherent, commentable document
 rather than as an internal drafting scaffold. Remaining changes before publication should
 focus on reviewer feedback, wording precision, traceability, and final consistency rather
 than on reopening the overall document structure.

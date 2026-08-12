@@ -15,7 +15,7 @@ It clarifies what the best practices covers, what it intentionally excludes, and
 
 ## Scope of the DSL Best Practices
 
-The Dynamic Software Licensing best practices are intended to address modern software licensing approaches for broadcast and media workflows.
+The Dynamic Software Licensing best practices address modern software licensing approaches for broadcast and media workflows.
 
 The main focus is on reusable and transferable concepts that can support industry alignment across different vendors, deployment models, and operational environments.
 
@@ -57,7 +57,7 @@ This best-practices document is intended for:
 
 ## Main Document Boundary
 
-The main best practices should remain focused on platform-agnostic concepts wherever possible.
+The main best practices remain focused on platform-agnostic concepts wherever possible.
 
 Where material becomes:
 - platform-specific,
@@ -69,7 +69,7 @@ it should normally be placed in an annex rather than the core best practices.
 
 ## Role of This Chapter
 
-This chapter should help contributors answer the following questions:
+This chapter helps contributors answer the following questions:
 - Does this topic belong in the main DSL best practices?
 - Should this content be moved into a normative annex?
 - Should this content be moved into an informative annex?

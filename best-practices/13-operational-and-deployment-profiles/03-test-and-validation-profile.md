@@ -12,7 +12,7 @@
 This chapter defines the operational and deployment profile for test, validation, staging, and
 pre-production environments within the Dynamic Software Licensing (DSL) best practices.
 
-Its purpose is to describe how the DSL model should support short-lived, experimental, and
+Its purpose is to describe how the DSL model supports short-lived, experimental, and
 non-production workloads without forcing production-style licensing commitments.
 
 ## Background

@@ -1,4 +1,4 @@
-![IABM Logo](assets/IABM-Logo.png)
+![IAMT Logo](assets/IAMT-logo.png)
 
 # Dynamic Software Licensing Best Practices
 

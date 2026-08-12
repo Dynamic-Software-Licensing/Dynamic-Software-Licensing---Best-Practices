@@ -11,13 +11,13 @@
 
 This chapter defines the governance-related and forward-looking aspects of the Dynamic Software Licensing best practices.
 
-Its purpose is to describe how the best practices may evolve over time and which future development areas remain open, extendable, or dependent on broader industry collaboration.
+Its purpose is to describe how the best practices evolves over time and which future development areas remain dependent on broader industry collaboration.
 
 ## Role Within the Best Practices
 
-The DSL best practices are intended to be more than a static one-off document.
+The DSL best practices are more than a static one-off document.
 
-As an IABM initiative, it is expected to evolve through collaboration, refinement, clarification of terminology and requirements, and possible future expansion into a more mature industry reference point.
+As an IABM initiative, it evolves through collaboration, refinement, and clarification of terminology and requirements toward a more mature industry reference point.
 
 This chapter provides the structural home for those topics.
 
@@ -29,7 +29,7 @@ This chapter captures:
 - areas where additional industry alignment is expected,
 - next-step priorities for post-review refinement and publication.
 
-It should not duplicate repository governance files, but it should explain how governance and evolution relate to the best practices itself.
+It does not duplicate repository governance files, but explains how governance and evolution relate to the best practices itself.
 
 ## Governance of the Best Practices
 
@@ -57,8 +57,8 @@ content baseline. The next priorities after group review should be:
 - align conformance, API, data model, and security chapters on shared interpretation points,
 - verify that annex content remains supportive and does not conflict with the main text.
 
-These priorities are intended to convert review feedback into a stable publication baseline
-rather than to reopen the document scope.
+These priorities convert review feedback into a stable publication baseline rather than
+reopening the document scope.
 
 ## Expected Areas of Future Development
 
@@ -101,8 +101,8 @@ It provides the long-term orientation layer of the best practices.
 
 ## Review and Publication Path
 
-The current document state is intended to support formal group review.
-That review should be used to:
+The current document state supports formal group review.
+That review is used to:
 - confirm that the document structure is complete,
 - identify wording improvements and consistency fixes,
 - surface remaining editorial ambiguities,
@@ -116,8 +116,8 @@ Following review, the publication path should proceed in a controlled sequence:
 
 ## Maintenance Expectations
 
-Once published, the best practices should remain maintainable through versioned updates rather
-than ad hoc edits. Proposed changes should be evaluated according to their impact on:
+Once published, the best practices remain maintainable through versioned updates rather
+than ad hoc edits. Proposed changes are evaluated according to their impact on:
 - terminology stability,
 - normative interpretation,
 - interoperability expectations,
@@ -131,5 +131,5 @@ industry adoption.
 
 This chapter closes the main body of the DSL best practices by linking the current review
 baseline to its future maintenance and publication lifecycle. It makes clear that the
-document is intended to become stable enough for adoption while remaining governed,
+document becomes stable enough for adoption while remaining governed,
 versioned, and improvable over time.

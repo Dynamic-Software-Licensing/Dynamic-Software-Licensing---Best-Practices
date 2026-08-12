@@ -72,36 +72,18 @@ This principle is particularly important for maintaining a clear distinction bet
 
 ## Role of This Chapter
 
-This chapter should help contributors decide:
+This chapter helps contributors decide:
 - how strong a statement should be,
 - whether a passage is normative or informative,
 - whether a statement belongs in the main best practices or in an annex,
 - when controlled vocabulary must be used,
 - how to keep the tone neutral and standard-like.
 
-## Possible Future Expansion
-
-If needed, this chapter may later be expanded into subchapters such as:
-- normative keywords and their intended meaning,
-- informative vs normative classification rules,
-- wording patterns and examples,
-- terminology usage conventions,
-- guidance for chapter authors and reviewers.
-
 ## Chapter Positioning
 
 This chapter provides the interpretation rules that make the rest of the review draft
 readable and reviewable in a consistent way.
 
-It should be used as the reference point for distinguishing informative text from normative
+It is used as the reference point for distinguishing informative text from normative
 intent, for controlling keyword usage, and for deciding when material belongs in the main
 document versus an annex.
-
-## Editorial Note: Review Use
-
-During review, this chapter should be used to assess whether wording strength, classification,
-and terminology discipline are applied consistently across the repository.
-
-Where reviewers identify ambiguous use of **MUST**, **SHOULD**, **MAY**, or unclear separation
-between informative and normative material, those comments should be resolved against the
-rules defined here.

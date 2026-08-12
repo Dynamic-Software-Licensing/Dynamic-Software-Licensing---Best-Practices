@@ -29,16 +29,16 @@ The current DSL material already points toward different access patterns and mat
 including varying support for documented processes, custom integrations, standard process
 models, CLI or API usage, and self-service capabilities.
 
-This chapter should provide the structure for those ideas.
+This chapter provides the structure for those ideas.
 
 ## Scope of This Chapter
 
-This chapter is intended to define:
+This chapter defines:
 - conformance targets,
 - conformance levels,
 - profile-based adoption structure.
 
-It should not yet become a full certification framework.
+It is not presented as a full certification framework.
 
 ## Structure of This Chapter
 
@@ -47,27 +47,17 @@ This chapter is organized into the following subchapters:
 ### 01. Conformance Targets
 Defines the kinds of implementations or components to which conformance language may apply.
 
-This section should clarify whether the best practices speaks about system-level implementations, component-level behavior, interfaces, or operational models.
-
 ### 02. Conformance Levels
 Defines how alignment with the best practices may be expressed at different levels.
-
-This section should describe the logic behind staged capability or maturity.
 
 ### 03. Profile A – Foundational
 Defines a baseline profile.
 
-This section should capture the minimum practical capabilities expected for a basic DSL-aligned implementation.
-
 ### 04. Profile B – Cloud Native
 Defines a more advanced profile.
 
-This section should capture stronger expectations around automation, integration, observability, and dynamic behavior.
-
 ### 05. Profile C – Advanced Interoperable
 Defines an advanced profile.
-
-This section should capture the expectations for broader interoperability, richer operational behavior, and more mature implementation patterns.
 
 ## Relationship to Other Chapters
 
@@ -78,23 +68,7 @@ This chapter is closely related to:
 - operational profiles,
 - conformance checklist annexes.
 
-It should provide a structure that later requirement language can map onto.
-
-## Editorial Guidance
-
-At the current stage, contributors should focus on:
-- clear distinction between profile levels,
-- realistic staged adoption,
-- practical interpretation rather than theoretical completeness,
-- avoiding certification-style overreach.
-
-## Possible Future Expansion
-
-If needed, this chapter may later include:
-- profile comparison tables,
-- capability matrices,
-- mapping from profiles to requirement sets,
-- migration guidance between profiles.
+It provides a structure that later requirement language can map onto.
 
 ## Chapter Positioning
 

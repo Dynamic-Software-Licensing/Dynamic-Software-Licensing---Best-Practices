@@ -375,9 +375,3 @@ forward; it does not state normative requirements, does not use normative keywor
 requirement language, and does not define API-level or schema-level behavior. The normative
 requirements chapter is the place where these themes become disciplined, testable
 requirements.
-
-## Review Focus
-
-Review comments on this section should focus on whether the theme set is complete, whether the
-traceability into the normative requirements chapter is credible, and whether any important
-cross-theme tensions still need to be surfaced more explicitly.

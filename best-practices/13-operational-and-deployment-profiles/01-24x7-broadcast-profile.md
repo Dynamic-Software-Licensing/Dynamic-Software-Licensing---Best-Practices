@@ -84,5 +84,5 @@ The following expectations are typical for this profile:
 This chapter provides the operational interpretation layer for stable, long-running production
 workloads in the DSL best practices.
 
-It should be read as the profile that emphasizes continuity, observability, and controlled
-failover over short-lived elasticity.
+It is the profile that emphasizes continuity, observability, and controlled failover over
+short-lived elasticity.

@@ -32,18 +32,16 @@ The current DSL work is already strongly shaped by five recurring principles:
 - observability
 - licensing-as-code
 
-These principles should remain the anchor for this chapter.
+These principles are the anchor for this chapter.
 
 ## Scope of This Chapter
 
-This chapter is intended to define the core principles that influence the best practices as a whole.
-
-It should describe:
+This chapter defines the core principles that influence the best practices as a whole. It describes:
 - what these principles mean
 - why they matter
 - how they guide later chapters.
 
-It should not yet attempt to define all detailed implementation rules.
+It does not attempt to define all detailed implementation rules.
 
 ## Structure of This Chapter
 
@@ -53,8 +51,8 @@ This chapter is organized into the following subchapter:
 
 Defines the core design principles that guide the DSL best practices.
 
-This section explains what each principle means, why it matters, and how it should
-shape later architecture, interface, operational, and conformance decisions.
+This section explains what each principle means, why it matters, and how it shapes later
+architecture, interface, operational, and conformance decisions.
 
 ## Relationship to Other Chapters
 
@@ -65,7 +63,7 @@ This chapter informs:
 - canonical API and data model chapters,
 - security and operational chapters.
 
-It should act as a stable point of reference when contributors make decisions about detailed wording elsewhere in the best practices.
+It acts as a stable point of reference when contributors make decisions about detailed wording elsewhere in the best practices.
 
 ## Chapter Positioning
 

@@ -642,9 +642,3 @@ chapter-internal bridge intended to support derivation of normative requirements
 This section is descriptive and analytical. It defines workflow patterns at the "what, not
 how" level established in the prework. It does not prescribe normative requirement language
 and does not contain API-level or schema-level detail; both are out of scope for this section.
-
-## Review Focus
-
-Review comments on this section should focus on workflow completeness, clarity of actors and
-failure paths, and whether the workflow set is sufficient to support later requirement,
-reference-model, and API decisions.

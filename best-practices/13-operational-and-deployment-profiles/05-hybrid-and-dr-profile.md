@@ -13,7 +13,7 @@ This chapter defines the operational and deployment profile for hybrid, failover
 disaster-recovery-oriented environments within the Dynamic Software Licensing (DSL) best
 practices.
 
-Its purpose is to describe how the DSL model should support portability, controlled cutover,
+Its purpose is to describe how the DSL model supports portability, controlled cutover,
 and resilience across more than one environment or runtime boundary.
 
 ## Background
@@ -79,5 +79,5 @@ The following expectations are typical for this profile:
 This chapter provides the operational interpretation layer for DSL deployments that span more
 than one environment or that must preserve continuity through controlled failover.
 
-It should be read as the profile where identity-based mobility, auditability, and resilience
-come together most directly.
+It is the profile where identity-based mobility, auditability, and resilience come together
+most directly.

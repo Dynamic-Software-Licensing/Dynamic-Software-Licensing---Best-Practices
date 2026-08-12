@@ -28,14 +28,15 @@ This chapter should therefore be treated as a reference point for the rest of th
 
 ## Scope of This Chapter
 
-This chapter is intended to define:
+This chapter covers:
 - core terms,
 - architecture-related terms,
 - license and policy terms,
 - operational terms,
 - abbreviations used throughout the best practices.
 
-It should not yet attempt to define every possible implementation detail. Instead, it should establish the working vocabulary needed to keep the rest of the best practices coherent.
+It establishes the working vocabulary needed to keep the rest of the best practices coherent
+without attempting to catalog every implementation-specific detail.
 
 ## Controlled Vocabulary Principle
 
@@ -56,27 +57,17 @@ This chapter is organized into the following subchapters:
 ### 01. Core Terms
 Defines the most central concepts used across the best practices.
 
-This section should capture the highest-level DSL terms that appear throughout the document and are not limited to a single technical area.
-
 ### 02. Architecture Terms
 Defines architecture-related vocabulary used in the reference model and related sections.
-
-This section should include terms for planes, components, and structural elements of the proposed licensing model.
 
 ### 03. License and Policy Terms
 Defines terms related to licensing behavior, entitlement, lease handling, policy handling, and related concepts.
 
-This section should support consistency across requirement, API, and data model chapters.
-
 ### 04. Operational Terms
 Defines terms related to operation, lifecycle handling, observability, migration, and deployment behavior.
 
-This section should help align the best practices with practical usage and operational workflows.
-
 ### 05. Abbreviations
 Defines recurring abbreviations used throughout the best practices.
-
-This section should provide a concise and stable reference for abbreviated terms used across chapters and annexes.
 
 ## Controlled Vocabulary Maintenance
 
@@ -99,24 +90,6 @@ This chapter supports and informs:
 - relevant annexes and schemas.
 
 Where other chapters introduce concept names, those names should align with this terminology chapter.
-
-## Editorial Guidance
-
-At the current stage, this chapter is primarily intended to stabilize the naming of concepts before the detailed content of later chapters becomes more complex.
-
-When drafting this chapter, contributors should focus on:
-- choosing one preferred term per concept,
-- defining terms at the right level of abstraction,
-- avoiding unnecessary implementation-specific wording,
-- keeping definitions concise and reusable.
-
-## Possible Future Expansion
-
-If needed, this chapter may later include:
-- preferred term vs deprecated synonym guidance,
-- short definition templates,
-- cross-references into API, data model, or annex material,
-- a terminology change log if vocabulary evolves significantly over time.
 
 ## Chapter Positioning
 

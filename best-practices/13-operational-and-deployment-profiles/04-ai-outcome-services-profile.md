@@ -82,5 +82,5 @@ The following expectations are typical for this profile:
 This chapter provides the operational interpretation layer for outcome-oriented and AI-enabled
 DSL deployments.
 
-It should be read as the profile where expressive metering, transparent attribution, and
-modality clarity become especially important.
+It is the profile where expressive metering, transparent attribution, and modality clarity
+become especially important.

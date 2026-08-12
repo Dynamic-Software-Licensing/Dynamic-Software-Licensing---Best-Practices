@@ -11,7 +11,7 @@
 
 This chapter defines the operational and deployment profile for Event Productions used by the Dynamic Software Licensing best practices.
 
-Its purpose is to describe the practical runtime environments and operating patterns that the best practices should support.
+Its purpose is to describe the practical runtime environments and operating patterns that the best practices supports.
 
 ## Background
 This section describes a reference implementation of the DSL for live event production using software media functions deployed as containerized services in a Kubernetes cluster environment, hosted either on-premises or in a public cloud.

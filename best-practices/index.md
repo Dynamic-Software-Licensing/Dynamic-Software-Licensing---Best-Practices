@@ -6,7 +6,7 @@ An IABM initiative for modern software licensing in broadcast and media workflow
 
 This directory contains the main body of the Dynamic Software Licensing best practices.
 
-The best-practices document is intended to provide a structured, implementation-oriented framework for modern software licensing in broadcast and media workflows. It is not a formal standard, but it is deliberately organized in a standard-like way to support consistency, interoperability, and practical adoption across the industry.
+The best-practices document provides a structured, implementation-oriented framework for modern software licensing in broadcast and media workflows. It is not a formal standard, but it is deliberately organized in a standard-like way to support consistency, interoperability, and practical adoption across the industry.
 
 ## How to Use This Directory
 
@@ -16,7 +16,7 @@ Within each chapter folder:
 - `00-index.md` defines the purpose, scope, and editorial intent of the chapter,
 - numbered subchapter files define the detailed structure and working content of that chapter.
 
-This approach is intended to:
+This approach:
 - keep the document easy to navigate in GitHub,
 - support collaborative drafting in smaller sections,
 - make larger chapters easier to review and expand,
@@ -37,7 +37,7 @@ Explains the industry context, current licensing challenges, and the motivation 
 ### 02. Scope
 Folder: `02-scope/`
 
-Defines what the best practices covers, what it excludes, and who it is intended for.
+Defines what the best practices covers, what it excludes, and who it is written for.
 
 ### 03. Conventions and Normative Language
 Folder: `03-conventions-and-normative-language/`

@@ -377,9 +377,3 @@ This section is descriptive and analytical. It classifies operating situations a
 licensing pressures they create; it does not prescribe normative requirement language and
 does not specify API-level or schema-level behavior. Those concerns are addressed in the
 canonical API model and in the normative requirements chapter.
-
-## Review Focus
-
-Review comments on this section should focus on whether the class set is complete, whether it
-aligns with the operational profiles chapter, and whether the mapping from class to downstream
-requirements remains clear and defensible.
