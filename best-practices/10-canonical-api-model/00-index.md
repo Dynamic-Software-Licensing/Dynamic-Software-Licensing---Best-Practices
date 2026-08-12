@@ -97,27 +97,14 @@ This chapter is closely related to:
 
 It should serve as the main API-oriented interpretation layer of the best practices.
 
-## Editorial Guidance
+## Chapter Positioning
 
-At the current stage, contributors should focus on:
-- operation structure,
-- terminology consistency,
-- stable naming of flows,
-- clear separation between conceptual API behavior and detailed schema examples.
+This chapter provides the API-oriented interpretation layer for the DSL best practices.
+It turns the lifecycle operations, trust constraints, and data-model concepts from adjacent
+chapters into a coherent interaction model with consistent endpoints, request patterns,
+authentication expectations, error semantics, and key-discovery behavior.
 
-Detailed payload definitions can be placed in later subchapters or annexes.
-
-## Possible Future Expansion
-
-If needed, this chapter may later include:
-- request/response flow diagrams,
-- interaction timing notes,
-- idempotency guidance,
-- error category tables,
-- profile-specific API behavior.
-
-## Drafting Note
-
-At the current stage, this chapter should provide the structural home for the canonical licensing interactions of the DSL best practices.
-
-Its immediate purpose is to create a stable API chapter layout before detailed contracts and schemas are refined.
+The chapter is intentionally implementation-oriented but remains vendor-neutral. It defines
+the canonical structure and standards profile for API interactions while leaving deployment-
+specific realization details and concrete contracts to annexes, schemas, and profile-specific
+guidance.
