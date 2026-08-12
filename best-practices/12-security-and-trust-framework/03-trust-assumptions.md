@@ -132,14 +132,7 @@ A weakness in any of these dependencies weakens the corresponding assumption abo
 - The reference model (Chapter 07) and the security framework objectives (Section 12.01)
   provide the structural and goal context.
 
-## Drafting Notes
-
 This section records assumptions and the obligations they imply. It is intentionally explicit
 about what is *not* assumed, because over-stated trust is itself a security risk. It remains
 platform-agnostic; concrete identity providers and key services are reserved for the
 informative annexes.
-
-## Drafting To-Do
-
-- Cross-check TRUST-4 against the identity and binding requirements once Chapter 09 matures.
-- Confirm whether a dedicated trust-boundary diagram should be added to the diagrams set.

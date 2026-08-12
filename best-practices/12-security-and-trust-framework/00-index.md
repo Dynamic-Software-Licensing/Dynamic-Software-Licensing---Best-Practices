@@ -77,25 +77,12 @@ This chapter is closely related to:
 
 It should act as the main security interpretation layer of the best practices.
 
-## Editorial Guidance
+## Chapter Positioning
 
-At the current stage, contributors should focus on:
-- stable topic boundaries,
-- practical trust considerations,
-- production realism,
-- avoiding overlap between architecture description and security controls unless necessary.
+This chapter provides the security interpretation layer for the DSL best practices.
+It connects the reference model, lifecycle operations, and operational profiles to a
+coherent set of objectives, trust assumptions, controls, and audit expectations.
 
-## Possible Future Expansion
-
-If needed, this chapter may later include:
-- threat categories,
-- trust boundary diagrams,
-- control matrices,
-- mapping to compliance expectations,
-- links to audit and observability requirements.
-
-## Drafting Note
-
-At the current stage, this chapter should provide the structural foundation for the security posture of the DSL best practices.
-
-Its immediate purpose is to ensure that security and trust are treated as first-class design concerns throughout the repository.
+The chapter is intended to remain platform-agnostic. It defines the security posture and
+required behavior while leaving API payloads, schema details, and deployment-specific
+realizations to the canonical model, operational profiles, and informative annexes.

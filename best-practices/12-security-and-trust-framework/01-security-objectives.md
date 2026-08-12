@@ -140,14 +140,6 @@ principles from Chapter 06:
   to; the canonical API and data model define the artifacts; Chapter 09 carries the formal
   conformance requirements.
 
-## Drafting Notes
-
 This section is normative in intent but states goals rather than mechanisms; the mechanisms
 are specified as controls in Section 12.04. It remains platform-agnostic: specific key
 services, identity providers, and transports are reserved for the informative annexes.
-
-## Drafting To-Do
-
-- Confirm the chapter-local identifier scheme against any repository-wide requirement
-  numbering decided for Chapter 09.
-- Verify the asset list against the canonical data model once it stabilizes.

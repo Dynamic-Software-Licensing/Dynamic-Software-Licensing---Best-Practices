@@ -126,15 +126,7 @@ practice does not assert or confer certification against any of them.
 - The canonical data model defines the structure of audit and usage records; this section
   defines their required properties, not their schema.
 
-## Drafting Notes
-
 This section is normative for auditability and advisory for compliance alignment. It names
 representative compliance frameworks as examples only and avoids asserting certification. It
 remains platform-agnostic: specific log stores, retention services, and reporting tools are
 reserved for the informative annexes.
-
-## Drafting To-Do
-
-- Confirm the retention expectation (AUD-6) once a position on retention periods is agreed.
-- Cross-reference AUD-5 with the metering requirements in Chapter 09 to avoid divergence.
-- Decide whether a compliance-mapping table belongs here or in an informative annex.

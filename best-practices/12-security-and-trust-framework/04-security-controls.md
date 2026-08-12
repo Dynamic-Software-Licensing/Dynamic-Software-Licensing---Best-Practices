@@ -263,15 +263,6 @@ Informative references (guidance and good practice):
 - The normative requirements chapter (Chapter 09) is expected to reference these controls in
   its security requirements section.
 
-## Drafting Notes
-
 This section is normative. It states mechanisms and their required strength while remaining
 platform-agnostic and free of API- and schema-level detail. Algorithm choices, claim names,
 and endpoint definitions are deliberately deferred to the canonical model and annexes.
-
-## Drafting To-Do
-
-- Align SEC-n identifiers with the formal requirement numbering once Chapter 09 stabilizes.
-- Confirm SEC-20 enforcement expectations against the lease and policy requirements.
-- Consider adding recommended cryptographic-strength guidance as an informative annex rather
-  than in the platform-agnostic main text.

@@ -138,17 +138,8 @@ practice rather than a single specification.
 - The canonical data model defines the policy structure; this section defines its required
   semantics, not its schema.
 
-## Drafting Notes
-
 This section is normative. It defines the required *semantics* of grace and offline behavior
 (windows, actions, bounds, alerting, reconciliation) while leaving the concrete policy schema
 and default values to the canonical data model, the per-profile guidance in Chapter 13, and
 the informative annexes. The action names DRAIN, DEGRADE, and STOP are treated as a
 controlled vocabulary for this behavior.
-
-## Drafting To-Do
-
-- Agree recommended default bounds per operational profile and record them in Chapter 13
-  rather than here.
-- Confirm the DRAIN/DEGRADE/STOP vocabulary against the terminology chapter.
-- Cross-reference OFG-10 with the metering and usage-record requirements in Chapter 09.

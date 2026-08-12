@@ -182,14 +182,6 @@ responsibility of platform and infrastructure providers or of other chapters:
 - The security controls (Section 12.04) cite these threat identifiers in their mitigations.
 - The reference model (Chapter 07) defines the planes and boundaries referenced here.
 
-## Drafting Notes
-
 This section is descriptive. The threat catalogue is intended to be stable and citable; it
 does not use normative keywords. Controls and their normative strength are defined in
 Section 12.04.
-
-## Drafting To-Do
-
-- Consider whether a likelihood/impact rating should be added per threat once the working
-  group agrees a rating scheme.
-- Confirm the out-of-scope list against the scope chapter (Chapter 02).
