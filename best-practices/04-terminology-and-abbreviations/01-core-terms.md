@@ -20,8 +20,6 @@ This section:
 
 It does not define low-level component schemas or platform-specific data elements.
 
-
-
 ## Definitions
 
 **Auditability** - The structural quality that ensures all license lifecycle events, state transformations, and usage metrics are captured in a tamper-proof, chronologically sequential ledger to satisfy regulatory and corporate compliance.
@@ -36,7 +34,7 @@ It does not define low-level component schemas or platform-specific data element
 
 **Licensing as Code** - The architectural philosophy of managing, declaring, and provisioning license states using the exact same automated configuration tools (e.g., IaC pipelines) and version-control workflows as the underlying runtime infrastructure.
 
-**Media Functions** - Following [DMF Reference Architecture](https://tech.ebu.ch/dmf/ra), the Media Functions layer provides well-defined units of functionality that act on media streams, files or objects. 
+**Media Functions** - Following [DMF Reference Architecture](https://tech.ebu.ch/dmf/ra), the Media Functions layer provides well-defined units of functionality that act on media streams, files or objects.
 
 **Media Workloads** - Following [DMF Reference Architecture](https://tech.ebu.ch/dmf/ra), Media Workloads combines multiple standalone, stateless "Media Functions" (such as video/audio mixing, format conversion, and graphics rendering) to execute a targeted production requirement.
 

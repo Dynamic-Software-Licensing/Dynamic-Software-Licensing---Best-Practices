@@ -30,4 +30,3 @@ This section supports terminological alignment for the requirement, API, and dat
 **Perpetual License** - An entitlement model that grants a customer organization the indefinite, non-expiring legal right to use a specific software version or feature set.
 
 **Policy Object** - A structured data envelope containing the control settings and configuration constraints governing a lease's behavior, including renewal windows, grace intervals, and alerting thresholds.
-

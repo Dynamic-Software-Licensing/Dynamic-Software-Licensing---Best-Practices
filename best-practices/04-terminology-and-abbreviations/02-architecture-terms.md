@@ -19,7 +19,7 @@ This section covers the structural definitions within the licensing ecosystem's 
 
 ## Definitions
 
-**Control Plane** - The control plane is the central authority for entitlements, lease lifecycle management, cryptographic key operations, usage metering, and policy enforcement. 
+**Control Plane** - The control plane is the central authority for entitlements, lease lifecycle management, cryptographic key operations, usage metering, and policy enforcement.
 
 **End User Portal** - A customer-facing management interface providing aggregated visibility, multi-vendor asset views, self-service provisioning, and centralized administrative control over license allocation.
 
@@ -27,4 +27,4 @@ This section covers the structural definitions within the licensing ecosystem's 
 
 **Platform Neutrality** - The design and architectural attribute of the Licensing SDK that enables it to execute uniformly, predictably, and without modification across diverse operating systems, hardware architectures, and runtime environments.
 
-**Workspace Plane** - The workspace plane is where licensed applications run and where licensing is enforced locally. 
+**Workspace Plane** - The workspace plane is where licensed applications run and where licensing is enforced locally.
