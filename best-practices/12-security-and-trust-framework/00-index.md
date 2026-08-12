@@ -15,7 +15,7 @@ Its purpose is to describe the security objectives, trust assumptions, and contr
 
 ## Role Within the Best Practices
 
-Security is a core principle of the DSL initiative, not a secondary appendix topic. Existing draft material repeatedly emphasizes cryptographic protection, auditability, least privilege, secure binding, and alignment with regulatory expectations. :contentReference[oaicite:27]{index=27} :contentReference[oaicite:28]{index=28} :contentReference[oaicite:29]{index=29}
+Security is a core principle of the DSL initiative, not a secondary appendix topic. Existing draft material repeatedly emphasizes cryptographic protection, auditability, least privilege, secure binding, and alignment with regulatory expectations.
 
 This chapter provides the structured home for those topics.
 
@@ -63,7 +63,7 @@ This section should explain how the best practices supports governance and regul
 ### 06. Offline and Grace Behavior
 Defines how the best practices treats continuity under partial disconnection or control-plane unavailability.
 
-This section should explain the trust and risk boundaries of offline validation, grace policies, retries, and bounded continuity behavior. :contentReference[oaicite:30]{index=30} :contentReference[oaicite:31]{index=31} :contentReference[oaicite:32]{index=32}
+This section should explain the trust and risk boundaries of offline validation, grace policies, retries, and bounded continuity behavior.
 
 ## Relationship to Other Chapters
 
@@ -77,25 +77,12 @@ This chapter is closely related to:
 
 It should act as the main security interpretation layer of the best practices.
 
-## Editorial Guidance
+## Chapter Positioning
 
-At the current stage, contributors should focus on:
-- stable topic boundaries,
-- practical trust considerations,
-- production realism,
-- avoiding overlap between architecture description and security controls unless necessary.
+This chapter provides the security interpretation layer for the DSL best practices.
+It connects the reference model, lifecycle operations, and operational profiles to a
+coherent set of objectives, trust assumptions, controls, and audit expectations.
 
-## Possible Future Expansion
-
-If needed, this chapter may later include:
-- threat categories,
-- trust boundary diagrams,
-- control matrices,
-- mapping to compliance expectations,
-- links to audit and observability requirements.
-
-## Drafting Note
-
-At the current stage, this chapter should provide the structural foundation for the security posture of the DSL best practices.
-
-Its immediate purpose is to ensure that security and trust are treated as first-class design concerns throughout the repository.
+The chapter is intended to remain platform-agnostic. It defines the security posture and
+required behavior while leaving API payloads, schema details, and deployment-specific
+realizations to the canonical model, operational profiles, and informative annexes.
