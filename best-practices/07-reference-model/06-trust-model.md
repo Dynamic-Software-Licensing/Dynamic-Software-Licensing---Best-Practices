@@ -18,28 +18,40 @@ The DSL trust model is based on the following principles:
 
 The DSL model defines the following trust boundaries:
 
-```text
-┌──────────────────────────────────────────────────┐
-│              CONTROL PLANE (trusted)             │
-│                                                  │
-│  Entitlements ── Leases ── Keys ── Usage         │
-│                                                  │
-│  Trust basis: managed infrastructure,            │
-│  key custody, audit logging                      │
-└────────────────────┬─────────────────────────────┘
-                     │
-          TLS + Authentication
-          (IAM / OIDC / custom)
-                     │
-┌────────────────────┴─────────────────────────────┐
-│            WORKSPACE PLANE (semi-trusted)         │
-│                                                  │
-│  License Agent ──── Application + SDK            │
-│                                                  │
-│  Trust basis: identity evidence,                 │
-│  signed tokens, local validation                 │
-└──────────────────────────────────────────────────┘
+```mermaid
+flowchart TB
+    subgraph control[Control Plane (trusted)]
+        entitlements[Entitlements]
+        leases[Leases]
+        keys[Keys]
+        usage[Usage]
+
+        entitlements --> leases
+        leases --> keys
+        keys --> usage
+    end
+
+    subgraph workspace[Workspace Plane (semi-trusted)]
+        agent[License Agent]
+        app[Application + SDK]
+
+        agent --> app
+    end
+
+    control -->|TLS + authentication<br/>IAM / OIDC / custom| workspace
 ```
+
+Control plane trust basis:
+
+- managed infrastructure,
+- key custody,
+- audit logging.
+
+Workspace plane trust basis:
+
+- identity evidence,
+- signed tokens,
+- local validation.
 
 ### Control Plane Trust
 
