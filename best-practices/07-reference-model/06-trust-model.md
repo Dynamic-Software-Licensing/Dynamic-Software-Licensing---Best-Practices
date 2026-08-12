@@ -20,7 +20,7 @@ The DSL model defines the following trust boundaries:
 
 ```mermaid
 flowchart TB
-    subgraph control[Control Plane (trusted)]
+    subgraph control["Control Plane - trusted"]
         entitlements[Entitlements]
         leases[Leases]
         keys[Keys]
@@ -31,7 +31,7 @@ flowchart TB
         keys --> usage
     end
 
-    subgraph workspace[Workspace Plane (semi-trusted)]
+    subgraph workspace["Workspace Plane - semi-trusted"]
         agent[License Agent]
         app[Application + SDK]
 
