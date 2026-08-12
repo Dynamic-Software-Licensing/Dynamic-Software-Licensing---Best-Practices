@@ -21,7 +21,7 @@ A lease is a time-bound, active binding between an entitlement and a running wor
 A lease is derived from an entitlement through the following process: the license agent presents the workload's identity evidence and the requested application/dimensions to the control plane. The control plane looks up the tenant's entitlement for that application, verifies that the requested dimensions are within the entitlement's limits, confirms quota availability (i.e., not all lease slots are consumed), and — if all checks pass — creates a lease record and returns a signed token. The lease inherits its dimension limits and policy from the entitlement, scoped to a specific workload and bounded in time.
 
 A lease is:
-- derived from an entitlement (inheriting dimensions, modality, and policy)
+- derived from an entitlement (inheriting dimensions, license modality, and policy)
 - bound to a specific workload identity
 - expressed as a signed token that can be validated locally
 - subject to renewal, reissue, and revocation
@@ -64,7 +64,7 @@ The relationships between these concepts follow a clear hierarchy:
         ┌──────────────────────┼──────────────────────┐
         │                      │                      │
    ┌────▼─────┐          ┌────▼─────┐          ┌─────▼────┐
-   │Dimensions│          │  Policy  │          │ Modality │
+     │Dimensions│          │  Policy  │    │License Modality│
    └────┬─────┘          └────┬─────┘          └──────────┘
         │ carried into        │ governs
         │                     │
@@ -95,7 +95,7 @@ The relationships between these concepts follow a clear hierarchy:
 
 The conceptual lifecycle of a license interaction is:
 
-1. A user holds an entitlement for an application with defined dimensions and modality.
+1. A user holds an entitlement for an application with defined dimensions and license modality.
 2. A workload starts and presents identity evidence to request a lease.
 3. The control plane validates the entitlement, verifies identity, and issues a signed token.
 4. The workload validates the token locally and operates within the granted dimensions.

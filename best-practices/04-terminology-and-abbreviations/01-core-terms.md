@@ -24,7 +24,7 @@ It does not define low-level component schemas or platform-specific data element
 
 **Auditability** - The structural quality that ensures all license lifecycle events, state transformations, and usage metrics are captured in a tamper-proof, chronologically sequential ledger to satisfy regulatory and corporate compliance.
 
-**Commercial Modality** - The overarching business strategy and contract rules (such as subscription, pool allocation, pre-paid tokens, or post-hoc utility consumption) that govern how structural entitlements are priced and accounted for over time.
+**Commercial Modality** - The overarching business strategy and contract rules (such as subscription, pool allocation, pre-paid tokens, or post-hoc utility consumption) that govern how structural entitlements are priced and accounted for over time. This term should be used for business framing, not as a replacement for the runtime-facing term License Modality.
 
 **Dynamic Software Licensing (DSL)** - The core collaborative initiative and architectural framework focused on modern software licensing approaches for broadcast and media workloads.
 
@@ -38,4 +38,4 @@ It does not define low-level component schemas or platform-specific data element
 
 **Media Workloads** - Following [DMF Reference Architecture](https://tech.ebu.ch/dmf/ra), Media Workloads combines multiple standalone, stateless "Media Functions" (such as video/audio mixing, format conversion, and graphics rendering) to execute a targeted production requirement.
 
-**Modality** - The structural model or operational category that defines how software application usage is counted, metered, and commercially bounded—typically categorized by time intervals, processing metrics, or transactional outcomes—to dictate how active entitlements are evaluated at runtime.
+**Modality** - Informal shorthand for a licensing usage model. In normative, API, schema, and runtime contexts, the preferred term is License Modality to avoid ambiguity between business framing and runtime enforcement behavior.

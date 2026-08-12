@@ -1,0 +1,62 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://dynamic-software-licensing.org/schemas/policy.schema.json",
+	"title": "DSL Policy Object",
+	"type": "object",
+	"additionalProperties": false,
+	"properties": {
+		"renewBeforeSeconds": {
+			"type": "integer",
+			"minimum": 0
+		},
+		"offlineGraceSeconds": {
+			"type": "integer",
+			"minimum": 0
+		},
+		"onGraceExhausted": {
+			"type": "string",
+			"enum": ["DRAIN", "DEGRADE", "STOP"]
+		},
+		"heartbeatSeconds": {
+			"type": "integer",
+			"minimum": 0
+		},
+		"renewBackoff": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"initialMs": {
+					"type": "integer",
+					"minimum": 0
+				},
+				"maxMs": {
+					"type": "integer",
+					"minimum": 0
+				},
+				"jitter": {
+					"type": "boolean"
+				}
+			},
+			"required": ["initialMs", "maxMs", "jitter"]
+		},
+		"alertThresholds": {
+			"type": "array",
+			"items": {
+				"type": "integer",
+				"minimum": 0
+			}
+		},
+		"revocationEndpoint": {
+			"type": "string",
+			"format": "uri"
+		},
+		"tenantOverridesAllowed": {
+			"type": "boolean"
+		}
+	},
+	"required": [
+		"renewBeforeSeconds",
+		"offlineGraceSeconds",
+		"onGraceExhausted"
+	]
+}

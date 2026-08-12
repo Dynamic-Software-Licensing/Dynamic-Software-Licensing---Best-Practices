@@ -178,7 +178,7 @@ Contributors indicate status intent in the pull request. Editors confirm reposit
 Terminology is treated as controlled vocabulary.
 
 Any terminology change must be reflected in:
-- `best-practices/04-terminology-and-abbreviations.md`,
+- `best-practices/04-terminology-and-abbreviations/`,
 - `annexes/normative/annex-e-terminology-reference.md`,
 - all affected chapters and annexes using the term.
 

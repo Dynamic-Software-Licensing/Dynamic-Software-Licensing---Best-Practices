@@ -1,0 +1,86 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://dynamic-software-licensing.org/schemas/entitlement.schema.json",
+	"title": "DSL Entitlement Object",
+	"type": "object",
+	"additionalProperties": false,
+	"$defs": {
+		"dimensionLimit": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"name": {
+					"type": "string",
+					"minLength": 1
+				},
+				"maxQuantity": {
+					"type": "number",
+					"minimum": 0
+				}
+			},
+			"required": ["name", "maxQuantity"]
+		}
+	},
+	"properties": {
+		"entitlementId": {
+			"type": "string"
+		},
+		"tenantId": {
+			"type": "string"
+		},
+		"app": {
+			"type": "string"
+		},
+		"status": {
+			"type": "string",
+			"enum": ["ACTIVE", "SUSPENDED", "EXPIRED"]
+		},
+		"allowedModalities": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			},
+			"minItems": 1
+		},
+		"dimensions": {
+			"type": "array",
+			"items": {
+				"$ref": "#/$defs/dimensionLimit"
+			}
+		},
+		"defaultPolicy": {
+			"$ref": "policy.schema.json"
+		},
+		"scope": {
+			"type": "object",
+			"additionalProperties": true
+		},
+		"quota": {
+			"type": "object",
+			"additionalProperties": true,
+			"properties": {
+				"maxActiveLeases": {
+					"type": "integer",
+					"minimum": 0
+				}
+			}
+		},
+		"validFrom": {
+			"type": "string",
+			"format": "date-time"
+		},
+		"validUntil": {
+			"type": "string",
+			"format": "date-time"
+		}
+	},
+	"required": [
+		"entitlementId",
+		"tenantId",
+		"app",
+		"status",
+		"allowedModalities",
+		"dimensions",
+		"defaultPolicy"
+	]
+}

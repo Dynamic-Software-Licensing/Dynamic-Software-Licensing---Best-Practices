@@ -40,7 +40,7 @@ The entitlements service manages the source-of-truth records for what each tenan
 
 - Entitlement lookup by tenant, application, and dimensions.
 - Quota enforcement to prevent over-issuance.
-- Policy defaults per product or SKU, including grace policies and modality constraints.
+- Policy defaults per product or SKU, including grace policies and license modality constraints.
 
 Entitlements are typically provisioned through onboarding or procurement workflows and are read by the leases service during issuance.
 
@@ -90,7 +90,7 @@ The event orchestrator handles time-driven and event-driven operations. It:
 
 The API gateway is the unified entry point for all external communication with the control plane. It:
 
-- Exposes REST endpoints for lease operations (`/leases/issue`, `/leases/renew`, `/leases/reissue`, `/leases/revoke`, `/usage/record`).
+- Exposes REST endpoints for lease operations (`POST /v1/leases`, `POST /v1/leases/{leaseId}:renew`, `POST /v1/leases/{leaseId}:reissue`, `POST /v1/leases/{leaseId}:finalizeReissue`, `DELETE /v1/leases/{leaseId}`, `POST /v1/usage-records`).
 - Exposes a WebSocket endpoint for push-based revocation and policy updates.
 - Enforces authentication (IAM, OIDC, or custom), throttling, and perimeter security.
 - Routes requests to the appropriate backend service.

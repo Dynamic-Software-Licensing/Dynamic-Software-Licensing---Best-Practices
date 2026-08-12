@@ -1,0 +1,49 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://dynamic-software-licensing.org/schemas/usage-event.schema.json",
+	"title": "DSL Usage Event Object",
+	"type": "object",
+	"additionalProperties": false,
+	"properties": {
+		"leaseId": {
+			"type": "string"
+		},
+		"tenantId": {
+			"type": "string"
+		},
+		"productId": {
+			"type": "string"
+		},
+		"dimension": {
+			"type": "string"
+		},
+		"quantity": {
+			"type": "number",
+			"minimum": 0
+		},
+		"granularity": {
+			"type": "string"
+		},
+		"timestamp": {
+			"type": "string",
+			"format": "date-time"
+		},
+		"workId": {
+			"type": "string"
+		},
+		"submittedAt": {
+			"type": "string",
+			"format": "date-time"
+		}
+	},
+	"required": [
+		"leaseId",
+		"tenantId",
+		"productId",
+		"dimension",
+		"quantity",
+		"granularity",
+		"timestamp",
+		"workId"
+	]
+}

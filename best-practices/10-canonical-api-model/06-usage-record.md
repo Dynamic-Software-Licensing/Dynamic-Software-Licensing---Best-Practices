@@ -97,7 +97,7 @@ Usage records support idempotent submission through the combination of:
 
 This ensures that retried submissions (e.g., after a network timeout where the agent is unsure if the original request was received) do not result in double counting.
 
-## Billing Model Compatibility
+## License Modality Compatibility
 
 The usage recording model is designed to be compatible with marketplace-style metering. This means:
 

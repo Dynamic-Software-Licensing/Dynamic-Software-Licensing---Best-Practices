@@ -48,7 +48,7 @@ The Issue request contains the following fields:
 | `app` | string | Yes | Application identifier (e.g., `"app-A"`) |
 | `tenantId` | string | Yes | Tenant identifier |
 | `dimensions` | array | Yes | Requested dimension limits (e.g., channels, FPS) |
-| `licenseModality` | string | Yes | Requested billing model (e.g., `"hourly"`, `"daily"`, `"monthly"`) |
+| `licenseModality` | string | Yes | Requested license modality (e.g., `"hourly"`, `"daily"`, `"monthly"`) |
 | `identityEvidence` | object | Yes | Proof of workload identity |
 | `workId` | string | Yes | Correlation identifier for this deployment or run |
 | `version` | string | No | Application version |
@@ -111,7 +111,7 @@ A successful Issue response contains:
 | `token` | string | Signed JWT or PASETO token |
 | `issuedAt` | string (ISO 8601) | Timestamp of issuance |
 | `expiresAt` | string (ISO 8601) | Timestamp of token/lease expiry |
-| `licenseModality` | string | Granted billing model |
+| `licenseModality` | string | Granted license modality |
 | `dimensions` | array | Granted dimension limits (may differ from requested) |
 | `boundIdentity` | object | The verified identity the lease is bound to |
 | `policy` | object | Enforcement parameters (renewal window, grace period, exhaustion action, alerts) |
@@ -142,7 +142,7 @@ The control plane applies the following validation during Issue:
 | Dimensions within limits | Requested dimensions exceed entitlement limits |
 | Quota available | All lease slots for this entitlement are already in use |
 | Identity evidence valid | Evidence signature verification fails or evidence is expired |
-| Modality permitted | Requested modality is not available for this entitlement |
+| License modality permitted | Requested license modality is not available for this entitlement |
 | Environment permitted | Requested environment tag is not allowed by policy |
 
 Failed validation returns a structured error response (see subchapter 10.08).

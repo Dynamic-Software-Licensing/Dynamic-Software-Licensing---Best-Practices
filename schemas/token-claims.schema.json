@@ -1,0 +1,102 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://dynamic-software-licensing.org/schemas/token-claims.schema.json",
+	"title": "DSL Token Claims Object",
+	"type": "object",
+	"additionalProperties": false,
+	"$defs": {
+		"dimension": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"quantity": {
+					"type": "number",
+					"minimum": 0
+				}
+			},
+			"required": ["name", "quantity"]
+		},
+		"boundIdentity": {
+			"type": "object",
+			"additionalProperties": true,
+			"properties": {
+				"platform": {
+					"type": "string"
+				},
+				"subject": {
+					"type": "string"
+				}
+			},
+			"required": ["platform", "subject"]
+		}
+	},
+	"properties": {
+		"iss": {
+			"type": "string"
+		},
+		"sub": {
+			"type": "string"
+		},
+		"aud": {
+			"type": "string"
+		},
+		"jti": {
+			"type": "string"
+		},
+		"iat": {
+			"type": "string",
+			"format": "date-time"
+		},
+		"nbf": {
+			"type": "string",
+			"format": "date-time"
+		},
+		"exp": {
+			"type": "string",
+			"format": "date-time"
+		},
+		"tenantId": {
+			"type": "string"
+		},
+		"leaseId": {
+			"type": "string"
+		},
+		"app": {
+			"type": "string"
+		},
+		"dimensions": {
+			"type": "array",
+			"items": {
+				"$ref": "#/$defs/dimension"
+			}
+		},
+		"licenseModality": {
+			"type": "string"
+		},
+		"boundIdentity": {
+			"$ref": "#/$defs/boundIdentity"
+		},
+		"policy": {
+			"$ref": "policy.schema.json"
+		}
+	},
+	"required": [
+		"iss",
+		"sub",
+		"aud",
+		"jti",
+		"iat",
+		"nbf",
+		"exp",
+		"tenantId",
+		"leaseId",
+		"app",
+		"dimensions",
+		"licenseModality",
+		"boundIdentity",
+		"policy"
+	]
+}

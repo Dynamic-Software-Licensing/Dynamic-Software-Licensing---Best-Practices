@@ -1,0 +1,65 @@
+# Annex B. API Contracts
+
+## Purpose
+
+This annex consolidates the canonical API surface referenced throughout Chapter 10 into a
+compact contract summary for review and cross-reference.
+
+## Contract Scope
+
+The canonical API defines lifecycle and reporting operations between the workspace plane and
+the control plane. The annex does not replace the detailed explanatory text in Chapter 10, but
+it provides a stable summary of the baseline contract surface.
+
+## Baseline Endpoints
+
+| Operation | Endpoint | Method | Purpose |
+| --- | --- | --- | --- |
+| Issue | `/v1/leases` | POST | Request a new lease for a workload |
+| Renew | `/v1/leases/{leaseId}:renew` | POST | Extend an active lease |
+| Reissue | `/v1/leases/{leaseId}:reissue` | POST | Initiate transfer to a new workload identity |
+| Reissue finalize | `/v1/leases/{leaseId}:finalizeReissue` | POST | Complete a controlled lease transfer |
+| Revoke | `/v1/leases/{leaseId}` | DELETE | Terminate an active lease |
+| Usage record | `/v1/usage-records` | POST | Submit usage or metering events |
+| JWKS | `/.well-known/jwks.json` | GET | Retrieve public signing keys |
+
+## Common Request Expectations
+
+Baseline requests should include:
+
+- `app`,
+- `tenantId`,
+- `identityEvidence`,
+- `client`,
+- trace context where supported,
+- `workId` when idempotent correlation is required.
+
+## Common Response Expectations
+
+Successful lifecycle responses should include at least:
+
+- `leaseId`,
+- `token`,
+- `expiresAt`,
+- `policy`.
+
+The exact response shape may vary by operation, but these elements define the core runtime
+contract.
+
+## Error Model
+
+Errors should be expressed using the Problem Details structure defined by RFC 9457 and should
+preserve enough detail for automation, diagnostics, and tenant-safe troubleshooting.
+
+## Contract Notes
+
+- Custom methods are used where lifecycle behavior has domain-specific side effects.
+- The push channel for revocation or policy updates complements, but does not replace, the REST
+ API.
+- Implementations may add vendor-specific fields only where they do not break canonical
+ semantics.
+
+## Annex Positioning
+
+This annex is the compact normative reference surface for the baseline API operations of the
+DSL review draft.

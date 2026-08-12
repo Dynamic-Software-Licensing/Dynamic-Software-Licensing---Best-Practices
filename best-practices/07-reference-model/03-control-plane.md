@@ -24,7 +24,9 @@ The control plane is designed to be serverless — services execute only when in
 
 ### Event-Driven
 
-Asynchronous operations (lease expiry, renewal reminders, reissue deadlines, alerts) are handled through an event orchestration layer. Events trigger downstream processing without requiring polling or long-lived connections from the control plane side.
+Asynchronous operations (lease expiry, renewal reminders, reissue deadlines, alerts) are
+handled through an event orchestration layer. Events trigger downstream processing without
+requiring polling as the primary control mechanism.
 
 ### Multi-Tenant with Isolation
 
@@ -81,10 +83,12 @@ Each operation writes to an append-only audit log.
 
 ### Push Channel (Revocation and Policy Updates)
 
-- Maintains persistent connections (e.g., WebSocket) to license agents.
+- May use a persistent push channel (for example WebSocket) to notify license agents.
 - Pushes revocation events when a lease is revoked (admin, policy, or reissue finalization).
 - Pushes policy updates when vendor changes grace or renewal parameters.
-- If the agent is offline, revocation takes effect at the next renewal attempt.
+- Complements, but does not replace, the REST lifecycle API.
+- If the agent is offline or the push channel is unavailable, revocation takes effect at the
+ next renewal attempt or token expiry boundary.
 
 ## API Surface
 
@@ -92,12 +96,12 @@ The control plane exposes the following primary endpoints:
 
 | Endpoint | Method | Purpose |
 | --- | --- | --- |
-| `/leases/issue` | POST | Request a new lease |
-| `/leases/renew` | POST | Renew an existing lease |
-| `/leases/reissue` | POST | Initiate lease transfer (shadow) |
-| `/leases/reissue/finalize` | POST | Complete lease transfer |
-| `/leases/revoke` | POST | Revoke a lease |
-| `/usage/record` | POST | Submit usage events |
+| `/v1/leases` | POST | Request a new lease |
+| `/v1/leases/{leaseId}:renew` | POST | Renew an existing lease |
+| `/v1/leases/{leaseId}:reissue` | POST | Initiate lease transfer (shadow) |
+| `/v1/leases/{leaseId}:finalizeReissue` | POST | Complete lease transfer |
+| `/v1/leases/{leaseId}` | DELETE | Revoke a lease |
+| `/v1/usage-records` | POST | Submit usage events |
 | `/.well-known/jwks.json` | GET | Retrieve public signing keys |
 
 Authentication is required for all endpoints (IAM, OIDC, or custom authorizer). Throttling and perimeter protection are applied at the gateway level.
