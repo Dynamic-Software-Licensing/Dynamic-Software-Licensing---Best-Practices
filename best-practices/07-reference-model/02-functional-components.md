@@ -130,32 +130,45 @@ The vendor adapter is an optional component that mirrors usage and lease events 
 
 ## Component Interaction Summary
 
-```text
-┌─────────────────────────────────────────────────────┐
-│                   CONTROL PLANE                     │
-│                                                     │
-│  API Gateway ──┬── Leases Service ── Keys Service   │
-│                ├── Entitlements Service              │
-│                ├── Reissue Service                   │
-│                ├── Usage Service                     │
-│                └── Event Orchestrator                │
-│                                                     │
-│  WebSocket ────── Push (revocations, policy updates) │
-│                                                     │
-│  Vendor Adapter (optional)                          │
-└──────────────────────┬──────────────────────────────┘
-                       │ REST / WebSocket
-┌──────────────────────┴──────────────────────────────┐
-│                  WORKSPACE PLANE                    │
-│                                                     │
-│  License Agent ──── Application + SDK               │
-│       │                    │                        │
-│       ├── identity evidence collection              │
-│       ├── token delivery                            │
-│       ├── renewal scheduling                        │
-│       └── usage buffering                           │
-│                    │                                │
-│              local token validation                  │
-│              dimension data exposure                  │
-└─────────────────────────────────────────────────────┘
+```mermaid
+flowchart TB
+    subgraph control[Control Plane]
+        gateway[API Gateway]
+        leases[Leases Service]
+        keys[Keys Service]
+        entitlements[Entitlements Service]
+        reissue[Reissue Service]
+        usage[Usage Service]
+        orchestrator[Event Orchestrator]
+        adapter[Vendor Adapter<br/>optional]
+
+        gateway --> leases
+        gateway --> entitlements
+        gateway --> reissue
+        gateway --> usage
+        gateway --> orchestrator
+        leases --> keys
+    end
+
+    subgraph workspace[Workspace Plane]
+        agent[License Agent]
+        app[Application]
+        sdk[Application SDK]
+
+        agent --> app
+        app --> sdk
+    end
+
+    agent -->|REST / WebSocket| gateway
+    orchestrator -->|push revocations / policy updates| agent
+    usage --> adapter
 ```
+
+Workspace-side responsibilities shown in the model:
+
+- identity evidence collection,
+- token delivery,
+- renewal scheduling,
+- usage buffering,
+- local token validation,
+- dimension data exposure.
