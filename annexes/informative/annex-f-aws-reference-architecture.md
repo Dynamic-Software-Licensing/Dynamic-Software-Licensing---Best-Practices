@@ -40,6 +40,8 @@ levels of detail:
 These views are reflected in the structure of this annex so that the text and the diagrams can
 be reconciled later without changing the architectural intent.
 
+![AWS high-level reference architecture](../../diagrams/aws-reference-architecture/aws-high-level-reference-architecture.png)
+
 ### 1. Clients and Media Services
 
 Media workloads consume the licensing platform through SDKs, sidecars, or equivalent runtime
@@ -72,6 +74,8 @@ Typical AWS realizations include:
 - Amazon EventBridge for lifecycle, policy, and operational domain events.
 - Amazon Aurora Serverless v2 where relational reporting or accounting views are needed.
 
+![AWS licensing control plane detail](../../diagrams/aws-reference-architecture/aws-licensing-control-plane.png)
+
 ### 4. Metering and Usage Pipeline
 
 Where license modality depends on measured consumption, the metering pipeline captures raw
@@ -86,6 +90,8 @@ Typical AWS services include:
 - Amazon Athena and Amazon QuickSight for queries, dashboards, forecasts, and consumption
  reporting.
 
+![AWS metering and usage pipeline](../../diagrams/aws-reference-architecture/aws-metering-usage-pipeline.png)
+
 ### 5. Observability and Security Services
 
 The platform should make license behavior transparent and auditable while maintaining secure
@@ -97,14 +103,6 @@ Typical AWS services include:
 - AWS X-Ray or OpenTelemetry-compatible tracing for end-to-end request visibility.
 - AWS CloudTrail and AWS Config for audit and configuration traceability.
 - AWS Security Hub, GuardDuty, Inspector, and Macie for broader security posture monitoring.
-
-## Example Diagrams
-
-![AWS high-level reference architecture](../../diagrams/aws-reference-architecture/aws-high-level-reference-architecture.png)
-
-![AWS licensing control plane detail](../../diagrams/aws-reference-architecture/aws-licensing-control-plane.png)
-
-![AWS metering and usage pipeline](../../diagrams/aws-reference-architecture/aws-metering-usage-pipeline.png)
 
 ## Example Mapping
 
