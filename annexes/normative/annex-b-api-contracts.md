@@ -61,7 +61,10 @@ preserve enough detail for automation, diagnostics, and tenant-safe troubleshoot
 
 ## Machine-Readable OpenAPI Companion
 
-A machine-readable companion contract for the baseline REST surface is provided at
+A GitHub-friendly overview of the machine-readable API artifacts is provided at
+[api/README.md](../../api/README.md).
+
+The underlying OpenAPI companion contract for the baseline REST surface is provided at
 [api/dsl-api.openapi.yaml](../../api/dsl-api.openapi.yaml).
 
 The OpenAPI artifact captures the canonical endpoints, common request and response structures,
