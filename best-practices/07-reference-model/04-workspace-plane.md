@@ -56,7 +56,7 @@ The license agent is the primary workspace-plane component responsible for all l
 Responsibilities:
 
 | Function | Description |
-|---|---|
+| --- | --- |
 | Identity collection | Gathers identity evidence from the runtime environment |
 | Lease request | Calls the control plane to issue a new lease |
 | Token delivery | Delivers the signed token to the application (file, socket, or environment variable) |
@@ -109,6 +109,11 @@ No database or control plane call is in the hot path of token validation.
 - License agent retries renewal with exponential backoff and jitter.
 - If the token expires, the offline grace period begins.
 - During grace, the application continues operating (full or degraded, per policy).
+- If the outage is expected to outlast the configured grace period, the customer MAY request
+  an out-of-band lease extension or a temporary offline token from the vendor or control-plane
+  operator. The extension artifact is separately signed, manually entered through an
+  administrative interface such as CLI or API, and later reconciled against the primary lease
+  once connectivity is restored.
 - If grace is exhausted, the configured exhaustion action applies (drain, degrade, or stop).
 - When connectivity returns, the license agent renews the lease and resumes normal operation.
 - Buffered usage events are uploaded.
@@ -133,7 +138,7 @@ No database or control plane call is in the hot path of token validation.
 The workspace plane supports multiple deployment patterns:
 
 | Pattern | License Agent Model | Identity Evidence |
-|---|---|---|
+| --- | --- | --- |
 | Cloud Instance (eg AWS Machine Image (AMI) on EC2) | Daemon or sidecar process | Instance Identity Document (IID) + IAM role |
 | Kubernetes | Sidecar container | Service Account JWT |
 | On-premises | Daemon or CLI | Platform-specific identity or certificate-based |
