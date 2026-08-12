@@ -162,7 +162,7 @@ def build_version_page(
     document_date: str,
 ) -> list[str]:
     return [
-        "# Version Information {.unnumbered}",
+        r"\section*{Version Information}",
         "",
         f"- Version: {document_version}",
         f"- Status: {document_status}",
