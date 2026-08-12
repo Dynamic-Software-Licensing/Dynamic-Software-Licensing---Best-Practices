@@ -18,7 +18,7 @@ The initiative is deliberately implementation-oriented. The goal is practical ad
 
 ## Participants
 
-The DSL initiative operates under the IAMT — the International Association of Broadcast and Media Technology Suppliers — and involves collaboration across multiple stakeholder groups:
+The DSL initiative operates under the IAMT — the International Association of MediaTech — and involves collaboration across multiple stakeholder groups:
 
 - **Cloud platform providers**, who contributed architectural patterns and reference implementations
 - **System integrators**, who provided operational requirements from real-world multi-vendor deployments
