@@ -12,7 +12,7 @@ The main body of the best practices is written to be reusable across vendors, de
 models, and operational environments. Its primary role is to define the conceptual model,
 requirement structure, security posture, API interpretation, and shared data semantics.
 
-For that reason, the core document should avoid becoming:
+For that reason, the core document avoids becoming:
 - vendor-specific,
 - cloud-provider-specific,
 - tied to one product packaging model,
@@ -37,26 +37,26 @@ Material belongs in an annex when it is primarily:
 - explanatory support that would interrupt the flow of the core text.
 
 Normative annexes may be used when consistent interpretation needs structured supporting
-material. Informative annexes should be used for examples, reference architectures,
+material. Informative annexes are used for examples, reference architectures,
 walkthroughs, mappings, and FAQ-style support.
 
 ## Handling Platform-Specific References
 
-Platform-specific references are allowed where they improve clarity, but they should be
-contained deliberately.
+Platform-specific references are allowed where they improve clarity, but they are contained
+deliberately.
 
 In practice this means:
-- the main text should describe the generic rule first,
-- platform examples should be separated clearly from the generic rule,
-- examples should not redefine the general model,
-- annexes should carry the main burden of technology-specific elaboration.
+- the main text describes the generic rule first,
+- platform examples are separated clearly from the generic rule,
+- examples do not redefine the general model,
+- annexes carry the main burden of technology-specific elaboration.
 
 The AWS reference architecture annex is an example of this separation: it interprets the model
 for one concrete platform without redefining the platform-neutral baseline.
 
 ## Annex Selection Logic
 
-The annex boundary should be applied consistently:
+The annex boundary is applied consistently:
 - if the material is required for consistent interpretation across implementations, consider a
   normative annex,
 - if the material is illustrative, comparative, or example-driven, use an informative annex,
@@ -68,5 +68,5 @@ to generalize.
 ## Section Positioning
 
 This section defines the boundary discipline that keeps the best practices reusable and
-maintainable. It should be used when deciding whether new content belongs in a chapter of the
-main document or in a supporting annex.
+maintainable. It is used when deciding whether new content belongs in a chapter of the main
+document or in a supporting annex.

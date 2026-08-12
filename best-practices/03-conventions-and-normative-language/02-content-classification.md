@@ -27,8 +27,8 @@ Normative content is usually found in:
 - selected parts of security, API, and data model chapters where disciplined interpretation is
   necessary.
 
-Normative content should be written so that readers can identify what is being expected and why
-that expectation matters.
+Normative content is written so that readers can identify what is being expected and why that
+expectation matters.
 
 ## Informative Content
 
@@ -43,7 +43,7 @@ Informative content may include:
 - examples and mappings,
 - informative annexes.
 
-Informative text may strongly influence understanding, but it should not be mistaken for a
+Informative text may strongly influence understanding, but it is not mistaken for a
 requirement merely because it is useful or persuasive.
 
 ## Explanatory and Editorial Support Content
@@ -51,17 +51,16 @@ requirement merely because it is useful or persuasive.
 Some passages exist to improve readability, document structure, or local interpretation. These
 include summaries, transition sentences, rationale, and limited editorial framing.
 
-Such content is acceptable when it helps readers navigate the material, but it should not
-replace substantive content and should not be allowed to blur the distinction between guidance
-and requirement language.
+Such content is acceptable when it helps readers navigate the material, but it does not replace
+substantive content and does not blur the distinction between guidance and requirement language.
 
 ## Handling Mixed Passages
 
 Some sections contain a mix of requirement and explanation. In those cases:
-- the requirement sentence should be clearly identifiable,
-- the explanatory sentence should clarify the rule rather than broaden it implicitly,
-- examples should remain recognizably illustrative,
-- the structure should avoid hiding the normative meaning inside long narrative prose.
+- the requirement sentence is clearly identifiable,
+- the explanatory sentence clarifies the rule rather than broadening it implicitly,
+- examples remain recognizably illustrative,
+- the structure avoids hiding the normative meaning inside long narrative prose.
 
 If a reader cannot tell which part of a passage is normative, the wording needs improvement.
 
@@ -77,6 +76,6 @@ Different chapters have different dominant content classes:
 
 ## Section Positioning
 
-This section is the classification guide for reading and reviewing the repository. It should be
-used whenever a passage needs to be evaluated for whether it states a requirement, explains a
+This section is the classification guide for reading and reviewing the repository. It is used
+whenever a passage needs to be evaluated for whether it states a requirement, explains a
 requirement, or only provides supporting context.

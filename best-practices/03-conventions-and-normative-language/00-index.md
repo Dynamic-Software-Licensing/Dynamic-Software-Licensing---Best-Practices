@@ -30,7 +30,7 @@ This chapter establishes three sets of conventions for the repository:
 
 ## Role of This Chapter
 
-This chapter helps contributors decide:
+This chapter defines:
 - how strong a statement should be,
 - whether a passage is normative or informative,
 - whether a statement belongs in the main best practices or in an annex,
@@ -50,6 +50,6 @@ This chapter is divided into three subchapters:
 This chapter provides the interpretation rules that make the rest of the review draft
 readable and reviewable in a consistent way.
 
-It is used as the reference point for distinguishing informative text from normative
+It serves as the reference point for distinguishing informative text from normative
 intent, for controlling keyword usage, and for deciding when material belongs in the main
 document versus an annex.

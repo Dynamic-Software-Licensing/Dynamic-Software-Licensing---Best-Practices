@@ -3,7 +3,7 @@
 ## Purpose
 
 This section defines how statement strength is expressed in the Dynamic Software Licensing best
-practices and how readers should interpret normative keywords.
+practices and how readers interpret normative keywords.
 
 The objective is not to imitate a formal standard mechanically, but to apply disciplined wording
 where interpretation strength matters for interoperability, implementation behavior, or
@@ -30,19 +30,19 @@ The keywords are interpreted as follows:
 - **MAY** expresses an allowed option or acceptable variation that remains compatible with the
   overall model.
 
-Where no normative keyword is used, the text should normally be read as descriptive,
+Where no normative keyword is used, the text is normally read as descriptive,
 interpretive, or explanatory rather than as a testable requirement.
 
 ## When Normative Keywords Belong
 
-Normative keywords are appropriate where the text defines:
+Normative keywords belong where the text defines:
 - interoperability expectations,
 - trust and security behavior,
 - lifecycle or state handling constraints,
 - API or data model interpretation rules,
 - conformance-relevant implementation behavior.
 
-They are generally not appropriate in background, motivation, or purely illustrative passages.
+They are generally avoided in background, motivation, or purely illustrative passages.
 
 ## Use Discipline
 
@@ -50,11 +50,11 @@ Normative keywords are only useful when they remain selective and meaningful. Ov
 interpretation and makes review harder.
 
 For that reason:
-- introductory sections should normally avoid normative wording,
-- explanatory examples should not introduce accidental requirements,
-- informative annexes should only contain normative terms where they restate or clarify rules
+- introductory sections normally avoid normative wording,
+- explanatory examples do not introduce accidental requirements,
+- informative annexes contain normative terms only where they restate or clarify rules
   already grounded in the main document or normative annexes,
-- mixed passages should make it clear which sentence carries the requirement and which sentence
+- mixed passages make it clear which sentence carries the requirement and which sentence
   only explains it.
 
 ## Relationship to Conformance
@@ -66,5 +66,5 @@ profile alignment, implementation review, and cross-vendor consistency.
 ## Section Positioning
 
 This section provides the baseline interpretation model for requirement strength across the full
-repository. It should be used whenever wording is reviewed for precision, consistency, or
-normative effect.
+repository. It is the reference point whenever wording is assessed for precision, consistency,
+or normative effect.
