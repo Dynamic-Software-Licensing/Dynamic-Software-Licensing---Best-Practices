@@ -1,6 +1,21 @@
-### Subchapter 04.05: Abbreviations
+# 04.05 Abbreviations
 
-The following table defines the recurring abbreviations used throughout the Dynamic Software Licensing (DSL) best practices repository. These terms cross technical, operational, and commercial boundaries, and must be interpreted consistently across all chapters and annexes.
+## Chapter Status
+
+- Status: Working Draft
+- Editorial maturity: outline
+- Normative readiness: not started
+- Open drafting points: yes
+
+## Purpose
+
+This section defines the recurring abbreviations used throughout the Dynamic Software Licensing (DSL) best practices repository.
+
+## Scope Statement
+
+This section provides a concise reference for abbreviated terms that cross technical, operational, and commercial boundaries. These abbreviations should be interpreted consistently across all chapters and annexes.
+
+## Definitions
 
 | Abbreviation | Full Term | Definition / Context within DSL |
 | :--- | :--- | :--- |
