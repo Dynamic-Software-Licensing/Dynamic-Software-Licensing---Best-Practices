@@ -273,6 +273,14 @@ def load_changelog_text(repo_root: Path) -> str:
     return "\n".join(lines).strip()
 
 
+def load_license_text(repo_root: Path) -> str:
+    license_path = repo_root / "LICENSE"
+    if not license_path.exists():
+        return ""
+
+    return license_path.read_text(encoding="utf-8").strip()
+
+
 def build_cover_page(
     document_title: str,
     document_subtitle: str,
@@ -351,6 +359,7 @@ def build_document(
     document_organization: str,
     document_date: str,
     changelog_text: str,
+    license_text: str,
 ) -> int:
     sections = ["---", "lang: en", "---", ""]
     sections.extend(
@@ -392,6 +401,21 @@ def build_document(
         sections.append("")
         included_count += 1
 
+    if license_text:
+        sections.extend(
+            [
+                r"\newpage",
+                "",
+                r"\section*{License}",
+                "",
+                "This publication is distributed under the Apache License, Version 2.0.",
+                "The IAMT name, logo, and other trademarks are not licensed except as permitted by Section 6 of the Apache License, Version 2.0.",
+                "",
+                license_text.rstrip(),
+                "",
+            ]
+        )
+
     if included_count == 0:
         raise ValueError("No Markdown files were included in the combined document.")
 
@@ -407,6 +431,7 @@ def main() -> int:
     output_path = (repo_root / args.output).resolve()
     detected_version, detected_date = detect_latest_version(repo_root)
     changelog_text = load_changelog_text(repo_root)
+    license_text = load_license_text(repo_root)
     document_version = args.document_version or detected_version or "unversioned-draft"
     document_date = args.document_date
 
@@ -426,6 +451,7 @@ def main() -> int:
             args.document_organization,
             document_date,
             changelog_text,
+            license_text,
         )
     except ValueError as error:
         print(f"Error: {error}", file=sys.stderr)

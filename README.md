@@ -76,3 +76,11 @@ The generated PDF filename is versioned automatically from `CHANGELOG.md`. The r
 The publication workflow derives the version from `CHANGELOG.md` and uses the Git event to decide release type. Pushes to `main` require a version with the `-review-draft` suffix and publish a matching prerelease such as `v0.2.0-review-draft`. Pushes of Git tags matching `v*` publish the corresponding final release such as `v1.0.0`. In both cases the workflow attaches the versioned PDF together with the convenience filename `dynamic-software-licensing-best-practices-latest.pdf` so users can download the document without opening the Actions tab.
 
 The generated PDF source now includes an explicit cover page and a fixed-position table of contents before the document body, so the export behaves more like a publication artifact than a raw Markdown concatenation.
+
+The generated PDF also appends the repository license text so the standalone document carries its licensing terms when downloaded outside the repository context.
+
+## License
+
+This repository is licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE).
+
+The license does not grant rights to use the IAMT name, logo, or other trademarks, except as permitted by Section 6 of the Apache License, Version 2.0.
