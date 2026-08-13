@@ -25,6 +25,11 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
       - name: Build combined Markdown source
         run: |
           manifest=.github/review-pdf-manifest.txt
@@ -41,6 +46,22 @@ jobs:
             --document-status "Reviewed Draft")
 
           "${cmd[@]}"
+
+      - name: Render Mermaid diagrams for PDF
+        run: |
+          rm -rf _build/mermaid
+
+          python3 .github/scripts/prepare_mermaid_diagrams.py \
+            --input _build/review-draft.md \
+            --output _build/review-draft.md \
+            --assets-dir _build/mermaid
+
+          if ls _build/mermaid/*.mmd >/dev/null 2>&1; then
+            for file in _build/mermaid/*.mmd; do
+              output="${file%.mmd}.png"
+              npx --yes @mermaid-js/mermaid-cli@10.9.1 -i "$file" -o "$output" -b transparent -s 2
+            done
+          fi
 
       - name: Render PDF with Pandoc
         uses: docker://pandoc/latex:3.5

@@ -65,6 +65,8 @@ Two source manifests are provided:
 - `.github/review-pdf-manifest.txt` for a review-facing PDF that includes repository framing pages such as `README.md` and `api/README.md`
 - `.github/release-pdf-manifest.txt` for a leaner release-oriented PDF that excludes those repository navigation pages
 
-When running the workflow, you can also choose whether chapter `00-index.md` files should be included. A practical default for release packaging is to exclude those index pages first, then add them back only if they provide reader value in the final PDF.
+Chapter `00-index.md` files are now always included because they provide the main chapter entry points and the intended publication hierarchy in the PDF.
+
+Mermaid diagrams are pre-rendered into PNG assets during the workflow so that the PDF export includes the diagrams as images instead of raw code blocks.
 
 The generated PDF source now includes an explicit cover page and a fixed-position table of contents before the document body, so the export behaves more like a publication artifact than a raw Markdown concatenation.

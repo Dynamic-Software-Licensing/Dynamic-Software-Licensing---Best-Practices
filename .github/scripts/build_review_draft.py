@@ -89,6 +89,11 @@ def is_main_chapter_index(path: Path, repo_root: Path) -> bool:
     return len(relative) >= 3 and relative[0] == "best-practices" and path.name == "00-index.md"
 
 
+def is_subchapter_file(path: Path, repo_root: Path) -> bool:
+    relative = path.relative_to(repo_root).parts
+    return len(relative) >= 3 and relative[0] == "best-practices" and path.name != "00-index.md"
+
+
 def heading_offset_for_file(path: Path) -> int:
     if path.suffix.lower() != ".md":
         return 0
@@ -378,6 +383,9 @@ def build_document(
         relative_source = source_path.relative_to(repo_root).as_posix()
         if included_count > 0 and is_main_chapter_index(source_path, repo_root):
             sections.append(r"\newpage")
+            sections.append("")
+        elif included_count > 0 and is_subchapter_file(source_path, repo_root):
+            sections.append(r"\vspace{0.6cm}")
             sections.append("")
         sections.append(f"<!-- Source: {relative_source} -->")
         sections.append(source_text.rstrip())
