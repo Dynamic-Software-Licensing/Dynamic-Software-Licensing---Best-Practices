@@ -55,6 +55,8 @@ jobs:
             release_title="Dynamic Software Licensing Best Practices v${tagged_version}"
             prerelease=false
             release_notes_intro="Automatically generated PDF release from tag ${GITHUB_REF_NAME}."
+            release_assets="_build/${pdf_file}"
+            release_assets_note="- ${pdf_file}"
           else
             if [ "$version" = "$release_version" ]; then
               echo "Main-branch prerelease publishing requires a -review-draft suffix in CHANGELOG.md" >&2
@@ -66,6 +68,8 @@ jobs:
             release_title="Dynamic Software Licensing Best Practices ${version}"
             prerelease=true
             release_notes_intro="Automatically generated PDF prerelease from the main branch."
+            release_assets="_build/dynamic-software-licensing-best-practices-latest.pdf"
+            release_assets_note="- dynamic-software-licensing-best-practices-latest.pdf"
           fi
 
           echo "PDF_FILE=$pdf_file" >> "$GITHUB_ENV"
@@ -74,6 +78,8 @@ jobs:
           echo "RELEASE_TITLE=$release_title" >> "$GITHUB_ENV"
           echo "PRERELEASE=$prerelease" >> "$GITHUB_ENV"
           echo "RELEASE_NOTES_INTRO=$release_notes_intro" >> "$GITHUB_ENV"
+          echo "RELEASE_ASSETS=$release_assets" >> "$GITHUB_ENV"
+          echo "RELEASE_ASSETS_NOTE=$release_assets_note" >> "$GITHUB_ENV"
           echo "pdf_file=$pdf_file" >> "$GITHUB_OUTPUT"
           echo "latest_pdf=dynamic-software-licensing-best-practices-latest.pdf" >> "$GITHUB_OUTPUT"
           echo "release_tag=$release_tag" >> "$GITHUB_OUTPUT"
@@ -136,8 +142,7 @@ jobs:
           ${RELEASE_NOTES_INTRO}
 
           Assets:
-          - ${LATEST_PDF}
-          - ${PDF_FILE}
+          ${RELEASE_ASSETS_NOTE}
           EOF
           )
 
@@ -168,6 +173,5 @@ jobs:
           fi
 
           gh release upload "${RELEASE_TAG}" \
-            "_build/${LATEST_PDF}" \
-            "_build/${PDF_FILE}" \
+            ${RELEASE_ASSETS} \
             --clobber
