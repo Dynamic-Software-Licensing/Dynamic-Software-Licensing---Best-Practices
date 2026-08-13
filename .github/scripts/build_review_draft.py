@@ -115,6 +115,42 @@ def chapter_prefix_for_file(path: Path) -> str | None:
     return f"{parent_match.group(1)}.{file_match.group(1)}."
 
 
+def demote_following_headings(text: str, level_offset: int) -> str:
+    if level_offset <= 0:
+        return text
+
+    adjusted_lines: list[str] = []
+    in_fenced_code = False
+    first_heading_seen = False
+
+    for line in text.splitlines():
+        stripped = line.lstrip()
+        if stripped.startswith("```") or stripped.startswith("~~~"):
+            in_fenced_code = not in_fenced_code
+            adjusted_lines.append(line)
+            continue
+
+        if in_fenced_code:
+            adjusted_lines.append(line)
+            continue
+
+        match = HEADING_PATTERN.match(line)
+        if not match:
+            adjusted_lines.append(line)
+            continue
+
+        hashes, rest = match.groups()
+        if not first_heading_seen:
+            adjusted_lines.append(line)
+            first_heading_seen = True
+            continue
+
+        new_level = min(len(hashes) + level_offset, 6)
+        adjusted_lines.append("#" * new_level + rest)
+
+    return "\n".join(adjusted_lines)
+
+
 def adjust_heading_levels(text: str, level_offset: int) -> str:
     if level_offset <= 0:
         return text
@@ -334,6 +370,8 @@ def build_document(
     for source_path in files:
         source_text = source_path.read_text(encoding="utf-8")
         source_text = rewrite_local_links(source_text, source_path, output_path)
+        if source_path.name == "00-index.md":
+            source_text = demote_following_headings(source_text, 1)
         source_text = prefix_first_heading(source_text, chapter_prefix_for_file(source_path))
         source_text = adjust_heading_levels(source_text, heading_offset_for_file(source_path))
 
