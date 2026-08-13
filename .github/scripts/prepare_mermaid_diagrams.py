@@ -50,7 +50,7 @@ def replace_mermaid_blocks(text: str, output_path: Path, assets_dir: Path) -> tu
         image_path = assets_dir / f"{base_name}.png"
         rel_image_path = os_relpath(image_path, output_dir).replace("\\", "/")
 
-        return f"![Mermaid diagram]({rel_image_path})"
+        return f"![]({rel_image_path})"
 
     return MERMAID_BLOCK_PATTERN.sub(replace, text), diagram_count
 
