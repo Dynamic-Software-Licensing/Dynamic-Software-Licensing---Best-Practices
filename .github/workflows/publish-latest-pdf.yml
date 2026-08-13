@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    tags:
+      - 'v*'
   workflow_dispatch:
 
 permissions:
@@ -41,14 +43,27 @@ jobs:
           fi
 
           release_version="${version%-review-draft}"
-          pdf_file="dynamic-software-licensing-best-practices-v${release_version}.pdf"
-          release_tag="v${release_version}"
-          release_title="Dynamic Software Licensing Best Practices v${release_version}"
+          if [ "${GITHUB_REF_TYPE}" = 'tag' ] && [[ "${GITHUB_REF_NAME}" == v* ]]; then
+            tagged_version="${GITHUB_REF_NAME#v}"
+            if [ "$tagged_version" != "$release_version" ]; then
+              echo "Tag version ${tagged_version} does not match CHANGELOG release version ${release_version}" >&2
+              exit 1
+            fi
 
-          if [ "$version" = "$release_version" ]; then
+            pdf_file="dynamic-software-licensing-best-practices-v${tagged_version}.pdf"
+            release_tag="${GITHUB_REF_NAME}"
+            release_title="Dynamic Software Licensing Best Practices v${tagged_version}"
             prerelease=false
-            release_notes_intro="Automatically generated PDF release from the main branch."
+            release_notes_intro="Automatically generated PDF release from tag ${GITHUB_REF_NAME}."
           else
+            if [ "$version" = "$release_version" ]; then
+              echo "Main-branch prerelease publishing requires a -review-draft suffix in CHANGELOG.md" >&2
+              exit 1
+            fi
+
+            pdf_file="dynamic-software-licensing-best-practices-v${version}.pdf"
+            release_tag="v${version}"
+            release_title="Dynamic Software Licensing Best Practices v${version}"
             prerelease=true
             release_notes_intro="Automatically generated PDF prerelease from the main branch."
           fi
