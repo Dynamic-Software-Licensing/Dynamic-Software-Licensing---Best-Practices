@@ -69,4 +69,6 @@ Chapter `00-index.md` files are now always included because they provide the mai
 
 Mermaid diagrams are pre-rendered into PNG assets during the workflow so that the PDF export includes the diagrams as images instead of raw code blocks.
 
+The generated PDF filename is versioned automatically from `CHANGELOG.md`. The review profile keeps the review suffix, for example `dynamic-software-licensing-best-practices-v0.2.0-review-draft.pdf`, while the release profile emits the cleaner publication-style name `dynamic-software-licensing-best-practices-v0.2.0.pdf`.
+
 The generated PDF source now includes an explicit cover page and a fixed-position table of contents before the document body, so the export behaves more like a publication artifact than a raw Markdown concatenation.

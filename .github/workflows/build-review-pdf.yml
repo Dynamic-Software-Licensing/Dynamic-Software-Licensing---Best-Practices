@@ -30,6 +30,27 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Determine output filenames
+        run: |
+          version=$(grep -m1 -E '^## \[[^]]+\] - ' CHANGELOG.md | sed -E 's/^## \[([^]]+)\] - .*$/\1/')
+          if [ -z "$version" ]; then
+            echo "Could not determine document version from CHANGELOG.md" >&2
+            exit 1
+          fi
+
+          release_version="${version%-review-draft}"
+
+          if [ "${{ inputs.document_profile }}" = 'review' ]; then
+            pdf_file="dynamic-software-licensing-best-practices-v${version}.pdf"
+            artifact_name="dynamic-software-licensing-best-practices-v${version}-pdf"
+          else
+            pdf_file="dynamic-software-licensing-best-practices-v${release_version}.pdf"
+            artifact_name="dynamic-software-licensing-best-practices-v${release_version}-pdf"
+          fi
+
+          echo "PDF_FILE=$pdf_file" >> "$GITHUB_ENV"
+          echo "ARTIFACT_NAME=$artifact_name" >> "$GITHUB_ENV"
+
       - name: Build combined Markdown source
         run: |
           manifest=.github/review-pdf-manifest.txt
@@ -79,13 +100,13 @@ jobs:
             --from=markdown+raw_tex
             --standalone
             --resource-path=.:_build
-            --output=_build/dynamic-software-licensing-review-draft.pdf
+            --output=_build/${{ env.PDF_FILE }}
             _build/review-draft.md
 
       - name: Upload review draft artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: review-draft-pdf
+          name: ${{ env.ARTIFACT_NAME }}
           path: |
             _build/review-draft.md
-            _build/dynamic-software-licensing-review-draft.pdf
+            _build/${{ env.PDF_FILE }}
