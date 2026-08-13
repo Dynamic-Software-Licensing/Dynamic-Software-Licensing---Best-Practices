@@ -54,30 +54,13 @@ Repository status: **Reviewed Draft**
 
 The main document is now organized as a complete review draft for group comment ahead of the planned end-of-August release. See [best-practices/index.md](best-practices/index.md) for chapter-level status.
 
-## Automated PDF Build
+## PDF Availability
 
-A manual GitHub Actions workflow is available at `.github/workflows/build-review-pdf.yml`.
+The document is also available as a PDF through the repository releases.
 
-It assembles a combined Markdown source and renders a PDF artifact using Pandoc.
+The latest rolling draft PDF is published under the `latest` prerelease, and version-specific PDFs are attached to the corresponding tagged releases.
 
-A separate workflow at `.github/workflows/publish-latest-pdf.yml` publishes the release-oriented PDF to GitHub Releases.
-
-Two source manifests are provided:
-
-- `.github/review-pdf-manifest.txt` for a review-facing PDF that includes repository framing pages such as `README.md` and `api/README.md`
-- `.github/release-pdf-manifest.txt` for a leaner release-oriented PDF that excludes those repository navigation pages
-
-Chapter `00-index.md` files are now always included because they provide the main chapter entry points and the intended publication hierarchy in the PDF.
-
-Mermaid diagrams are pre-rendered into PNG assets during the workflow so that the PDF export includes the diagrams as images instead of raw code blocks.
-
-The generated PDF filename is versioned automatically from `CHANGELOG.md`. The review profile keeps the review suffix, for example `dynamic-software-licensing-best-practices-v0.2.0-review-draft.pdf`, while the release profile emits the cleaner publication-style name `dynamic-software-licensing-best-practices-v0.2.0.pdf`.
-
-The publication workflow derives the version from `CHANGELOG.md` and uses the Git event to decide release type. Pushes to `main` require a version with the `-review-draft` suffix and update a rolling prerelease under the tag `latest`, which carries only the convenience file `dynamic-software-licensing-best-practices-latest.pdf`. Pushes of Git tags matching `v*` publish the corresponding final release such as `v1.0.0`, and those releases carry only the matching versioned PDF such as `dynamic-software-licensing-best-practices-v1.0.0.pdf`.
-
-The generated PDF source now includes an explicit cover page and a fixed-position table of contents before the document body, so the export behaves more like a publication artifact than a raw Markdown concatenation.
-
-The generated PDF also appends the repository license text so the standalone document carries its licensing terms when downloaded outside the repository context.
+See the releases page for downloads: [https://github.com/Dynamic-Software-Licensing/Dynamic-Software-Licensing---Best-Practices/releases](https://github.com/Dynamic-Software-Licensing/Dynamic-Software-Licensing---Best-Practices/releases).
 
 ## License
 
