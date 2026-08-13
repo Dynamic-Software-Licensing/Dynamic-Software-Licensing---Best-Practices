@@ -19,9 +19,6 @@ jobs:
   build-and-deploy:
     name: Build and publish latest PDF
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - uses: actions/checkout@v4
@@ -42,6 +39,7 @@ jobs:
           node-version: '20'
 
       - name: Determine output filenames
+        id: output_filenames
         run: |
           version=$(grep -m1 -E '^## \[[^]]+\] - ' CHANGELOG.md | sed -E 's/^## \[([^]]+)\] - .*$/\1/')
           if [ -z "$version" ]; then
@@ -54,6 +52,10 @@ jobs:
 
           echo "PDF_FILE=$pdf_file" >> "$GITHUB_ENV"
           echo "LATEST_PDF=dynamic-software-licensing-best-practices-latest.pdf" >> "$GITHUB_ENV"
+          echo "ARTIFACT_NAME=dynamic-software-licensing-best-practices-v${release_version}-pages" >> "$GITHUB_ENV"
+          echo "pdf_file=$pdf_file" >> "$GITHUB_OUTPUT"
+          echo "latest_pdf=dynamic-software-licensing-best-practices-latest.pdf" >> "$GITHUB_OUTPUT"
+          echo "artifact_name=dynamic-software-licensing-best-practices-v${release_version}-pages" >> "$GITHUB_OUTPUT"
 
       - name: Build combined Markdown source
         run: |
@@ -96,7 +98,7 @@ jobs:
             --from=markdown+raw_tex
             --standalone
             --resource-path=.:_build
-            --output=_build/${{ env.PDF_FILE }}
+            --output=_build/${{ steps.output_filenames.outputs.pdf_file }}
             _build/review-draft.md
 
       - name: Prepare Pages site
@@ -131,5 +133,4 @@ jobs:
           path: _site
 
       - name: Deploy to GitHub Pages
-        id: deployment
         uses: actions/deploy-pages@v4
