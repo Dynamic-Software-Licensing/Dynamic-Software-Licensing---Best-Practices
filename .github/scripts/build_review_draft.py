@@ -53,11 +53,6 @@ def parse_args() -> argparse.Namespace:
         default=datetime.now(timezone.utc).strftime("%d %B %Y"),
         help="Date shown on the cover page.",
     )
-    parser.add_argument(
-        "--exclude-index-files",
-        action="store_true",
-        help="Exclude chapter 00-index.md files from the combined output.",
-    )
     return parser.parse_args()
 
 
@@ -87,10 +82,6 @@ def load_manifest(manifest_path: Path, repo_root: Path) -> list[Path]:
         raise ValueError("Manifest did not resolve to any Markdown files.")
 
     return files
-
-
-def should_skip(path: Path, exclude_index_files: bool) -> bool:
-    return exclude_index_files and path.name == "00-index.md"
 
 
 def is_main_chapter_index(path: Path, repo_root: Path) -> bool:
@@ -291,13 +282,7 @@ def build_version_page(
             [
                 r"\section*{Change Log}",
                 "",
-                r"\begingroup",
-                r"\small",
-                r"\setlength{\parskip}{0.25em}",
-                r"\setlength{\parindent}{0pt}",
-                r"\tightlist",
                 changelog_text.rstrip(),
-                r"\endgroup",
                 "",
             ]
         )
@@ -325,7 +310,6 @@ def build_document(
     document_organization: str,
     document_date: str,
     changelog_text: str,
-    exclude_index_files: bool,
 ) -> int:
     sections = ["---", "lang: en", "---", ""]
     sections.extend(
@@ -348,9 +332,6 @@ def build_document(
     included_count = 0
 
     for source_path in files:
-        if should_skip(source_path, exclude_index_files):
-            continue
-
         source_text = source_path.read_text(encoding="utf-8")
         source_text = rewrite_local_links(source_text, source_path, output_path)
         source_text = prefix_first_heading(source_text, chapter_prefix_for_file(source_path))
@@ -399,7 +380,6 @@ def main() -> int:
             args.document_organization,
             document_date,
             changelog_text,
-            args.exclude_index_files,
         )
     except ValueError as error:
         print(f"Error: {error}", file=sys.stderr)

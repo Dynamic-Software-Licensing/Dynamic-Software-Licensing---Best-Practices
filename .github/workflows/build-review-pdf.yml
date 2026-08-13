@@ -11,11 +11,6 @@ on:
         options:
           - review
           - release
-      include_index_files:
-        description: Include chapter 00-index.md files in the combined PDF source
-        required: true
-        default: true
-        type: boolean
 
 jobs:
   build-review-pdf:
@@ -44,10 +39,6 @@ jobs:
             --document-title "Dynamic Software Licensing" \
             --document-subtitle "Best Practices" \
             --document-status "Reviewed Draft")
-
-          if [ "${{ inputs.include_index_files }}" != 'true' ]; then
-            cmd+=(--exclude-index-files)
-          fi
 
           "${cmd[@]}"
 
