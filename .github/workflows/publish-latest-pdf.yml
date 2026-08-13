@@ -1,0 +1,133 @@
+name: Publish Latest PDF to Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    name: Build and publish latest PDF
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Pages
+        uses: actions/configure-pages@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Determine output filenames
+        run: |
+          version=$(grep -m1 -E '^## \[[^]]+\] - ' CHANGELOG.md | sed -E 's/^## \[([^]]+)\] - .*$/\1/')
+          if [ -z "$version" ]; then
+            echo "Could not determine document version from CHANGELOG.md" >&2
+            exit 1
+          fi
+
+          release_version="${version%-review-draft}"
+          pdf_file="dynamic-software-licensing-best-practices-v${release_version}.pdf"
+
+          echo "PDF_FILE=$pdf_file" >> "$GITHUB_ENV"
+          echo "LATEST_PDF=dynamic-software-licensing-best-practices-latest.pdf" >> "$GITHUB_ENV"
+
+      - name: Build combined Markdown source
+        run: |
+          python3 .github/scripts/build_review_draft.py \
+            --manifest .github/release-pdf-manifest.txt \
+            --output _build/review-draft.md \
+            --document-title "Dynamic Software Licensing" \
+            --document-subtitle "Best Practices" \
+            --document-status "Reviewed Draft"
+
+      - name: Render Mermaid diagrams for PDF
+        run: |
+          rm -rf _build/mermaid
+
+          python3 .github/scripts/prepare_mermaid_diagrams.py \
+            --input _build/review-draft.md \
+            --output _build/review-draft.md \
+            --assets-dir _build/mermaid
+
+          cat > _build/puppeteer-config.json <<'EOF'
+          {
+            "args": [
+              "--no-sandbox",
+              "--disable-setuid-sandbox"
+            ]
+          }
+          EOF
+
+          if ls _build/mermaid/*.mmd >/dev/null 2>&1; then
+            for file in _build/mermaid/*.mmd; do
+              output="${file%.mmd}.png"
+              npx --yes @mermaid-js/mermaid-cli@10.9.1 -i "$file" -o "$output" -b transparent -s 2 -p _build/puppeteer-config.json
+            done
+          fi
+
+      - name: Render PDF with Pandoc
+        uses: docker://pandoc/latex:3.5
+        with:
+          args: >-
+            --from=markdown+raw_tex
+            --standalone
+            --resource-path=.:_build
+            --output=_build/${{ env.PDF_FILE }}
+            _build/review-draft.md
+
+      - name: Prepare Pages site
+        run: |
+          rm -rf _site
+          mkdir -p _site
+          cp "_build/${PDF_FILE}" "_site/${PDF_FILE}"
+          cp "_build/${PDF_FILE}" "_site/${LATEST_PDF}"
+
+          cat > _site/index.html <<EOF
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>Dynamic Software Licensing Best Practices PDF</title>
+          </head>
+          <body>
+            <h1>Dynamic Software Licensing Best Practices</h1>
+            <p>Latest public PDF build from the main branch.</p>
+            <ul>
+              <li><a href="${LATEST_PDF}">Download latest PDF</a></li>
+              <li><a href="${PDF_FILE}">Download versioned PDF (${PDF_FILE})</a></li>
+            </ul>
+          </body>
+          </html>
+          EOF
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
