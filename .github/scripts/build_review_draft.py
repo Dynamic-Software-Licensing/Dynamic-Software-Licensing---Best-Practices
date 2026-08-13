@@ -13,6 +13,7 @@ from pathlib import Path
 
 LINK_PATTERN = re.compile(r'(!?\[[^\]]*\])\(([^)]+)\)')
 CHANGELOG_VERSION_PATTERN = re.compile(r"^## \[([^\]]+)\] - (\d{4}-\d{2}-\d{2})$")
+HEADING_PATTERN = re.compile(r"^(#{1,6})(\s+.*)$")
 
 
 def parse_args() -> argparse.Namespace:
@@ -91,6 +92,100 @@ def should_skip(path: Path, exclude_index_files: bool) -> bool:
     return exclude_index_files and path.name == "00-index.md"
 
 
+def is_main_chapter_index(path: Path, repo_root: Path) -> bool:
+    relative = path.relative_to(repo_root).parts
+    return len(relative) >= 3 and relative[0] == "best-practices" and path.name == "00-index.md"
+
+
+def heading_offset_for_file(path: Path) -> int:
+    if path.suffix.lower() != ".md":
+        return 0
+    if path.name == "00-index.md":
+        return 0
+    parent_name = path.parent.name
+    if re.match(r"^\d{2}-", parent_name):
+        return 1
+    return 0
+
+
+def chapter_prefix_for_file(path: Path) -> str | None:
+    if path.name == "00-index.md":
+        return None
+
+    parent_name = path.parent.name
+    file_name = path.stem
+
+    parent_match = re.match(r"^(\d{2})-", parent_name)
+    file_match = re.match(r"^(\d{2})-", file_name)
+    if not parent_match or not file_match:
+        return None
+
+    return f"{parent_match.group(1)}.{file_match.group(1)}."
+
+
+def adjust_heading_levels(text: str, level_offset: int) -> str:
+    if level_offset <= 0:
+        return text
+
+    adjusted_lines: list[str] = []
+    in_fenced_code = False
+
+    for line in text.splitlines():
+        stripped = line.lstrip()
+        if stripped.startswith("```") or stripped.startswith("~~~"):
+            in_fenced_code = not in_fenced_code
+            adjusted_lines.append(line)
+            continue
+
+        if in_fenced_code:
+            adjusted_lines.append(line)
+            continue
+
+        match = HEADING_PATTERN.match(line)
+        if not match:
+            adjusted_lines.append(line)
+            continue
+
+        hashes, rest = match.groups()
+        new_level = min(len(hashes) + level_offset, 6)
+        adjusted_lines.append("#" * new_level + rest)
+
+    return "\n".join(adjusted_lines)
+
+
+def prefix_first_heading(text: str, prefix: str | None) -> str:
+    if not prefix:
+        return text
+
+    adjusted_lines: list[str] = []
+    in_fenced_code = False
+    prefixed = False
+
+    for line in text.splitlines():
+        stripped = line.lstrip()
+        if stripped.startswith("```") or stripped.startswith("~~~"):
+            in_fenced_code = not in_fenced_code
+            adjusted_lines.append(line)
+            continue
+
+        if in_fenced_code or prefixed:
+            adjusted_lines.append(line)
+            continue
+
+        match = HEADING_PATTERN.match(line)
+        if not match:
+            adjusted_lines.append(line)
+            continue
+
+        hashes, rest = match.groups()
+        heading_text = rest.strip()
+        heading_text = re.sub(r"^\d{2}\.\s+", "", heading_text)
+        adjusted_lines.append(f"{hashes} {prefix} {heading_text}")
+        prefixed = True
+
+    return "\n".join(adjusted_lines)
+
+
 def rewrite_local_links(text: str, source_path: Path, output_path: Path) -> str:
     source_dir = source_path.parent
     output_dir = output_path.parent.resolve()
@@ -133,6 +228,18 @@ def detect_latest_version(repo_root: Path) -> tuple[str | None, str | None]:
     return None, None
 
 
+def load_changelog_text(repo_root: Path) -> str:
+    changelog_path = repo_root / "CHANGELOG.md"
+    if not changelog_path.exists():
+        return ""
+
+    lines = changelog_path.read_text(encoding="utf-8").splitlines()
+    if lines and lines[0].strip() == "# Changelog":
+        lines = lines[1:]
+
+    return "\n".join(lines).strip()
+
+
 def build_cover_page(
     document_title: str,
     document_subtitle: str,
@@ -143,7 +250,9 @@ def build_cover_page(
     return [
         r"\begin{titlepage}",
         r"\centering",
-        r"\vspace*{0.18\textheight}",
+        r"\vspace*{0.10\textheight}",
+        r"\includegraphics[width=0.22\textwidth]{assets/IAMT-logo.png}",
+        r"\vspace{1.2cm}",
         rf"{{\Huge\bfseries {document_title}\par}}",
         r"\vspace{0.8cm}",
         rf"{{\LARGE {document_subtitle}\par}}",
@@ -162,8 +271,9 @@ def build_version_page(
     document_version: str,
     document_status: str,
     document_date: str,
+    changelog_text: str,
 ) -> list[str]:
-    return [
+    sections = [
         r"\section*{Version Information}",
         "",
         f"- Version: {document_version}",
@@ -173,10 +283,27 @@ def build_version_page(
         "",
         "This PDF is an assembled publication view generated from the Markdown sources in the repository.",
         "",
+    ]
+
+    if changelog_text:
+        sections.extend(
+            [
+                r"\section*{Change Log}",
+                "",
+                changelog_text.rstrip(),
+                "",
+            ]
+        )
+
+    sections.extend(
+        [
+            r"\newpage",
             r"\tableofcontents",
             r"\newpage",
-        "",
-    ]
+        ]
+    )
+
+    return sections
 
 
 def build_document(
@@ -189,6 +316,7 @@ def build_document(
     document_version: str,
     document_organization: str,
     document_date: str,
+    changelog_text: str,
     exclude_index_files: bool,
 ) -> int:
     sections = ["---", "lang: en", "---", ""]
@@ -206,6 +334,7 @@ def build_document(
             document_version,
             document_status,
             document_date,
+            changelog_text,
         )
     )
     included_count = 0
@@ -216,8 +345,13 @@ def build_document(
 
         source_text = source_path.read_text(encoding="utf-8")
         source_text = rewrite_local_links(source_text, source_path, output_path)
+        source_text = prefix_first_heading(source_text, chapter_prefix_for_file(source_path))
+        source_text = adjust_heading_levels(source_text, heading_offset_for_file(source_path))
 
         relative_source = source_path.relative_to(repo_root).as_posix()
+        if included_count > 0 and is_main_chapter_index(source_path, repo_root):
+            sections.append(r"\newpage")
+            sections.append("")
         sections.append(f"<!-- Source: {relative_source} -->")
         sections.append(source_text.rstrip())
         sections.append("")
@@ -237,6 +371,7 @@ def main() -> int:
     manifest_path = (repo_root / args.manifest).resolve()
     output_path = (repo_root / args.output).resolve()
     detected_version, detected_date = detect_latest_version(repo_root)
+    changelog_text = load_changelog_text(repo_root)
     document_version = args.document_version or detected_version or "unversioned-draft"
     document_date = args.document_date
 
@@ -255,6 +390,7 @@ def main() -> int:
             document_version,
             args.document_organization,
             document_date,
+            changelog_text,
             args.exclude_index_files,
         )
     except ValueError as error:

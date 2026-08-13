@@ -14,7 +14,7 @@ on:
       include_index_files:
         description: Include chapter 00-index.md files in the combined PDF source
         required: true
-        default: false
+        default: true
         type: boolean
 
 jobs:
