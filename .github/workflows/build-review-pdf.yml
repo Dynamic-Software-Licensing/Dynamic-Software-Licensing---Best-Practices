@@ -31,6 +31,7 @@ jobs:
           node-version: '20'
 
       - name: Determine output filenames
+        id: output_filenames
         run: |
           version=$(grep -m1 -E '^## \[[^]]+\] - ' CHANGELOG.md | sed -E 's/^## \[([^]]+)\] - .*$/\1/')
           if [ -z "$version" ]; then
@@ -50,6 +51,8 @@ jobs:
 
           echo "PDF_FILE=$pdf_file" >> "$GITHUB_ENV"
           echo "ARTIFACT_NAME=$artifact_name" >> "$GITHUB_ENV"
+          echo "pdf_file=$pdf_file" >> "$GITHUB_OUTPUT"
+          echo "artifact_name=$artifact_name" >> "$GITHUB_OUTPUT"
 
       - name: Build combined Markdown source
         run: |
@@ -100,13 +103,13 @@ jobs:
             --from=markdown+raw_tex
             --standalone
             --resource-path=.:_build
-            --output=_build/${{ env.PDF_FILE }}
+            --output=_build/${{ steps.output_filenames.outputs.pdf_file }}
             _build/review-draft.md
 
       - name: Upload review draft artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.ARTIFACT_NAME }}
+          name: ${{ steps.output_filenames.outputs.artifact_name }}
           path: |
             _build/review-draft.md
-            _build/${{ env.PDF_FILE }}
+            _build/${{ steps.output_filenames.outputs.pdf_file }}
