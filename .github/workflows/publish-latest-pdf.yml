@@ -1,4 +1,4 @@
-name: Publish Latest PDF to Pages
+name: Publish Latest PDF Release
 
 on:
   push:
@@ -7,26 +7,19 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
-  group: pages
+  group: latest-pdf-release
   cancel-in-progress: true
 
 jobs:
-  build-and-deploy:
+  build-and-publish:
     name: Build and publish latest PDF
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
-
-      - name: Set up Pages
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -52,10 +45,12 @@ jobs:
 
           echo "PDF_FILE=$pdf_file" >> "$GITHUB_ENV"
           echo "LATEST_PDF=dynamic-software-licensing-best-practices-latest.pdf" >> "$GITHUB_ENV"
-          echo "ARTIFACT_NAME=dynamic-software-licensing-best-practices-v${release_version}-pages" >> "$GITHUB_ENV"
+          echo "RELEASE_TAG=latest-pdf" >> "$GITHUB_ENV"
+          echo "RELEASE_TITLE=Latest PDF Build" >> "$GITHUB_ENV"
           echo "pdf_file=$pdf_file" >> "$GITHUB_OUTPUT"
           echo "latest_pdf=dynamic-software-licensing-best-practices-latest.pdf" >> "$GITHUB_OUTPUT"
-          echo "artifact_name=dynamic-software-licensing-best-practices-v${release_version}-pages" >> "$GITHUB_OUTPUT"
+          echo "release_tag=latest-pdf" >> "$GITHUB_OUTPUT"
+          echo "release_title=Latest PDF Build" >> "$GITHUB_OUTPUT"
 
       - name: Build combined Markdown source
         run: |
@@ -101,36 +96,37 @@ jobs:
             --output=_build/${{ steps.output_filenames.outputs.pdf_file }}
             _build/review-draft.md
 
-      - name: Prepare Pages site
+      - name: Prepare release assets
         run: |
-          rm -rf _site
-          mkdir -p _site
-          cp "_build/${PDF_FILE}" "_site/${PDF_FILE}"
-          cp "_build/${PDF_FILE}" "_site/${LATEST_PDF}"
+          cp "_build/${PDF_FILE}" "_build/${LATEST_PDF}"
 
-          cat > _site/index.html <<EOF
-          <!DOCTYPE html>
-          <html lang="en">
-          <head>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title>Dynamic Software Licensing Best Practices PDF</title>
-          </head>
-          <body>
-            <h1>Dynamic Software Licensing Best Practices</h1>
-            <p>Latest public PDF build from the main branch.</p>
-            <ul>
-              <li><a href="${LATEST_PDF}">Download latest PDF</a></li>
-              <li><a href="${PDF_FILE}">Download versioned PDF (${PDF_FILE})</a></li>
-            </ul>
-          </body>
-          </html>
+      - name: Publish latest PDF release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          notes=$(cat <<EOF
+          Automatically updated latest PDF build from the main branch.
+
+          Assets:
+          - ${LATEST_PDF}
+          - ${PDF_FILE}
           EOF
+          )
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site
+          if gh release view "${RELEASE_TAG}" >/dev/null 2>&1; then
+            gh release edit "${RELEASE_TAG}" \
+              --title "${RELEASE_TITLE}" \
+              --notes "$notes" \
+              --prerelease
+          else
+            gh release create "${RELEASE_TAG}" \
+              --target "${GITHUB_SHA}" \
+              --title "${RELEASE_TITLE}" \
+              --notes "$notes" \
+              --prerelease
+          fi
 
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+          gh release upload "${RELEASE_TAG}" \
+            "_build/${LATEST_PDF}" \
+            "_build/${PDF_FILE}" \
+            --clobber
