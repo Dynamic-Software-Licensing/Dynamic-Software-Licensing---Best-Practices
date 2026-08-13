@@ -1,4 +1,4 @@
-# 12.04 Security Controls
+# 12.04. Security Controls
 
 ## Purpose
 

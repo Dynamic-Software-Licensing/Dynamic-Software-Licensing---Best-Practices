@@ -1,4 +1,4 @@
-# 14.04 Business Logic Expansion
+# 14.04. Business Logic Expansion
 
 ## Purpose
 

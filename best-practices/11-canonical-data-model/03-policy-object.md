@@ -1,4 +1,4 @@
-# 11.03 Policy Object
+# 11.03. Policy Object
 
 ## Purpose
 

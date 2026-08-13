@@ -1,4 +1,4 @@
-# 13.01 24x7 Broadcast Profile
+# 13.01. 24x7 Broadcast Profile
 
 ## Chapter Status
 

@@ -1,4 +1,4 @@
-# 03.03 Platform-Agnostic Boundaries and Annex Use
+# 03.03. Platform-Agnostic Boundaries and Annex Use
 
 ## Purpose
 

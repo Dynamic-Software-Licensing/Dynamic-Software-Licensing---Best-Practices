@@ -1,4 +1,4 @@
-# 04.04 Operational Terms
+# 04.04. Operational Terms
 
 ## Chapter Status
 

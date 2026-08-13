@@ -1,4 +1,4 @@
-# 09.02 Identity and Binding Requirements
+# 09.02. Identity and Binding Requirements
 
 ## Purpose
 

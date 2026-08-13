@@ -1,4 +1,4 @@
-# 07.04 — Workspace Plane
+# 07.04. Workspace Plane
 
 ## Purpose
 

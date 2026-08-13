@@ -1,4 +1,4 @@
-# 10.04 — Move or Reissue
+# 10.04. Move or Reissue
 
 ## Purpose
 

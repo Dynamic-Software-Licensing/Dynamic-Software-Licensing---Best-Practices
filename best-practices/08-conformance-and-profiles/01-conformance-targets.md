@@ -1,4 +1,4 @@
-# 08.01 Conformance Targets
+# 08.01. Conformance Targets
 
 ## Purpose
 

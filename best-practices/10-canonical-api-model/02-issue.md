@@ -1,4 +1,4 @@
-# 10.02 — Issue
+# 10.02. Issue
 
 ## Purpose
 

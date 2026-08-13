@@ -1,4 +1,4 @@
-# 13.02 Event Production Profile
+# 13.02. Event Production Profile
 
 ## Chapter Status
 

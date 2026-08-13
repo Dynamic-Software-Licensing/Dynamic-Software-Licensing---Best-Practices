@@ -1,4 +1,4 @@
-# 05.05 Workflow Definitions
+# 05.05. Workflow Definitions
 
 ## Purpose
 

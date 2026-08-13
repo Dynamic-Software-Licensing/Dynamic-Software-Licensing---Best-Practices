@@ -1,4 +1,4 @@
-# 14.06 Scaling and Industry Establishment
+# 14.06. Scaling and Industry Establishment
 
 ## Purpose
 

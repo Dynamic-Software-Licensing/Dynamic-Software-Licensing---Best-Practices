@@ -1,4 +1,4 @@
-# 13.03 Test and Validation Profile
+# 13.03. Test and Validation Profile
 
 ## Chapter Status
 

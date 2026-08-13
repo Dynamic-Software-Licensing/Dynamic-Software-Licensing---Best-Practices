@@ -1,4 +1,4 @@
-# 13.05 Hybrid and DR Profile
+# 13.05. Hybrid and DR Profile
 
 ## Chapter Status
 

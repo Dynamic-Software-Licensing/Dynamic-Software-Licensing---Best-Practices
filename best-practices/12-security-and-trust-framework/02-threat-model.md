@@ -1,4 +1,4 @@
-# 12.02 Threat Model
+# 12.02. Threat Model
 
 ## Purpose
 

@@ -1,4 +1,4 @@
-# 03.01 Normative Keywords and Statement Strength
+# 03.01. Normative Keywords and Statement Strength
 
 ## Purpose
 

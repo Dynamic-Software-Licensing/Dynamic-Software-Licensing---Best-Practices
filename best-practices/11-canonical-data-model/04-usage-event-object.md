@@ -1,4 +1,4 @@
-# 11.04 Usage Event Object
+# 11.04. Usage Event Object
 
 ## Purpose
 

@@ -1,4 +1,4 @@
-# 12.06 Offline and Grace Behavior
+# 12.06. Offline and Grace Behavior
 
 ## Purpose
 

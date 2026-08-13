@@ -1,4 +1,4 @@
-# 04.03 License and Policy Terms
+# 04.03. License and Policy Terms
 
 ## Chapter Status
 

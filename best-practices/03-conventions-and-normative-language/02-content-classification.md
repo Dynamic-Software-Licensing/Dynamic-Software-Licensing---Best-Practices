@@ -1,4 +1,4 @@
-# 03.02 Content Classification
+# 03.02. Content Classification
 
 ## Purpose
 

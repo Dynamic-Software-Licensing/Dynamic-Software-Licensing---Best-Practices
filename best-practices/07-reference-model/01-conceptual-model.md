@@ -1,4 +1,4 @@
-# 07.01 — Conceptual Model
+# 07.01. Conceptual Model
 
 ## Purpose
 

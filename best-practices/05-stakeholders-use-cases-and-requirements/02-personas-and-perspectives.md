@@ -1,4 +1,4 @@
-# 05.02 Personas and Perspectives
+# 05.02. Personas and Perspectives
 
 ## Purpose
 

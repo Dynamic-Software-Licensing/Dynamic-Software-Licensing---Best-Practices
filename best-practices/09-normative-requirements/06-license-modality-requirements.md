@@ -1,4 +1,4 @@
-# 09.06 License Modality Requirements
+# 09.06. License Modality Requirements
 
 ## Purpose
 

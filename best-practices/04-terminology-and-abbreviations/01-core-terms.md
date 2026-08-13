@@ -1,4 +1,4 @@
-# 04.01 Core Terms
+# 04.01. Core Terms
 
 ## Chapter Status
 

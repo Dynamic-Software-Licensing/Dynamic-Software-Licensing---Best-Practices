@@ -1,4 +1,4 @@
-# 10.06 — Usage Record
+# 10.06. Usage Record
 
 ## Purpose
 

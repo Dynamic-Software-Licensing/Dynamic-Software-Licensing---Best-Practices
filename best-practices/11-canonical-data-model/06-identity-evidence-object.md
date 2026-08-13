@@ -1,4 +1,4 @@
-# 11.06 Identity Evidence Object
+# 11.06. Identity Evidence Object
 
 ## Purpose
 

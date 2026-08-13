@@ -1,4 +1,4 @@
-# 11.02 Entitlement Object
+# 11.02. Entitlement Object
 
 ## Purpose
 

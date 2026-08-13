@@ -1,4 +1,4 @@
-# 08.05 Profile C - Advanced Interoperable
+# 08.05. Profile C - Advanced Interoperable
 
 ## Purpose
 

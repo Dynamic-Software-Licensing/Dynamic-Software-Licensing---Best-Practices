@@ -1,4 +1,4 @@
-# 07.03 — Control Plane
+# 07.03. Control Plane
 
 ## Purpose
 

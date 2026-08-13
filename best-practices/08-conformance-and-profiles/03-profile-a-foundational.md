@@ -1,4 +1,4 @@
-# 08.03 Profile A - Foundational
+# 08.03. Profile A - Foundational
 
 ## Purpose
 

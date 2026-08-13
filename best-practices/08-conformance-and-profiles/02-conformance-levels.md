@@ -1,4 +1,4 @@
-# 08.02 Conformance Levels
+# 08.02. Conformance Levels
 
 ## Purpose
 

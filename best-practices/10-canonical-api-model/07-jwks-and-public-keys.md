@@ -1,4 +1,4 @@
-# 10.07 — JWKS and Public Keys
+# 10.07. JWKS and Public Keys
 
 ## Purpose
 

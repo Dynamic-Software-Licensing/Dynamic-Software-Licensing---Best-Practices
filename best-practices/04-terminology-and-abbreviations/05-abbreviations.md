@@ -1,4 +1,4 @@
-# 04.05 Abbreviations
+# 04.05. Abbreviations
 
 ## Chapter Status
 

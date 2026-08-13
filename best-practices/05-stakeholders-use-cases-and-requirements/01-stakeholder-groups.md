@@ -1,4 +1,4 @@
-# 05.01 Stakeholder Groups
+# 05.01. Stakeholder Groups
 
 ## Purpose
 

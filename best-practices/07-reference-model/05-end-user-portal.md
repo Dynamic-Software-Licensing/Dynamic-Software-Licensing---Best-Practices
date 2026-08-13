@@ -1,4 +1,4 @@
-# 07.05 — End User Portal
+# 07.05. End User Portal
 
 ## Purpose
 

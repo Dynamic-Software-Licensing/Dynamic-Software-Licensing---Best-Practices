@@ -1,4 +1,4 @@
-# 10.05 — Revoke
+# 10.05. Revoke
 
 ## Purpose
 

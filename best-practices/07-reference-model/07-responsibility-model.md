@@ -1,4 +1,4 @@
-# 07.07 — Responsibility Model
+# 07.07. Responsibility Model
 
 ## Purpose
 

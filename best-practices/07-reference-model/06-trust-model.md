@@ -1,4 +1,4 @@
-# 07.06 — Trust Model
+# 07.06. Trust Model
 
 ## Purpose
 

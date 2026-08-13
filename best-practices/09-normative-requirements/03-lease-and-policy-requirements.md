@@ -1,4 +1,4 @@
-# 09.03 Lease and Policy Requirements
+# 09.03. Lease and Policy Requirements
 
 ## Purpose
 

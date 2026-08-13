@@ -1,4 +1,4 @@
-# 12.01 Security Objectives
+# 12.01. Security Objectives
 
 ## Purpose
 

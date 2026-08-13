@@ -1,4 +1,4 @@
-# 10.03 — Renew
+# 10.03. Renew
 
 ## Purpose
 

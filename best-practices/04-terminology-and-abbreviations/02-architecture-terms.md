@@ -1,4 +1,4 @@
-# 04.02 Architecture Terms
+# 04.02. Architecture Terms
 
 ## Chapter Status
 

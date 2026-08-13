@@ -1,4 +1,4 @@
-# 08.04 Profile B - Cloud Native
+# 08.04. Profile B - Cloud Native
 
 ## Purpose
 

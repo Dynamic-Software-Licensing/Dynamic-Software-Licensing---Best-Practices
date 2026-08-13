@@ -1,4 +1,4 @@
-# 02. Current Licensing Challenges
+# 01.02. Current Licensing Challenges
 
 ## Overview
 

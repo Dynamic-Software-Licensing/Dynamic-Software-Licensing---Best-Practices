@@ -14,6 +14,7 @@ from pathlib import Path
 LINK_PATTERN = re.compile(r'(!?\[[^\]]*\])\(([^)]+)\)')
 CHANGELOG_VERSION_PATTERN = re.compile(r"^## \[([^\]]+)\] - (\d{4}-\d{2}-\d{2})$")
 HEADING_PATTERN = re.compile(r"^(#{1,6})(\s+.*)$")
+LEADING_HEADING_NUMBER_PATTERN = re.compile(r"^\d{2}(?:\.\d{2})*\.\s+")
 
 
 def parse_args() -> argparse.Namespace:
@@ -179,7 +180,7 @@ def prefix_first_heading(text: str, prefix: str | None) -> str:
 
         hashes, rest = match.groups()
         heading_text = rest.strip()
-        heading_text = re.sub(r"^\d{2}\.\s+", "", heading_text)
+        heading_text = LEADING_HEADING_NUMBER_PATTERN.sub("", heading_text)
         adjusted_lines.append(f"{hashes} {prefix} {heading_text}")
         prefixed = True
 
@@ -251,7 +252,7 @@ def build_cover_page(
         r"\begin{titlepage}",
         r"\centering",
         r"\vspace*{0.10\textheight}",
-        r"\includegraphics[width=0.22\textwidth]{assets/IAMT-logo.png}",
+        r"\makebox[\textwidth][c]{\includegraphics[width=0.22\textwidth]{assets/IAMT-logo.png}}\par",
         r"\vspace{1.2cm}",
         rf"{{\Huge\bfseries {document_title}\par}}",
         r"\vspace{0.8cm}",
@@ -290,7 +291,13 @@ def build_version_page(
             [
                 r"\section*{Change Log}",
                 "",
+                r"\begingroup",
+                r"\small",
+                r"\setlength{\parskip}{0.25em}",
+                r"\setlength{\parindent}{0pt}",
+                r"\tightlist",
                 changelog_text.rstrip(),
+                r"\endgroup",
                 "",
             ]
         )
@@ -298,6 +305,7 @@ def build_version_page(
     sections.extend(
         [
             r"\newpage",
+            r"\setcounter{tocdepth}{2}",
             r"\tableofcontents",
             r"\newpage",
         ]

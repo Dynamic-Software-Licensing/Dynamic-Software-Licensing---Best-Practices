@@ -1,4 +1,4 @@
-# 11.07 License Envelope Object
+# 11.07. License Envelope Object
 
 ## Purpose
 

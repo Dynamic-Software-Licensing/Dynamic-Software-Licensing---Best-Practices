@@ -1,4 +1,4 @@
-# 06.01 Design Principles
+# 06.01. Design Principles
 
 These principles define how the licensing system should be designed, implemented, and
 evaluated. They serve as decision-making guardrails to ensure consistency,

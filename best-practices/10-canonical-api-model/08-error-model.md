@@ -1,4 +1,4 @@
-# 10.08 — Error Model
+# 10.08. Error Model
 
 ## Purpose
 

@@ -65,25 +65,25 @@ Its role is to:
 
 This chapter is organized into the following subchapters:
 
-### 01. Industry Context
+### 01.01. Industry Context
 
 File: `01-industry-context.md`
 
 Describes the broader industry transformation from hardware-bound, CapEx-driven models toward software-defined, cloud-enabled, and hybrid production environments.
 
-### 02. Current Licensing Challenges
+### 01.02. Current Licensing Challenges
 
 File: `02-current-challenges.md`
 
 Identifies the concrete friction points that customers, system integrators, and vendors experience with current licensing approaches, organized by impact and structural nature.
 
-### 03. The DSL Initiative
+### 01.03. The DSL Initiative
 
 File: `03-dsl-initiative.md`
 
 Explains the origin, purpose, and collaborative nature of the IAMT Dynamic Software Licensing initiative and who is involved.
 
-### 04. Objectives and Vision
+### 01.04. Objectives and Vision
 
 File: `04-objectives-and-vision.md`
 

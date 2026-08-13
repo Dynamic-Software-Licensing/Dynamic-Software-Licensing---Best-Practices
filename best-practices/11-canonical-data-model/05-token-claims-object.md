@@ -1,4 +1,4 @@
-# 11.05 Token Claims Object
+# 11.05. Token Claims Object
 
 ## Purpose
 

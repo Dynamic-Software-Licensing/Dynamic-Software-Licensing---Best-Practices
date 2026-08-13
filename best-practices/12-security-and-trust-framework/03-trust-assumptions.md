@@ -1,4 +1,4 @@
-# 12.03 Trust Assumptions
+# 12.03. Trust Assumptions
 
 ## Purpose
 

@@ -1,4 +1,4 @@
-# 07.02 — Functional Components
+# 07.02. Functional Components
 
 ## Purpose
 

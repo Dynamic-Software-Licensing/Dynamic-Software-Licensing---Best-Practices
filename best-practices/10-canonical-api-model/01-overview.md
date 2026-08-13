@@ -1,4 +1,4 @@
-# 10.01 — Overview
+# 10.01. Overview
 
 ## Purpose
 

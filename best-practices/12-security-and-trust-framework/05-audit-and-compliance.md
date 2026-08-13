@@ -1,4 +1,4 @@
-# 12.05 Audit and Compliance
+# 12.05. Audit and Compliance
 
 ## Purpose
 
