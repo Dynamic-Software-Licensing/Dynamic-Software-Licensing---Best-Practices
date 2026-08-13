@@ -62,8 +62,8 @@ jobs:
             fi
 
             pdf_file="dynamic-software-licensing-best-practices-v${version}.pdf"
-            release_tag="v${version}"
-            release_title="Dynamic Software Licensing Best Practices v${version}"
+            release_tag="latest"
+            release_title="Dynamic Software Licensing Best Practices ${version}"
             prerelease=true
             release_notes_intro="Automatically generated PDF prerelease from the main branch."
           fi
