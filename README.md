@@ -60,7 +60,7 @@ A manual GitHub Actions workflow is available at `.github/workflows/build-review
 
 It assembles a combined Markdown source and renders a PDF artifact using Pandoc.
 
-A separate workflow at `.github/workflows/publish-latest-pdf.yml` publishes the latest release-oriented PDF to a stable GitHub Release whenever changes are merged into `main`.
+A separate workflow at `.github/workflows/publish-latest-pdf.yml` publishes the release-oriented PDF to a versioned GitHub prerelease whenever changes are merged into `main`.
 
 Two source manifests are provided:
 
@@ -73,6 +73,6 @@ Mermaid diagrams are pre-rendered into PNG assets during the workflow so that th
 
 The generated PDF filename is versioned automatically from `CHANGELOG.md`. The review profile keeps the review suffix, for example `dynamic-software-licensing-best-practices-v0.2.0-review-draft.pdf`, while the release profile emits the cleaner publication-style name `dynamic-software-licensing-best-practices-v0.2.0.pdf`.
 
-The publication workflow also emits a stable download filename, `dynamic-software-licensing-best-practices-latest.pdf`, alongside the versioned release-style PDF. Both files are attached to the rolling `latest-pdf` GitHub Release so users can download the document without opening the Actions tab.
+The publication workflow derives the release version from `CHANGELOG.md`, creates or updates the matching GitHub prerelease such as `v0.2.0-review-draft`, and attaches both the versioned PDF and the convenience filename `dynamic-software-licensing-best-practices-latest.pdf` so users can download the document without opening the Actions tab.
 
 The generated PDF source now includes an explicit cover page and a fixed-position table of contents before the document body, so the export behaves more like a publication artifact than a raw Markdown concatenation.

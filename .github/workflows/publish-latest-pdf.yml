@@ -1,4 +1,4 @@
-name: Publish Latest PDF Release
+name: Publish PDF Prerelease
 
 on:
   push:
@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: latest-pdf-release
+  group: pdf-prerelease
   cancel-in-progress: true
 
 jobs:
@@ -42,15 +42,17 @@ jobs:
 
           release_version="${version%-review-draft}"
           pdf_file="dynamic-software-licensing-best-practices-v${release_version}.pdf"
+          release_tag="v${version}"
+          release_title="Dynamic Software Licensing Best Practices v${version}"
 
           echo "PDF_FILE=$pdf_file" >> "$GITHUB_ENV"
           echo "LATEST_PDF=dynamic-software-licensing-best-practices-latest.pdf" >> "$GITHUB_ENV"
-          echo "RELEASE_TAG=latest-pdf" >> "$GITHUB_ENV"
-          echo "RELEASE_TITLE=Latest PDF Build" >> "$GITHUB_ENV"
+          echo "RELEASE_TAG=$release_tag" >> "$GITHUB_ENV"
+          echo "RELEASE_TITLE=$release_title" >> "$GITHUB_ENV"
           echo "pdf_file=$pdf_file" >> "$GITHUB_OUTPUT"
           echo "latest_pdf=dynamic-software-licensing-best-practices-latest.pdf" >> "$GITHUB_OUTPUT"
-          echo "release_tag=latest-pdf" >> "$GITHUB_OUTPUT"
-          echo "release_title=Latest PDF Build" >> "$GITHUB_OUTPUT"
+          echo "release_tag=$release_tag" >> "$GITHUB_OUTPUT"
+          echo "release_title=$release_title" >> "$GITHUB_OUTPUT"
 
       - name: Build combined Markdown source
         run: |
@@ -100,12 +102,12 @@ jobs:
         run: |
           cp "_build/${PDF_FILE}" "_build/${LATEST_PDF}"
 
-      - name: Publish latest PDF release
+      - name: Publish PDF prerelease
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           notes=$(cat <<EOF
-          Automatically updated latest PDF build from the main branch.
+          Automatically generated PDF prerelease from the main branch.
 
           Assets:
           - ${LATEST_PDF}
