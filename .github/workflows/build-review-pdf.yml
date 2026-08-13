@@ -56,10 +56,19 @@ jobs:
             --output _build/review-draft.md \
             --assets-dir _build/mermaid
 
+          cat > _build/puppeteer-config.json <<'EOF'
+          {
+            "args": [
+              "--no-sandbox",
+              "--disable-setuid-sandbox"
+            ]
+          }
+          EOF
+
           if ls _build/mermaid/*.mmd >/dev/null 2>&1; then
             for file in _build/mermaid/*.mmd; do
               output="${file%.mmd}.png"
-              npx --yes @mermaid-js/mermaid-cli@10.9.1 -i "$file" -o "$output" -b transparent -s 2
+              npx --yes @mermaid-js/mermaid-cli@10.9.1 -i "$file" -o "$output" -b transparent -s 2 -p _build/puppeteer-config.json
             done
           fi
 
