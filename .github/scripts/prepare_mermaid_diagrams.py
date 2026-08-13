@@ -9,7 +9,7 @@ from os.path import relpath as os_relpath
 from pathlib import Path
 
 
-MERMAID_BLOCK_PATTERN = re.compile(r"```mermaid\n(.*?)\n```", re.DOTALL)
+SOURCE_PATTERN = re.compile(r"^<!-- Source: (.+) -->$")
 
 
 def parse_args() -> argparse.Namespace:
@@ -30,29 +30,64 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+def build_base_name(source_path: str | None, mermaid_code: str, diagram_count: int) -> str:
+    digest = hashlib.sha256(mermaid_code.encode("utf-8")).hexdigest()[:12]
+    if not source_path:
+        return f"diagram-{diagram_count:02d}-{digest}"
+
+    stem = Path(source_path).stem
+    stem = re.sub(r"^\d{2}-", "", stem)
+    stem = re.sub(r"[^a-z0-9]+", "-", stem.lower()).strip("-")
+    if not stem:
+        return f"diagram-{diagram_count:02d}-{digest}"
+
+    return f"{stem}-{digest}"
+
+
 def replace_mermaid_blocks(text: str, output_path: Path, assets_dir: Path) -> tuple[str, int]:
     output_dir = output_path.parent.resolve()
     assets_dir = assets_dir.resolve()
     assets_dir.mkdir(parents=True, exist_ok=True)
     diagram_count = 0
+    rewritten_lines: list[str] = []
+    lines = text.splitlines()
+    current_source: str | None = None
+    in_mermaid = False
+    mermaid_lines: list[str] = []
 
-    def replace(match: re.Match[str]) -> str:
-        nonlocal diagram_count
+    for line in lines:
+        source_match = SOURCE_PATTERN.match(line)
+        if source_match and not in_mermaid:
+            current_source = source_match.group(1)
+            rewritten_lines.append(line)
+            continue
 
-        diagram_count += 1
-        mermaid_code = match.group(1).strip()
-        digest = hashlib.sha256(mermaid_code.encode("utf-8")).hexdigest()[:12]
-        base_name = f"diagram-{diagram_count:02d}-{digest}"
+        if line.strip() == "```mermaid" and not in_mermaid:
+            in_mermaid = True
+            mermaid_lines = []
+            continue
 
-        mermaid_source_path = assets_dir / f"{base_name}.mmd"
-        mermaid_source_path.write_text(mermaid_code + "\n", encoding="utf-8")
+        if line.strip() == "```" and in_mermaid:
+            in_mermaid = False
+            diagram_count += 1
+            mermaid_code = "\n".join(mermaid_lines).strip()
+            base_name = build_base_name(current_source, mermaid_code, diagram_count)
 
-        image_path = assets_dir / f"{base_name}.png"
-        rel_image_path = os_relpath(image_path, output_dir).replace("\\", "/")
+            mermaid_source_path = assets_dir / f"{base_name}.mmd"
+            mermaid_source_path.write_text(mermaid_code + "\n", encoding="utf-8")
 
-        return f"![]({rel_image_path})"
+            image_path = assets_dir / f"{base_name}.png"
+            rel_image_path = os_relpath(image_path, output_dir).replace("\\", "/")
+            rewritten_lines.append(f"![]({rel_image_path})")
+            continue
 
-    return MERMAID_BLOCK_PATTERN.sub(replace, text), diagram_count
+        if in_mermaid:
+            mermaid_lines.append(line)
+            continue
+
+        rewritten_lines.append(line)
+
+    return "\n".join(rewritten_lines) + "\n", diagram_count
 
 
 def main() -> int:
