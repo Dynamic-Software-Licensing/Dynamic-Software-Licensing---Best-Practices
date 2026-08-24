@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dynamic-software-licensing.org/schemas/entitlement.schema.json",
+  "title": "Entitlement",
+  "description": "Upstream authorization record from which leases are issued. Source of truth: DSL Best Practices Chapter 11.02 (Entitlement Object).",
+  "type": "object",
+  "properties": {
+    "entitlementId": { "type": "string", "description": "Unique identifier of the entitlement." },
+    "tenantId": { "type": "string", "description": "Tenant that owns the entitlement." },
+    "app": { "type": "string", "description": "Product or application identifier. NOTE (delta D2): spec uses 'app'; group to confirm whether to standardize on 'appId'." },
+    "isvId": { "type": "string", "description": "Independent software vendor identifier. NOTE (delta D3, spec-gap): adopted from the reference implementation for multi-vendor isolation; optional pending spec adoption." },
+    "status": { "type": "string", "enum": ["active", "suspended", "expired"], "description": "Entitlement status." },
+    "allowedModalities": {
+      "type": "array",
+      "description": "License modalities that may be granted from this entitlement.",
+      "items": { "type": "string", "examples": ["perpetual", "annual", "monthly", "weekly", "daily", "hourly", "process-based", "outcome-based"] }
+    },
+    "dimensions": {
+      "type": "array",
+      "description": "Maximum grantable dimensions and limits. Dimension names are vendor-defined (examples: CHANNELS, FPS).",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "examples": ["CHANNELS", "FPS", "BANDWIDTH"] },
+          "maxQuantity": { "type": "number" }
+        },
+        "required": ["name", "maxQuantity"],
+        "additionalProperties": false
+      }
+    },
+    "defaultPolicy": { "$ref": "policy.schema.json", "description": "Baseline vendor-defined policy attached to the entitlement." },
+    "quota": {
+      "type": "object",
+      "description": "Limits on simultaneous or aggregate grants. NOTE (delta D6): spec uses nested quota.maxActiveLeases; implementation uses flat maxLeases/activeLeases.",
+      "properties": {
+        "maxActiveLeases": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "scope": { "type": "object", "description": "Optional project, environment, or operational scope restrictions.", "additionalProperties": true },
+    "validFrom": { "type": "string", "format": "date-time", "description": "Start of entitlement validity." },
+    "validUntil": { "type": "string", "format": "date-time", "description": "End of entitlement validity, if bounded." }
+  },
+  "required": ["entitlementId", "tenantId", "app", "status", "allowedModalities", "dimensions"],
+  "additionalProperties": false
+}

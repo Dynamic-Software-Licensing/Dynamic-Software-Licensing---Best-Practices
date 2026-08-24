@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dynamic-software-licensing.org/schemas/token-claims.schema.json",
+  "title": "TokenClaims",
+  "description": "Claims carried in the signed runtime lease token. Source of truth: DSL Best Practices Chapter 11.05 and Annex C. Standard JWT claims (RFC 7519) combined with DSL-specific claims.",
+  "type": "object",
+  "properties": {
+    "iss": { "type": "string", "description": "Issuer identifier of the control plane. Spec (Annex C) uses a URL, e.g. https://lic.example.com. NOTE (delta D10): the implementation currently emits the opaque string 'dsl-control-plane'; the spec (URL) is authoritative." },
+    "sub": { "type": "string", "description": "Subject of the grant = the bound workload identity. NOTE (delta D10, high priority): the implementation currently sets 'sub' to tenantId; the spec (bound workload) is authoritative and tenant is carried separately in tenantId. This changes token validation logic." },
+    "aud": { "type": "string", "description": "Intended application/service audience (the app the token was issued for)." },
+    "jti": { "type": "string", "description": "Unique token identifier (anti-replay, audit correlation)." },
+    "iat": { "type": "integer", "description": "Issued-at time (NumericDate, seconds since epoch per RFC 7519)." },
+    "nbf": { "type": "integer", "description": "Not-before time (NumericDate)." },
+    "exp": { "type": "integer", "description": "Expiry time (NumericDate)." },
+    "tenantId": { "type": "string", "description": "Tenant context." },
+    "leaseId": { "type": "string", "description": "Lease identifier." },
+    "app": { "type": "string", "description": "Licensed application identifier. NOTE (delta D2): 'app' vs 'appId' to be confirmed; the implementation token claim is 'appId'." },
+    "dimensions": {
+      "type": "array",
+      "description": "Granted dimension values for local enforcement.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "quantity": { "type": "number" }
+        },
+        "required": ["name", "quantity"],
+        "additionalProperties": false
+      }
+    },
+    "licenseModality": { "type": "string", "description": "Granted modality." },
+    "boundIdentity": { "type": "object", "description": "Binding summary needed for local validation semantics.", "additionalProperties": true },
+    "policy": { "$ref": "policy.schema.json", "description": "Effective runtime policy snapshot." }
+  },
+  "required": ["iss", "sub", "aud", "jti", "iat", "nbf", "exp", "tenantId", "leaseId", "dimensions", "policy"],
+  "additionalProperties": true,
+  "$comment": "additionalProperties is true because vendor-specific claims MAY be added (Chapter 11.05), but they MUST NOT alter canonical claim meaning. RFC 7519 date claims are integers (NumericDate); note the spec's Annex C prose shows ISO-8601 strings for readability - implementations should use NumericDate integers per RFC 7519. Flagged as a minor spec editorial clarification."
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dynamic-software-licensing.org/schemas/usage-event.schema.json",
+  "title": "UsageEvent",
+  "description": "Metered usage record for reporting and reconciliation. Source of truth: DSL Best Practices Chapter 11.04 (Usage Event Object).",
+  "type": "object",
+  "properties": {
+    "leaseId": { "type": "string", "description": "Lease to which the usage applies." },
+    "tenantId": { "type": "string", "description": "Tenant context." },
+    "isvId": { "type": "string", "description": "ISV identifier. NOTE (delta D3, spec-gap): optional pending spec adoption." },
+    "productId": { "type": "string", "description": "Application or product identifier." },
+    "dimension": { "type": "string", "description": "Metered dimension name.", "examples": ["HOURS", "SESSIONS", "PROCESS_UNITS", "CHANNELS", "BANDWIDTH", "CLIPS"] },
+    "quantity": { "type": "number", "description": "Amount consumed." },
+    "granularity": { "type": "string", "description": "Measurement granularity/unit.", "examples": ["minutes", "hours", "per-session", "per-item"] },
+    "timestamp": { "type": "string", "format": "date-time", "description": "Time at which the usage occurred." },
+    "workId": { "type": "string", "description": "Correlation identifier for deployment or workflow." },
+    "submittedAt": { "type": "string", "format": "date-time", "description": "Time the event reached the control plane (may differ from timestamp if buffered)." }
+  },
+  "required": ["leaseId", "tenantId", "productId", "dimension", "quantity", "granularity", "timestamp", "workId"],
+  "additionalProperties": false,
+  "$comment": "Deduplication key per Chapter 11.04 / 10.06: leaseId + timestamp + dimension (+ workId). Aligned with the implementation UsageRecord model."
+}
