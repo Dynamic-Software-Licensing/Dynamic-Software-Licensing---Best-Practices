@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: DSL Canonical API
-  version: 0.1.0-review-draft
+  version: 0.2.0-review-draft
   summary: Machine-readable companion contract for the Dynamic Software Licensing review draft.
   description: |
     This OpenAPI document captures the baseline REST contract described in Chapter 10 and
