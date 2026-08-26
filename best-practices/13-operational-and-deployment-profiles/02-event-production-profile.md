@@ -28,7 +28,7 @@ Higher-tier productions typically require redundant services, which must also be
 
 The diagram below illustrates a simplified live production workload intended to highlight the key concepts.
 
-![Event Production](../../diagrams/DSL Event Based Production.svg)
+![Event Production](../../diagrams/DSL%20Event%20Based%20Production.svg)
 
 The workload represents an event-based production deployment. Resources are ephemeral and are deployed only for the duration of the production, including pre-event setup and post-event tear-down.
 
