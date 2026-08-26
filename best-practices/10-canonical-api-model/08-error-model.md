@@ -120,7 +120,7 @@ The following error types are defined for the canonical API operations. Each `ty
 
 ## License Agent Behavior on Errors
 
-The license agent should handle errors based on the `category` and `retryable` extension members:
+The license agent SHOULD handle errors based on the `category` and `retryable` extension members:
 
 | Scenario | Agent Behavior |
 | --- | --- |
@@ -132,17 +132,17 @@ The license agent should handle errors based on the `category` and `retryable` e
 | `retryable: false`, category `expired` | Treat as terminal; a new Issue is required |
 | Category `internal` or `unavailable` | Retry with backoff; if retries are exhausted, enter grace period logic |
 
-The `instance` field, when present, should be included in support tickets or log entries to enable the control plane operator to correlate the error with server-side diagnostics.
+The `instance` field, when present, SHOULD be included in support tickets or log entries to enable the control plane operator to correlate the error with server-side diagnostics.
 
 ## Security Considerations
 
-Error responses must not expose:
+Error responses MUST NOT expose:
 
 - Internal infrastructure details (e.g., database names, Lambda function ARNs, stack traces).
 - Information about other tenants or their entitlements.
 - Detailed cryptographic failure reasons that could aid an attacker.
 
-The `detail` field should be informative enough for debugging but generic enough to avoid information leakage. The `instance` field should use opaque identifiers (not internal resource paths).
+The `detail` field SHOULD be informative enough for debugging but generic enough to avoid information leakage. The `instance` field SHOULD use opaque identifiers (not internal resource paths).
 
 ## Relationship to Other Chapters
 

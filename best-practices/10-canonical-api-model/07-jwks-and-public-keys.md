@@ -79,7 +79,7 @@ This ensures that tokens signed with either key can be validated during the tran
 
 ## Caching Behavior
 
-The SDK should cache JWKS responses to avoid unnecessary network calls:
+The SDK SHOULD cache JWKS responses to avoid unnecessary network calls:
 
 - Cache the keys after the first fetch.
 - Refresh the cache only when:
@@ -91,7 +91,7 @@ The control plane may include standard HTTP cache headers (`Cache-Control`, `max
 
 ## Availability Considerations
 
-The JWKS endpoint should be highly available because:
+The JWKS endpoint SHOULD be highly available because:
 
 - If the endpoint is unreachable during first startup, the SDK cannot validate any tokens.
 - If the endpoint is unreachable during key rotation, SDKs cannot obtain the new key.
