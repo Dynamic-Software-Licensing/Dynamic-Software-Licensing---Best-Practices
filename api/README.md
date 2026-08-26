@@ -18,6 +18,10 @@ schemas available in the same location.
 | [token-claims.schema.json](token-claims.schema.json) | Token-claims data model |
 | [usage-event.schema.json](usage-event.schema.json) | Usage-record data model |
 
+This directory contains the core machine-readable artifacts with closed, reusable payload shapes.
+Some Chapter 11 objects remain documented only in Markdown when they intentionally carry
+deployment-specific or vendor-specific structure, such as the optional license envelope.
+
 ## Baseline REST Surface
 
 | Operation | Endpoint | Method | Purpose |
