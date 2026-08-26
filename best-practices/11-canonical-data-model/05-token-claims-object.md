@@ -22,9 +22,9 @@ another established signed token format with equivalent semantics.
 | `sub` | string | Subject of the grant, typically the bound workload or lease subject |
 | `aud` | string | Intended application or service audience |
 | `jti` | string | Unique token identifier |
-| `iat` | string | Issued-at time |
-| `nbf` | string | Not-before time |
-| `exp` | string | Expiry time |
+| `iat` | string | Issued-at timestamp in RFC 3339 date-time form |
+| `nbf` | string | Not-before timestamp in RFC 3339 date-time form |
+| `exp` | string | Expiry timestamp in RFC 3339 date-time form |
 | `tenantId` | string | Tenant context |
 | `leaseId` | string | Lease identifier |
 | `app` | string | Licensed application identifier |
@@ -39,6 +39,8 @@ another established signed token format with equivalent semantics.
 
 The token claims object should combine widely understood standard claims such as issuer,
 audience, token identity, and validity window with DSL-specific claims describing the grant.
+
+When a JWT representation is used, `iat`, `nbf`, `exp`, and `jti` map directly to the corresponding RFC 7519 registered claims. In the canonical DSL model, those time values are represented as RFC 3339 date-time strings for portability across the textual model, JSON Schema artifacts, and examples.
 
 ### Runtime sufficiency
 

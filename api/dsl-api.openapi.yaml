@@ -665,6 +665,8 @@ components:
             - entitlement_expired
             - decommissioned
             - force_release
+            - reissue_cutover
+            - quota_exceeded
       required: [reason]
     RevokeLeaseResponse:
       type: object
