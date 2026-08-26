@@ -17,6 +17,28 @@ state transitions in the DSL model.
 | `EXPIRED` | The validity window ended without further continuation |
 | `TERMINATED` | The lease has reached a controlled end of use and is closed |
 
+## Lifecycle Overview Diagram
+
+```mermaid
+stateDiagram-v2
+    [*] --> ISSUED: Issue
+    ISSUED --> ACTIVE: Activate runtime use
+    ACTIVE --> RENEWED: Renew
+    RENEWED --> RENEWED: Renew again
+    ACTIVE --> REISSUING: Reissue
+    RENEWED --> REISSUING: Reissue
+    REISSUING --> ACTIVE: Finalize reissue
+    ISSUED --> REVOKED: Revoke
+    ACTIVE --> REVOKED: Revoke
+    RENEWED --> REVOKED: Revoke
+    REISSUING --> REVOKED: Revoke
+    ISSUED --> EXPIRED: Expire
+    ACTIVE --> EXPIRED: Expire
+    RENEWED --> EXPIRED: Expire
+    EXPIRED --> TERMINATED: Close lifecycle
+    REVOKED --> TERMINATED: Close lifecycle
+```
+
 ## Primary Lifecycle Operations
 
 | Operation | Typical transition intent |
@@ -54,3 +76,7 @@ state transitions in the DSL model.
 
 This annex is the compact normative reference for lifecycle-state interpretation in the DSL
 review draft.
+
+The canonical form in this annex is the state and transition tables together with the semantic
+notes above. The inline state diagram complements that normative baseline as a visual summary and
+does not replace the tabular interpretation.
