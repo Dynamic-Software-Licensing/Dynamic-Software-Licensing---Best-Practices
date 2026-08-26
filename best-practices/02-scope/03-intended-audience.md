@@ -4,7 +4,7 @@
 
 The DSL best practices are written for a broad technical and operational audience across the broadcast and media technology industry. Different parts of the document will be more directly relevant to some groups than others, but the framework as a whole is intended to be readable and useful across the following stakeholder groups.
 
-The audience framing in this section is intentionally aligned with the stakeholder groups and persona lenses formalized later in Section 5.1 and Section 5.2. This keeps scope language and role expectations consistent across the document.
+The audience framing in this section is intentionally aligned with the stakeholder groups and persona lenses formalized later in Section 05.01 and Section 05.02. This keeps scope language and role expectations consistent across the document.
 
 ## Manufacturers and Independent Software Vendors
 
