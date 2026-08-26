@@ -29,7 +29,7 @@ The current DSL material already distinguishes between major architectural areas
 - the Control Plane,
 - the Workspace Plane,
 - an End User Portal,
-- associated components such as a Broker or License Agent, SDK integration, keys, usage services, and analytics.
+- associated components such as a License Agent (Broker), SDK integration, keys, usage services, and analytics.
 
 This chapter organizes that model into a consistent reference structure.
 

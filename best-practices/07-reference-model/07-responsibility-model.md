@@ -111,7 +111,7 @@ The vendor is responsible for:
 The vendor is not responsible for:
 - Operating the customer's workloads.
 - Managing the customer's infrastructure or identity systems.
-- Making runtime enforcement decisions (these are delegated to the token and SDK).
+- Making runtime enforcement decisions (these are delegated to the application logic, using claims exposed by the license token and SDK).
 
 ### Customer Boundary
 
@@ -152,7 +152,7 @@ The control plane is responsible for:
 
 The control plane is not responsible for:
 - Running application workloads.
-- Enforcing dimensions at runtime (this is the SDK's responsibility).
+- Enforcing dimensions at runtime (this is the application logic's responsibility, with the SDK exposing the granted claims).
 - Managing the customer's infrastructure.
 
 ## Shared Responsibilities
