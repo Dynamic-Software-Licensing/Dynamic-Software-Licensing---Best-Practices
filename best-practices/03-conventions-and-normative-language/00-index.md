@@ -41,7 +41,7 @@ This chapter defines:
 
 This chapter is divided into three subchapters:
 
-- [03.01. Normative Keywords and Statement Strength](01-normative-keywords-and-statement-strength.md) — defines how terms such as **MUST**, **SHOULD**, and **MAY** are used and how statement strength is interpreted.
+- [03.01. Normative Keywords and Statement Strength](01-normative-keywords-and-statement-strength.md) — defines how terms such as **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, and **MAY** are used and how statement strength is interpreted.
 - [03.02. Content Classification](02-content-classification.md) — defines the distinction between normative, informative, and explanatory material and how mixed passages are handled.
 - [03.03. Platform-Agnostic Boundaries and Annex Use](03-platform-agnostic-boundaries-and-annex-use.md) — defines what belongs in the core document, what belongs in annexes, and how platform-specific material is contained.
 

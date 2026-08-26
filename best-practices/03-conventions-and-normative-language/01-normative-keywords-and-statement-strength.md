@@ -13,11 +13,13 @@ conformance assessment.
 
 The core keyword set used in the best practices is:
 - **MUST**
+- **MUST NOT**
 - **SHOULD**
+- **SHOULD NOT**
 - **MAY**
 
 These keywords are used only where the text needs to distinguish clearly between required,
-strongly recommended, and optional behavior.
+prohibited, strongly recommended, discouraged, and optional behavior.
 
 ## Interpretation of Statement Strength
 
@@ -25,8 +27,12 @@ The keywords are interpreted as follows:
 
 - **MUST** expresses a required behavior, constraint, or interpretation rule that is necessary
   for consistent application of the best practices.
+- **MUST NOT** expresses a prohibited behavior or disallowed interpretation that would violate
+  the best-practices model if performed.
 - **SHOULD** expresses a strong recommendation. Alternative approaches are possible, but a
   departure should be intentional and justified.
+- **SHOULD NOT** expresses a strong recommendation against a behavior. Departures may exist,
+  but they should be exceptional and intentionally justified.
 - **MAY** expresses an allowed option or acceptable variation that remains compatible with the
   overall model.
 
