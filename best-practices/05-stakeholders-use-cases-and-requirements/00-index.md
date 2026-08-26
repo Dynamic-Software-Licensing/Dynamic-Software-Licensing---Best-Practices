@@ -36,7 +36,7 @@ This chapter is organized into the following subchapters:
 
 ### 01. Stakeholder Groups
 
-Defines the stakeholder categories addressed by the best practices: customer organisations, ISVs, system integrators, industry bodies, and platform providers.
+Defines the stakeholder categories addressed by the best practices: customer organizations, ISVs, system integrators, industry bodies, and platform providers.
 
 ### 02. Personas and Perspectives
 

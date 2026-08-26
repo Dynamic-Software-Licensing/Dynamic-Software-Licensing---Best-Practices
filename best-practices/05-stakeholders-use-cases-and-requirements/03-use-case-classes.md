@@ -21,7 +21,7 @@ The use case classes below synthesize:
 - team prework (including Miro workshop material),
 - the recurring industry use cases captured during the initiative's early analysis.
 
-The classes are intentionally a small, stable set. They are not an exhaustive catalogue of
+The classes are intentionally a small, stable set. They are not an exhaustive catalog of
 scenarios; they are the recurring demand patterns that most strongly differentiate licensing
 behavior. Concrete customer situations are expected to map onto one primary class, often with
 secondary influence from others.
