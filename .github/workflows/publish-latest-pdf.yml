@@ -175,3 +175,30 @@ jobs:
           gh release upload "${RELEASE_TAG}" \
             ${RELEASE_ASSETS} \
             --clobber
+
+          if [ "${GITHUB_REF_TYPE}" = 'tag' ] && [[ "${GITHUB_REF_NAME}" == v* ]]; then
+            latest_notes=$(cat <<EOF
+          Automatically generated PDF prerelease tracking the latest reviewed-draft publication.
+
+          Assets:
+          - dynamic-software-licensing-best-practices-latest.pdf
+          EOF
+            )
+
+            if gh release view latest >/dev/null 2>&1; then
+              gh release edit latest \
+                --title "Dynamic Software Licensing Best Practices ${GITHUB_REF_NAME#v}" \
+                --notes "$latest_notes" \
+                --prerelease
+            else
+              gh release create latest \
+                --target "${GITHUB_SHA}" \
+                --title "Dynamic Software Licensing Best Practices ${GITHUB_REF_NAME#v}" \
+                --notes "$latest_notes" \
+                --prerelease
+            fi
+
+            gh release upload latest \
+              "_build/${LATEST_PDF}" \
+              --clobber
+          fi
