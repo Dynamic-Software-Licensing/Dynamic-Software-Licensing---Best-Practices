@@ -47,13 +47,13 @@ An editor protects the coherence of the accepted baseline and makes merge decisi
 
 Responsibilities:
 - assess chapter readiness and status maturity,
-- confirm or update chapter status fields,
+- confirm or update repository-visible status signals,
 - decide content placement (main document vs annex),
 - approve or reject merges into `main`,
 - document decisions in the pull request.
 
 Decision scope:
-- final editorial decisions on chapter status, classification, and merge readiness.
+- final editorial decisions on status interpretation, classification, and merge readiness.
 
 ### Manager
 
@@ -84,78 +84,13 @@ Note: in smaller teams one person may act as Editor, Manager, and Maintainer.
 
 ## Status Definitions
 
-Status is used at two levels: repository maturity and chapter-level drafting status.
-
-### Repository Maturity
-
-| Value | Meaning |
-| --- | --- |
-| Working Draft | Structure and content are still evolving. |
-| Reviewed Draft | Structure is broadly stable; key sections have been reviewed. |
-| Candidate Best Practices | Technically and editorially mature enough for final validation. |
-| Published Best Practices | Approved as published industry best practices. |
-
-### Chapter Status Fields
-
-Each chapter `00-index.md` must contain a `## Chapter Status` section with the following fields.
-
-**Status**
-
-| Value | Meaning |
-| --- | --- |
-| Working Draft | Chapter structure or content is still actively changing. |
-| Reviewed Draft | Chapter has been reviewed and is broadly stable. |
-| Candidate Best Practices Text | Chapter content is considered ready for final best practices. |
-| Stable for Cross-Reference | Chapter is stable enough to be referenced by other chapters. |
-
-**Editorial maturity**
-
-| Value | Meaning |
-| --- | --- |
-| outline | Structure exists; substantive drafting has not started. |
-| partial draft | First substantive content exists; significant sections are still incomplete. |
-| developed draft | Substantial draft content exists across planned sections. |
-| review-ready | Chapter is complete enough for structured editorial review. |
-
-**Normative readiness**
-
-| Value | Meaning |
-| --- | --- |
-| not started | No normative-level text has been drafted. |
-| informative only | Chapter provides context or explanation only. |
-| partially normative | Some normative intent or requirement language is present. |
-| ready for normative review | Normative content is sufficiently complete for focused review. |
-
-**Open drafting points**
-
-| Value |
-| --- |
-| yes |
-| no |
-
-### Quick Selection Rule
-
-- Mostly headings or placeholders: `outline` + `not started`.
-- First real text but clearly incomplete: `partial draft` + `not started` or `informative only`.
-- Broadly written across sections: `developed draft` + `informative only` or `partially normative`.
-- Ready for formal review: `review-ready` + matching normative readiness.
-
-Default fallback: choose the lower maturity value when unsure.
-
-### Chapter Status Block Template
-
-```markdown
-## Chapter Status
-
-- Status: Working Draft
-- Editorial maturity: outline
-- Normative readiness: not started
-- Open drafting points: yes
-```
+Status is tracked centrally at the repository and publication level.
 
 ### Status Governance Rule
 
-Contributors indicate status intent in the pull request. Editors confirm repository-visible status changes. Contributors should not update chapter status blocks on routine content commits unless a status change is clearly justified.
+Contributors indicate status intent in the pull request. Editors confirm repository-visible status
+changes in the central status surfaces, rather than by maintaining repeated per-chapter status
+blocks.
 
 ## Change Categories
 
@@ -196,7 +131,7 @@ The pull request is marked Ready for review. Editors and reviewers assess qualit
 
 ### Final
 
-The reviewed pull request is merged to `main`. This represents the accepted baseline for the current stage. It does not mean the overall best-practices document is fully published.
+The reviewed pull request is merged to `main`. This updates the accepted published baseline and becomes part of the next versioned repository release.
 
 ## Editor Checklist
 
@@ -212,12 +147,12 @@ During review:
 - Proposed status is valid.
 
 Before merge:
-- Final status values are confirmed.
+- Central publication status references are confirmed.
 - Review outcome is complete.
 - Merge readiness is confirmed.
 
 After merge:
-- Status overview tables are accurate.
+- Central status references remain accurate.
 - `main` reflects the accepted baseline.
 
 ## Automated Enforcement
@@ -240,8 +175,6 @@ These workflows are available but not automatically enforced:
 
 | Check | Trigger | Scope |
 | --- | --- | --- |
-| Chapter status field validation | Manual (`workflow_dispatch`) | Validates allowed status values |
-| Status table update | Manual (`workflow_dispatch`) | Regenerates `best-practices/index.md` table |
 | Draft PR creation | Manual (`workflow_dispatch`) | Creates Draft PR for current branch |
 | PR labeling | Manual (`workflow_dispatch`) | Applies labels from changed paths |
 

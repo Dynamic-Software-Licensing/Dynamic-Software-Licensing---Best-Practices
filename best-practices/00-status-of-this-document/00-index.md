@@ -45,14 +45,6 @@ This best practices uses a centralized status model defined in `GOVERNANCE.md`.
 The model is expressed at the repository and publication level rather than repeated in every
 chapter file.
 
-### Repository-Level Maturity
-
-The repository-level maturity states are:
-- Working Draft,
-- Reviewed Draft,
-- Candidate Best Practices,
-- Published Best Practices.
-
 ### Chapter-Level Interpretation
 
 Chapter-specific purpose, normative weight, and editorial role are described in the chapter prose
