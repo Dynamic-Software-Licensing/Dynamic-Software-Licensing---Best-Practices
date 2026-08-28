@@ -1,14 +1,14 @@
 openapi: 3.1.0
 info:
   title: DSL Canonical API
-  version: 0.2.0-review-draft
-  summary: Machine-readable companion contract for the Dynamic Software Licensing review draft.
+  version: 0.2.1
+  summary: Machine-readable companion contract for the current published Dynamic Software Licensing baseline.
   description: |
     This OpenAPI document captures the baseline REST contract described in Chapter 10 and
     Annex B of the Dynamic Software Licensing best practices.
 
     It is intentionally scoped to the canonical lifecycle, reporting, and key-discovery
-    endpoints of the review draft. It does not attempt to model vendor-specific extensions,
+    endpoints of the current published baseline. It does not attempt to model vendor-specific extensions,
     administrative back-office APIs, or deployment-specific realization details.
 jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
 servers:

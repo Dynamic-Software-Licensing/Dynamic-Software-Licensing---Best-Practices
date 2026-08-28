@@ -15,6 +15,8 @@ LINK_PATTERN = re.compile(r'(!?\[[^\]]*\])\(([^)]+)\)')
 CHANGELOG_VERSION_PATTERN = re.compile(r"^## \[([^\]]+)\] - (\d{4}-\d{2}-\d{2})$")
 HEADING_PATTERN = re.compile(r"^(#{1,6})(\s+.*)$")
 LEADING_HEADING_NUMBER_PATTERN = re.compile(r"^\d{2}(?:\.\d{2})*\.\s+")
+LIST_MARKER_PATTERN = re.compile(r"^(?:[-*+]\s+|\d+\.\s+)")
+CODE_SPAN_PATTERN = re.compile(r"`([^`]+)`")
 
 
 def parse_args() -> argparse.Namespace:
@@ -219,6 +221,79 @@ def prefix_first_heading(text: str, prefix: str | None) -> str:
     return "\n".join(adjusted_lines)
 
 
+def normalize_list_spacing(text: str) -> str:
+    adjusted_lines: list[str] = []
+    in_fenced_code = False
+
+    for line in text.splitlines():
+        stripped = line.lstrip()
+        if stripped.startswith("```") or stripped.startswith("~~~"):
+            in_fenced_code = not in_fenced_code
+            adjusted_lines.append(line)
+            continue
+
+        if in_fenced_code:
+            adjusted_lines.append(line)
+            continue
+
+        if LIST_MARKER_PATTERN.match(stripped):
+            previous_line = adjusted_lines[-1] if adjusted_lines else ""
+            previous_stripped = previous_line.strip()
+            if previous_stripped and not LIST_MARKER_PATTERN.match(previous_stripped):
+                adjusted_lines.append("")
+
+        adjusted_lines.append(line)
+
+    return "\n".join(adjusted_lines)
+
+
+def format_table_code_span(content: str) -> str:
+    if " " in content:
+        escaped = content.replace("\\", r"\textbackslash{}")
+        escaped = escaped.replace("{", r"\{")
+        escaped = escaped.replace("}", r"\}")
+        escaped = escaped.replace("_", r"\_")
+        return rf"\texttt{{{escaped}}}"
+
+    delimiter = "+"
+    if delimiter in content:
+        delimiter = "!"
+    if delimiter in content:
+        delimiter = ";"
+    return rf"\path{delimiter}{content}{delimiter}"
+
+
+def normalize_table_code_spans(text: str) -> str:
+    adjusted_lines: list[str] = []
+    in_fenced_code = False
+
+    for line in text.splitlines():
+        stripped = line.lstrip()
+        if stripped.startswith("```") or stripped.startswith("~~~"):
+            in_fenced_code = not in_fenced_code
+            adjusted_lines.append(line)
+            continue
+
+        if in_fenced_code or "|" not in line:
+            adjusted_lines.append(line)
+            continue
+
+        table_candidate = line.strip()
+        if not table_candidate.startswith("|"):
+            adjusted_lines.append(line)
+            continue
+
+        if set(table_candidate) <= {"|", "-", ":", " "}:
+            adjusted_lines.append(line)
+            continue
+
+        adjusted_lines.append(
+            CODE_SPAN_PATTERN.sub(lambda match: format_table_code_span(match.group(1)), line)
+        )
+
+    return "\n".join(adjusted_lines)
+
+
 def rewrite_local_links(text: str, source_path: Path, output_path: Path) -> str:
     source_dir = source_path.parent
     output_dir = output_path.parent.resolve()
@@ -281,6 +356,29 @@ def load_license_text(repo_root: Path) -> str:
     return license_path.read_text(encoding="utf-8").strip()
 
 
+def load_management_summary_text(repo_root: Path) -> str:
+    readme_path = repo_root / "README.md"
+    if not readme_path.exists():
+        return ""
+
+    lines = readme_path.read_text(encoding="utf-8").splitlines()
+    summary_lines: list[str] = []
+    in_summary = False
+
+    for line in lines:
+        if line.startswith("## Management Summary"):
+            in_summary = True
+            continue
+
+        if in_summary and re.match(r"^##\s+", line):
+            break
+
+        if in_summary:
+            summary_lines.append(line)
+
+    return "\n".join(summary_lines).strip()
+
+
 def build_cover_page(
     document_title: str,
     document_subtitle: str,
@@ -312,9 +410,13 @@ def build_version_page(
     document_version: str,
     document_status: str,
     document_date: str,
+    management_summary_text: str,
     changelog_text: str,
 ) -> list[str]:
     sections = [
+        r"\pagestyle{dslbody}",
+        r"\thispagestyle{dslbody}",
+        "",
         r"\section*{Version Information}",
         "",
         f"- Version: {document_version}",
@@ -325,6 +427,20 @@ def build_version_page(
         "This PDF is an assembled publication view generated from the Markdown sources in the repository.",
         "",
     ]
+
+    if management_summary_text:
+        sections.extend(
+            [
+                r"\newpage",
+                "",
+                r"\section*{Management Summary}",
+                "",
+                management_summary_text.rstrip(),
+                "",
+                r"\newpage",
+                "",
+            ]
+        )
 
     if changelog_text:
         sections.extend(
@@ -348,6 +464,36 @@ def build_version_page(
     return sections
 
 
+def build_pdf_metadata(
+    document_title: str,
+    document_version: str,
+    document_date: str,
+) -> list[str]:
+    return [
+        "---",
+        "lang: en",
+        "header-includes:",
+        "  - |",
+        r"    \usepackage{fancyhdr}",
+        "  - |",
+        r"    \newcommand{\dslpdfpagestyle}{%",
+        r"      \fancyhf{}%",
+        rf"      \fancyhead[R]{{{document_title}}}%",
+        rf"      \fancyfoot[L]{{Version {document_version}}}%",
+        r"      \fancyfoot[C]{\thepage}%",
+        rf"      \fancyfoot[R]{{{document_date}}}%",
+        r"      \renewcommand{\headrulewidth}{0.4pt}%",
+        r"      \renewcommand{\footrulewidth}{0.4pt}%",
+        r"    }",
+        "  - |",
+        r"    \fancypagestyle{dslbody}{\dslpdfpagestyle}",
+        "  - |",
+        r"    \fancypagestyle{plain}{\dslpdfpagestyle}",
+        "---",
+        "",
+    ]
+
+
 def build_document(
     files: list[Path],
     output_path: Path,
@@ -358,10 +504,11 @@ def build_document(
     document_version: str,
     document_organization: str,
     document_date: str,
+    management_summary_text: str,
     changelog_text: str,
     license_text: str,
 ) -> int:
-    sections = ["---", "lang: en", "---", ""]
+    sections = build_pdf_metadata(document_title, document_version, document_date)
     sections.extend(
         build_cover_page(
             document_title,
@@ -376,6 +523,7 @@ def build_document(
             document_version,
             document_status,
             document_date,
+            management_summary_text,
             changelog_text,
         )
     )
@@ -388,6 +536,8 @@ def build_document(
             source_text = demote_following_headings(source_text, 1)
         source_text = prefix_first_heading(source_text, chapter_prefix_for_file(source_path))
         source_text = adjust_heading_levels(source_text, heading_offset_for_file(source_path))
+        source_text = normalize_list_spacing(source_text)
+        source_text = normalize_table_code_spans(source_text)
 
         relative_source = source_path.relative_to(repo_root).as_posix()
         if included_count > 0 and is_main_chapter_index(source_path, repo_root):
@@ -432,6 +582,7 @@ def main() -> int:
     detected_version, detected_date = detect_latest_version(repo_root)
     changelog_text = load_changelog_text(repo_root)
     license_text = load_license_text(repo_root)
+    management_summary_text = load_management_summary_text(repo_root)
     document_version = args.document_version or detected_version or "unversioned-draft"
     document_date = args.document_date
 
@@ -450,6 +601,7 @@ def main() -> int:
             document_version,
             args.document_organization,
             document_date,
+            management_summary_text,
             changelog_text,
             license_text,
         )
