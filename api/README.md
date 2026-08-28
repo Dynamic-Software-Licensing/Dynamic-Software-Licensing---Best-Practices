@@ -1,7 +1,7 @@
 # API Artifacts
 
 This directory contains the machine-readable API companion artifacts for the Dynamic Software
-Licensing review draft.
+Licensing best practices publication.
 
 GitHub renders the OpenAPI YAML file as source code in the repository browser. This Markdown
 overview provides a GitHub-friendly entry point while keeping the OpenAPI contract and JSON
@@ -41,7 +41,7 @@ deployment-specific or vendor-specific structure, such as the optional license e
 - common security expectations,
 - RFC 9457 problem-details responses,
 - example payloads for successful flows and a quota-related error case,
-- references to the underlying JSON schemas used by the review draft.
+- references to the underlying JSON schemas used by the published baseline.
 
 ## How to Use These Artifacts
 

@@ -62,7 +62,7 @@ It provides the operational framing for interpreting the best practices in real 
 
 ## Chapter Positioning
 
-This chapter provides the operational interpretation layer for the review draft.
+This chapter provides the operational interpretation layer for the published baseline.
 
 It is reviewed as the link between abstract architecture and real deployment modes,
 especially where continuity, resilience, metering, and commercial behavior differ by profile.

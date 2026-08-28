@@ -88,5 +88,5 @@ This chapter provides the common entry point for readers and reviewers by framin
 industry problem, the motivation for DSL, and the overall objective of the best practices.
 
 It serves as the rationale layer for the document rather than as a requirement
-chapter. Its role in the review draft is to ensure that later technical and normative
+chapter. Its role in the published baseline is to ensure that later technical and normative
 chapters are interpreted against the right industry context.

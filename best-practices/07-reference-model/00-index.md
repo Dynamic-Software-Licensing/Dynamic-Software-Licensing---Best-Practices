@@ -75,7 +75,7 @@ It acts as the main architectural reference point for the rest of the best pract
 
 ## Chapter Positioning
 
-This chapter serves as the primary architectural overview for the review draft.
+This chapter serves as the primary architectural overview for the published baseline.
 
 It is used during review as the architectural reference point for API behavior, trust
 boundaries, operational responsibilities, and chapter-to-chapter consistency.

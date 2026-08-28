@@ -4,13 +4,13 @@
 
 This chapter defines the status, intended role, maturity, and interpretation of the Dynamic Software Licensing best practices.
 
-It explains what this document is, what it aims to achieve, and how it is understood during the review and publication lifecycle.
+It explains what this document is, what it aims to achieve, and how it is understood as a published baseline and through later revision cycles.
 
 ## Initiative Context
 
 This document is part of **Dynamic Software Licensing (DSL)**, an **IAMT initiative** focused on modern software licensing approaches for broadcast and media workflows.
 
-The best-practices document is being developed as a structured industry document that supports collaboration across manufacturers, broadcasters, media organizations, system integrators, and other stakeholders.
+The best-practices document is maintained as a structured industry document that supports collaboration across manufacturers, broadcasters, media organizations, system integrators, and other stakeholders.
 
 ## Document Type
 
@@ -29,14 +29,14 @@ The best-practices document:
 
 ## Current Maturity
 
-Current maturity: **Reviewed Draft**
+Current maturity: **Published Best Practices**
 
 At this stage, this means:
-- the document structure is broadly stable,
-- all main chapters are present and reviewable,
+- the document structure is stable and publicly publishable,
+- the main chapters, annexes, API companion, and PDF outputs form a coherent baseline,
 - terminology and cross-chapter framing have been aligned to a common baseline,
-- normative material exists but still requires final group feedback before publication,
-- the repository is ready for structured review comments ahead of release preparation.
+- future updates should be handled as explicit versioned revisions rather than as draft-stage restructuring,
+- the repository serves as the authoritative published baseline for ongoing adoption and feedback.
 
 ## Unified Status Model
 
@@ -58,12 +58,12 @@ The repository-level maturity states are:
 Chapter-specific purpose, normative weight, and editorial role are described in the chapter prose
 itself instead of through repeated status blocks.
 
-## How This Draft Should Be Interpreted
+## How This Publication Should Be Interpreted
 
-This draft should currently be interpreted as:
-- the official review baseline for the current group-comment cycle,
-- a structured and coherent best-practices draft,
-- a pre-publication document that is mature enough for targeted editorial and technical review.
+This publication should currently be interpreted as:
+- the official published baseline of the DSL best practices,
+- a structured and coherent reference for architectural, operational, and implementation alignment,
+- a versioned release that can be cited while remaining open to later revision through new tagged baselines.
 
 Unless explicitly stated otherwise, examples, implementation references, and platform-specific content should not be interpreted as mandatory requirements.
 
@@ -89,12 +89,11 @@ Significant changes should be reflected in:
 Normative keywords such as **MUST**, **SHOULD**, and **MAY** appear where appropriate to
 express disciplined requirement language and interpretation strength.
 
-## Publication Intent
+## Publication Status
 
-The document progresses from review draft toward formal publication as best practices of the
-Dynamic Software Licensing initiative.
+The document is now published as best practices of the Dynamic Software Licensing initiative.
 
-That maturity path includes:
+That publication baseline is supported by:
 - structural completeness,
 - terminology consistency,
 - stable chapter ownership,
@@ -102,11 +101,10 @@ That maturity path includes:
 - coherent annex structure,
 - clear interpretation guidance.
 
-## Review Draft Baseline
+## Published Baseline
 
-This chapter defines the status interpretation for the review draft issued for group comment.
+This chapter defines the status interpretation for the published baseline issued as version 1.0.0.
 
-For this review round, the best practices is presented as a coherent, commentable document
-rather than as an internal drafting scaffold. Remaining changes before publication should
-focus on reviewer feedback, wording precision, traceability, and final consistency rather
-than on reopening the overall document structure.
+Future changes should focus on controlled revision, wording precision, traceability, and
+compatibility across later tagged releases rather than on reintroducing repository-wide draft
+status handling.

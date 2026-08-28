@@ -21,13 +21,13 @@ CODE_SPAN_PATTERN = re.compile(r"`([^`]+)`")
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Assemble the review draft Markdown source for PDF export."
+        description="Assemble the Markdown source for PDF export."
     )
     parser.add_argument("--manifest", required=True, help="Path to the manifest file.")
     parser.add_argument("--output", required=True, help="Path to the combined Markdown output.")
     parser.add_argument(
         "--document-title",
-        default="Dynamic Software Licensing Review Draft",
+        default="Dynamic Software Licensing Best Practices",
         help="Document title written into the generated front matter.",
     )
     parser.add_argument(
@@ -37,7 +37,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--document-status",
-        default="Reviewed Draft",
+        default="Published Best Practices",
         help="Document status shown on the cover page.",
     )
     parser.add_argument(

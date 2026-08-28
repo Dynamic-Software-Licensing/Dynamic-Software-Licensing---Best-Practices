@@ -74,7 +74,7 @@ It is the main reference point for shared object definitions in the best practic
 
 ## Chapter Positioning
 
-This chapter serves as the shared data-model anchor for the review draft.
+This chapter serves as the shared data-model anchor for the published baseline.
 
 It is reviewed for consistency of object boundaries, naming, and alignment with the
 canonical API model, schemas, and security assumptions.

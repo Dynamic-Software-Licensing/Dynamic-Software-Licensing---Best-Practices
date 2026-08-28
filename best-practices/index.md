@@ -116,14 +116,14 @@ Supporting material is located outside this directory:
 
 Repository and publication status are maintained centrally rather than repeated across chapter files.
 
-## Current Review Draft Baseline
+## Current Published Baseline
 
-The main best-practices text is now organized as a complete review draft.
+The main best-practices text is now organized as the current published baseline.
 
 The current objective is to:
-- gather structured group review comments,
-- resolve wording and consistency issues,
-- confirm chapter maturity and interpretation,
-- prepare the document for release by the end of August.
+- preserve a coherent published reference for adopters and reviewers,
+- incorporate future improvements through explicit versioned revisions,
+- maintain terminology, API artifacts, and annexes in sync with the accepted baseline,
+- prepare follow-on releases without reintroducing distributed chapter status tracking.
 
-Remaining changes should refine the baseline rather than reopen the document structure.
+Remaining changes should refine the published baseline rather than reopen the document structure.

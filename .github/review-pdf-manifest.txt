@@ -1,4 +1,4 @@
-# Review draft PDF source order; keep this file explicit so the release scope stays easy to adjust, and chapter 00-index files are included by default but can be excluded at workflow runtime.
+# Review-profile PDF source order; keep this file explicit so the release scope stays easy to adjust, and chapter 00-index files are included by default but can be excluded at workflow runtime.
 best-practices/00-status-of-this-document/**/*.md
 best-practices/01-introduction/**/*.md
 best-practices/02-scope/**/*.md

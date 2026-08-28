@@ -4,7 +4,7 @@
 
 ## Purpose
 
-This repository contains the reviewed draft of an IAMT industry best practices document for software-based, dynamic software licensing in broadcast and media workflows.
+This repository contains version 1.0.0 of an IAMT industry best practices document for software-based, dynamic software licensing in broadcast and media workflows.
 
 The best-practices document is not a formal standard. It is deliberately structured in a standard-like way to support alignment across manufacturers, operators, system integrators, and industry stakeholders.
 
@@ -61,9 +61,9 @@ This repository is used to:
 - define and evolve the structure of the best-practices document,
 - capture terminology and architectural concepts,
 - document normative and informative content separately,
-- support collaborative drafting and review in a transparent, versioned way.
+- support transparent maintenance and future versioned revisions.
 
-This repository does **not** yet represent a final published best-practices document.
+This repository represents the current published baseline of the DSL best practices.
 
 ## Document Structure
 
@@ -77,7 +77,7 @@ This repository does **not** yet represent a final published best-practices docu
 
 ## How to Navigate
 
-- [best-practices/index.md](best-practices/index.md) — chapter list and status overview
+- [best-practices/index.md](best-practices/index.md) — chapter list and central document overview
 - [best-practices/04-terminology-and-abbreviations/](best-practices/04-terminology-and-abbreviations/) — controlled vocabulary
 - [best-practices/09-normative-requirements/](best-practices/09-normative-requirements/) — normative requirements structure
 
@@ -97,9 +97,9 @@ This repository does **not** yet represent a final published best-practices docu
 
 ## Current Status
 
-Repository status: **Reviewed Draft**
+Repository status: **Published Best Practices**
 
-The main document now represents the current published reviewed-draft baseline. See [best-practices/index.md](best-practices/index.md) for chapter-level status.
+The main document now represents the current published version 1.0.0 baseline. See [best-practices/index.md](best-practices/index.md) for chapter-level structure and central document context.
 
 ## PDF Availability
 

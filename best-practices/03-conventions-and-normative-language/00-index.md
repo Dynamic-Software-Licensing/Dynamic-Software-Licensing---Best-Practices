@@ -40,7 +40,7 @@ This chapter is divided into three subchapters:
 
 ## Chapter Positioning
 
-This chapter provides the interpretation rules that make the rest of the review draft
+This chapter provides the interpretation rules that make the rest of the published baseline
 readable and reviewable in a consistent way.
 
 It serves as the reference point for distinguishing informative text from normative
