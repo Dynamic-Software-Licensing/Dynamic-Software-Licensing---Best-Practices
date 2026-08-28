@@ -281,6 +281,29 @@ def load_license_text(repo_root: Path) -> str:
     return license_path.read_text(encoding="utf-8").strip()
 
 
+def load_management_summary_text(repo_root: Path) -> str:
+    readme_path = repo_root / "README.md"
+    if not readme_path.exists():
+        return ""
+
+    lines = readme_path.read_text(encoding="utf-8").splitlines()
+    summary_lines: list[str] = []
+    in_summary = False
+
+    for line in lines:
+        if line.startswith("## Management Summary"):
+            in_summary = True
+            continue
+
+        if in_summary and re.match(r"^##\s+", line):
+            break
+
+        if in_summary:
+            summary_lines.append(line)
+
+    return "\n".join(summary_lines).strip()
+
+
 def build_cover_page(
     document_title: str,
     document_subtitle: str,
@@ -312,6 +335,7 @@ def build_version_page(
     document_version: str,
     document_status: str,
     document_date: str,
+    management_summary_text: str,
     changelog_text: str,
 ) -> list[str]:
     sections = [
@@ -325,6 +349,18 @@ def build_version_page(
         "This PDF is an assembled publication view generated from the Markdown sources in the repository.",
         "",
     ]
+
+    if management_summary_text:
+        sections.extend(
+            [
+                r"\section*{Management Summary}",
+                "",
+                management_summary_text.rstrip(),
+                "",
+                r"\newpage",
+                "",
+            ]
+        )
 
     if changelog_text:
         sections.extend(
@@ -358,6 +394,7 @@ def build_document(
     document_version: str,
     document_organization: str,
     document_date: str,
+    management_summary_text: str,
     changelog_text: str,
     license_text: str,
 ) -> int:
@@ -376,6 +413,7 @@ def build_document(
             document_version,
             document_status,
             document_date,
+            management_summary_text,
             changelog_text,
         )
     )
@@ -432,6 +470,7 @@ def main() -> int:
     detected_version, detected_date = detect_latest_version(repo_root)
     changelog_text = load_changelog_text(repo_root)
     license_text = load_license_text(repo_root)
+    management_summary_text = load_management_summary_text(repo_root)
     document_version = args.document_version or detected_version or "unversioned-draft"
     document_date = args.document_date
 
@@ -450,6 +489,7 @@ def main() -> int:
             document_version,
             args.document_organization,
             document_date,
+            management_summary_text,
             changelog_text,
             license_text,
         )
