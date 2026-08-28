@@ -39,14 +39,12 @@ jobs:
             exit 1
           fi
 
-          release_version="${version%-review-draft}"
-
           if [ "${{ inputs.document_profile }}" = 'review' ]; then
+            pdf_file="dynamic-software-licensing-best-practices-v${version}-review.pdf"
+            artifact_name="dynamic-software-licensing-best-practices-v${version}-review-pdf"
+          else
             pdf_file="dynamic-software-licensing-best-practices-v${version}.pdf"
             artifact_name="dynamic-software-licensing-best-practices-v${version}-pdf"
-          else
-            pdf_file="dynamic-software-licensing-best-practices-v${release_version}.pdf"
-            artifact_name="dynamic-software-licensing-best-practices-v${release_version}-pdf"
           fi
 
           echo "PDF_FILE=$pdf_file" >> "$GITHUB_ENV"

@@ -99,13 +99,13 @@ This repository does **not** yet represent a final published best-practices docu
 
 Repository status: **Reviewed Draft**
 
-The main document is now organized as a complete review draft for group comment ahead of the planned end-of-August release. See [best-practices/index.md](best-practices/index.md) for chapter-level status.
+The main document now represents the current published reviewed-draft baseline. See [best-practices/index.md](best-practices/index.md) for chapter-level status.
 
 ## PDF Availability
 
 The document is also available as a PDF through the repository releases.
 
-The latest rolling draft PDF is published under the `latest` prerelease, and version-specific PDFs are attached to the corresponding tagged releases.
+The `latest` PDF always tracks the current published release from `main`, and version-specific PDFs are attached to the corresponding tagged releases as fixed snapshots.
 
 See the releases page for downloads: [https://github.com/Dynamic-Software-Licensing/Dynamic-Software-Licensing---Best-Practices/releases](https://github.com/Dynamic-Software-Licensing/Dynamic-Software-Licensing---Best-Practices/releases).
 

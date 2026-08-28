@@ -4,9 +4,9 @@ All notable changes to the Dynamic Software Licensing repository should be docum
 
 This changelog is used to track the evolution of the DSL best practices as an IAMT initiative, including structural, editorial, and content-related changes.
 
-The format is intentionally lightweight at this stage and is primarily intended to support transparency during drafting and repository organization.
+The format is intentionally lightweight at this stage and is primarily intended to support transparency across published baselines and ongoing repository evolution.
 
-## [0.2.1-review-draft] - 2026-08-28
+## [0.2.1] - 2026-08-28
 
 ### Changed
 
@@ -18,6 +18,7 @@ The format is intentionally lightweight at this stage and is primarily intended 
 - Added consistent PDF header and footer metadata with document title, version, date, and page number on content pages
 - Clarified API companion documentation around schema-backed and intentionally Markdown-only model elements
 - Aligned the OpenAPI companion and related wording with the current reviewed-draft baseline
+- Updated PDF publishing so main tracks the current published release and keeps the latest PDF aligned with official tagged versions
 
 ## [0.2.0-review-draft] - 2026-08-12
 
