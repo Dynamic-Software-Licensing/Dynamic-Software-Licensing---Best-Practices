@@ -6,6 +6,10 @@ This section defines the canonical license envelope object. The license envelope
 container used when canonical DSL grant data must carry or accompany vendor-specific licensing
 artifacts in a structured, interoperable way.
 
+No standalone JSON schema is defined for this object in the [api](../../api) directory. That is
+intentional: the envelope is a bridge object whose `payload` may remain vendor-specific and may
+therefore be carried either as structured JSON or as an opaque string, depending on `format`.
+
 ## Role of the License Envelope Object
 
 The DSL model seeks common lifecycle semantics without forcing every vendor to abandon its
@@ -45,6 +49,10 @@ bridging and migration scenarios.
 
 Where a vendor-specific payload is present, the envelope should declare its format explicitly so
 that clients know whether they can parse, pass through, or simply store the payload.
+
+For the same reason, implementations should treat the field definitions in this section as the
+canonical baseline for interoperability rather than expecting a closed standalone schema for all
+possible envelope payload variants.
 
 ## Example Shape
 

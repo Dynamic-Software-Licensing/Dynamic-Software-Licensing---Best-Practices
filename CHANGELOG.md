@@ -6,7 +6,7 @@ This changelog is used to track the evolution of the DSL best practices as an IA
 
 The format is intentionally lightweight at this stage and is primarily intended to support transparency across published baselines and ongoing repository evolution.
 
-## [0.2.1] - 2026-08-28
+## [0.3.0] - 2026-08-28
 
 ### Changed
 
@@ -19,6 +19,7 @@ The format is intentionally lightweight at this stage and is primarily intended 
 - Clarified API companion documentation around schema-backed and intentionally Markdown-only model elements
 - Aligned the OpenAPI companion and related wording with the current reviewed-draft baseline
 - Updated PDF publishing so main tracks the current published release and keeps the latest PDF aligned with official tagged versions
+- Integrated the current review-feedback fixes collected on the governance release-readiness branch ahead of the next baseline
 
 ## [0.2.0-review-draft] - 2026-08-12
 

@@ -12,6 +12,8 @@ The policy object provides the behavioral rules that connect entitlement intent 
 enforcement. It should make the operational meaning of a grant explicit and locally
 enforceable.
 
+The machine-readable companion for this object is [api/policy.schema.json](../../api/policy.schema.json). That schema mirrors the canonical structure below; individual policy instances may omit optional fields when a profile or implementation does not use them.
+
 ## Canonical Structure
 
 | Field | Type | Description |
@@ -74,6 +76,7 @@ governed capability that exists only where explicitly permitted and audited.
   "jitter": true
  },
  "alertThresholds": [900, 300, 60],
+ "revocationEndpoint": "wss://lic.example.com/revocations",
  "tenantOverridesAllowed": true
 }
 ```

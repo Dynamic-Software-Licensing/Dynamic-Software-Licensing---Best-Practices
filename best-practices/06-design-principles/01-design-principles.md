@@ -4,6 +4,11 @@ These principles define how the licensing system should be designed, implemented
 evaluated. They serve as decision-making guardrails to ensure consistency,
 interoperability, and alignment across vendors, customers, and system integrators.
 
+This section expands the five core principles introduced in Section 01.04
+(API-First, Security by Design, Observability, Platform Independence, and
+Licensing as Code) into more detailed guidance for runtime binding, resilience,
+access patterns, and implementation flexibility.
+
 ## Principles
 
 ### 1. API-First and Automation-Ready

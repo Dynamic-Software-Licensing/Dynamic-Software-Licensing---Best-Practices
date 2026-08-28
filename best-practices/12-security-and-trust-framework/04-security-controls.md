@@ -69,8 +69,8 @@ and policy) **SHOULD** be encrypted at rest. *Mitigates THR-10.*
 
 ### SEC-6 — Short-lived tokens
 
-License tokens **MUST** be short-lived, carrying explicit expiry and not-before times (the
-`exp` and `nbf` claims of RFC 7519 where JWT is used). Token lifetime **SHOULD** be the
+License tokens **MUST** be short-lived, carrying explicit issued-at, expiry, and not-before
+times (the `iat`, `exp`, and `nbf` claims of RFC 7519 where JWT is used). Token lifetime **SHOULD** be the
 minimum compatible with the operational continuity needs of the use case. *Mitigates THR-2,
 THR-6, THR-7.*
 
@@ -230,7 +230,7 @@ Normative references (mechanisms a conforming implementation builds on):
 - RFC 7515 — JSON Web Signature (JWS) — SEC-1, SEC-4.
 - RFC 7517 — JSON Web Key (JWK / JWK Set) — SEC-4.
 - RFC 7518 — JSON Web Algorithms (JWA) — SEC-1.
-- RFC 7519 — JSON Web Token (JWT), including the `exp`, `nbf`, and `jti` claims — SEC-1,
+- RFC 7519 — JSON Web Token (JWT), including the `iat`, `exp`, `nbf`, and `jti` claims — SEC-1,
   SEC-6, SEC-7.
 - RFC 8725 — JSON Web Token Best Current Practices — SEC-2.
 - RFC 8705 — OAuth 2.0 Mutual-TLS client authentication and certificate-bound access tokens —

@@ -18,6 +18,10 @@ schemas available in the same location.
 | [token-claims.schema.json](token-claims.schema.json) | Token-claims data model |
 | [usage-event.schema.json](usage-event.schema.json) | Usage-record data model |
 
+This directory contains the core machine-readable artifacts with closed, reusable payload shapes.
+Some Chapter 11 objects remain documented only in Markdown when they intentionally carry
+deployment-specific or vendor-specific structure, such as the optional license envelope.
+
 ## Baseline REST Surface
 
 | Operation | Endpoint | Method | Purpose |
@@ -26,6 +30,7 @@ schemas available in the same location.
 | Renew | `/v1/leases/{leaseId}:renew` | POST | Extend an active lease |
 | Reissue | `/v1/leases/{leaseId}:reissue` | POST | Initiate transfer to a new workload identity |
 | Reissue finalize | `/v1/leases/{leaseId}:finalizeReissue` | POST | Complete a controlled lease transfer |
+| Inspect | `/v1/leases/{leaseId}` | GET | Retrieve current lease state without changing lifecycle state |
 | Revoke | `/v1/leases/{leaseId}` | DELETE | Terminate an active lease |
 | Usage record | `/v1/usage-records` | POST | Submit usage or metering events |
 | JWKS | `/.well-known/jwks.json` | GET | Retrieve public signing keys |

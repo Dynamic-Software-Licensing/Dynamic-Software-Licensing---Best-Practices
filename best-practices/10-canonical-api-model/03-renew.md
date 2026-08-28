@@ -83,7 +83,7 @@ A successful Renew response contains:
 }
 ```
 
-If the vendor has updated the policy since the last renewal, the response may also include an updated `policy` object. The license agent should apply the new policy parameters going forward.
+If the vendor has updated the policy since the last renewal, the response may also include an updated `policy` object. The license agent SHOULD apply the new policy parameters going forward.
 
 ## Renewal Timing and Backoff
 

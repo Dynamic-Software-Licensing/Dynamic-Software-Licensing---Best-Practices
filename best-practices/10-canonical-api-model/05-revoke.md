@@ -11,7 +11,7 @@ The Revoke operation is invoked when:
 - An administrator explicitly terminates a license (e.g., policy violation, contract termination).
 - A policy rule triggers automatic revocation (e.g., entitlement expiry, quota enforcement).
 - A reissue operation finalizes and the original lease must be invalidated.
-- A workload is decommissioned and the license should be returned to the available pool.
+- A workload is decommissioned and the license SHOULD be returned to the available pool.
 - A customer force-releases a stuck license via the End User Portal.
 
 Revoke is a terminal operation. Once a lease is revoked, it cannot be renewed or reissued. A new Issue is required to acquire a fresh lease.

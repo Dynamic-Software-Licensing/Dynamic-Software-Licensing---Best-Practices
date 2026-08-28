@@ -20,7 +20,7 @@ The control plane does not run application workloads. It is logically and operat
 
 ### Serverless and Elastic
 
-The control plane is designed to be serverless — services execute only when invoked and scale elastically with demand. There is no persistent compute running when idle. This aligns with the principle that licensing infrastructure should not impose fixed operational overhead.
+The control plane should favor elastic, low-overhead deployment patterns. A serverless implementation is one suitable approach because services execute only when invoked and scale elastically with demand. Equivalent implementation models are also valid, provided they preserve the platform-agnostic API, trust, and operational behaviors defined by these best practices.
 
 ### Event-Driven
 

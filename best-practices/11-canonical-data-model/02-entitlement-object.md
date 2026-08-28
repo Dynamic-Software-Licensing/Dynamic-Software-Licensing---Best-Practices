@@ -29,7 +29,7 @@ more leases within its defined bounds.
 | `entitlementId` | string | Unique identifier of the entitlement |
 | `tenantId` | string | Tenant that owns the entitlement |
 | `app` | string | Product or application identifier |
-| `status` | string | Entitlement status such as active, suspended, or expired |
+| `status` | string | Entitlement status such as `ACTIVE`, `SUSPENDED`, or `EXPIRED` |
 | `allowedModalities` | array | Modalities that may be granted from this entitlement |
 | `dimensions` | array | Maximum allowed dimensions and limits |
 | `defaultPolicy` | object | Policy applied unless overridden by an allowed tenant rule |

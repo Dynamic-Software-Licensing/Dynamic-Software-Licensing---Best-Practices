@@ -25,14 +25,15 @@ They define the qualities that the target licensing model should embody and prov
 
 ## Foundation of This Chapter
 
-The current DSL work is already strongly shaped by five recurring principles:
+This chapter is grounded in the same five core principles introduced in Section 01.04:
 - API-first access
-- serverless or elastic service design
 - security by design
 - observability
+- platform independence
 - licensing-as-code
 
-These principles are the anchor for this chapter.
+This chapter expands those five principles into more detailed design guidance for architecture,
+runtime behavior, interfaces, and implementation choices.
 
 ## Scope of This Chapter
 

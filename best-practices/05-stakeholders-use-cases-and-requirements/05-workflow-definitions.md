@@ -70,7 +70,7 @@ Each workflow is specified using the following structure, consistent with the ch
 - **Failure paths and recovery** — what happens when a step or decision fails.
 - **Traceability** — the use case classes and requirement themes the workflow serves.
 
-## Workflow Catalogue
+## Workflow Catalog
 
 The workflows are grouped into two sets:
 

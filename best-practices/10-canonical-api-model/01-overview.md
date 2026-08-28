@@ -47,11 +47,12 @@ All lease lifecycle and usage operations are exposed as versioned REST endpoints
 | Renew | `/v1/leases/{leaseId}:renew` | POST | Extend an active lease |
 | Reissue | `/v1/leases/{leaseId}:reissue` | POST | Initiate lease transfer to a new workload |
 | Reissue Finalize | `/v1/leases/{leaseId}:finalizeReissue` | POST | Complete a lease transfer |
+| Inspect | `/v1/leases/{leaseId}` | GET | Retrieve current lease state without mutating lifecycle state |
 | Revoke | `/v1/leases/{leaseId}` | DELETE | Terminate a lease |
 | Usage Record | `/v1/usage-records` | POST | Submit metered usage events |
 | JWKS | `/.well-known/jwks.json` | GET | Retrieve public signing keys (RFC 7517) |
 
-Standard CRUD operations (create a lease, delete a lease) use standard HTTP methods. Domain-specific actions that have side effects beyond simple state mutation use custom methods (`:renew`, `:reissue`, `:finalizeReissue`) following [AIP-136](https://google.aip.dev/136).
+Standard CRUD operations (create a lease, inspect a lease, delete a lease) use standard HTTP methods. Domain-specific actions that have side effects beyond simple state mutation use custom methods (`:renew`, `:reissue`, `:finalizeReissue`) following [AIP-136](https://google.aip.dev/136).
 
 ### Push Channel (Asynchronous)
 
