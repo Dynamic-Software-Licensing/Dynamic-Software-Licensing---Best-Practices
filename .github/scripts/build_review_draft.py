@@ -461,6 +461,38 @@ def build_version_page(
     return sections
 
 
+def build_pdf_metadata(
+    document_title: str,
+    document_version: str,
+    document_date: str,
+) -> list[str]:
+    return [
+        "---",
+        "lang: en",
+        "header-includes:",
+        "  - |",
+        r"    \usepackage{fancyhdr}",
+        "  - |",
+        r"    \newcommand{\dslpdfpagestyle}{%",
+        r"      \fancyhf{}%",
+        rf"      \fancyhead[R]{{{document_title}}}%",
+        rf"      \fancyfoot[L]{{Version {document_version}}}%",
+        r"      \fancyfoot[C]{\thepage}%",
+        rf"      \fancyfoot[R]{{{document_date}}}%",
+        r"      \renewcommand{\headrulewidth}{0.4pt}%",
+        r"      \renewcommand{\footrulewidth}{0.4pt}%",
+        r"    }",
+        "  - |",
+        r"    \fancypagestyle{dslbody}{\dslpdfpagestyle}",
+        "  - |",
+        r"    \fancypagestyle{plain}{\dslpdfpagestyle}",
+        "  - |",
+        r"    \pagestyle{dslbody}",
+        "---",
+        "",
+    ]
+
+
 def build_document(
     files: list[Path],
     output_path: Path,
@@ -475,7 +507,7 @@ def build_document(
     changelog_text: str,
     license_text: str,
 ) -> int:
-    sections = ["---", "lang: en", "---", ""]
+    sections = build_pdf_metadata(document_title, document_version, document_date)
     sections.extend(
         build_cover_page(
             document_title,
