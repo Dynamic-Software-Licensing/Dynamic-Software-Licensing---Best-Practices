@@ -1,7 +1,4 @@
-# Release-oriented PDF source order
-#
-# This manifest excludes repository navigation pages such as README.md and api/README.md.
-# Chapter 00-index files can still be included or excluded at workflow runtime.
+# Release-oriented PDF source order; excludes repository navigation pages such as README.md and api/README.md, while chapter 00-index files can still be included or excluded at workflow runtime.
 
 best-practices/00-status-of-this-document/**/*.md
 best-practices/01-introduction/**/*.md
@@ -20,4 +17,5 @@ best-practices/13-operational-and-deployment-profiles/**/*.md
 best-practices/14-migration-and-transition/**/*.md
 best-practices/15-governance-and-future-work/**/*.md
 annexes/normative/**/*.md
+annexes/informative/annex-j-faq.md
 annexes/informative/**/*.md
