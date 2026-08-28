@@ -353,6 +353,8 @@ def build_version_page(
     if management_summary_text:
         sections.extend(
             [
+                r"\newpage",
+                "",
                 r"\section*{Management Summary}",
                 "",
                 management_summary_text.rstrip(),
