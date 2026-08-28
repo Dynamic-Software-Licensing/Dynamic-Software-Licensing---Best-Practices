@@ -422,7 +422,6 @@ def build_version_page(
         f"- Version: {document_version}",
         f"- Status: {document_status}",
         f"- Publication date: {document_date}",
-        "- Review baseline: Complete chapter set available for group review",
         "",
         "This PDF is an assembled publication view generated from the Markdown sources in the repository.",
         "",
