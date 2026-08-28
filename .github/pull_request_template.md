@@ -14,6 +14,13 @@ Closes #
 
 <!-- Why this change is needed -->
 
+## Release consistency
+
+Select one:
+
+- [ ] CHANGELOG.md updated for the next release
+- [ ] api/dsl-api.openapi.yaml version aligned with CHANGELOG.md
+
 ## Review state
 
 Select one:

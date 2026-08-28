@@ -51,6 +51,10 @@ Keep scope tight — if the work grows beyond the issue, open a follow-up issue.
 When the issue scope is complete, switch the PR from Draft to **Ready for review**.
 Check: wording coherent, terminology consistent, open points noted.
 
+Before marking a PR ready for review, also update the next release entry in [CHANGELOG.md](CHANGELOG.md)
+and keep [api/dsl-api.openapi.yaml](api/dsl-api.openapi.yaml) on the same version. In this repository,
+every merge to `main` is treated as a new release.
+
 **Step 7 — Review and merge**
 Reviewer leaves comments. Address them in the same branch.
 Resolve conversations after applying fixes.
@@ -84,7 +88,9 @@ Examples:
 Each PR should include:
 - linked issue (`Closes #123` or `Related to #123`),
 - short summary of what changed,
-- short explanation of why.
+- short explanation of why,
+- updated [CHANGELOG.md](CHANGELOG.md) entry for the next release,
+- matching version in [api/dsl-api.openapi.yaml](api/dsl-api.openapi.yaml).
 
 Everything else is optional and can be added when helpful.
 
@@ -136,4 +142,6 @@ git push -u origin chapter-09-identity-binding
 The repository runs a small set of checks automatically.
 If a check fails, fix and push again.
 
-Current principle: keep automation helpful, not blocking by default.
+Current principle: keep automation helpful, but merges to `main` are release-bearing and therefore
+must pass the release-consistency checks. After merge to `main`, the repository creates the
+version tag automatically from the top entry in [CHANGELOG.md](CHANGELOG.md).
