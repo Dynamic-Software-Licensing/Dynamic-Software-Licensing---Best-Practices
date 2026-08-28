@@ -15,6 +15,7 @@ LINK_PATTERN = re.compile(r'(!?\[[^\]]*\])\(([^)]+)\)')
 CHANGELOG_VERSION_PATTERN = re.compile(r"^## \[([^\]]+)\] - (\d{4}-\d{2}-\d{2})$")
 HEADING_PATTERN = re.compile(r"^(#{1,6})(\s+.*)$")
 LEADING_HEADING_NUMBER_PATTERN = re.compile(r"^\d{2}(?:\.\d{2})*\.\s+")
+LIST_MARKER_PATTERN = re.compile(r"^(?:[-*+]\s+|\d+\.\s+)")
 
 
 def parse_args() -> argparse.Namespace:
@@ -215,6 +216,32 @@ def prefix_first_heading(text: str, prefix: str | None) -> str:
         heading_text = LEADING_HEADING_NUMBER_PATTERN.sub("", heading_text)
         adjusted_lines.append(f"{hashes} {prefix} {heading_text}")
         prefixed = True
+
+    return "\n".join(adjusted_lines)
+
+
+def normalize_list_spacing(text: str) -> str:
+    adjusted_lines: list[str] = []
+    in_fenced_code = False
+
+    for line in text.splitlines():
+        stripped = line.lstrip()
+        if stripped.startswith("```") or stripped.startswith("~~~"):
+            in_fenced_code = not in_fenced_code
+            adjusted_lines.append(line)
+            continue
+
+        if in_fenced_code:
+            adjusted_lines.append(line)
+            continue
+
+        if LIST_MARKER_PATTERN.match(stripped):
+            previous_line = adjusted_lines[-1] if adjusted_lines else ""
+            previous_stripped = previous_line.strip()
+            if previous_stripped and not LIST_MARKER_PATTERN.match(previous_stripped):
+                adjusted_lines.append("")
+
+        adjusted_lines.append(line)
 
     return "\n".join(adjusted_lines)
 
@@ -428,6 +455,7 @@ def build_document(
             source_text = demote_following_headings(source_text, 1)
         source_text = prefix_first_heading(source_text, chapter_prefix_for_file(source_path))
         source_text = adjust_heading_levels(source_text, heading_offset_for_file(source_path))
+        source_text = normalize_list_spacing(source_text)
 
         relative_source = source_path.relative_to(repo_root).as_posix()
         if included_count > 0 and is_main_chapter_index(source_path, repo_root):
