@@ -32,4 +32,4 @@ terminology discipline is especially important for consistent review.
 ## Annex Positioning
 
 This annex is the compact normative terminology reference for cross-chapter consistency in the
-DSL review draft.
+published DSL best practices.
