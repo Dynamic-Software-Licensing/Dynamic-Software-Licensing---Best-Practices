@@ -16,6 +16,7 @@ CHANGELOG_VERSION_PATTERN = re.compile(r"^## \[([^\]]+)\] - (\d{4}-\d{2}-\d{2})$
 HEADING_PATTERN = re.compile(r"^(#{1,6})(\s+.*)$")
 LEADING_HEADING_NUMBER_PATTERN = re.compile(r"^\d{2}(?:\.\d{2})*\.\s+")
 LIST_MARKER_PATTERN = re.compile(r"^(?:[-*+]\s+|\d+\.\s+)")
+CODE_SPAN_PATTERN = re.compile(r"`([^`]+)`")
 
 
 def parse_args() -> argparse.Namespace:
@@ -246,6 +247,53 @@ def normalize_list_spacing(text: str) -> str:
     return "\n".join(adjusted_lines)
 
 
+def format_table_code_span(content: str) -> str:
+    if " " in content:
+        escaped = content.replace("\\", r"\textbackslash{}")
+        escaped = escaped.replace("{", r"\{")
+        escaped = escaped.replace("}", r"\}")
+        escaped = escaped.replace("_", r"\_")
+        return rf"\texttt{{{escaped}}}"
+
+    delimiter = "+"
+    if delimiter in content:
+        delimiter = "!"
+    if delimiter in content:
+        delimiter = ";"
+    return rf"\path{delimiter}{content}{delimiter}"
+
+
+def normalize_table_code_spans(text: str) -> str:
+    adjusted_lines: list[str] = []
+    in_fenced_code = False
+
+    for line in text.splitlines():
+        stripped = line.lstrip()
+        if stripped.startswith("```") or stripped.startswith("~~~"):
+            in_fenced_code = not in_fenced_code
+            adjusted_lines.append(line)
+            continue
+
+        if in_fenced_code or "|" not in line:
+            adjusted_lines.append(line)
+            continue
+
+        table_candidate = line.strip()
+        if not table_candidate.startswith("|"):
+            adjusted_lines.append(line)
+            continue
+
+        if set(table_candidate) <= {"|", "-", ":", " "}:
+            adjusted_lines.append(line)
+            continue
+
+        adjusted_lines.append(
+            CODE_SPAN_PATTERN.sub(lambda match: format_table_code_span(match.group(1)), line)
+        )
+
+    return "\n".join(adjusted_lines)
+
+
 def rewrite_local_links(text: str, source_path: Path, output_path: Path) -> str:
     source_dir = source_path.parent
     output_dir = output_path.parent.resolve()
@@ -456,6 +504,7 @@ def build_document(
         source_text = prefix_first_heading(source_text, chapter_prefix_for_file(source_path))
         source_text = adjust_heading_levels(source_text, heading_offset_for_file(source_path))
         source_text = normalize_list_spacing(source_text)
+        source_text = normalize_table_code_spans(source_text)
 
         relative_source = source_path.relative_to(repo_root).as_posix()
         if included_count > 0 and is_main_chapter_index(source_path, repo_root):
