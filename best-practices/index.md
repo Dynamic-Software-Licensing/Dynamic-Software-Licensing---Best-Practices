@@ -106,29 +106,6 @@ Folder: `15-governance-and-future-work/`
 
 Captures future development areas, governance considerations, open issues, and longer-term evolution topics for the best practices.
 
-## Chapter Status Overview
-
-Current chapter drafting status (as defined in `GOVERNANCE.md`):
-
-| Chapter | Status | Editorial maturity | Normative readiness |
-| --- | --- | --- | --- |
-| 00. Status of this Document | Reviewed Draft | review-ready | informative only |
-| 01. Introduction | Reviewed Draft | developed draft | informative only |
-| 02. Scope | Reviewed Draft | review-ready | informative only |
-| 03. Conventions and Normative Language | Reviewed Draft | review-ready | partially normative |
-| 04. Terminology and Abbreviations | Reviewed Draft | review-ready | informative only |
-| 05. Stakeholders, Use Cases and Requirements | Reviewed Draft | developed draft | informative only |
-| 06. Design Principles | Reviewed Draft | developed draft | informative only |
-| 07. Reference Model | Reviewed Draft | developed draft | informative only |
-| 08. Conformance and Profiles | Reviewed Draft | developed draft | informative only |
-| 09. Normative Requirements | Reviewed Draft | developed draft | partially normative |
-| 10. Canonical API Model | Reviewed Draft | review-ready | ready for normative review |
-| 11. Canonical Data Model | Reviewed Draft | developed draft | informative only |
-| 12. Security and Trust Framework | Reviewed Draft | review-ready | ready for normative review |
-| 13. Operational and Deployment Profiles | Reviewed Draft | developed draft | informative only |
-| 14. Migration and Transition | Reviewed Draft | developed draft | informative only |
-| 15. Governance and Future Work | Reviewed Draft | developed draft | informative only |
-
 ## Relationship to Annexes
 
 This directory contains the main best practices text.
@@ -136,6 +113,8 @@ This directory contains the main best practices text.
 Supporting material is located outside this directory:
 - `annexes/normative/` for normative supporting annexes,
 - `annexes/informative/` for examples, mappings, FAQs, and reference architectures.
+
+Repository and publication status are maintained centrally rather than repeated across chapter files.
 
 ## Current Review Draft Baseline
 

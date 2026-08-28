@@ -1,12 +1,5 @@
 # 09. Normative Requirements
 
-## Chapter Status
-
-- Status: Reviewed Draft
-- Editorial maturity: developed draft
-- Normative readiness: partially normative
-- Open drafting points: no
-
 ## Purpose
 
 This chapter contains the main implementation-oriented requirements of the Dynamic Software Licensing best practices.

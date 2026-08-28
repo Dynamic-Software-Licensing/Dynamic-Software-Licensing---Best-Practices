@@ -1,13 +1,6 @@
 
 # 13. Operational and Deployment Profiles
 
-## Chapter Status
-
-- Status: Reviewed Draft
-- Editorial maturity: developed draft
-- Normative readiness: informative only
-- Open drafting points: no
-
 ## Purpose
 
 This chapter defines the operational and deployment profiles used by the Dynamic Software Licensing best practices.

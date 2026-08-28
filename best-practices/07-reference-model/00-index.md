@@ -1,12 +1,5 @@
 # 07. Reference Model
 
-## Chapter Status
-
-- Status: Reviewed Draft
-- Editorial maturity: developed draft
-- Normative readiness: informative only
-- Open drafting points: no
-
 ## Purpose
 
 This chapter defines the conceptual and functional reference model of the Dynamic Software Licensing best practices.

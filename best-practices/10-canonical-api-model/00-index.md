@@ -1,12 +1,5 @@
 # 10. Canonical API Model
 
-## Chapter Status
-
-- Status: Reviewed Draft
-- Editorial maturity: review-ready
-- Normative readiness: ready for normative review
-- Open drafting points: no
-
 ## Purpose
 
 This chapter defines the canonical API structure of the Dynamic Software Licensing best practices.

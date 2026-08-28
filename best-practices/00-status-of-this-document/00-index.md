@@ -1,12 +1,5 @@
 # 00. Status of this Document
 
-## Chapter Status
-
-- Status: Reviewed Draft
-- Editorial maturity: review-ready
-- Normative readiness: informative only
-- Open drafting points: no
-
 ## Purpose
 
 This chapter defines the status, intended role, maturity, and interpretation of the Dynamic Software Licensing best practices.
@@ -47,11 +40,10 @@ At this stage, this means:
 
 ## Unified Status Model
 
-This best practices uses a unified status model defined in `GOVERNANCE.md`.
+This best practices uses a centralized status model defined in `GOVERNANCE.md`.
 
-The model has two layers:
-- repository-level maturity,
-- chapter-level status.
+The model is expressed at the repository and publication level rather than repeated in every
+chapter file.
 
 ### Repository-Level Maturity
 
@@ -61,27 +53,10 @@ The repository-level maturity states are:
 - Candidate Best Practices,
 - Published Best Practices.
 
-### Chapter-Level Status
+### Chapter-Level Interpretation
 
-Each chapter includes a compact status block in its `00-index.md` file.
-
-The block uses the following fields:
-- `Status`,
-- `Editorial maturity`,
-- `Normative readiness`,
-- `Open drafting points`.
-
-The allowed values for these fields are defined in `GOVERNANCE.md` and are used without local variants.
-
-### Chapter Status Template
-
-Recommended format:
-
-`Chapter Status`
-- `Status`: Working Draft
-- `Editorial maturity`: developed draft
-- `Normative readiness`: informative only
-- `Open drafting points`: yes
+Chapter-specific purpose, normative weight, and editorial role are described in the chapter prose
+itself instead of through repeated status blocks.
 
 ## How This Draft Should Be Interpreted
 

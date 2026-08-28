@@ -188,7 +188,7 @@ The decision is briefly documented in the PR.
 After merge:
 - Issue closes (via `Closes #` link or manually).
 - Project status set to `Done`.
-- Chapter status updated if relevant.
+- Central status references updated if relevant.
 
 ---
 

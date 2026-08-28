@@ -1,12 +1,5 @@
 # 04. Terminology and Abbreviations
 
-## Chapter Status
-
-- Status: Reviewed Draft
-- Editorial maturity: review-ready
-- Normative readiness: informative only
-- Open drafting points: no
-
 ## Purpose
 
 This chapter defines the controlled vocabulary used throughout the Dynamic Software Licensing best practices.

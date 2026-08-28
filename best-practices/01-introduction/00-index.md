@@ -1,12 +1,5 @@
 # 01. Introduction
 
-## Chapter Status
-
-- Status: Reviewed Draft
-- Editorial maturity: developed draft
-- Normative readiness: informative only
-- Open drafting points: no
-
 ## Purpose
 
 This chapter introduces the business and technical context behind the Dynamic Software Licensing best practices.

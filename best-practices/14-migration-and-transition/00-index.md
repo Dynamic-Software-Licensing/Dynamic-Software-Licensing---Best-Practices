@@ -1,12 +1,5 @@
 # 14. Migration and Transition
 
-## Chapter Status
-
-- Status: Reviewed Draft
-- Editorial maturity: developed draft
-- Normative readiness: informative only
-- Open drafting points: no
-
 ## Purpose
 
 This chapter defines the migration and transition structure of the Dynamic Software Licensing best practices.

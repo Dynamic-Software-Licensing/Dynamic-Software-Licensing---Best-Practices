@@ -1,12 +1,5 @@
 # 02. Scope
 
-## Chapter Status
-
-- Status: Reviewed Draft
-- Editorial maturity: review-ready
-- Normative readiness: informative only
-- Open drafting points: no
-
 ## Purpose
 
 This chapter defines the scope boundaries of the Dynamic Software Licensing best practices.

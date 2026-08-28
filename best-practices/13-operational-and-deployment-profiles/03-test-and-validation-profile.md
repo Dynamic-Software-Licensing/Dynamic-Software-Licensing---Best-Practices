@@ -1,12 +1,5 @@
 # 13.03. Test and Validation Profile
 
-## Chapter Status
-
-- Status: Reviewed Draft
-- Editorial maturity: developed draft
-- Normative readiness: informative only
-- Open drafting points: no
-
 ## Purpose
 
 This chapter defines the operational and deployment profile for test, validation, staging, and

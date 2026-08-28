@@ -1,12 +1,5 @@
 # 06. Design Principles
 
-## Chapter Status
-
-- Status: Reviewed Draft
-- Editorial maturity: developed draft
-- Normative readiness: informative only
-- Open drafting points: no
-
 ## Purpose
 
 This chapter defines the core design principles of the Dynamic Software Licensing best practices.

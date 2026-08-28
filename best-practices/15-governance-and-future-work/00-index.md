@@ -1,12 +1,5 @@
 # 15. Governance and Future Work
 
-## Chapter Status
-
-- Status: Reviewed Draft
-- Editorial maturity: developed draft
-- Normative readiness: informative only
-- Open drafting points: no
-
 ## Purpose
 
 This chapter defines the governance-related and forward-looking aspects of the Dynamic Software Licensing best practices.

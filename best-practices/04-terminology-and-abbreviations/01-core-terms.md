@@ -1,12 +1,5 @@
 # 04.01. Core Terms
 
-## Chapter Status
-
-- Status: Reviewed Draft
-- Editorial maturity: developed draft
-- Normative readiness: informative only
-- Open drafting points: no
-
 ## Purpose
 
 This section defines the highest-level conceptual terms of the Dynamic Software Licensing (DSL) framework. These core terms span across technical, commercial, and operational domains and appear throughout the best practices document.

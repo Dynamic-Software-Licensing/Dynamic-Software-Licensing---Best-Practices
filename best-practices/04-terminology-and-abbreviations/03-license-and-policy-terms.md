@@ -1,12 +1,5 @@
 # 04.03. License and Policy Terms
 
-## Chapter Status
-
-- Status: Reviewed Draft
-- Editorial maturity: developed draft
-- Normative readiness: informative only
-- Open drafting points: no
-
 ## Purpose
 
 This section establishes consistent vocabulary for behavior rules, license management mechanics, data models, and enforcement policies across runtime environments.
