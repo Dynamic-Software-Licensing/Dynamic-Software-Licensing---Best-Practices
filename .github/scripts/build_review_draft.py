@@ -414,6 +414,9 @@ def build_version_page(
     changelog_text: str,
 ) -> list[str]:
     sections = [
+        r"\pagestyle{dslbody}",
+        r"\thispagestyle{dslbody}",
+        "",
         r"\section*{Version Information}",
         "",
         f"- Version: {document_version}",
@@ -486,8 +489,6 @@ def build_pdf_metadata(
         r"    \fancypagestyle{dslbody}{\dslpdfpagestyle}",
         "  - |",
         r"    \fancypagestyle{plain}{\dslpdfpagestyle}",
-        "  - |",
-        r"    \pagestyle{dslbody}",
         "---",
         "",
     ]
