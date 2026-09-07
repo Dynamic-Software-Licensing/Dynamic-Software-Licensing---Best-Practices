@@ -1,0 +1,61 @@
+name: Auto Tag Release
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  auto-tag-release:
+    name: Create release tag from CHANGELOG
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Determine release version
+        id: release_version
+        run: |
+          set -euo pipefail
+
+          version=$(grep -m1 -E '^## \[[^]]+\] - ' CHANGELOG.md | sed -E 's/^## \[([^]]+)\] - .*$/\1/')
+          if [ -z "$version" ]; then
+            echo "Could not determine release version from CHANGELOG.md" >&2
+            exit 1
+          fi
+
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      - name: Ensure tag does not already exist
+        env:
+          VERSION: ${{ steps.release_version.outputs.version }}
+        run: |
+          set -euo pipefail
+
+          if git rev-parse -q --verify "refs/tags/v${VERSION}" >/dev/null; then
+            echo "Tag v${VERSION} already exists. Nothing to do."
+            exit 0
+          fi
+
+      - name: Create and push release tag
+        env:
+          VERSION: ${{ steps.release_version.outputs.version }}
+        run: |
+          set -euo pipefail
+
+          if git rev-parse -q --verify "refs/tags/v${VERSION}" >/dev/null; then
+            echo "Tag v${VERSION} already exists. Nothing to do."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag "v${VERSION}" "$GITHUB_SHA"
+          git push origin "v${VERSION}"
+
+          echo "✅ Created tag v${VERSION} for ${GITHUB_SHA}."

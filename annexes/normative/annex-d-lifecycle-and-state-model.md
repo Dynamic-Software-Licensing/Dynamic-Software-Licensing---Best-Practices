@@ -74,8 +74,8 @@ stateDiagram-v2
 
 ## Annex Positioning
 
-This annex is the compact normative reference for lifecycle-state interpretation in the DSL
-review draft.
+This annex is the compact normative reference for lifecycle-state interpretation in the published
+DSL best practices.
 
 The canonical form in this annex is the state and transition tables together with the semantic
 notes above. The inline state diagram complements that normative baseline as a visual summary and

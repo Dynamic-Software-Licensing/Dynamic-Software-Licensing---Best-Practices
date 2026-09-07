@@ -1,12 +1,5 @@
 # 07. Reference Model
 
-## Chapter Status
-
-- Status: Reviewed Draft
-- Editorial maturity: developed draft
-- Normative readiness: informative only
-- Open drafting points: no
-
 ## Purpose
 
 This chapter defines the conceptual and functional reference model of the Dynamic Software Licensing best practices.
@@ -82,7 +75,7 @@ It acts as the main architectural reference point for the rest of the best pract
 
 ## Chapter Positioning
 
-This chapter serves as the primary architectural overview for the review draft.
+This chapter serves as the primary architectural overview for the published baseline.
 
 It is used during review as the architectural reference point for API behavior, trust
 boundaries, operational responsibilities, and chapter-to-chapter consistency.

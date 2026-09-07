@@ -1,12 +1,5 @@
 # 04. Terminology and Abbreviations
 
-## Chapter Status
-
-- Status: Reviewed Draft
-- Editorial maturity: review-ready
-- Normative readiness: informative only
-- Open drafting points: no
-
 ## Purpose
 
 This chapter defines the controlled vocabulary used throughout the Dynamic Software Licensing best practices.
@@ -72,7 +65,7 @@ Defines recurring abbreviations used throughout the best practices.
 ## Controlled Vocabulary Maintenance
 
 This chapter should be treated as the repository's controlled vocabulary baseline for the
-review draft.
+published best practices.
 
 If review feedback requires term changes, the update should be applied consistently across the
 main document, relevant annexes, and any affected schema or API descriptions.
@@ -93,7 +86,7 @@ Where other chapters introduce concept names, those names should align with this
 
 ## Chapter Positioning
 
-This chapter acts as the vocabulary anchor for the full review draft and should be consulted
+This chapter acts as the vocabulary anchor for the full published baseline and should be consulted
 whenever wording, concept naming, or cross-chapter consistency is reviewed.
 
 Its role is to reduce ambiguity and prevent multiple labels for the same concept across the

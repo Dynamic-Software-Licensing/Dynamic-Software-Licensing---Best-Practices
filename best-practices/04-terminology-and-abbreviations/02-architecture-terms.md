@@ -1,12 +1,5 @@
 # 04.02. Architecture Terms
 
-## Chapter Status
-
-- Status: Reviewed Draft
-- Editorial maturity: developed draft
-- Normative readiness: informative only
-- Open drafting points: no
-
 ## Purpose
 
 This section defines the architectural layers, system planes, and logical structural components that make up the proposed reference model.

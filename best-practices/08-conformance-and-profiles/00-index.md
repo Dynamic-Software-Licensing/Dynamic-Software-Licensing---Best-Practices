@@ -1,12 +1,5 @@
 # 08. Conformance and Profiles
 
-## Chapter Status
-
-- Status: Reviewed Draft
-- Editorial maturity: developed draft
-- Normative readiness: informative only
-- Open drafting points: no
-
 ## Purpose
 
 This chapter defines how the Dynamic Software Licensing best practices can express implementation targets, maturity levels, and profile-based adoption paths.

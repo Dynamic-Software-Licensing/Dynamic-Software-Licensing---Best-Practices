@@ -1,12 +1,5 @@
 # 03. Conventions and Normative Language
 
-## Chapter Status
-
-- Status: Reviewed Draft
-- Editorial maturity: review-ready
-- Normative readiness: partially normative
-- Open drafting points: no
-
 ## Purpose
 
 This chapter defines the writing, interpretation, and classification conventions used throughout the Dynamic Software Licensing best practices.
@@ -47,7 +40,7 @@ This chapter is divided into three subchapters:
 
 ## Chapter Positioning
 
-This chapter provides the interpretation rules that make the rest of the review draft
+This chapter provides the interpretation rules that make the rest of the published baseline
 readable and reviewable in a consistent way.
 
 It serves as the reference point for distinguishing informative text from normative

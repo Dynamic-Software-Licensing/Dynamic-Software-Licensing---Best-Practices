@@ -6,7 +6,7 @@ This changelog is used to track the evolution of the DSL best practices as an IA
 
 The format is intentionally lightweight at this stage and is primarily intended to support transparency across published baselines and ongoing repository evolution.
 
-## [0.3.0] - 2026-08-28
+## [1.0.0] - 2026-09-07
 
 ### Changed
 
@@ -17,9 +17,12 @@ The format is intentionally lightweight at this stage and is primarily intended 
 - Improved PDF rendering for inline code inside Markdown tables so long endpoint and path values wrap without overlapping text
 - Added consistent PDF header and footer metadata with document title, version, date, and page number on content pages
 - Clarified API companion documentation around schema-backed and intentionally Markdown-only model elements
-- Aligned the OpenAPI companion and related wording with the current reviewed-draft baseline
+- Aligned the OpenAPI companion and related wording with the current published baseline
 - Updated PDF publishing so main tracks the current published release and keeps the latest PDF aligned with official tagged versions
 - Integrated the current review-feedback fixes collected on the governance release-readiness branch ahead of the next baseline
+- Expanded the FAQ with implementation, migration, security, and onboarding questions for first-time readers
+- Removed repeated per-chapter status blocks and centralized status handling in the repository-level guidance and release surfaces
+- Promoted the repository baseline from reviewed draft to published best practices version 1.0.0
 
 ## [0.2.0-review-draft] - 2026-08-12
 

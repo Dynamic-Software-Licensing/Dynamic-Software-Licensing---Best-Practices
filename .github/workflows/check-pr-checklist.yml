@@ -50,3 +50,74 @@ jobs:
           else
             echo "✅ Review state provided."
           fi
+
+  validate-release-consistency:
+    name: Validate release consistency
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Ensure release files are updated
+        env:
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          set -euo pipefail
+
+          git fetch origin "$BASE_REF" --depth=1
+          changed_files=$(git diff --name-only "origin/$BASE_REF...HEAD")
+
+          if ! printf "%s\n" "$changed_files" | grep -qx 'CHANGELOG.md'; then
+            echo "❌ CHANGELOG.md must be updated in every PR merged to main."
+            exit 1
+          fi
+
+          if ! printf "%s\n" "$changed_files" | grep -qx 'api/dsl-api.openapi.yaml'; then
+            echo "❌ api/dsl-api.openapi.yaml must be updated with the same release version."
+            exit 1
+          fi
+
+          if ! printf "%s" "$PR_BODY" | grep -qE '^- \[[xX]\] CHANGELOG.md updated for the next release$'; then
+            echo "❌ Select the CHANGELOG confirmation checkbox in the PR template."
+            exit 1
+          fi
+
+          if ! printf "%s" "$PR_BODY" | grep -qE '^- \[[xX]\] api/dsl-api.openapi.yaml version aligned with CHANGELOG.md$'; then
+            echo "❌ Select the OpenAPI version-alignment checkbox in the PR template."
+            exit 1
+          fi
+
+      - name: Validate version alignment
+        env:
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
+        run: |
+          set -euo pipefail
+
+          changelog_version=$(grep -m1 -E '^## \[[^]]+\] - ' CHANGELOG.md | sed -E 's/^## \[([^]]+)\] - .*$/\1/')
+          base_version=$(git show "origin/$BASE_REF:CHANGELOG.md" | grep -m1 -E '^## \[[^]]+\] - ' | sed -E 's/^## \[([^]]+)\] - .*$/\1/')
+          api_version=$(grep -m1 -E '^  version:' api/dsl-api.openapi.yaml | sed -E 's/^  version: *//')
+
+          if [ -z "$changelog_version" ]; then
+            echo "❌ Could not determine top CHANGELOG version."
+            exit 1
+          fi
+
+          if [ "$changelog_version" = "$base_version" ]; then
+            echo "❌ Top CHANGELOG version must advance compared with ${BASE_REF}."
+            exit 1
+          fi
+
+          if [ "$api_version" != "$changelog_version" ]; then
+            echo "❌ OpenAPI version '$api_version' does not match CHANGELOG version '$changelog_version'."
+            exit 1
+          fi
+
+          if git rev-parse -q --verify "refs/tags/v${changelog_version}" >/dev/null; then
+            echo "❌ Tag v${changelog_version} already exists."
+            exit 1
+          fi
+
+          echo "✅ Release version $changelog_version is aligned across CHANGELOG and OpenAPI."

@@ -1,12 +1,5 @@
 # 15. Governance and Future Work
 
-## Chapter Status
-
-- Status: Reviewed Draft
-- Editorial maturity: developed draft
-- Normative readiness: informative only
-- Open drafting points: no
-
 ## Purpose
 
 This chapter defines the governance-related and forward-looking aspects of the Dynamic Software Licensing best practices.
@@ -49,7 +42,7 @@ describing the governance expectations of the best-practices text itself.
 
 ## Post-Review Priorities
 
-The current review draft already establishes the main document structure and a substantial
+The current published baseline already establishes the main document structure and a substantial
 content baseline. The next priorities after group review should be:
 - resolve cross-chapter terminology adjustments identified during review,
 - tighten requirement wording where informative text must become more disciplined,

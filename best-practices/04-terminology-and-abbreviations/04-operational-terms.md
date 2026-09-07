@@ -1,12 +1,5 @@
 # 04.04. Operational Terms
 
-## Chapter Status
-
-- Status: Reviewed Draft
-- Editorial maturity: developed draft
-- Normative readiness: informative only
-- Open drafting points: no
-
 ## Purpose
 
 This section defines lifecycle transitions, operational workflows, observability mechanisms, and migration tracking vocabulary used in practical deployment scenarios.

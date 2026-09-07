@@ -1,12 +1,5 @@
 # 09. Normative Requirements
 
-## Chapter Status
-
-- Status: Reviewed Draft
-- Editorial maturity: developed draft
-- Normative readiness: partially normative
-- Open drafting points: no
-
 ## Purpose
 
 This chapter contains the main implementation-oriented requirements of the Dynamic Software Licensing best practices.
@@ -91,7 +84,7 @@ It forms the main requirement backbone of the best practices.
 
 ## Chapter Positioning
 
-This chapter forms the normative backbone of the review draft.
+This chapter forms the normative backbone of the published baseline.
 
 The chapter is assessed not only for structure, but also for whether the requirement groups are
 complete, coherent, and aligned with the stakeholder, workflow, and model chapters.

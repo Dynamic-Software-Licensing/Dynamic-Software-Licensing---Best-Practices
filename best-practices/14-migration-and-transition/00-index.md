@@ -1,12 +1,5 @@
 # 14. Migration and Transition
 
-## Chapter Status
-
-- Status: Reviewed Draft
-- Editorial maturity: developed draft
-- Normative readiness: informative only
-- Open drafting points: no
-
 ## Purpose
 
 This chapter defines the migration and transition structure of the Dynamic Software Licensing best practices.
@@ -70,7 +63,7 @@ It provides the transition logic between the current industry state and the DSL 
 
 ## Chapter Positioning
 
-This chapter provides the transformation roadmap perspective for the review draft.
+This chapter provides the transformation roadmap perspective for the published baseline.
 
 Its role in review is to test whether the DSL target model is not only desirable, but also
 adoptable through realistic staged transition.

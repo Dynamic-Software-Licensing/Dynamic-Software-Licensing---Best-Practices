@@ -1,12 +1,5 @@
 # 12. Security and Trust Framework
 
-## Chapter Status
-
-- Status: Reviewed Draft
-- Editorial maturity: review-ready
-- Normative readiness: ready for normative review
-- Open drafting points: no
-
 ## Purpose
 
 This chapter defines the security and trust framework of the Dynamic Software Licensing best practices.

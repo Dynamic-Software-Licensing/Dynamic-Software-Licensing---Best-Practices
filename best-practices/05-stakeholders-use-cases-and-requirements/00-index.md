@@ -1,12 +1,5 @@
 # 05. Stakeholders, Use Cases and Requirements
 
-## Chapter Status
-
-- Status: Reviewed Draft
-- Editorial maturity: developed draft
-- Normative readiness: informative only
-- Open drafting points: no
-
 ## Purpose
 
 This chapter defines the stakeholder landscape, the principal operational use case classes, and the requirement themes derived from them. It establishes a traceable statement of need for the best practices and provides the rationale against which later normative choices can be evaluated.

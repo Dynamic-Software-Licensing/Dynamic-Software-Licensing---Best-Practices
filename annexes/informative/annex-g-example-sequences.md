@@ -88,7 +88,7 @@ sequenceDiagram
 
 ## Annex Positioning
 
-This annex provides simple walkthroughs intended to make the review draft easier to evaluate
+This annex provides simple walkthroughs intended to make the published baseline easier to evaluate
 without redefining the normative model.
 
 The numbered prose sequences remain the primary informative walkthroughs in this annex. The

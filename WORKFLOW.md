@@ -188,7 +188,9 @@ The decision is briefly documented in the PR.
 After merge:
 - Issue closes (via `Closes #` link or manually).
 - Project status set to `Done`.
-- Chapter status updated if relevant.
+- Central status references updated if relevant.
+- The merged top entry in [CHANGELOG.md](CHANGELOG.md) becomes the next published release version.
+- The matching tag is created automatically from `main`.
 
 ---
 
@@ -218,6 +220,8 @@ A work item is done when:
 ## Operational Rules
 
 - No work directly on `main`.
+- Every merge to `main` is a new release and must include an updated [CHANGELOG.md](CHANGELOG.md)
+   entry plus a matching version in [api/dsl-api.openapi.yaml](api/dsl-api.openapi.yaml).
 - One issue = one branch = one PR.
 - No PR without a linked issue.
 - Maximum 1 active Draft PR per chapter at a time (WIP limit).

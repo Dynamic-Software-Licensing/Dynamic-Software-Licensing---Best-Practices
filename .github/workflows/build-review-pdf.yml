@@ -1,4 +1,4 @@
-name: Build Review Draft PDF
+name: Build PDF
 
 on:
   workflow_dispatch:
@@ -14,7 +14,7 @@ on:
 
 jobs:
   build-review-pdf:
-    name: Assemble and render review draft PDF
+    name: Assemble and render PDF
     runs-on: ubuntu-latest
 
     steps:
@@ -65,7 +65,7 @@ jobs:
             --output _build/review-draft.md \
             --document-title "Dynamic Software Licensing" \
             --document-subtitle "Best Practices" \
-            --document-status "Reviewed Draft")
+            --document-status "Published Best Practices")
 
           "${cmd[@]}"
 
@@ -104,7 +104,7 @@ jobs:
             --output=_build/${{ steps.output_filenames.outputs.pdf_file }}
             _build/review-draft.md
 
-      - name: Upload review draft artifacts
+      - name: Upload PDF artifacts
         uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.output_filenames.outputs.artifact_name }}

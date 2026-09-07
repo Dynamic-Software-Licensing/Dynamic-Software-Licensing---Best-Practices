@@ -87,7 +87,7 @@ jobs:
             --output _build/review-draft.md \
             --document-title "Dynamic Software Licensing" \
             --document-subtitle "Best Practices" \
-            --document-status "Reviewed Draft"
+            --document-status "Published Best Practices"
 
       - name: Render Mermaid diagrams for PDF
         run: |

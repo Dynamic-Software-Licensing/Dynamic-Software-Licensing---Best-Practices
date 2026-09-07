@@ -1,12 +1,5 @@
 # 04.05. Abbreviations
 
-## Chapter Status
-
-- Status: Reviewed Draft
-- Editorial maturity: developed draft
-- Normative readiness: informative only
-- Open drafting points: no
-
 ## Purpose
 
 This section defines the recurring abbreviations used throughout the Dynamic Software Licensing (DSL) best practices repository.

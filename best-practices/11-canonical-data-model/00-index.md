@@ -1,12 +1,5 @@
 # 11. Canonical Data Model
 
-## Chapter Status
-
-- Status: Reviewed Draft
-- Editorial maturity: developed draft
-- Normative readiness: informative only
-- Open drafting points: no
-
 ## Purpose
 
 This chapter defines the canonical data model structure of the Dynamic Software Licensing best practices.
@@ -81,7 +74,7 @@ It is the main reference point for shared object definitions in the best practic
 
 ## Chapter Positioning
 
-This chapter serves as the shared data-model anchor for the review draft.
+This chapter serves as the shared data-model anchor for the published baseline.
 
 It is reviewed for consistency of object boundaries, naming, and alignment with the
 canonical API model, schemas, and security assumptions.

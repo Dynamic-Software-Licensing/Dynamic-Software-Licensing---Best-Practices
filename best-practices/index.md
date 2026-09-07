@@ -106,29 +106,6 @@ Folder: `15-governance-and-future-work/`
 
 Captures future development areas, governance considerations, open issues, and longer-term evolution topics for the best practices.
 
-## Chapter Status Overview
-
-Current chapter drafting status (as defined in `GOVERNANCE.md`):
-
-| Chapter | Status | Editorial maturity | Normative readiness |
-| --- | --- | --- | --- |
-| 00. Status of this Document | Reviewed Draft | review-ready | informative only |
-| 01. Introduction | Reviewed Draft | developed draft | informative only |
-| 02. Scope | Reviewed Draft | review-ready | informative only |
-| 03. Conventions and Normative Language | Reviewed Draft | review-ready | partially normative |
-| 04. Terminology and Abbreviations | Reviewed Draft | review-ready | informative only |
-| 05. Stakeholders, Use Cases and Requirements | Reviewed Draft | developed draft | informative only |
-| 06. Design Principles | Reviewed Draft | developed draft | informative only |
-| 07. Reference Model | Reviewed Draft | developed draft | informative only |
-| 08. Conformance and Profiles | Reviewed Draft | developed draft | informative only |
-| 09. Normative Requirements | Reviewed Draft | developed draft | partially normative |
-| 10. Canonical API Model | Reviewed Draft | review-ready | ready for normative review |
-| 11. Canonical Data Model | Reviewed Draft | developed draft | informative only |
-| 12. Security and Trust Framework | Reviewed Draft | review-ready | ready for normative review |
-| 13. Operational and Deployment Profiles | Reviewed Draft | developed draft | informative only |
-| 14. Migration and Transition | Reviewed Draft | developed draft | informative only |
-| 15. Governance and Future Work | Reviewed Draft | developed draft | informative only |
-
 ## Relationship to Annexes
 
 This directory contains the main best practices text.
@@ -137,14 +114,16 @@ Supporting material is located outside this directory:
 - `annexes/normative/` for normative supporting annexes,
 - `annexes/informative/` for examples, mappings, FAQs, and reference architectures.
 
-## Current Review Draft Baseline
+Repository and publication status are maintained centrally rather than repeated across chapter files.
 
-The main best-practices text is now organized as a complete review draft.
+## Current Published Baseline
+
+The main best-practices text is now organized as the current published baseline.
 
 The current objective is to:
-- gather structured group review comments,
-- resolve wording and consistency issues,
-- confirm chapter maturity and interpretation,
-- prepare the document for release by the end of August.
+- preserve a coherent published reference for adopters and reviewers,
+- incorporate future improvements through explicit versioned revisions,
+- maintain terminology, API artifacts, and annexes in sync with the accepted baseline,
+- prepare follow-on releases without reintroducing distributed chapter status tracking.
 
-Remaining changes should refine the baseline rather than reopen the document structure.
+Remaining changes should refine the published baseline rather than reopen the document structure.

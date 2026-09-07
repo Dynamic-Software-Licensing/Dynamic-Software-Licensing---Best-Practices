@@ -1,12 +1,5 @@
 # 13.05. Hybrid and DR Profile
 
-## Chapter Status
-
-- Status: Reviewed Draft
-- Editorial maturity: developed draft
-- Normative readiness: informative only
-- Open drafting points: no
-
 ## Purpose
 
 This chapter defines the operational and deployment profile for hybrid, failover, and
