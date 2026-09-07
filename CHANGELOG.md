@@ -6,7 +6,7 @@ This changelog is used to track the evolution of the DSL best practices as an IA
 
 The format is intentionally lightweight at this stage and is primarily intended to support transparency across published baselines and ongoing repository evolution.
 
-## [1.0.0] - 2026-08-28
+## [1.0.0] - 2026-09-07
 
 ### Changed
 
